@@ -9,13 +9,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="basket.png" />
     <None Remove="example.jpg" />
+    <None Remove="mainicon.png" />
+    <None Remove="ordersicon.png" />
+    <None Remove="pizzaicon.png" />
+    <None Remove="profile.jpg" />
+    <None Remove="profile.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="basket.png" />
     <Resource Include="example.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="mainicon.png" />
+    <Resource Include="ordersicon.png" />
+    <Resource Include="pizzaicon.png" />
+    <Resource Include="profile.jpg" />
+    <Resource Include="profile.png" />
   </ItemGroup>
 
 </Project>

@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\autorreg.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\autorreg.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -18,11 +22,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "autorreg.xaml",
+              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\autorreg.xaml",
+              "RelativeDocumentMoniker": "PizzaDelivery\\autorreg.xaml",
+              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\autorreg.xaml",
+              "RelativeToolTip": "PizzaDelivery\\autorreg.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-20T14:45:39.574Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -30,7 +46,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\MainWindow.xaml",
               "RelativeDocumentMoniker": "PizzaDelivery\\MainWindow.xaml",
@@ -42,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "PizzaDelivery\\MainWindow.xaml.cs",
