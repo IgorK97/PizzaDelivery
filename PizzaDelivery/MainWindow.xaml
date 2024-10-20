@@ -50,7 +50,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                                <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -67,7 +67,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -84,7 +84,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -101,7 +101,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -118,7 +118,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -135,7 +135,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -152,7 +152,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -169,7 +169,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -186,7 +186,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -203,7 +203,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -220,7 +220,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -237,7 +237,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -254,7 +254,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -271,7 +271,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -288,7 +288,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 
@@ -305,7 +305,7 @@
                                 </Style>
                             </Border.Style>
                             <StackPanel>
-                                <Image Source="example.jpg" Width="150" Height="150" Margin="15"/>
+                        <Image Source="pepperoni.png" Width="150" Height="150" Margin="15"/>
                                 <TextBox Text="Pizza Takayato" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                             </StackPanel>
 

@@ -6,7 +6,76 @@
         xmlns:local="clr-namespace:PizzaDelivery"
         mc:Ignorable="d"
         Title="autorreg" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <StackPanel Margin="10">
+        <Grid Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="pepperoni.png" Width="100" Height="100" Grid.Column="0"/>
+            <TextBlock Text="Pizza Name 1" VerticalAlignment="Center" Margin="10,0" Grid.Column="1"/>
+            <Button Content="Изменить" Width="60" Height="40" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
+                <Button Content="-" Width="30" Height="20"/>
+                <TextBox Text="1" Width="30" Height="20" HorizontalAlignment="Center" Margin="5,0"/>
+                <Button Content="+" Width="30" Height="20"/>
+            </StackPanel>
+        </Grid>
+        <Separator Background="Black" Height="2"/>
+        <Grid Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="pepperoni.png" Width="100" Height="100" Grid.Column="0"/>
+            <TextBlock Text="Pizza Name 2" VerticalAlignment="Center" Margin="10,0" Grid.Column="1"/>
+            <Button Content="Изменить" Width="60" Height="40" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
+                <Button Content="-" Width="30" Height="20"/>
+                <TextBox Text="1" Width="30" Height="20" HorizontalAlignment="Center" Margin="5,0"/>
+                <Button Content="+" Width="30" Height="20"/>
+            </StackPanel>
+        </Grid>
+        <Separator Background="Black" Height="2"/>
+        <Grid Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="pepperoni.png" Width="100" Height="100" Grid.Column="0"/>
+            <TextBlock Text="Pizza Name 3" VerticalAlignment="Center" Margin="10,0" Grid.Column="1"/>
+            <Button Content="Изменить" Width="60" Height="40" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
+                <Button Content="-" Width="30" Height="20"/>
+                <TextBox Text="1" Width="30" Height="20" HorizontalAlignment="Center" Margin="5,0"/>
+                <Button Content="+" Width="30" Height="20"/>
+            </StackPanel>
+        </Grid>
+        <Separator Background="Black" Height="2"/>
+        <Grid Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Общий вес: " VerticalAlignment="Center" Grid.Column="0" Margin="0,0,5,0" Grid.Row="0"/>
+            <TextBox Width="100" Grid.Column="1" Grid.Row="0"/>
+            <TextBlock Text="Общая цена: " VerticalAlignment="Center" Grid.Column="0" Margin="0,0,5,0" Grid.Row="1"/>
+            <TextBox Width="100" Grid.Column="1" Grid.Row="1"/>
+        </Grid>
+        <Button Content="Оформить" HorizontalAlignment="Center" Width="100"/>
+    </StackPanel>
 </Window>

@@ -13,6 +13,7 @@
     <None Remove="example.jpg" />
     <None Remove="mainicon.png" />
     <None Remove="ordersicon.png" />
+    <None Remove="pepperoni.png" />
     <None Remove="pizzaicon.png" />
     <None Remove="profile.jpg" />
     <None Remove="profile.png" />
@@ -25,6 +26,7 @@
     </Resource>
     <Resource Include="mainicon.png" />
     <Resource Include="ordersicon.png" />
+    <Resource Include="pepperoni.png" />
     <Resource Include="pizzaicon.png" />
     <Resource Include="profile.jpg" />
     <Resource Include="profile.png" />
