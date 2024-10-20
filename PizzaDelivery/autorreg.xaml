@@ -7,60 +7,86 @@
         mc:Ignorable="d"
         Title="autorreg" Height="450" Width="800">
     <StackPanel Margin="10">
-        <Grid Margin="0,0,0,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+        <TextBox IsReadOnly="True" Text="Pizzeria" FontSize="30" FontWeight="Bold" Foreground="Red" Margin="10"  HorizontalAlignment="Left"/>
 
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Image Source="pepperoni.png" Width="100" Height="100" Grid.Column="0"/>
-            <TextBlock Text="Pizza Name 1" VerticalAlignment="Center" Margin="10,0" Grid.Column="1"/>
-            <Button Content="Изменить" Width="60" Height="40" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"/>
-            <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
-                <Button Content="-" Width="30" Height="20"/>
-                <TextBox Text="1" Width="30" Height="20" HorizontalAlignment="Center" Margin="5,0"/>
-                <Button Content="+" Width="30" Height="20"/>
-            </StackPanel>
-        </Grid>
-        <Separator Background="Black" Height="2"/>
-        <Grid Margin="0,0,0,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+        <DockPanel Background="#FFEE3B3B" Height="80" LastChildFill="False">
+            <!--<TextBlock Text="Выберите ингредиент" TextAlignment="Center" Margin ="20" Height="40" Padding="12" Background="Bisque"/>
+            <ComboBox Margin ="20" Width="100" Height="40" Padding="10" Background="Beige">
+                <ComboBoxItem Content="Ингредиент"/>
+            </ComboBox>-->
+            <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Left">
+                <Image Source="pizzaicon.png"/>
 
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Image Source="pepperoni.png" Width="100" Height="100" Grid.Column="0"/>
-            <TextBlock Text="Pizza Name 2" VerticalAlignment="Center" Margin="10,0" Grid.Column="1"/>
-            <Button Content="Изменить" Width="60" Height="40" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"/>
-            <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
-                <Button Content="-" Width="30" Height="20"/>
-                <TextBox Text="1" Width="30" Height="20" HorizontalAlignment="Center" Margin="5,0"/>
-                <Button Content="+" Width="30" Height="20"/>
-            </StackPanel>
-        </Grid>
-        <Separator Background="Black" Height="2"/>
-        <Grid Margin="0,0,0,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+            </Button>
+            <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Right">
+                <Image Source="profile.png"/>
+            </Button>
+            <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Right">
+                <Image Source="ordersicon.png"/>
+            </Button>
+            <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Right">
+                <Image Source="basket.png"/>
+            </Button>
 
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Image Source="pepperoni.png" Width="100" Height="100" Grid.Column="0"/>
-            <TextBlock Text="Pizza Name 3" VerticalAlignment="Center" Margin="10,0" Grid.Column="1"/>
-            <Button Content="Изменить" Width="60" Height="40" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"/>
-            <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
-                <Button Content="-" Width="30" Height="20"/>
-                <TextBox Text="1" Width="30" Height="20" HorizontalAlignment="Center" Margin="5,0"/>
-                <Button Content="+" Width="30" Height="20"/>
+        </DockPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Height="224">
+            <StackPanel>
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="pepperoni.png" Width="100" Height="100" Grid.Column="0"/>
+                    <TextBlock Text="Pizza Name 1" VerticalAlignment="Center" Margin="10,0" Grid.Column="1"/>
+                    <Button Content="Изменить" Width="60" Height="40" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"/>
+                    <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
+                        <Button Content="-" Width="30" Height="20"/>
+                        <TextBox Text="1" Width="30" Height="20" HorizontalAlignment="Center" Margin="5,0"/>
+                        <Button Content="+" Width="30" Height="20"/>
+                    </StackPanel>
+                </Grid>
+                <Separator Background="Black" Height="2"/>
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="pepperoni.png" Width="100" Height="100" Grid.Column="0"/>
+                    <TextBlock Text="Pizza Name 2" VerticalAlignment="Center" Margin="10,0" Grid.Column="1"/>
+                    <Button Content="Изменить" Width="60" Height="40" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"/>
+                    <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
+                        <Button Content="-" Width="30" Height="20"/>
+                        <TextBox Text="1" Width="30" Height="20" HorizontalAlignment="Center" Margin="5,0"/>
+                        <Button Content="+" Width="30" Height="20"/>
+                    </StackPanel>
+                </Grid>
+                <Separator Background="Black" Height="2"/>
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="pepperoni.png" Width="100" Height="100" Grid.Column="0"/>
+                    <TextBlock Text="Pizza Name 3" VerticalAlignment="Center" Margin="10,0" Grid.Column="1"/>
+                    <Button Content="Изменить" Width="60" Height="40" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"/>
+                    <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
+                        <Button Content="-" Width="30" Height="20"/>
+                        <TextBox Text="1" Width="30" Height="20" HorizontalAlignment="Center" Margin="5,0"/>
+                        <Button Content="+" Width="30" Height="20"/>
+                    </StackPanel>
+                </Grid>
+                <Separator Background="Black" Height="2"/>
             </StackPanel>
-        </Grid>
-        <Separator Background="Black" Height="2"/>
+        </ScrollViewer>
         <Grid Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

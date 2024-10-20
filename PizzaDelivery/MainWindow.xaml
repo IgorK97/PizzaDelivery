@@ -12,9 +12,9 @@
         
         <DockPanel Background="#FFEE3B3B" Height="80" LastChildFill="False">
             <TextBlock Text="Выберите ингредиент" TextAlignment="Center" Margin ="20" Height="40" Padding="12" Background="Bisque"/>
-            <!--<ComboBox Margin ="20" Width="80" Height="40" Padding="10">
+            <ComboBox Margin ="20" Width="100" Height="40" Padding="10" Background="Beige">
                 <ComboBoxItem Content="Ингредиент"/>
-            </ComboBox>-->
+            </ComboBox>
             <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Left">
                 <Image Source="pizzaicon.png"/>
 
