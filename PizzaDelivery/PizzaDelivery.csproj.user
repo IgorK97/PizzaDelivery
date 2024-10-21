@@ -19,6 +19,9 @@
     <Compile Update="WindowListOrder.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="WindowManager.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="autorreg.xaml">
