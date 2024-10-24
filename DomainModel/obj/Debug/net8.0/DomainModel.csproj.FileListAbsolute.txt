@@ -1,0 +1,12 @@
+C:\Users\Igor\source\repos\PizzaDelivery\DomainModel\bin\Debug\net8.0\DomainModel.deps.json
+C:\Users\Igor\source\repos\PizzaDelivery\DomainModel\bin\Debug\net8.0\DomainModel.dll
+C:\Users\Igor\source\repos\PizzaDelivery\DomainModel\bin\Debug\net8.0\DomainModel.pdb
+C:\Users\Igor\source\repos\PizzaDelivery\DomainModel\obj\Debug\net8.0\DomainModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Igor\source\repos\PizzaDelivery\DomainModel\obj\Debug\net8.0\DomainModel.AssemblyInfoInputs.cache
+C:\Users\Igor\source\repos\PizzaDelivery\DomainModel\obj\Debug\net8.0\DomainModel.AssemblyInfo.cs
+C:\Users\Igor\source\repos\PizzaDelivery\DomainModel\obj\Debug\net8.0\DomainModel.csproj.CoreCompileInputs.cache
+C:\Users\Igor\source\repos\PizzaDelivery\DomainModel\obj\Debug\net8.0\DomainModel.sourcelink.json
+C:\Users\Igor\source\repos\PizzaDelivery\DomainModel\obj\Debug\net8.0\DomainModel.dll
+C:\Users\Igor\source\repos\PizzaDelivery\DomainModel\obj\Debug\net8.0\refint\DomainModel.dll
+C:\Users\Igor\source\repos\PizzaDelivery\DomainModel\obj\Debug\net8.0\DomainModel.pdb
+C:\Users\Igor\source\repos\PizzaDelivery\DomainModel\obj\Debug\net8.0\ref\DomainModel.dll

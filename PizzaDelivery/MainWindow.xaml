@@ -8,7 +8,7 @@
         Title="Пиццерия" Height="600" Width="900" Icon="/mainicon.png">
 
     <StackPanel Orientation="Vertical" Margin="10">
-        <TextBox IsReadOnly="True" Text="Pizzeria" FontSize="30" FontWeight="Bold" Foreground="Red" Margin="10"  HorizontalAlignment="Left"/>
+        <TextBox IsReadOnly="True" Text="Пиццерия" FontSize="30" FontWeight="Bold" Foreground="Red" Margin="10"  HorizontalAlignment="Left"/>
         
         <DockPanel Background="#FFEE3B3B" Height="80" LastChildFill="False">
             <TextBlock Text="Выберите ингредиент" TextAlignment="Center" Margin ="20" Height="40" Padding="12" Background="Bisque"/>
