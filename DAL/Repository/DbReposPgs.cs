@@ -1,0 +1,113 @@
+﻿using DomainModel;
+using Interfaces.Repository;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DAL.Repository
+{
+    public class DbReposPgs : IDbRepos
+    {
+        private PizzaDeliveryNewGenContext db;
+        private PizzaRepositoryPostgreSQL pizzaRepository;
+        private OrderRepositoryPostgreSQL orderRepository;
+        private IngredientRepositoryPostgreSQL ingredientRepository;
+        private ClientRepositoryPostgreSQL clientRepository;
+        private DelStatusRepositoryPostgreSQL delstatusRepository;
+        private CourierRepositoryPostgreSQL courierRepository;
+        private ManagerRepositoryPostgreSQL managerRepository;
+        private OrderLineRepositoryPostgreSQL orderLineRepository;
+        private PizzaSizeRepositoryPostgreSQL pizzaSizeRepository;
+        private ReportRepositoryPostgreSQL reportRepository;
+
+
+        public DbReposPgs()
+        {
+            db = new PizzaDeliveryNewGenContext();
+        }
+
+        public IRepository<Pizza> Pizzas
+        {
+            get
+            {
+                if (pizzaRepository == null)
+                    pizzaRepository = new PizzaRepositoryPostgreSQL(db);
+                return pizzaRepository;
+            }
+        }
+
+        public IRepository<Order> Orders
+        {
+            get
+            {
+                if (orderRepository == null)
+                    orderRepository = new OrderRepositoryPostgreSQL(db);
+                return orderRepository;
+            }
+        }
+
+        public IRepository<Ingredient> Ingredients
+        {
+            get
+            {
+                if (ingredientRepository == null)
+                    ingredientRepository = new IngredientRepositoryPostgreSQL(db);
+                return ingredientRepository;
+            }
+        }
+
+        public IRepository<Client> Clients { get
+            {
+                if (clientRepository == null)
+                    clientRepository = new ClientRepositoryPostgreSQL(db);
+                return clientRepository;
+            }
+        }
+        //IRepository<User> Users { get { 
+        //    if(userRepo)
+        //    } }
+        public IRepository<Courier> Couriers { get {
+                if (courierRepository == null)
+                    courierRepository = new CourierRepositoryPostgreSQL(db);
+                return courierRepository;
+            } }
+        public IRepository<Manager> Managers { get {
+                if (managerRepository == null)
+                    managerRepository = new ManagerRepositoryPostgreSQL(db);
+                return managerRepository;
+            } }
+        public IRepository<DelStatus> DelStatuses{ get {
+                if (delstatusRepository == null)
+                    delstatusRepository = new DelStatusRepositoryPostgreSQL(db);
+                return delstatusRepository;
+            } }
+        public IRepository<OrderLine> OrderLines { get {
+                if (orderLineRepository == null)
+                    orderLineRepository = new OrderLineRepositoryPostgreSQL(db);
+                return orderLineRepository;
+            } }
+        public IRepository<PizzaSize> PizzaSizes { get {
+                if (pizzaSizeRepository == null)
+                    pizzaSizeRepository = new PizzaSizeRepositoryPostgreSQL(db);
+                return pizzaSizeRepository;
+            } }
+
+        public IReportsRepository Reports
+        {
+            get
+            {
+                if (reportRepository == null)
+                    reportRepository = new ReportRepositoryPostgreSQL(db);
+                return reportRepository;
+            }
+        }
+
+        public int Save()
+        {
+            return db.SaveChanges();
+        }
+    }
+}

@@ -10,3 +10,7 @@ C:\Users\Igor\source\repos\PizzaDelivery\Interfaces\obj\Debug\net8.0\Interfaces.
 C:\Users\Igor\source\repos\PizzaDelivery\Interfaces\obj\Debug\net8.0\refint\Interfaces.dll
 C:\Users\Igor\source\repos\PizzaDelivery\Interfaces\obj\Debug\net8.0\Interfaces.pdb
 C:\Users\Igor\source\repos\PizzaDelivery\Interfaces\obj\Debug\net8.0\ref\Interfaces.dll
+C:\Users\Igor\source\repos\PizzaDelivery\Interfaces\obj\Debug\net8.0\Interfaces.csproj.AssemblyReference.cache
+C:\Users\Igor\source\repos\PizzaDelivery\Interfaces\bin\Debug\net8.0\DomainModel.dll
+C:\Users\Igor\source\repos\PizzaDelivery\Interfaces\bin\Debug\net8.0\DomainModel.pdb
+C:\Users\Igor\source\repos\PizzaDelivery\Interfaces\obj\Debug\net8.0\Interfaces.csproj.Up2Date
