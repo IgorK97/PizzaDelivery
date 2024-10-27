@@ -4,10 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PizzaDelivery"
+        xmlns:view="clr-namespace:PizzaDelivery.Views"
+        xmlns:viewms="clr-namespace:PizzaDelivery.ViewModels"
         mc:Ignorable="d"
-        Title="Пиццерия" Height="600" Width="900" Icon="/mainicon.png">
-
-    <StackPanel Orientation="Vertical" Margin="10">
+        Title="Пиццерия" Height="600" Width="900" Icon="/ImagesForProject/mainicon.png"
+        d:DataContext="{d:DesignInstance viewms:AuthorizationVM}">
+    <!--<Window.DataContext>
+        <viewms:RootVM/>
+    </Window.DataContext>-->
+    <!--<Window.Resources>
+        <DataTemplate DataType="x:Type vm: AuthorizationVM}">
+            <view:AuthorizationPresentation/>
+        </DataTemplate>
+        <DataTemplate DataType="x:Type vm:MainVM}">
+            <view:MainPresentation/>
+        </DataTemplate>
+    </Window.Resources>
+    <ContentPresenter Content="{Binding CurrentContentVM}"/>-->
+    <ContentControl x:Name="FrameContent"
+                    x:FieldModifier="public"/>
+    <!--<StackPanel Orientation="Vertical" Margin="10">
         <TextBox IsReadOnly="True" Text="Пиццерия" FontSize="30" FontWeight="Bold" Foreground="Red" Margin="10"  HorizontalAlignment="Left"/>
         
         <DockPanel Background="#FFEE3B3B" Height="80" LastChildFill="False">
@@ -16,27 +32,27 @@
                 <ComboBoxItem Content="Ингредиент"/>
             </ComboBox>
             <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Left">
-                <Image Source="pizzaicon.png"/>
+                <Image Source="/ImagesForProject/pizzaicon.png"/>
 
             </Button>
             <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Right">
-                <Image Source="profile.png"/>
+                <Image Source="/ImagesForProject/profile.png"/>
             </Button>
             <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Right">
-                <Image Source="ordersicon.png"/>
+                <Image Source="/ImagesForProject/ordersicon.png"/>
             </Button>
             <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Right">
-                <Image Source="basket.png"/>
+                <Image Source="/ImagesForProject/basket.png"/>
             </Button>
 
         </DockPanel>
 
         <ScrollViewer Height="412" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="10,10,0,0" 
                   HorizontalAlignment="Center">
-        <!--<ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        --><!--<ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>-->
-                    <WrapPanel  Orientation="Horizontal">
+                    <!--<WrapPanel  Orientation="Horizontal">
 
                         <Border Grid.Row="0" Grid.Column="0" Width="180" Height="220" Margin="10" BorderThickness="2" CornerRadius="10">
                             <Border.Style>
@@ -311,10 +327,10 @@
 
                         </Border>
 
-                    </WrapPanel>
+                    </WrapPanel>-->
                 <!--</ItemsPanelTemplate>
             </ListBox.ItemsPanel>
-        </ListBox>-->
+        </ListBox>--><!--
             </ScrollViewer>
-    </StackPanel>
+    </StackPanel>-->
 </Window>

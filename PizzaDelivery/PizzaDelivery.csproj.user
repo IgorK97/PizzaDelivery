@@ -7,33 +7,60 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="autorizereg.xaml.cs">
+    <Compile Update="Views\AuthorizationPresentation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="autorreg.xaml.cs">
+    <Compile Update="Views\OrderHistoryPresentation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="inputexample.xaml.cs">
+    <Compile Update="Views\OrderLineWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="WindowListOrder.xaml.cs">
+    <Compile Update="Views\OrderPresentation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="WindowManager.xaml.cs">
+    <Compile Update="Views\OrdersCourierPresentation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\OrdersManagerPresentation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\PizzaSelectionView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\RegistrationPresentation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\TopPanelPD.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="autorreg.xaml">
+    <Page Update="Views\AuthorizationPresentation.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="inputexample.xaml">
+    <Page Update="Views\OrderHistoryPresentation.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainWindow.xaml">
+    <Page Update="Views\OrderLineWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="WindowListOrder.xaml">
+    <Page Update="Views\OrderPresentation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\OrdersCourierPresentation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\OrdersManagerPresentation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\PizzaSelectionView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\RegistrationPresentation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TopPanelPD.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

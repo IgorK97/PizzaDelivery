@@ -11,31 +11,20 @@
   <ItemGroup>
     <None Remove="basket.png" />
     <None Remove="example.jpg" />
+    <None Remove="ImagesForProject\basket.png" />
+    <None Remove="ImagesForProject\example.jpg" />
+    <None Remove="ImagesForProject\mainicon.png" />
+    <None Remove="ImagesForProject\ordersicon.png" />
+    <None Remove="ImagesForProject\pepperoni.png" />
+    <None Remove="ImagesForProject\pizzaicon.png" />
+    <None Remove="ImagesForProject\profile.jpg" />
+    <None Remove="ImagesForProject\profile.png" />
     <None Remove="mainicon.png" />
     <None Remove="ordersicon.png" />
     <None Remove="pepperoni.png" />
     <None Remove="pizzaicon.png" />
     <None Remove="profile.jpg" />
     <None Remove="profile.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="basket.png" />
-    <Resource Include="example.jpg">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="mainicon.png" />
-    <Resource Include="ordersicon.png" />
-    <Resource Include="pepperoni.png" />
-    <Resource Include="pizzaicon.png" />
-    <Resource Include="profile.jpg" />
-    <Resource Include="profile.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ImagesForProject\" />
-    <Folder Include="Views\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,10 +38,26 @@
     </PackageReference>
     <PackageReference Include="Ninject" Version="3.3.6" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.10" />
+    <PackageReference Include="Prism.Wpf" Version="9.0.537" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="App.xaml" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="ImagesForProject\basket.png" />
+    <Resource Include="ImagesForProject\example.jpg" />
+    <Resource Include="ImagesForProject\mainicon.png" />
+    <Resource Include="ImagesForProject\ordersicon.png" />
+    <Resource Include="ImagesForProject\pepperoni.png" />
+    <Resource Include="ImagesForProject\pizzaicon.png" />
+    <Resource Include="ImagesForProject\profile.jpg" />
+    <Resource Include="ImagesForProject\profile.png" />
   </ItemGroup>
 
 </Project>
