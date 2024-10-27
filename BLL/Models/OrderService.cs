@@ -120,12 +120,53 @@ namespace BLL.Models
 
         public List<ManagerDto> GetAllManagers()
         {
-            return dbr.Managers.GetList().ToList().Select(i => new ManagerDto(i)).ToList();
+            
+            //var q = (from u in dbr.Users.GetList().ToList()
+            //         join m in dbr.Managers on u.Id equals m.Id
+            //         select new ManagerDto
+            //         {
+            //             Id = u.Id,
+            //             first_name = u.FirstName,
+            //             last_name = u.LastName,
+            //             surname = u.Surname,
+            //             login = u.Login,
+            //             phone = m.Phone,
+            //             email = m.Email,
+            //             C_password = u.Password
+            //         }).ToList();
+            var q = dbr.Users.GetList().ToList().Join(dbr.Managers.GetList().ToList(), u => u.Id, m => m.Id, (_u, _m)
+                => new ManagerDto
+                {
+                    Id = _u.Id,
+                    first_name = _u.FirstName,
+                    last_name = _u.LastName,
+                    surname = _u.Surname,
+                    login = _u.Login,
+                    phone = _m.Phone,
+                    email = _m.Email,
+                    C_password = _u.Password
+                }).ToList();
+            return q;
         }
 
         public List<CouriersDto> GetAllCouriers()
         {
-            return dbr.Couriers.GetList().ToList().Select(i => new CouriersDto(i)).ToList();
+            var q = dbr.Users.GetList().ToList().Join(dbr.Couriers.GetList().ToList(), u => u.Id, c => c.Id, (_u, _c)
+                => new CouriersDto
+                {
+                    Id = _u.Id,
+                    first_name = _u.FirstName,
+                    last_name = _u.LastName,
+                    surname = _u.Surname,
+                    login = _u.Login,
+                    phone = _c.Phone,
+                    email = _c.Email,
+                    C_password = _u.Password
+                }).ToList();
+            return q;
+
+
+            //return dbr.Couriers.GetList().ToList().Select(i => new CouriersDto(i)).ToList();
         }
     }
 }

@@ -13,3 +13,8 @@ C:\Users\Igor\source\repos\PizzaDelivery\DAL\obj\Debug\net8.0\refint\DAL.dll
 C:\Users\Igor\source\repos\PizzaDelivery\DAL\obj\Debug\net8.0\DAL.pdb
 C:\Users\Igor\source\repos\PizzaDelivery\DAL\obj\Debug\net8.0\DAL.genruntimeconfig.cache
 C:\Users\Igor\source\repos\PizzaDelivery\DAL\obj\Debug\net8.0\ref\DAL.dll
+C:\Users\Igor\source\repos\PizzaDelivery\DAL\bin\Debug\net8.0\DomainModel.dll
+C:\Users\Igor\source\repos\PizzaDelivery\DAL\bin\Debug\net8.0\Interfaces.dll
+C:\Users\Igor\source\repos\PizzaDelivery\DAL\bin\Debug\net8.0\DomainModel.pdb
+C:\Users\Igor\source\repos\PizzaDelivery\DAL\bin\Debug\net8.0\Interfaces.pdb
+C:\Users\Igor\source\repos\PizzaDelivery\DAL\obj\Debug\net8.0\DAL.csproj.Up2Date

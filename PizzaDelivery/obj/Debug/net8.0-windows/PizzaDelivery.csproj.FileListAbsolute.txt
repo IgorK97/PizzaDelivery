@@ -118,3 +118,7 @@ C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\DAL.pdb
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\PizzaDelivery.dll.config
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\Ninject.dll
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\DomainModel.dll
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\Interfaces.dll
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\DomainModel.pdb
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\Interfaces.pdb

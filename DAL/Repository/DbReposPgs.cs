@@ -22,7 +22,7 @@ namespace DAL.Repository
         private OrderLineRepositoryPostgreSQL orderLineRepository;
         private PizzaSizeRepositoryPostgreSQL pizzaSizeRepository;
         private ReportRepositoryPostgreSQL reportRepository;
-
+        private UserRepositoryPostgreSQL userRepository;
 
         public DbReposPgs()
         {
@@ -36,6 +36,16 @@ namespace DAL.Repository
                 if (pizzaRepository == null)
                     pizzaRepository = new PizzaRepositoryPostgreSQL(db);
                 return pizzaRepository;
+            }
+        }
+
+        public IRepository<User> Users
+        {
+            get
+            {
+                if (userRepository == null)
+                    userRepository = new UserRepositoryPostgreSQL(db);
+                return userRepository;
             }
         }
 

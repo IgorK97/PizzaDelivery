@@ -13,7 +13,7 @@ namespace Interfaces.Repository
         IRepository<Ingredient> Ingredients { get; }
         IRepository<Order> Orders { get; }
         IRepository<Client> Clients { get; }
-        //IRepository<User> Users { get; }
+        IRepository<User> Users { get; }
         IRepository<Courier> Couriers { get; }
         IRepository<Manager> Managers { get; }
         IRepository<DelStatus> DelStatuses { get; }

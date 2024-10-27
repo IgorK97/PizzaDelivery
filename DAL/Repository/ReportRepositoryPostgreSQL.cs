@@ -35,7 +35,7 @@ namespace DAL.Repository
             new OrdersByMonth
             {
                 order_id = j.Id,
-                courier_id = db.Couriers.Where(c =>
+                courier_id = db.Users.Where(c =>
             c.Id == j.CourierId).Select(c => new
             {
                 fname = c.FirstName + " " + c.LastName + " " + c.Surname
