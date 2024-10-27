@@ -9,20 +9,28 @@
         mc:Ignorable="d"
         Title="Пиццерия" Height="600" Width="900" Icon="/ImagesForProject/mainicon.png"
         d:DataContext="{d:DesignInstance viewms:AuthorizationVM}">
-    <!--<Window.DataContext>
-        <viewms:RootVM/>
-    </Window.DataContext>-->
-    <!--<Window.Resources>
-        <DataTemplate DataType="x:Type vm: AuthorizationVM}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ContentControl x:Name="TopContent"
+                    Grid.Row="0"
+                    x:FieldModifier="public">
             <view:AuthorizationPresentation/>
-        </DataTemplate>
-        <DataTemplate DataType="x:Type vm:MainVM}">
-            <view:MainPresentation/>
-        </DataTemplate>
-    </Window.Resources>
-    <ContentPresenter Content="{Binding CurrentContentVM}"/>-->
-    <ContentControl x:Name="FrameContent"
+        </ContentControl>
+        <!--<Button Grid.Row="0"
+                Margin="5"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Command="{Binding ShowPizzaSelectionCommand}"
+                Content="Войти"
+                Padding="20,3"/>-->
+        <ContentControl x:Name="FrameContent"
+                    Grid.Row="1"
                     x:FieldModifier="public"/>
+    </Grid>
     <!--<StackPanel Orientation="Vertical" Margin="10">
         <TextBox IsReadOnly="True" Text="Пиццерия" FontSize="30" FontWeight="Bold" Foreground="Red" Margin="10"  HorizontalAlignment="Left"/>
         

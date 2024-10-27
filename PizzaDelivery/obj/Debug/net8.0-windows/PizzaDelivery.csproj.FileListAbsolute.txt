@@ -145,3 +145,4 @@ C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\Views\PizzaSelectionView.baml
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\Views\RegistrationPresentation.baml
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\Views\TopPanelPD.baml
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs

@@ -45,6 +45,7 @@ namespace PizzaDelivery.Util
         {
             if (navigationKey == null)
                 throw new ArgumentNullException("navigationKey");
+            
 
             InvokeInMainThread(() =>
             {

@@ -4,9 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PizzaDelivery.Views"
+             xmlns:viewmodels="clr-namespace:PizzaDelivery.ViewModels"
+             d:DataContext="{d:DesignInstance viewmodels:AuthorizationVM}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Button
+        Margin="5"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Command="{Binding ShowPizzaSelectionCommand}"
+        Content="Войти"
+        Padding="20,3"/>
     </Grid>
 </UserControl>
