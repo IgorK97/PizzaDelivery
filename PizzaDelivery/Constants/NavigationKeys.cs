@@ -10,5 +10,6 @@ namespace PizzaDelivery.Constants
     {
         public const string PizzaSelection = @"PizzaSelection";
         public const string PizzaCooking = @"PizzaCooking";
+        public const string RegAccountInPD = @"RegAccountInPD";
     }
 }

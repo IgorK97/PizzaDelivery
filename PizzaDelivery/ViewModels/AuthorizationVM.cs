@@ -11,11 +11,41 @@ namespace PizzaDelivery.ViewModels
 {
     public class AuthorizationVM : ViewModelBase
     {
-        private readonly INavigationManager _navigationManager;
+        //private readonly INavigationManager _navigationManager;
 
-        public AuthorizationVM(INavigationManager navigationManager)
+        private string _textLogin;
+
+        public string TextLogin
         {
-            _navigationManager = navigationManager;
+            get
+            {
+                return _textLogin;
+            }
+
+            set
+            {
+                _textLogin = value;
+                OnPropertyChanged("TextLogin");
+            }
+        }
+
+        private string _textPassword;
+        public string TextPassword
+        {
+            get
+            {
+                return _textPassword;
+            }
+
+            set
+            {
+                _textPassword = value;
+                OnPropertyChanged("TextPassword");
+            }
+        }
+        public AuthorizationVM(/*INavigationManager navigationManager*/)
+        {
+            //_navigationManager = navigationManager;
         }
 
         private ICommand _showPizzaSelectionCommand;
@@ -28,7 +58,32 @@ namespace PizzaDelivery.ViewModels
         }
         private void ShowPizzaSelection(object arg)
         {
-            _navigationManager.Navigate(NavigationKeys.PizzaSelection);
+            //_navigationManager.Navigate(NavigationKeys.PizzaSelection);
+        }
+
+        private bool CanExecuteLogin(object obj)
+        {
+            bool validData;
+            if (string.IsNullOrWhiteSpace(TextLogin) || TextLogin.Length <= 3 || 
+                TextPassword == null)
+                validData = false;
+            else 
+                validData = true;
+            return validData;
+        }
+
+        private ICommand _showRegCommand;
+        public ICommand ShowRegCommand
+        {
+            get
+            {
+                return _showRegCommand ??
+                    (_showRegCommand = new PizzaDelivery.Util.DelegateCommand(ShowReg));
+            }
+        }
+        private void ShowReg(object arg)
+        {
+            //_navigationManager.Navigate(NavigationKeys.RegAccountInPD);
         }
     }
 }

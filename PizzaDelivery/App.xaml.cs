@@ -15,16 +15,22 @@ namespace PizzaDelivery
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel()
+            };
+            MainWindow.Show();
+            base.OnStartup(e);
             
-                var window = new MainWindow();
-                var navigationManager = new NavigationManager(Dispatcher, window.FrameContent);
+            //    var window = new MainWindow();
+            //    var navigationManager = new NavigationManager(Dispatcher, window.FrameContent);
 
-                var viewModel = new AuthorizationVM(navigationManager);
-                window.DataContext = viewModel;
+            //    var viewModel = new AuthorizationVM(navigationManager);
+            //    window.DataContext = viewModel;
 
-            navigationManager.Register<PizzaSelectionVM, PizzaSelectionView>
-            (new PizzaSelectionVM(navigationManager), NavigationKeys.PizzaSelection);
-            window.Show();
+            //navigationManager.Register<PizzaSelectionVM, PizzaSelectionView>
+            //(new PizzaSelectionVM(navigationManager), NavigationKeys.PizzaSelection);
+            //window.Show();
         }
     }
 

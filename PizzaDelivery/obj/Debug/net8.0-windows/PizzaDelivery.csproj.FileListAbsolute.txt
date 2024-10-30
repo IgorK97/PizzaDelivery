@@ -117,13 +117,11 @@ C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\Prism.Wpf.dll
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\autorizereg.g.cs
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\autorreg.g.cs
-C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\inputexample.g.cs
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\MainWindow.g.cs
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\WindowListOrder.g.cs
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\WindowManager.g.cs
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\autorizereg.baml
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\autorreg.baml
-C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\inputexample.baml
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\MainWindow.baml
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\WindowListOrder.baml
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\WindowManager.baml
