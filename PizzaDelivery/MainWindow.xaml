@@ -11,14 +11,12 @@
         d:DataContext="{d:DesignInstance viewms:AuthorizationVM}">
     <Grid>
         
-        <!--<ContentControl x:Name="FrameContent"
-                    Grid.Row="0"
-                    x:FieldModifier="public">-->
-            <!--<view:AuthorizationPresentation DataContext="{Binding CurrentViewModel}"/>-->
-        <view:PizzaSelectionView DataContext="{Binding CurrentViewModel}"/>
+        
+            <view:AuthorizationPresentation DataContext="{Binding CurrentViewModel}"/>
+        <!--<view:PizzaSelectionView DataContext="{Binding CurrentViewModel}"/>-->
 
 
-        <!--</ContentControl>-->
+       
     </Grid>
     
 </Window>

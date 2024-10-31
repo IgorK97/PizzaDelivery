@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using PizzaDelivery.Constants;
+using PizzaDelivery.Commands;
+using BLL.Models;
 
 namespace PizzaDelivery.ViewModels
 {
@@ -43,23 +45,25 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged("TextPassword");
             }
         }
-        public AuthorizationVM(/*INavigationManager navigationManager*/)
+        public AuthorizationVM(UserModel _user)
         {
-            //_navigationManager = navigationManager;
+            ShowPizzaSelectionCommand = new LoginCommand(_user);
         }
 
         private ICommand _showPizzaSelectionCommand;
         public ICommand ShowPizzaSelectionCommand
         {
-            get {
-                return _showPizzaSelectionCommand ??
-                    (_showPizzaSelectionCommand = new PizzaDelivery.Util.DelegateCommand(ShowPizzaSelection));
-            }
+            get;
+            
+                //    return _showPizzaSelectionCommand ??
+                //        (_showPizzaSelectionCommand = new PizzaDelivery.Util.DelegateCommand(ShowPizzaSelection));
+                //}
+            
         }
-        private void ShowPizzaSelection(object arg)
-        {
-            //_navigationManager.Navigate(NavigationKeys.PizzaSelection);
-        }
+        //private void ShowPizzaSelection(object arg)
+        //{
+        //    //_navigationManager.Navigate(NavigationKeys.PizzaSelection);
+        //}
 
         private bool CanExecuteLogin(object obj)
         {

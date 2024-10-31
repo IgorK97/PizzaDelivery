@@ -1,4 +1,5 @@
-﻿using PizzaDelivery.Util;
+﻿using BLL.Models;
+using PizzaDelivery.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,10 @@ namespace PizzaDelivery.ViewModels
     {
         public ViewModelBase CurrentViewModel { get; }
 
-        public MainViewModel()
+        public MainViewModel(UserModel _user)
         {
-            //CurrentViewModel = new AuthorizationVM();
-            CurrentViewModel = new PizzaSelectionVM();
+            CurrentViewModel = new AuthorizationVM(_user);
+            //CurrentViewModel = new PizzaSelectionVM();
 
         }
     }

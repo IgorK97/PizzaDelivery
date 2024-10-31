@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Windows;
 using PizzaDelivery.Views;
+using BLL.Models;
 
 namespace PizzaDelivery
 {
@@ -13,11 +14,17 @@ namespace PizzaDelivery
     /// </summary>
     public partial class App : Application
     {
+        private readonly UserModel _user;
+
+        public App()
+        {
+            _user = new UserModel();
+        }
         protected override void OnStartup(StartupEventArgs e)
         {
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel()
+                DataContext = new MainViewModel(_user)
             };
             MainWindow.Show();
             base.OnStartup(e);
