@@ -13,6 +13,7 @@ namespace Interfaces.Services
         int GetCurrentOrder(int ClientId);
 
 
+        public UserDTO? GetCurrentUser(string login, string password);
 
         bool MakeOrder(int ClientId);
 

@@ -18,3 +18,5 @@ C:\Users\Igor\source\repos\PizzaDelivery\BLL\bin\Debug\net8.0\DomainModel.dll
 C:\Users\Igor\source\repos\PizzaDelivery\BLL\bin\Debug\net8.0\Interfaces.dll
 C:\Users\Igor\source\repos\PizzaDelivery\BLL\bin\Debug\net8.0\DomainModel.pdb
 C:\Users\Igor\source\repos\PizzaDelivery\BLL\bin\Debug\net8.0\Interfaces.pdb
+C:\Users\Igor\source\repos\PizzaDelivery\BLL\bin\Debug\net8.0\Exceptions.dll
+C:\Users\Igor\source\repos\PizzaDelivery\BLL\bin\Debug\net8.0\Exceptions.pdb

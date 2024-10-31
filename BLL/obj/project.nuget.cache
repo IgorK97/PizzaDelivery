@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZGX98FfwlO8=",
+  "dgSpecHash": "nSZZQqMevK4=",
   "success": true,
   "projectFilePath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,12 @@
     "C:\\Users\\Igor\\.nuget\\packages\\prism.wpf\\9.0.537\\prism.wpf.9.0.537.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Произошла ошибка при получении данных уязвимости пакета: Не удалось загрузить индекс службы для источника https://api.nuget.org/v3/index.json."
+    },
     {
       "code": "NU1701",
       "level": "Warning",

@@ -12,7 +12,7 @@ namespace PizzaDelivery.ViewModels
     {
         public ViewModelBase CurrentViewModel { get; }
 
-        public MainViewModel(UserModel _user)
+        public MainViewModel(AccountModel _user)
         {
             CurrentViewModel = new AuthorizationVM(_user);
             //CurrentViewModel = new PizzaSelectionVM();

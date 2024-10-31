@@ -6,6 +6,9 @@ using System.Data;
 using System.Windows;
 using PizzaDelivery.Views;
 using BLL.Models;
+using Interfaces.Services;
+using Lab4POWinForms.Util;
+using Ninject;
 
 namespace PizzaDelivery
 {
@@ -14,14 +17,19 @@ namespace PizzaDelivery
     /// </summary>
     public partial class App : Application
     {
-        private readonly UserModel _user;
+        private AccountModel _user;
 
         public App()
         {
-            _user = new UserModel();
+            
         }
         protected override void OnStartup(StartupEventArgs e)
         {
+            var kernel = new StandardKernel(new NinjectRegistrations(), new ReposModule("dbPizzaDelivery"));
+            IOrderLineService ols = kernel.Get<IOrderLineService>();
+            IOrderService os = kernel.Get<IOrderService>();
+            IReportService report = kernel.Get<IReportService>();
+            _user = new AccountModel(os);
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(_user)

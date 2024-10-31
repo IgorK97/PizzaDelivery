@@ -7,30 +7,30 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class CouriersDto
+    public class CouriersDto : UserDTO
     {
         public CouriersDto()
         {
         }
 
-        public int Id { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
-        public string? surname { get; set; }
-        public string login { get; set; }
-        public string C_password { get; set; }
-        public string phone { get; set; }
-        public string? email { get; set; }
+        //public int Id { get; set; }
+        //public string first_name { get; set; }
+        //public string last_name { get; set; }
+        //public string? surname { get; set; }
+        //public string login { get; set; }
+        //public string C_password { get; set; }
+        public string Phone { get; set; }
+        public string? Email { get; set; }
         public CouriersDto(User u, Courier c)
         {
             Id = c.Id;
-            first_name = u.FirstName;
-            last_name = u.LastName;
-            surname = u.Surname;
-            login = u.Login;
-            phone = c.Phone;
-            email = c.Email;
-            C_password = u.Password;
+            FirstName = u.FirstName;
+            LastName = u.LastName;
+            Surname = u.Surname;
+            Login = u.Login;
+            Phone = c.Phone;
+            Email = c.Email;
+            Password = u.Password;
         }
     }
 }

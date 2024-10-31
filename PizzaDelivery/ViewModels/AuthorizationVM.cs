@@ -45,9 +45,9 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged("TextPassword");
             }
         }
-        public AuthorizationVM(UserModel _user)
+        public AuthorizationVM(AccountModel _user)
         {
-            ShowPizzaSelectionCommand = new LoginCommand(_user);
+            ShowPizzaSelectionCommand = new LoginCommand(this, _user);
         }
 
         private ICommand _showPizzaSelectionCommand;

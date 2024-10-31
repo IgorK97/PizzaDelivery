@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Interfaces.Repository;
 using Interfaces.Services;
+using Exceptions;
 
 namespace BLL.Models
 {
@@ -20,6 +21,62 @@ namespace BLL.Models
         {
             dbr = repos;
             //db = new PizzaDeliveryContext();
+        }
+
+        public UserDTO? GetCurrentUser(string login, string password)
+        {
+            var res = dbr.Users.GetList().Where(i => i.Login== login && i.Password== password).FirstOrDefault();
+            if (res != null)
+            {
+                if (res.Client != null)
+                {
+                    return new ClientDTO
+                    {
+                        Id = res.Client.Id,
+                        Email = res.Client.Email,
+                        Phone = res.Client.Phone,
+                        Password = res.Password,
+                        Login = res.Login,
+                        FirstName = res.FirstName,
+                        AddressDel = res.Client.AddressDel,
+                        LastName = res.LastName,
+                        Surname = res.Surname
+                    };
+                }
+                else if (res.Courier != null)
+                {
+                    return new CouriersDto
+                    {
+                        Id = res.Courier.Id,
+                        Email = res.Courier.Email,
+                        Phone = res.Courier.Phone,
+                        Password = res.Password,
+                        Login = res.Login,
+                        FirstName = res.FirstName,
+                        LastName = res.LastName,
+                        Surname = res.Surname
+                    };
+                }
+                else if (res.Manager != null)
+                {
+                    return new ManagerDto
+                    {
+                        Id = res.Manager.Id,
+                        Email = res.Manager.Email,
+                        Phone = res.Manager.Phone,
+                        Password = res.Password,
+                        Login = res.Login,
+                        FirstName = res.FirstName,
+                        LastName = res.LastName,
+                        Surname = res.Surname
+                    };
+                }
+                else
+                    throw new IncorrectLoginOrPasswordException();
+
+            }
+            else
+                throw new IncorrectLoginOrPasswordException();
         }
 
         public int GetCurrentOrder(int ClientId)
@@ -138,13 +195,13 @@ namespace BLL.Models
                 => new ManagerDto
                 {
                     Id = _u.Id,
-                    first_name = _u.FirstName,
-                    last_name = _u.LastName,
-                    surname = _u.Surname,
-                    login = _u.Login,
-                    phone = _m.Phone,
-                    email = _m.Email,
-                    C_password = _u.Password
+                    FirstName = _u.FirstName,
+                    LastName = _u.LastName,
+                    Surname = _u.Surname,
+                    Login = _u.Login,
+                    Phone = _m.Phone,
+                    Email = _m.Email,
+                    Password = _u.Password
                 }).ToList();
             return q;
         }
@@ -155,13 +212,13 @@ namespace BLL.Models
                 => new CouriersDto
                 {
                     Id = _u.Id,
-                    first_name = _u.FirstName,
-                    last_name = _u.LastName,
-                    surname = _u.Surname,
-                    login = _u.Login,
-                    phone = _c.Phone,
-                    email = _c.Email,
-                    C_password = _u.Password
+                    FirstName = _u.FirstName,
+                    LastName = _u.LastName,
+                    Surname = _u.Surname,
+                    Login = _u.Login,
+                    Phone = _c.Phone,
+                    Email = _c.Email,
+                    Password = _u.Password
                 }).ToList();
             return q;
 

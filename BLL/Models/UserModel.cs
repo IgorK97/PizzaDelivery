@@ -20,21 +20,10 @@ namespace BLL.Models
 
         public string? Password { get; set; }
 
-        public string? AddressDel { get; set; }
+        //public string? AddressDel { get; set; }
 
-        public string? Phone { get; set; }
+        //public string? Phone { get; set; }
 
-        public string? Email { get; set; }
-
-        public UserModel()
-        {
-
-        }
-
-        public void MakeLogin()
-        {
-
-        }
-
+        //public string? Email { get; set; }
     }
 }

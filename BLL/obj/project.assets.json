@@ -380,6 +380,16 @@
           "bin/placeholder/DomainModel.dll": {}
         }
       },
+      "Exceptions/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Exceptions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Exceptions.dll": {}
+        }
+      },
       "Interfaces/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -969,6 +979,11 @@
       "path": "../DomainModel/DomainModel.csproj",
       "msbuildProject": "../DomainModel/DomainModel.csproj"
     },
+    "Exceptions/1.0.0": {
+      "type": "project",
+      "path": "../Exceptions/Exceptions.csproj",
+      "msbuildProject": "../Exceptions/Exceptions.csproj"
+    },
     "Interfaces/1.0.0": {
       "type": "project",
       "path": "../Interfaces/Interfaces.csproj",
@@ -978,6 +993,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "DAL >= 1.0.0",
+      "Exceptions >= 1.0.0",
       "Prism.Wpf >= 9.0.537"
     ]
   },
@@ -1011,6 +1027,9 @@
           "projectReferences": {
             "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DAL\\DAL.csproj": {
               "projectPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DAL\\DAL.csproj"
+            },
+            "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Exceptions\\Exceptions.csproj": {
+              "projectPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Exceptions\\Exceptions.csproj"
             }
           }
         }
@@ -1056,6 +1075,12 @@
     }
   },
   "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Произошла ошибка при получении данных уязвимости пакета: Не удалось загрузить индекс службы для источника https://api.nuget.org/v3/index.json."
+    },
     {
       "code": "NU1701",
       "level": "Warning",
