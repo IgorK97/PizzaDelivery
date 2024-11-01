@@ -10,13 +10,20 @@
         Title="Пиццерия" Height="600" Width="900" Icon="/ImagesForProject/mainicon.png"
         d:DataContext="{d:DesignInstance viewms:AuthorizationVM}">
     <Grid>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type viewms:AuthorizationVM}">
+                <view:AuthorizationPresentation/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewms:ProfilePresentationVM}">
+                <view:ProfilePresentation/>
+            </DataTemplate>
+        </Grid.Resources>
         
-        
-            <view:AuthorizationPresentation DataContext="{Binding CurrentViewModel}"/>
+            <!--<view:AuthorizationPresentation DataContext="{Binding CurrentViewModel}"/>-->
         <!--<view:PizzaSelectionView DataContext="{Binding CurrentViewModel}"/>-->
+        <!--<view:ProfilePresentation DataContext="{Binding CurrentViewModel}"/>-->
+        <ContentControl Content="{Binding CurrentViewModel}"/>
 
-
-       
     </Grid>
     
 </Window>

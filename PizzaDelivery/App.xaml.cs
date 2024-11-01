@@ -1,6 +1,5 @@
 ﻿using PizzaDelivery.Util;
 using PizzaDelivery.ViewModels;
-using PizzaDelivery.Constants;
 using System.Configuration;
 using System.Data;
 using System.Windows;
@@ -9,6 +8,7 @@ using BLL.Models;
 using Interfaces.Services;
 using Lab4POWinForms.Util;
 using Ninject;
+using PizzaDelivery.Stores;
 
 namespace PizzaDelivery
 {
@@ -18,10 +18,11 @@ namespace PizzaDelivery
     public partial class App : Application
     {
         private AccountModel _user;
+        private readonly NavigationStore _navigationStore;
 
         public App()
         {
-            
+            _navigationStore = new NavigationStore();
         }
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -30,9 +31,11 @@ namespace PizzaDelivery
             IOrderService os = kernel.Get<IOrderService>();
             IReportService report = kernel.Get<IReportService>();
             _user = new AccountModel(os);
+            _navigationStore.CurrentViewModel = new AuthorizationVM(_navigationStore, _user);
+
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel(_user)
+                DataContext = new MainViewModel(_navigationStore)
             };
             MainWindow.Show();
             base.OnStartup(e);

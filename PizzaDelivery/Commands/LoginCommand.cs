@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using Exceptions;
 using System.Windows;
 using System.ComponentModel;
+using PizzaDelivery.Stores;
 
 namespace PizzaDelivery.Commands
 {
@@ -16,6 +17,7 @@ namespace PizzaDelivery.Commands
     {
         private readonly AccountModel _user;
         private readonly AuthorizationVM _authorizationVM;
+        private readonly NavigationStore _navigationStore;
         public override void Execute(object parameter)
         {
             try
@@ -23,6 +25,7 @@ namespace PizzaDelivery.Commands
                 _user.MakeLogin(_authorizationVM.TextLogin, _authorizationVM.TextPassword);
                 MessageBox.Show("Добро пожаловать!", "Success", MessageBoxButton.OK,
                    MessageBoxImage.Information);
+                _navigationStore.CurrentViewModel=new ProfilePresentationVM(_user);
             }
             catch (IncorrectLoginOrPasswordException)
             {
@@ -37,11 +40,11 @@ namespace PizzaDelivery.Commands
                 string.IsNullOrEmpty(_authorizationVM.TextPassword)||
                 _authorizationVM.TextLogin.Length<=3) && base.CanExecute(parameter);
         }
-        public LoginCommand(ViewModels.AuthorizationVM authorizationVM, AccountModel user)
+        public LoginCommand(NavigationStore navigationstore, ViewModels.AuthorizationVM authorizationVM, AccountModel user)
         {
             _user = user;
             _authorizationVM = authorizationVM;
-
+            _navigationStore = navigationstore;
             _authorizationVM.PropertyChanged += OnViewModelPropertyChanged;
         }
 

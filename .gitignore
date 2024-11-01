@@ -3,3 +3,4 @@ BLL/bin/
 DAL/bin/
 DomainModel/bin/
 Interfaces/bin/
+Exceptions/bin/

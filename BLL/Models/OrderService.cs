@@ -28,28 +28,32 @@ namespace BLL.Models
             var res = dbr.Users.GetList().Where(i => i.Login== login && i.Password== password).FirstOrDefault();
             if (res != null)
             {
-                if (res.Client != null)
+                var res_client = dbr.Clients.GetList().Where(i => i.Id==res.Id).FirstOrDefault();
+                var res_courier = dbr.Couriers.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
+                var res_manager = dbr.Managers.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
+
+                if (res_client != null)
                 {
                     return new ClientDTO
                     {
-                        Id = res.Client.Id,
-                        Email = res.Client.Email,
-                        Phone = res.Client.Phone,
+                        Id = res_client.Id,
+                        Email = res_client.Email,
+                        Phone = res_client.Phone,
                         Password = res.Password,
                         Login = res.Login,
                         FirstName = res.FirstName,
-                        AddressDel = res.Client.AddressDel,
+                        AddressDel = res_client.AddressDel,
                         LastName = res.LastName,
                         Surname = res.Surname
                     };
                 }
-                else if (res.Courier != null)
+                else if (res_courier != null)
                 {
                     return new CouriersDto
                     {
-                        Id = res.Courier.Id,
-                        Email = res.Courier.Email,
-                        Phone = res.Courier.Phone,
+                        Id = res_courier.Id,
+                        Email = res_courier.Email,
+                        Phone = res_courier.Phone,
                         Password = res.Password,
                         Login = res.Login,
                         FirstName = res.FirstName,
@@ -57,13 +61,13 @@ namespace BLL.Models
                         Surname = res.Surname
                     };
                 }
-                else if (res.Manager != null)
+                else if (res_manager != null)
                 {
                     return new ManagerDto
                     {
-                        Id = res.Manager.Id,
-                        Email = res.Manager.Email,
-                        Phone = res.Manager.Phone,
+                        Id = res_manager.Id,
+                        Email = res_manager.Email,
+                        Phone = res_manager.Phone,
                         Password = res.Password,
                         Login = res.Login,
                         FirstName = res.FirstName,

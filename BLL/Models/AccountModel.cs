@@ -14,23 +14,23 @@ namespace BLL.Models
         private readonly IOrderService _ios;
 
         private UserModel _user;
-        //public int Id { get; set; }
+        public int Id { get; set; }
 
-        //public string? FirstName { get; set; }
+        public string? FirstName { get; set; }
 
-        //public string? LastName { get; set; }
+        public string? LastName { get; set; }
 
-        //public string? Surname { get; set; }
+        public string? Surname { get; set; }
 
-        //public string? Login { get; set; }
+        public string? Login { get; set; }
 
-        //public string? Password { get; set; }
+        public string? Password { get; set; }
 
-        //public string? AddressDel { get; set; }
+        public string? AddressDel { get; set; }
 
-        //public string? Phone { get; set; }
+        public string? Phone { get; set; }
 
-        //public string? Email { get; set; }
+        public string? Email { get; set; }
 
         public AccountModel(IOrderService Ios)
         {
@@ -57,6 +57,16 @@ namespace BLL.Models
                         Phone = user1.Phone,
                         AddressDel = user1.AddressDel
                     };
+                Id=user1.Id;
+                FirstName=user1.FirstName;
+                LastName=user1.LastName;
+                Surname=user1.Surname;
+                Login=user1.Login;
+                Password=user1.Password;
+                Email=user1.Email;
+                Phone=user1.Phone;
+                AddressDel=user1.AddressDel;
+
                 }
                 else if (user is CouriersDto)
                 {

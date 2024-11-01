@@ -5,15 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using PizzaDelivery.Constants;
 using PizzaDelivery.Commands;
 using BLL.Models;
+using PizzaDelivery.Stores;
 
 namespace PizzaDelivery.ViewModels
 {
     public class AuthorizationVM : ViewModelBase
     {
-        //private readonly INavigationManager _navigationManager;
 
         private string _textLogin;
 
@@ -45,9 +44,9 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged("TextPassword");
             }
         }
-        public AuthorizationVM(AccountModel _user)
+        public AuthorizationVM(NavigationStore navigationstore, AccountModel _user)
         {
-            ShowPizzaSelectionCommand = new LoginCommand(this, _user);
+            ShowPizzaSelectionCommand = new LoginCommand(navigationstore, this, _user);
         }
 
         private ICommand _showPizzaSelectionCommand;
@@ -55,15 +54,10 @@ namespace PizzaDelivery.ViewModels
         {
             get;
             
-                //    return _showPizzaSelectionCommand ??
-                //        (_showPizzaSelectionCommand = new PizzaDelivery.Util.DelegateCommand(ShowPizzaSelection));
-                //}
+                
             
         }
-        //private void ShowPizzaSelection(object arg)
-        //{
-        //    //_navigationManager.Navigate(NavigationKeys.PizzaSelection);
-        //}
+        
 
         private bool CanExecuteLogin(object obj)
         {
@@ -76,18 +70,18 @@ namespace PizzaDelivery.ViewModels
             return validData;
         }
 
-        private ICommand _showRegCommand;
-        public ICommand ShowRegCommand
-        {
-            get
-            {
-                return _showRegCommand ??
-                    (_showRegCommand = new PizzaDelivery.Util.DelegateCommand(ShowReg));
-            }
-        }
-        private void ShowReg(object arg)
-        {
-            //_navigationManager.Navigate(NavigationKeys.RegAccountInPD);
-        }
+        //private ICommand _showRegCommand;
+        //public ICommand ShowRegCommand
+        //{
+        //    get
+        //    {
+        //        return _showRegCommand ??
+        //            (_showRegCommand = new PizzaDelivery.Util.DelegateCommand(ShowReg));
+        //    }
+        //}
+        //private void ShowReg(object arg)
+        //{
+        //    //_navigationManager.Navigate(NavigationKeys.RegAccountInPD);
+        //}
     }
 }

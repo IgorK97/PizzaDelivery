@@ -1,4 +1,5 @@
 ﻿using BLL.Models;
+using PizzaDelivery.Stores;
 using PizzaDelivery.Util;
 using System;
 using System.Collections.Generic;
@@ -10,13 +11,25 @@ namespace PizzaDelivery.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public ViewModelBase CurrentViewModel { get; }
+        private readonly NavigationStore _navigationStore;
+        public ViewModelBase CurrentViewModel { get => _navigationStore.CurrentViewModel; }
 
-        public MainViewModel(AccountModel _user)
+        //public MainViewModel(AccountModel _user)
+        //{
+        //    //CurrentViewModel = new AuthorizationVM(_user);
+        //    //CurrentViewModel = new PizzaSelectionVM();
+        //    CurrentViewModel = new ProfilePresentationVM(_user);
+        //}
+
+        public MainViewModel(NavigationStore navigationStore)
         {
-            CurrentViewModel = new AuthorizationVM(_user);
-            //CurrentViewModel = new PizzaSelectionVM();
+            _navigationStore = navigationStore;
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
+        }
 
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 }
