@@ -229,5 +229,43 @@ namespace BLL.Models
 
             //return dbr.Couriers.GetList().ToList().Select(i => new CouriersDto(i)).ToList();
         }
+
+        public bool UpdateUser(UserDTO _user)
+        {
+            User user = dbr.Users.GetItem(_user.Id);
+            user.FirstName = _user.FirstName;
+            user.LastName = _user.LastName;
+            user.Surname = _user.Surname;
+            user.Login = _user.Login;
+            user.Password = _user.Password;
+            if(_user is ClientDTO)
+            {
+                Client client = dbr.Clients.GetItem(_user.Id);
+                ClientDTO cl = (ClientDTO)_user;
+                client.AddressDel = cl.AddressDel;
+                client.Phone = cl.Phone;
+                client.Email = cl.Email;
+            }
+            else if(_user is CouriersDto)
+            {
+                Courier client = dbr.Couriers.GetItem(_user.Id);
+                CouriersDto cl = (CouriersDto)_user;
+                client.Phone = cl.Phone;
+                client.Email = cl.Email;
+            }
+            else if(_user is ManagerDto)
+            {
+                Manager manager = dbr.Managers.GetItem(_user.Id);
+                ManagerDto cl = (ManagerDto)_user;
+                manager.Phone = cl.Phone;
+                manager.Email = cl.Email;
+            }
+            return Save();
+        }
+        public bool Save()
+        {
+            if (dbr.Save() > 0) return true;
+            return false;
+        }
     }
 }

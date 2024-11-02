@@ -19,6 +19,8 @@ namespace PizzaDelivery.Commands
         {
             try
             {
+                _user.SaveChanges();
+                //_user.SaveChanges();
                 //_user.MakeLogin(_authorizationVM.TextLogin, _authorizationVM.TextPassword);
                 MessageBox.Show("Изменения сохранены!", "Success", MessageBoxButton.OK,
                    MessageBoxImage.Information);

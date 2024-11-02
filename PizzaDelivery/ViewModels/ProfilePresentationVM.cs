@@ -14,7 +14,7 @@ namespace PizzaDelivery.ViewModels
     public class ProfilePresentationVM : ViewModelBase
     {
         AccountModel User;
-        
+        UserVM UserB;
         private string _firstname;
 
         public string Firstname
@@ -26,6 +26,7 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _firstname = value;
+                User.FirstName = value;
                 OnPropertyChanged(nameof(Firstname));
             }
         }
@@ -65,6 +66,7 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _login = value;
+                //User.Login = value;
                 OnPropertyChanged(nameof(Login));
             }
         }
@@ -147,6 +149,7 @@ namespace PizzaDelivery.ViewModels
         {
             SaveProfileChangesCommand = new SaveProfileChanges(this, _user);
             User = _user;
+            //UserB = new UserVM();
             Firstname = User.FirstName;
             Lastname = User.LastName;
             Surname = User.Surname;

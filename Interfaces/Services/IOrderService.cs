@@ -22,9 +22,9 @@ namespace Interfaces.Services
 
         bool SubmitOrder(int odId, string addressdel);
 
-        (decimal price, decimal weight) UpdateOrder(int odId);
+        (decimal price, decimal weight) UpdateOrder(int odI);
 
-
+        bool UpdateUser(UserDTO _user);
         List<OrderDto> GetAllOrders(int ClientId);
 
         List<ManagerDto> GetAllManagers();
