@@ -47,9 +47,10 @@ namespace PizzaDelivery.ViewModels
         public AuthorizationVM(NavigationStore navigationstore, AccountModel _user)
         {
             ShowPizzaSelectionCommand = new LoginCommand(navigationstore, this, _user);
+            ShowRegCommand = new RegistrationCommand(navigationstore, _user);
         }
 
-        private ICommand _showPizzaSelectionCommand;
+        //private ICommand _showPizzaSelectionCommand;
         public ICommand ShowPizzaSelectionCommand
         {
             get;
@@ -71,17 +72,10 @@ namespace PizzaDelivery.ViewModels
         }
 
         //private ICommand _showRegCommand;
-        //public ICommand ShowRegCommand
-        //{
-        //    get
-        //    {
-        //        return _showRegCommand ??
-        //            (_showRegCommand = new PizzaDelivery.Util.DelegateCommand(ShowReg));
-        //    }
-        //}
-        //private void ShowReg(object arg)
-        //{
-        //    //_navigationManager.Navigate(NavigationKeys.RegAccountInPD);
-        //}
+        public ICommand ShowRegCommand
+        {
+            get;
+        }
+        
     }
 }

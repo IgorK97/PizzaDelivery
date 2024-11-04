@@ -14,10 +14,10 @@ namespace PizzaDelivery.ViewModels
     public class ProfilePresentationVM : ViewModelBase
     {
         AccountModel User;
-        UserVM UserB;
+        //UserVM UserB;
         private string _firstname;
 
-        public string Firstname
+        public string FirstName
         {
             get
             {
@@ -27,11 +27,11 @@ namespace PizzaDelivery.ViewModels
             {
                 _firstname = value;
                 User.FirstName = value;
-                OnPropertyChanged(nameof(Firstname));
+                OnPropertyChanged(nameof(FirstName));
             }
         }
         private string _lastname;
-        public string Lastname
+        public string LastName
         {
             get
             {
@@ -40,7 +40,8 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _lastname = value;
-                OnPropertyChanged(nameof(Lastname));
+                User.LastName = value;
+                OnPropertyChanged(nameof(LastName));
             }
         }
         private string? _surname;
@@ -53,6 +54,7 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _surname = value;
+                User.Surname = value;
                 OnPropertyChanged(nameof(Surname));
             }
         }
@@ -66,7 +68,7 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _login = value;
-                //User.Login = value;
+                User.Login = value;
                 OnPropertyChanged(nameof(Login));
             }
         }
@@ -80,6 +82,7 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _password = value;
+                User.Password = value;
                 OnPropertyChanged(nameof(Password));
             }
         }
@@ -93,6 +96,7 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _email = value;
+                User.Email = value;
                 OnPropertyChanged(nameof(Email));
             }
         }
@@ -106,6 +110,7 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _address = value;
+                User.AddressDel= value;
                 OnPropertyChanged(nameof(Address));
             }
         }
@@ -119,6 +124,7 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _phone = value;
+                User.Phone = value;
                 OnPropertyChanged(nameof(Phone));
             }
         }
@@ -136,22 +142,25 @@ namespace PizzaDelivery.ViewModels
             }
         }
 
-        private string _saveprofilechangesCommand;
+        private ICommand _saveprofilechangesCommand;
 
         public ICommand SaveProfileChangesCommand
         {
-            get;
+            get
+            {
+                return _saveprofilechangesCommand;
+            }
 
 
         }
 
         public ProfilePresentationVM(AccountModel _user)
         {
-            SaveProfileChangesCommand = new SaveProfileChanges(this, _user);
+            _saveprofilechangesCommand = new SaveProfileChanges(this, _user);
             User = _user;
             //UserB = new UserVM();
-            Firstname = User.FirstName;
-            Lastname = User.LastName;
+            FirstName = User.FirstName;
+            LastName = User.LastName;
             Surname = User.Surname;
             Phone = User.Phone;
             Address = User.AddressDel;

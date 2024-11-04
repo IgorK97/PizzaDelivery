@@ -6,14 +6,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//using System.ComponentModel;
 
 namespace BLL.Models
 {
-    public class AccountModel
+    public class AccountModel /*:INotifyPropertyChanged*/
     {
         private readonly IOrderService _ios;
 
-        public int Id { get; set; }
+        //private int _id;
+        public int Id
+        {
+            get;
+            //{
+            //    return _id;
+            //}
+            set;
+            //{
+            //    _id = value;
+            //}
+        }
 
         public string? FirstName { get; set; }
 
@@ -30,6 +42,8 @@ namespace BLL.Models
         public string? Phone { get; set; }
 
         public string? Email { get; set; }
+
+        public string? RepPassword { get; set; }
 
         public AccountModel(IOrderService Ios)
         {
@@ -54,6 +68,22 @@ namespace BLL.Models
             _ios.UpdateUser(_user);
         }
 
+        public void MakeReg()
+        {
+            ClientDTO userDTO = new ClientDTO
+            {
+                Id = Id,
+                FirstName = FirstName,
+                LastName = LastName,
+                Surname = Surname,
+                Login = Login,
+                Password = Password,
+                AddressDel = AddressDel,
+                Phone = Phone,
+                Email = Email,
+            };
+            _ios.AddNewClient(userDTO);
+        }
         public void MakeLogin(string login, string password)
         {
             
@@ -136,4 +166,9 @@ namespace BLL.Models
         }
 
     }
+    //public event PropertyChangedEventHandler PropertyChanged;
+    //protected void OnPropertyChanged(string propertyName)
+    //{
+    //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    //}
 }

@@ -32,12 +32,17 @@ namespace PizzaDelivery.Commands
             }
         }
 
-        //public override bool CanExecute(object parameter)
-        //{
-        //    return !(string.IsNullOrEmpty(_authorizationVM.TextLogin) ||
-        //        string.IsNullOrEmpty(_authorizationVM.TextPassword) ||
-        //        _authorizationVM.TextLogin.Length <= 3) && base.CanExecute(parameter);
-        //}
+        public override bool CanExecute(object parameter)
+        {
+            return !(string.IsNullOrEmpty(_profilepresentationVM.Login) ||
+                string.IsNullOrEmpty(_profilepresentationVM.Password) ||
+                _profilepresentationVM.Login.Length <= 3 ||
+                string.IsNullOrEmpty(_profilepresentationVM.FirstName)||
+                string.IsNullOrEmpty(_profilepresentationVM.LastName)||
+                string.IsNullOrEmpty(_profilepresentationVM.Phone)) && 
+                (_profilepresentationVM.Password== _profilepresentationVM.RepPassword)
+                && base.CanExecute(parameter);
+        }
         public SaveProfileChanges(ViewModels.ProfilePresentationVM profilePresentationVM, AccountModel user)
         {
             _user = user;

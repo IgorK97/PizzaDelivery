@@ -12,6 +12,7 @@ namespace Interfaces.Services
     {
         int GetCurrentOrder(int ClientId);
 
+        bool AddNewClient(UserDTO userDTO);
 
         public UserDTO? GetCurrentUser(string login, string password);
 

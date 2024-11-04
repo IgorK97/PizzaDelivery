@@ -17,6 +17,9 @@
             <DataTemplate DataType="{x:Type viewms:ProfilePresentationVM}">
                 <view:ProfilePresentation/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewms:RegistrationVM}">
+                <view:RegistrationPresentation/>
+            </DataTemplate>
         </Grid.Resources>
         
             <!--<view:AuthorizationPresentation DataContext="{Binding CurrentViewModel}"/>-->

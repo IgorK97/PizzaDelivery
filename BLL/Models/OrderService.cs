@@ -23,6 +23,35 @@ namespace BLL.Models
             //db = new PizzaDeliveryContext();
         }
 
+        public bool AddNewClient(UserDTO userDTO)
+        {
+            User _user = new User
+            {
+                FirstName = userDTO.FirstName,
+                LastName = userDTO.LastName,
+                Surname = userDTO.Surname,
+                Login = userDTO.Login,
+                Password = userDTO.Password
+
+            };
+            dbr.Users.Create(_user);
+            //if(userDTO is ClientDTO)
+            //{
+            bool suc = Save();
+            var newu = dbr.Users.GetList().Where(i => i.Login == userDTO.Login).First();
+            if (newu!=null) {
+                ClientDTO cl = (ClientDTO)userDTO;
+                Client _client = new Client
+                {
+                    AddressDel = cl.AddressDel,
+                    Phone = cl.Phone,
+                    Email = cl.Email,
+                    Id = newu.Id
+                };
+                dbr.Clients.Create(_client);
+            }
+            return Save();
+        }
         public UserDTO? GetCurrentUser(string login, string password)
         {
             var res = dbr.Users.GetList().Where(i => i.Login== login && i.Password== password).FirstOrDefault();
