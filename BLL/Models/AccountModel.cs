@@ -10,21 +10,20 @@ using System.Threading.Tasks;
 
 namespace BLL.Models
 {
-    public class AccountModel /*:INotifyPropertyChanged*/
+    public class AccountModel 
     {
         private readonly IOrderService _ios;
 
-        //private int _id;
+        public UserModel AccountHolder { get; set; }
+
+        public IEnumerable<OrderModel> UserOrders { get; set; }
+
         public int Id
         {
             get;
-            //{
-            //    return _id;
-            //}
+           
             set;
-            //{
-            //    _id = value;
-            //}
+          
         }
 
         public string? FirstName { get; set; }

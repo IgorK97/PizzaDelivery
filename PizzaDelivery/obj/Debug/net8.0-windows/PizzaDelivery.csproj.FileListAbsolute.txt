@@ -146,3 +146,5 @@ C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\Exceptions.pdb
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\Views\ProfilePresentation.g.cs
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\Views\ProfilePresentation.baml
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\Styles\Common.baml
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\App.baml

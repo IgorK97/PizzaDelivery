@@ -33,11 +33,12 @@
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-
             <RowDefinition Height="*"/>
+
+            <!--<RowDefinition Height="*"/>-->
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" IsReadOnly="True" Text="Пиццерия" FontSize="30" FontWeight="Bold" Foreground="Red" Margin="10"  HorizontalAlignment="Left"/>
+        <local:TopPanelPD Grid.Row="0"/>
+        <!--<TextBox Grid.Row="0" IsReadOnly="True" Text="Пиццерия" FontSize="30" FontWeight="Bold" Foreground="Red" Margin="10"  HorizontalAlignment="Left"/>
 
         <DockPanel Grid.Row="1" Background="#FFEE3B3B" Height="80" LastChildFill="False">
             <TextBlock Text="Выберите ингредиент" TextAlignment="Center" Margin ="20" Height="40" Padding="12" Background="Bisque"/>
@@ -58,11 +59,11 @@
                 <Image Source="/ImagesForProject/basket.png"/>
             </Button>
 
-        </DockPanel>
+        </DockPanel>-->
 
 
         
-            <ListBox Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            <ListBox Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                       ScrollViewer.VerticalScrollBarVisibility="Visible"
                      ItemTemplate="{StaticResource listTemplate}"
                      ItemsPanel="{StaticResource listPanelTemplate}"
