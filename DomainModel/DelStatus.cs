@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace DomainModel;
 
-public partial class DelStatus
+public partial class DelStatus : DomainObject
 {
-    public int Id { get; set; }
+    //public int Id { get; set; }
 
     public string Description { get; set; } = null!;
 

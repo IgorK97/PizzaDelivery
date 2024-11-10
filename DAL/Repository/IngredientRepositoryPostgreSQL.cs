@@ -30,11 +30,13 @@ namespace DAL.Repository
         public void Create(Ingredient ingredient)
         {
             db.Ingredients.Add(ingredient);
+            db.SaveChanges();
         }
 
         public void Update(Ingredient ingredient)
         {
             db.Entry(ingredient).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -42,6 +44,7 @@ namespace DAL.Repository
             Ingredient ingredient = db.Ingredients.Find(id);
             if (ingredient != null)
                 db.Ingredients.Remove(ingredient);
+            db.SaveChanges();
         }
     }
 }

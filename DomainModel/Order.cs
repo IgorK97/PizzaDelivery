@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace DomainModel;
 
-public partial class Order
+public partial class Order : DomainObject
 {
-    public int Id { get; set; }
+    //public int Id { get; set; }
 
     public int ClientId { get; set; }
 

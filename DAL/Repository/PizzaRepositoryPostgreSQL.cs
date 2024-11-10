@@ -32,11 +32,13 @@ namespace DAL.Repository
         public void Create(Pizza pizza)
         {
             db.Pizzas.Add(pizza);
+            db.SaveChanges();
         }
 
         public void Update(Pizza pizza)
         {
             db.Entry(pizza).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -44,6 +46,7 @@ namespace DAL.Repository
             Pizza pizza = db.Pizzas.Find(id);
             if (pizza != null)
                 db.Pizzas.Remove(pizza);
+            db.SaveChanges();
         }
     }
 }

@@ -23,94 +23,94 @@ namespace BLL.Models
             //db = new PizzaDeliveryContext();
         }
 
-        public bool AddNewClient(UserDTO userDTO)
-        {
-            User _user = new User
-            {
-                FirstName = userDTO.FirstName,
-                LastName = userDTO.LastName,
-                Surname = userDTO.Surname,
-                Login = userDTO.Login,
-                Password = userDTO.Password
+        //public bool AddNewClient(UserDTO userDTO)
+        //{
+        //    User _user = new User
+        //    {
+        //        FirstName = userDTO.FirstName,
+        //        LastName = userDTO.LastName,
+        //        Surname = userDTO.Surname,
+        //        Login = userDTO.Login,
+        //        Password = userDTO.Password
 
-            };
-            dbr.Users.Create(_user);
-            //if(userDTO is ClientDTO)
-            //{
-            bool suc = Save();
-            var newu = dbr.Users.GetList().Where(i => i.Login == userDTO.Login).First();
-            if (newu!=null) {
-                ClientDTO cl = (ClientDTO)userDTO;
-                Client _client = new Client
-                {
-                    AddressDel = cl.AddressDel,
-                    Phone = cl.Phone,
-                    Email = cl.Email,
-                    Id = newu.Id
-                };
-                dbr.Clients.Create(_client);
-            }
-            return Save();
-        }
-        public UserDTO? GetCurrentUser(string login, string password)
-        {
-            var res = dbr.Users.GetList().Where(i => i.Login== login && i.Password== password).FirstOrDefault();
-            if (res != null)
-            {
-                var res_client = dbr.Clients.GetList().Where(i => i.Id==res.Id).FirstOrDefault();
-                var res_courier = dbr.Couriers.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
-                var res_manager = dbr.Managers.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
+        //    };
+        //    dbr.Users.Create(_user);
+        //    //if(userDTO is ClientDTO)
+        //    //{
+        //    bool suc = Save();
+        //    var newu = dbr.Users.GetList().Where(i => i.Login == userDTO.Login).First();
+        //    if (newu!=null) {
+        //        ClientDTO cl = (ClientDTO)userDTO;
+        //        Client _client = new Client
+        //        {
+        //            AddressDel = cl.AddressDel,
+        //            Phone = cl.Phone,
+        //            Email = cl.Email,
+        //            Id = newu.Id
+        //        };
+        //        dbr.Clients.Create(_client);
+        //    }
+        //    return Save();
+        //}
+        //public UserDTO? GetCurrentUser(string login, string password)
+        //{
+        //    var res = dbr.Users.GetList().Where(i => i.Login== login && i.Password== password).FirstOrDefault();
+        //    if (res != null)
+        //    {
+        //        var res_client = dbr.Clients.GetList().Where(i => i.Id==res.Id).FirstOrDefault();
+        //        var res_courier = dbr.Couriers.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
+        //        var res_manager = dbr.Managers.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
 
-                if (res_client != null)
-                {
-                    return new ClientDTO
-                    {
-                        Id = res_client.Id,
-                        Email = res_client.Email,
-                        Phone = res_client.Phone,
-                        Password = res.Password,
-                        Login = res.Login,
-                        FirstName = res.FirstName,
-                        AddressDel = res_client.AddressDel,
-                        LastName = res.LastName,
-                        Surname = res.Surname
-                    };
-                }
-                else if (res_courier != null)
-                {
-                    return new CouriersDto
-                    {
-                        Id = res_courier.Id,
-                        Email = res_courier.Email,
-                        Phone = res_courier.Phone,
-                        Password = res.Password,
-                        Login = res.Login,
-                        FirstName = res.FirstName,
-                        LastName = res.LastName,
-                        Surname = res.Surname
-                    };
-                }
-                else if (res_manager != null)
-                {
-                    return new ManagerDto
-                    {
-                        Id = res_manager.Id,
-                        Email = res_manager.Email,
-                        Phone = res_manager.Phone,
-                        Password = res.Password,
-                        Login = res.Login,
-                        FirstName = res.FirstName,
-                        LastName = res.LastName,
-                        Surname = res.Surname
-                    };
-                }
-                else
-                    throw new IncorrectLoginOrPasswordException();
+        //        if (res_client != null)
+        //        {
+        //            return new ClientDTO
+        //            {
+        //                Id = res_client.Id,
+        //                Email = res_client.Email,
+        //                Phone = res_client.Phone,
+        //                Password = res.Password,
+        //                Login = res.Login,
+        //                FirstName = res.FirstName,
+        //                AddressDel = res_client.AddressDel,
+        //                LastName = res.LastName,
+        //                Surname = res.Surname
+        //            };
+        //        }
+        //        else if (res_courier != null)
+        //        {
+        //            return new CouriersDto
+        //            {
+        //                Id = res_courier.Id,
+        //                Email = res_courier.Email,
+        //                Phone = res_courier.Phone,
+        //                Password = res.Password,
+        //                Login = res.Login,
+        //                FirstName = res.FirstName,
+        //                LastName = res.LastName,
+        //                Surname = res.Surname
+        //            };
+        //        }
+        //        else if (res_manager != null)
+        //        {
+        //            return new ManagerDto
+        //            {
+        //                Id = res_manager.Id,
+        //                Email = res_manager.Email,
+        //                Phone = res_manager.Phone,
+        //                Password = res.Password,
+        //                Login = res.Login,
+        //                FirstName = res.FirstName,
+        //                LastName = res.LastName,
+        //                Surname = res.Surname
+        //            };
+        //        }
+        //        else
+        //            throw new IncorrectLoginOrPasswordException();
 
-            }
-            else
-                throw new IncorrectLoginOrPasswordException();
-        }
+        //    }
+        //    else
+        //        throw new IncorrectLoginOrPasswordException();
+        //}
 
         public int GetCurrentOrder(int ClientId)
         {

@@ -30,11 +30,13 @@ namespace DAL.Repository
         public void Create(DelStatus ds)
         {
             db.DelStatuses.Add(ds);
+            db.SaveChanges();
         }
 
         public void Update(DelStatus ds)
         {
             db.Entry(ds).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -42,6 +44,7 @@ namespace DAL.Repository
             DelStatus ds = db.DelStatuses.Find(id);
             if (ds != null)
                 db.DelStatuses.Remove(ds);
+            db.SaveChanges();
         }
     }
 }

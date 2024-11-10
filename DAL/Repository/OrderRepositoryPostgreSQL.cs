@@ -30,11 +30,13 @@ namespace DAL.Repository
         public void Create(Order order)
         {
             db.Orders.Add(order);
+            db.SaveChanges();
         }
 
         public void Update(Order order)
         {
             db.Entry(order).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -42,6 +44,7 @@ namespace DAL.Repository
             Order order = db.Orders.Find(id);
             if (order != null)
                 db.Orders.Remove(order);
+            db.SaveChanges();
         }
     }
 }

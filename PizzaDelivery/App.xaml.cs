@@ -34,7 +34,7 @@ namespace PizzaDelivery
             IOrderService os = kernel.Get<IOrderService>();
             IReportService report = kernel.Get<IReportService>();
             INavigator nav = kernel.Get<INavigator>();
-            _user = new AccountModel(os);
+            //_user = new AccountModel(os);
             IServiceProvider serviceProvider = CreateServiceProvider();
             IPizzaDeliveryViewModelFactory pizzaDeliveryViewModelFactory = 
                 serviceProvider.GetRequiredService<IPizzaDeliveryViewModelFactory>();

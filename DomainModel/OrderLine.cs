@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace DomainModel;
 
-public partial class OrderLine
+public partial class OrderLine : DomainObject
 {
-    public int Id { get; set; }
+    //public int Id { get; set; }
 
     public int OrdersId { get; set; }
 

@@ -10,11 +10,11 @@ namespace Interfaces.Services
 {
     public interface IOrderService
     {
-        int GetCurrentOrder(int ClientId);
+        //int GetCurrentOrder(int ClientId);
 
-        bool AddNewClient(UserDTO userDTO);
+        //bool AddNewClient(UserDTO userDTO);
 
-        public UserDTO? GetCurrentUser(string login, string password);
+        //public UserDTO? GetCurrentUser(string login, string password);
 
         bool MakeOrder(int ClientId);
 

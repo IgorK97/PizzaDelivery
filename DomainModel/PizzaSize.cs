@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace DomainModel;
 
-public partial class PizzaSize
+public partial class PizzaSize : DomainObject
 {
-    public int Id { get; set; }
+    //public int Id { get; set; }
 
     public string Name { get; set; } = null!;
 

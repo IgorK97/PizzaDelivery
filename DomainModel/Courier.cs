@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace DomainModel;
 
-public partial class Courier
+public partial class Courier : DomainObject
 {
-    public int Id { get; set; }
+    //public int Id { get; set; }
 
     public string Phone { get; set; } = null!;
 

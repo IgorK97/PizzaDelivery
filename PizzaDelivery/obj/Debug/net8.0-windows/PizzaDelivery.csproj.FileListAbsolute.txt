@@ -144,3 +144,4 @@ C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\App.baml
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\Views\BasketPresentation.g.cs
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\Views\BasketPresentation.baml
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\Microsoft.AspNet.Identity.Core.dll

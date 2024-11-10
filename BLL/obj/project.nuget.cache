@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "nSZZQqMevK4=",
+  "dgSpecHash": "gByZNULDtBk=",
   "success": true,
   "projectFilePath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Igor\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.4\\microsoft.aspnet.identity.core.2.2.4.nupkg.sha512",
     "C:\\Users\\Igor\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.10\\microsoft.entityframeworkcore.8.0.10.nupkg.sha512",
     "C:\\Users\\Igor\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.10\\microsoft.entityframeworkcore.abstractions.8.0.10.nupkg.sha512",
     "C:\\Users\\Igor\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.10\\microsoft.entityframeworkcore.analyzers.8.0.10.nupkg.sha512",
@@ -27,10 +28,14 @@
   ],
   "logs": [
     {
-      "code": "NU1900",
+      "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Произошла ошибка при получении данных уязвимости пакета: Не удалось загрузить индекс службы для источника https://api.nuget.org/v3/index.json."
+      "message": "Пакет \"Microsoft.AspNet.Identity.Core 2.2.4\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\", а не целевой платформы проекта \"net8.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "Microsoft.AspNet.Identity.Core",
+      "targetGraphs": [
+        "net8.0"
+      ]
     },
     {
       "code": "NU1701",

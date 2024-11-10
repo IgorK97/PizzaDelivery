@@ -30,11 +30,13 @@ namespace DAL.Repository
         public void Create(Client client)
         {
             db.Clients.Add(client);
+            db.SaveChanges();
         }
 
         public void Update(Client client)
         {
             db.Entry(client).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -42,6 +44,7 @@ namespace DAL.Repository
             Client client = db.Clients.Find(id);
             if (client != null)
                 db.Clients.Remove(client);
+            db.SaveChanges();
         }
     }
 }

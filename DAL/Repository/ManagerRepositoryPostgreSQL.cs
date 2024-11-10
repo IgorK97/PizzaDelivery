@@ -30,11 +30,13 @@ namespace DAL.Repository
         public void Create(Manager manager)
         {
             db.Managers.Add(manager);
+            db.SaveChanges();
         }
 
         public void Update(Manager manager)
         {
             db.Entry(manager).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -42,6 +44,7 @@ namespace DAL.Repository
             Manager manager = db.Managers.Find(id);
             if (manager != null)
                 db.Managers.Remove(manager);
+            db.SaveChanges();
         }
     }
 }

@@ -30,11 +30,13 @@ namespace DAL.Repository
         public void Create(Courier courier)
         {
             db.Couriers.Add(courier);
+            db.SaveChanges();
         }
 
         public void Update(Courier courier)
         {
             db.Entry(courier).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -42,6 +44,7 @@ namespace DAL.Repository
             Courier courier = db.Couriers.Find(id);
             if (courier != null)
                 db.Couriers.Remove(courier);
+            db.SaveChanges();
         }
     }
 }

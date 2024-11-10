@@ -30,11 +30,13 @@ namespace DAL.Repository
         public void Create(OrderLine orderline)
         {
             db.OrderLines.Add(orderline);
+            db.SaveChanges();
         }
 
         public void Update(OrderLine orderline)
         {
             db.Entry(orderline).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -42,6 +44,7 @@ namespace DAL.Repository
             OrderLine orderline = db.OrderLines.Find(id);
             if (orderline != null)
                 db.OrderLines.Remove(orderline);
+            db.SaveChanges();
         }
     }
 }
