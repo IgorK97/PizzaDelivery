@@ -407,7 +407,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "DomainModel": "1.0.0"
+          "DomainModel": "1.0.0",
+          "Microsoft.AspNet.Identity.Core": "2.2.4"
         },
         "compile": {
           "bin/placeholder/Interfaces.dll": {}

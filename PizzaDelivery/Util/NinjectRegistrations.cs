@@ -19,7 +19,7 @@ namespace Lab4POWinForms.Util
         public override void Load()
         {
             
-            Bind<INavigator>().To<Navigator>();
+            //Bind<INavigator>().To<Navigator>();
             Bind<IOrderService>().To<OrderService>();
             Bind<IReportService>().To<ReportService>();
             Bind<IOrderLineService>().To<OrderLinesService>();

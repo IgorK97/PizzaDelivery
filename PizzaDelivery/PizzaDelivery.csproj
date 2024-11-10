@@ -47,6 +47,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj" />
+    <ProjectReference Include="..\PizzaDelivery.Domain.Tests\PizzaDelivery.AppCore.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup>

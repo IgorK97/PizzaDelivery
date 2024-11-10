@@ -12,6 +12,12 @@ using PizzaDelivery.Stores;
 using PizzaDelivery.Util.Navigators;
 using Microsoft.Extensions.DependencyInjection;
 using PizzaDelivery.ViewModels.Factories;
+using BLL.Services;
+using DTO;
+using DAL.Repository;
+using Interfaces.Repository;
+using Microsoft.AspNet.Identity;
+using Interfaces.Services.AuthenticationServices;
 
 namespace PizzaDelivery
 {
@@ -29,21 +35,36 @@ namespace PizzaDelivery
         }
         protected override void OnStartup(StartupEventArgs e)
         {
-            var kernel = new StandardKernel(new NinjectRegistrations(), new ReposModule("dbPizzaDelivery"));
-            IOrderLineService ols = kernel.Get<IOrderLineService>();
-            IOrderService os = kernel.Get<IOrderService>();
-            IReportService report = kernel.Get<IReportService>();
-            INavigator nav = kernel.Get<INavigator>();
+            //var kernel = new StandardKernel(new NinjectRegistrations(), new ReposModule("dbPizzaDelivery"));
+            //IOrderLineService ols = kernel.Get<IOrderLineService>();
+            //IOrderService os = kernel.Get<IOrderService>();
+            //IReportService report = kernel.Get<IReportService>();
+            //INavigator nav = kernel.Get<INavigator>();
             //_user = new AccountModel(os);
             IServiceProvider serviceProvider = CreateServiceProvider();
             IPizzaDeliveryViewModelFactory pizzaDeliveryViewModelFactory = 
                 serviceProvider.GetRequiredService<IPizzaDeliveryViewModelFactory>();
             //_navigationStore.CurrentViewModel = new AuthorizationVM(/*_navigationStore, _user*/);
-
-            MainWindow = new MainWindow()
-            {
-                DataContext = new MainViewModel(nav, pizzaDeliveryViewModelFactory)
-            };
+            
+            IAuthenticationService authentication = serviceProvider.GetRequiredService<IAuthenticationService>();
+            //ClientDTO _user = new ClientDTO
+            //{
+            //    FirstName = "TestUserFirstName",
+            //    LastName = "TestUserLastName",
+            //    Surname = "TestUserSurname",
+            //    Password = "mypassword",
+            //    Login = "TestUserLogin",
+            //    Phone = "90000000",
+            //    Email = "TestEmail@mail.ru",
+            //    AddressDel = "TestUserAddress"
+            //};
+            ////authentication.Register(_user, "mypassword");
+            //UserDTO user = authentication.Login(_user.Login, "mypassword");
+            MainWindow window = serviceProvider.GetRequiredService<MainWindow>();
+            //MainWindow = new MainWindow()
+            //{
+            //    DataContext = new MainViewModel(nav, pizzaDeliveryViewModelFactory)
+            //};
             MainWindow.Show();
             base.OnStartup(e);
             
@@ -61,6 +82,10 @@ namespace PizzaDelivery
         private IServiceProvider CreateServiceProvider()
         {
             IServiceCollection services = new ServiceCollection();
+            services.AddSingleton<IDbRepos, DbReposPgs>();
+            services.AddSingleton<IPasswordHasher, PasswordHasher>();
+            services.AddSingleton<IAuthenticationService, AuthenticationService>();
+            services.AddSingleton<IAccountService, AccountService>();
             services.AddSingleton<IPizzaDeliveryViewModelFactory, PizzaDeliveryViewModelFactory>();
             services.AddSingleton<CreateViewModel<ProfilePresentationVM>>(services =>
             {
@@ -73,16 +98,23 @@ namespace PizzaDelivery
             services.AddSingleton<CreateViewModel<RegistrationVM>>(services =>
             {
                 return () => new RegistrationVM();
-            }); services.AddSingleton<CreateViewModel<BasketViewModel>>(services =>
+            }); 
+            services.AddSingleton<CreateViewModel<BasketViewModel>>(services =>
             {
                 return () => new BasketViewModel();
-            }); services.AddSingleton<CreateViewModel<OrderHistoryViewModel>>(services =>
+            }); 
+            services.AddSingleton<CreateViewModel<OrderHistoryViewModel>>(services =>
             {
                 return () => new OrderHistoryViewModel();
-            }); services.AddSingleton<CreateViewModel<PizzaSelectionVM>>(services =>
+            }); 
+            services.AddSingleton<CreateViewModel<PizzaSelectionVM>>(services =>
             {
                 return () => new PizzaSelectionVM();
             });
+            services.AddSingleton<INavigator, Navigator>();
+            services.AddSingleton<MainViewModel>();
+            services.AddSingleton<MainWindow>(s =>
+            new MainWindow(s.GetRequiredService<MainViewModel>()));
             return services.BuildServiceProvider();
         }
     }
