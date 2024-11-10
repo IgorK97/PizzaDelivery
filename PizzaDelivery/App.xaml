@@ -1,13 +1,34 @@
 ﻿<Application x:Class="PizzaDelivery.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:PizzaDelivery">
+    xmlns:local="clr-namespace:PizzaDelivery"
+             xmlns:view="clr-namespace:PizzaDelivery.Views"
+             xmlns:viewms="clr-namespace:PizzaDelivery.ViewModels">
     <!--StartupUri="MainWindow.xaml">-->
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/Common.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+        
+        <DataTemplate DataType="{x:Type viewms:AuthorizationVM}">
+            <view:AuthorizationPresentation/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewms:ProfilePresentationVM}">
+            <view:ProfilePresentation/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewms:RegistrationVM}">
+            <view:RegistrationPresentation/>
+        </DataTemplate>
+            <DataTemplate DataType="{x:Type viewms:PizzaSelectionVM}">
+                <view:PizzaSelectionView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewms:OrderHistoryViewModel}">
+                <view:OrderHistoryPresentation/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewms:BasketViewModel}">
+                <view:BasketPresentation/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

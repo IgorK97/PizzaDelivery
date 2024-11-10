@@ -44,10 +44,10 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged("TextPassword");
             }
         }
-        public AuthorizationVM(NavigationStore navigationstore, AccountModel _user)
+        public AuthorizationVM(/*NavigationStore navigationstore, AccountModel _user*/)
         {
-            ShowPizzaSelectionCommand = new LoginCommand(navigationstore, this, _user);
-            ShowRegCommand = new RegistrationCommand(navigationstore, _user);
+            //ShowPizzaSelectionCommand = new LoginCommand(navigationstore, this, _user);
+            //ShowRegCommand = new RegistrationCommand(navigationstore, _user);
         }
 
         //private ICommand _showPizzaSelectionCommand;

@@ -27,7 +27,7 @@ namespace PizzaDelivery.Commands
                 //_user.MakeLogin(_authorizationVM.TextLogin, _authorizationVM.TextPassword);
                 MessageBox.Show("Изменения сохранены!", "Success", MessageBoxButton.OK,
                    MessageBoxImage.Information);
-                _navigationStore.CurrentViewModel = new ProfilePresentationVM(_user);
+                _navigationStore.CurrentViewModel = new ProfilePresentationVM(/*_user*/);
 
             }
             catch (IncorrectLoginOrPasswordException)

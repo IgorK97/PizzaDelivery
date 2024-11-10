@@ -30,14 +30,14 @@
             <WrapPanel/>
         </ItemsPanelTemplate>
     </UserControl.Resources>
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
+    <!--<Grid Margin="10">-->
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
 
-            <!--<RowDefinition Height="*"/>-->
+            --><!--<RowDefinition Height="*"/>--><!--
         </Grid.RowDefinitions>
-        <local:TopPanelPD Grid.Row="0"/>
+        <local:TopPanelPD Grid.Row="0"/>-->
         <!--<TextBox Grid.Row="0" IsReadOnly="True" Text="Пиццерия" FontSize="30" FontWeight="Bold" Foreground="Red" Margin="10"  HorizontalAlignment="Left"/>
 
         <DockPanel Grid.Row="1" Background="#FFEE3B3B" Height="80" LastChildFill="False">
@@ -63,7 +63,7 @@
 
 
         
-            <ListBox Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                       ScrollViewer.VerticalScrollBarVisibility="Visible"
                      ItemTemplate="{StaticResource listTemplate}"
                      ItemsPanel="{StaticResource listPanelTemplate}"
@@ -74,5 +74,5 @@
             </ListBox>
 
       
-    </Grid>
+    <!--</Grid>-->
 </UserControl>

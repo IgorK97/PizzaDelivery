@@ -10,13 +10,13 @@
     <Compile Update="Views\AuthorizationPresentation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\BasketPresentation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\OrderHistoryPresentation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\OrderLineWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\OrderPresentation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\OrdersCourierPresentation.xaml.cs">
@@ -45,13 +45,13 @@
     <Page Update="Views\AuthorizationPresentation.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\BasketPresentation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\OrderHistoryPresentation.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\OrderLineWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\OrderPresentation.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\OrdersCourierPresentation.xaml">

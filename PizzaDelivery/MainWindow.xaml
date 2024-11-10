@@ -7,10 +7,11 @@
         xmlns:view="clr-namespace:PizzaDelivery.Views"
         xmlns:viewms="clr-namespace:PizzaDelivery.ViewModels"
         mc:Ignorable="d"
-        Title="Пиццерия" Height="600" Width="900" Icon="/ImagesForProject/mainicon.png"
-        d:DataContext="{d:DesignInstance viewms:AuthorizationVM}">
+        Title="Пиццерия" Height="600" Width="900" Icon="/ImagesForProject/mainicon.png">
+    <!--d:DataContext="{d:DesignInstance viewms:AuthorizationVM}"-->
+        
     <Grid>
-        <Grid.Resources>
+        <!--<Grid.Resources>
             <DataTemplate DataType="{x:Type viewms:AuthorizationVM}">
                 <view:AuthorizationPresentation/>
             </DataTemplate>
@@ -20,12 +21,13 @@
             <DataTemplate DataType="{x:Type viewms:RegistrationVM}">
                 <view:RegistrationPresentation/>
             </DataTemplate>
-        </Grid.Resources>
-        
-            <!--<view:AuthorizationPresentation DataContext="{Binding CurrentViewModel}"/>-->
-        <!--<view:PizzaSelectionView DataContext="{Binding CurrentViewModel}"/>-->
-        <!--<view:ProfilePresentation DataContext="{Binding CurrentViewModel}"/>-->
-        <ContentControl Content="{Binding CurrentViewModel}"/>
+        </Grid.Resources>-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <view:TopPanelPD Grid.Row="0"/>
+        <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}"/>
 
     </Grid>
     

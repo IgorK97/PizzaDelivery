@@ -7,29 +7,17 @@ using System.ComponentModel;
 
 namespace PizzaDelivery.Util
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    public delegate TViewModel CreateViewModel<TViewModel>() where TViewModel : ViewModelBase;
+    public abstract class ViewModelBase : ObservableObject
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        //protected virtual void OnPropertyChanged(string propertyName = null)
+      
+
+        //protected virtual void OnPropertyChanged(string propertyName)
         //{
-        //    var handler = PropertyChanged;
-        //    if (handler != null) 
-        //        handler.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         //}
 
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        //protected virtual bool SetProperty<T>(ref T storage, T value, string propertyName = "")
-        //{
-        //    if (EqualityComparer<T>.Default.Equals(storage,value)) return false;
-        //    storage = value;
-        //    OnPropertyChanged(propertyName);
-        //    OnPropertyChanged(propertyName);
-        //    return true;
-        //}
     }
 }

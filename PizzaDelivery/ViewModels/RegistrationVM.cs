@@ -150,12 +150,12 @@ namespace PizzaDelivery.ViewModels
         {
             get;
         }
-        public RegistrationVM(NavigationStore navigationstore, AccountModel _user)
+        public RegistrationVM(/*NavigationStore navigationstore, AccountModel _user*/)
         {
-            User = _user;
-            ShowPizzaSelectionCommand = new AddNewUserAndEnterCommand(navigationstore, this, _user);
+            //User = _user;
+            //ShowPizzaSelectionCommand = new AddNewUserAndEnterCommand(navigationstore, this, _user);
 
-            ShowEnterViewCommand = new AddNewUserAndEnterCommand(navigationstore, this, _user);
+            //ShowEnterViewCommand = new AddNewUserAndEnterCommand(navigationstore, this, _user);
             //ShowRegCommand = new RegistrationCommand(navigationstore, _user);
         }
     }

@@ -9,6 +9,9 @@ using Interfaces.Services;
 using Lab4POWinForms.Util;
 using Ninject;
 using PizzaDelivery.Stores;
+using PizzaDelivery.Util.Navigators;
+using Microsoft.Extensions.DependencyInjection;
+using PizzaDelivery.ViewModels.Factories;
 
 namespace PizzaDelivery
 {
@@ -30,12 +33,16 @@ namespace PizzaDelivery
             IOrderLineService ols = kernel.Get<IOrderLineService>();
             IOrderService os = kernel.Get<IOrderService>();
             IReportService report = kernel.Get<IReportService>();
+            INavigator nav = kernel.Get<INavigator>();
             _user = new AccountModel(os);
-            _navigationStore.CurrentViewModel = new AuthorizationVM(_navigationStore, _user);
+            IServiceProvider serviceProvider = CreateServiceProvider();
+            IPizzaDeliveryViewModelFactory pizzaDeliveryViewModelFactory = 
+                serviceProvider.GetRequiredService<IPizzaDeliveryViewModelFactory>();
+            //_navigationStore.CurrentViewModel = new AuthorizationVM(/*_navigationStore, _user*/);
 
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel(_navigationStore)
+                DataContext = new MainViewModel(nav, pizzaDeliveryViewModelFactory)
             };
             MainWindow.Show();
             base.OnStartup(e);
@@ -49,6 +56,34 @@ namespace PizzaDelivery
             //navigationManager.Register<PizzaSelectionVM, PizzaSelectionView>
             //(new PizzaSelectionVM(navigationManager), NavigationKeys.PizzaSelection);
             //window.Show();
+        }
+
+        private IServiceProvider CreateServiceProvider()
+        {
+            IServiceCollection services = new ServiceCollection();
+            services.AddSingleton<IPizzaDeliveryViewModelFactory, PizzaDeliveryViewModelFactory>();
+            services.AddSingleton<CreateViewModel<ProfilePresentationVM>>(services =>
+            {
+                return () => new ProfilePresentationVM();
+            });
+            services.AddSingleton<CreateViewModel<AuthorizationVM>>(services =>
+            {
+                return () => new AuthorizationVM();
+            });
+            services.AddSingleton<CreateViewModel<RegistrationVM>>(services =>
+            {
+                return () => new RegistrationVM();
+            }); services.AddSingleton<CreateViewModel<BasketViewModel>>(services =>
+            {
+                return () => new BasketViewModel();
+            }); services.AddSingleton<CreateViewModel<OrderHistoryViewModel>>(services =>
+            {
+                return () => new OrderHistoryViewModel();
+            }); services.AddSingleton<CreateViewModel<PizzaSelectionVM>>(services =>
+            {
+                return () => new PizzaSelectionVM();
+            });
+            return services.BuildServiceProvider();
         }
     }
 

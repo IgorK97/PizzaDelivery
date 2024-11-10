@@ -4,30 +4,55 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PizzaDelivery.Views"
+             xmlns:nav="clr-namespace:PizzaDelivery.Util.Navigators"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Orientation="Vertical" Margin="10">
-        <TextBox IsReadOnly="True" Text="Пиццерия" FontSize="30" FontWeight="Bold" Foreground="Red" Margin="10"  HorizontalAlignment="Left"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" IsReadOnly="True" Text="Пиццерия" FontSize="30" FontWeight="Bold" Foreground="Red" Margin="10"  HorizontalAlignment="Left"/>
 
-        <DockPanel Background="#FFEE3B3B" Height="80" LastChildFill="False">
-            <TextBlock Text="Выберите ингредиент" TextAlignment="Center" Margin ="20" Height="40" Padding="12" Background="Bisque"/>
-            <ComboBox Margin ="20" Width="100" Height="40" Padding="10" Background="Beige">
-                <ComboBoxItem Content="Ингредиент"/>
-            </ComboBox>
-            <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Left">
-                <Image Source="/ImagesForProject/pizzaicon.png"/>
+        <Grid Grid.Row="1" Background="#FFEE3B3B" Height="80">
+            <!--LastChildFill="False">-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
 
-            </Button>
-            <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Right">
-                <Image Source="/ImagesForProject/profile.png"/>
-            </Button>
-            <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Right">
-                <Image Source="/ImagesForProject/ordersicon.png"/>
-            </Button>
-            <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Right">
-                <Image Source="/ImagesForProject/basket.png"/>
-            </Button>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Выберите ингредиент" TextAlignment="Center" Margin ="20" Height="40" Padding="12" Background="Bisque"/>
+                <ComboBox Grid.Column="1" Margin ="20" Width="100" Height="40" Padding="10" Background="Beige">
+                    <ComboBoxItem Content="Ингредиент"/>
+                </ComboBox>
+                <Button Grid.Column="2" Width="80" Margin="10" Background="White" DockPanel.Dock="Left"
+                    Command="{Binding UpdateCurrentViewModelCommand}"
+CommandParameter="{x:Static nav:ViewType.Shop}">
+                    <Image Source="/ImagesForProject/pizzaicon.png"/>
 
-        </DockPanel>
-    </StackPanel>
+                </Button>
+                <Button Grid.Column="3" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
+                    Command="{Binding UpdateCurrentViewModelCommand}"
+                    CommandParameter="{x:Static nav:ViewType.Profile}">
+                    <Image Source="/ImagesForProject/profile.png"/>
+
+                </Button>
+                <Button Grid.Column="4" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
+                    Command="{Binding UpdateCurrentViewModelCommand}"
+CommandParameter="{x:Static nav:ViewType.OrderHistory}">
+                    <Image Source="/ImagesForProject/ordersicon.png"/>
+                </Button>
+                <Button Grid.Column="5" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
+                    Command="{Binding UpdateCurrentViewModelCommand}"
+CommandParameter="{x:Static nav:ViewType.Basket}">
+                    <Image Source="/ImagesForProject/basket.png"/>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
 </UserControl>

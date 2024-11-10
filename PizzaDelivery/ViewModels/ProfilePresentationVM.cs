@@ -154,19 +154,19 @@ namespace PizzaDelivery.ViewModels
 
         }
 
-        public ProfilePresentationVM(AccountModel _user)
+        public ProfilePresentationVM(/*AccountModel _user*/)
         {
-            _saveprofilechangesCommand = new SaveProfileChanges(this, _user);
-            User = _user;
-            //UserB = new UserVM();
-            FirstName = User.FirstName;
-            LastName = User.LastName;
-            Surname = User.Surname;
-            Phone = User.Phone;
-            Address = User.AddressDel;
-            Email = User.Email;
-            Login = User.Login;
-            Password = User.Password;
+            //_saveprofilechangesCommand = new SaveProfileChanges(this, _user);
+            //User = _user;
+            ////UserB = new UserVM();
+            //FirstName = User.FirstName;
+            //LastName = User.LastName;
+            //Surname = User.Surname;
+            //Phone = User.Phone;
+            //Address = User.AddressDel;
+            //Email = User.Email;
+            //Login = User.Login;
+            //Password = User.Password;
         }
     }
 }

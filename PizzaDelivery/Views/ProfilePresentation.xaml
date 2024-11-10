@@ -8,13 +8,13 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <!--<RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>-->
 
             <RowDefinition Height="Auto"/>
-            <!--<RowDefinition Height="Auto"/>-->
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <local:TopPanelPD Grid.Row="0"/>
+        <!--<local:TopPanelPD Grid.Row="0" DataContext="{Binding Navigator}"/>-->
         <!--<TextBox Grid.Row="0" IsReadOnly="True" Text="Пиццерия" FontSize="30" FontWeight="Bold" Foreground="Red" Margin="10"  HorizontalAlignment="Left"/>
 
         <DockPanel Grid.Row="1" Background="#FFEE3B3B" Height="80" LastChildFill="False">
@@ -37,7 +37,7 @@
             </Button>
 
         </DockPanel>-->
-        <Grid Grid.Row="1" >
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*"/>
@@ -81,7 +81,7 @@
         <TextBox Grid.Column="1" Grid.Row="8" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
 
     </Grid>
-    <Button Grid.Row="3" Content="Сохранить" 
+    <Button Grid.Row="1" Content="Сохранить" 
             Command="{Binding SaveProfileChangesCommand}" HorizontalAlignment="Center" Width="100"/>
     </Grid>
 </UserControl>
