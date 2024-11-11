@@ -1,5 +1,4 @@
 ﻿using BLL.Models;
-using Exceptions;
 using PizzaDelivery.Stores;
 using PizzaDelivery.ViewModels;
 using System;
@@ -20,21 +19,21 @@ namespace PizzaDelivery.Commands
 
         public override void Execute(object parameter)
         {
-            try
-            {
-                _user.MakeReg();
-                //_user.SaveChanges();
-                //_user.MakeLogin(_authorizationVM.TextLogin, _authorizationVM.TextPassword);
-                MessageBox.Show("Изменения сохранены!", "Success", MessageBoxButton.OK,
-                   MessageBoxImage.Information);
-                _navigationStore.CurrentViewModel = new ProfilePresentationVM(/*_user*/);
+            //try
+            //{
+            //    _user.MakeReg();
+            //    //_user.SaveChanges();
+            //    //_user.MakeLogin(_authorizationVM.TextLogin, _authorizationVM.TextPassword);
+            //    MessageBox.Show("Изменения сохранены!", "Success", MessageBoxButton.OK,
+            //       MessageBoxImage.Information);
+            //    _navigationStore.CurrentViewModel = new ProfilePresentationVM(/*_user*/);
 
-            }
-            catch (IncorrectLoginOrPasswordException)
-            {
-                MessageBox.Show("Ошибка сохранения!", "Error", MessageBoxButton.OK,
-                    MessageBoxImage.Error);
-            }
+            //}
+            //catch (IncorrectLoginOrPasswordException)
+            //{
+            //    MessageBox.Show("Ошибка сохранения!", "Error", MessageBoxButton.OK,
+            //        MessageBoxImage.Error);
+            //}
         }
 
         //public override bool CanExecute(object parameter)

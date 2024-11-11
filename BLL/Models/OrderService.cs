@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Interfaces.Repository;
 using Interfaces.Services;
-using Exceptions;
 
 namespace BLL.Models
 {

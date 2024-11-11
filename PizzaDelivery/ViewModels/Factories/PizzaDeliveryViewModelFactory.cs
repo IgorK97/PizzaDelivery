@@ -31,21 +31,21 @@ namespace PizzaDelivery.ViewModels.Factories
             _createShopViewModel = createShopViewModel;
         }
 
-        public ViewModelBase CreateViewModel(Util.Navigators.ViewType viewType)
+        public ViewModelBase CreateViewModel(State.Navigators.ViewType viewType)
         {
             switch (viewType)
             {
-                case Util.Navigators.ViewType.Basket:
+                case State.Navigators.ViewType.Basket:
                     return _createBasketViewModel();
-                    case Util.Navigators.ViewType.OrderHistory:
+                    case State.Navigators.ViewType.OrderHistory:
                     return _createOrderHistoryViewModel();
-                case Util.Navigators.ViewType.Profile:
+                case State.Navigators.ViewType.Profile:
                     return _createProfileViewModel();
-                case Util.Navigators.ViewType.Registration:
+                case State.Navigators.ViewType.Registration:
                     return _createRegViewModel();
-                case Util.Navigators.ViewType.Shop:
+                case State.Navigators.ViewType.Shop:
                     return _createShopViewModel();
-                case Util.Navigators.ViewType.Login:
+                case State.Navigators.ViewType.Login:
                     return _createAuthViewModel();
                 default:
                     throw new ArgumentException("The ViewType does not have a ViewModel.", "viewType");

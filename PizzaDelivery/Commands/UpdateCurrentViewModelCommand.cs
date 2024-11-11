@@ -1,4 +1,4 @@
-﻿using PizzaDelivery.Util.Navigators;
+﻿using PizzaDelivery.State.Navigators;
 using PizzaDelivery.ViewModels;
 using PizzaDelivery.ViewModels.Factories;
 using System;
@@ -30,9 +30,9 @@ namespace PizzaDelivery.Commands
 
         public void Execute(object? parameter)
         {
-            if(parameter is Util.Navigators.ViewType)
+            if(parameter is State.Navigators.ViewType)
             {
-                Util.Navigators.ViewType viewType = (Util.Navigators.ViewType)parameter;
+                State.Navigators.ViewType viewType = (State.Navigators.ViewType)parameter;
                 _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType);
                 //switch (viewType)
                 //{

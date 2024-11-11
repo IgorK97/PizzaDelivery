@@ -1,6 +1,6 @@
 ﻿using DTO;
-using Exceptions;
 using Interfaces.Services;
+using Interfaces.Services.AuthenticationServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +13,7 @@ namespace BLL.Models
     public class AccountModel 
     {
         //private readonly IOrderService _ios;
+        IAuthenticationService authenticationService;
 
         public UserModel AccountHolder { get; set; }
 

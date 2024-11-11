@@ -9,6 +9,6 @@ namespace PizzaDelivery.ViewModels.Factories
 {
     public interface IPizzaDeliveryViewModelFactory
     {
-        ViewModelBase CreateViewModel(Util.Navigators.ViewType viewType);
+        ViewModelBase CreateViewModel(State.Navigators.ViewType viewType);
     }
 }

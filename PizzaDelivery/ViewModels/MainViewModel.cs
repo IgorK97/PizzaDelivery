@@ -1,8 +1,8 @@
 ﻿using BLL.Models;
 using PizzaDelivery.Commands;
+using PizzaDelivery.State.Navigators;
 using PizzaDelivery.Stores;
 using PizzaDelivery.Util;
-using PizzaDelivery.Util.Navigators;
 using PizzaDelivery.ViewModels.Factories;
 using System;
 using System.Collections.Generic;
@@ -42,7 +42,7 @@ namespace PizzaDelivery.ViewModels
             _navigator = navigator;
             _viewModelFactory = viewModelFactory;
             UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(navigator, viewModelFactory);
-            UpdateCurrentViewModelCommand.Execute(Util.Navigators.ViewType.Login);
+            UpdateCurrentViewModelCommand.Execute(State.Navigators.ViewType.Login);
             _navigator.StateChanged += Navigator_StateChanged;
         }
         private void Navigator_StateChanged()

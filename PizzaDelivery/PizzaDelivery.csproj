@@ -61,4 +61,8 @@
     <Resource Include="ImagesForProject\profile.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="State\Accounts\" />
+  </ItemGroup>
+
 </Project>

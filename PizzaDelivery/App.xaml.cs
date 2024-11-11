@@ -9,7 +9,6 @@ using Interfaces.Services;
 using Lab4POWinForms.Util;
 using Ninject;
 using PizzaDelivery.Stores;
-using PizzaDelivery.Util.Navigators;
 using Microsoft.Extensions.DependencyInjection;
 using PizzaDelivery.ViewModels.Factories;
 using BLL.Services;
@@ -18,6 +17,8 @@ using DAL.Repository;
 using Interfaces.Repository;
 using Microsoft.AspNet.Identity;
 using Interfaces.Services.AuthenticationServices;
+using PizzaDelivery.State.Navigators;
+using PizzaDelivery.State.Authenticators;
 
 namespace PizzaDelivery
 {
@@ -86,6 +87,8 @@ namespace PizzaDelivery
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<IAccountService, AccountService>();
+            services.AddSingleton<IAuthenticator, Authenticator>();
+
             services.AddSingleton<IPizzaDeliveryViewModelFactory, PizzaDeliveryViewModelFactory>();
             services.AddSingleton<CreateViewModel<ProfilePresentationVM>>(services =>
             {
@@ -93,7 +96,7 @@ namespace PizzaDelivery
             });
             services.AddSingleton<CreateViewModel<AuthorizationVM>>(services =>
             {
-                return () => new AuthorizationVM();
+                return () => new AuthorizationVM(services.GetRequiredService<IAuthenticator>());
             });
             services.AddSingleton<CreateViewModel<RegistrationVM>>(services =>
             {

@@ -2,7 +2,7 @@
 using Interfaces.Services;
 using Ninject.Modules;
 using PizzaDelivery.Util;
-using PizzaDelivery.Util.Navigators;
+using PizzaDelivery.State.Navigators;
 using PizzaDelivery.ViewModels;
 using PizzaDelivery.ViewModels.Factories;
 using System;

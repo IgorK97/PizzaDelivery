@@ -8,12 +8,15 @@ using System.Windows.Input;
 using PizzaDelivery.Commands;
 using BLL.Models;
 using PizzaDelivery.Stores;
+using PizzaDelivery.State.Authenticators;
+using System.Security;
+using System.Net;
 
 namespace PizzaDelivery.ViewModels
 {
     public class AuthorizationVM : ViewModelBase
     {
-
+        private readonly IAuthenticator _authenticator;
         private string _textLogin;
 
         public string TextLogin
@@ -30,8 +33,8 @@ namespace PizzaDelivery.ViewModels
             }
         }
 
-        private string _textPassword;
-        public string TextPassword
+        private SecureString _textPassword;
+        public SecureString TextPassword
         {
             get
             {
@@ -44,32 +47,51 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged("TextPassword");
             }
         }
-        public AuthorizationVM(/*NavigationStore navigationstore, AccountModel _user*/)
+        public AuthorizationVM(IAuthenticator authenticator)
         {
-            //ShowPizzaSelectionCommand = new LoginCommand(navigationstore, this, _user);
-            //ShowRegCommand = new RegistrationCommand(navigationstore, _user);
+            _authenticator = authenticator;
         }
 
-        //private ICommand _showPizzaSelectionCommand;
-        public ICommand ShowPizzaSelectionCommand
+        private ICommand /*PizzaDelivery.Commands.DelegateCommand*/ loginCommand;
+       
+        public ICommand /*PizzaDelivery.Commands.DelegateCommand*/ LoginCommand
         {
-            get;
-            
-                
+            get
+            {
+                return loginCommand ??= new Commands.DelegateCommand(obj =>
+                    {
+                        NetworkCredential networkCredential = new NetworkCredential(TextLogin, TextPassword);
+                        //string str = TextPassword.ToString();
+                        bool success = _authenticator.Login(networkCredential.UserName,/* TextPassword.ToString()*/
+                            networkCredential.Password);
+                    }, 
+                    abj =>
+                    {
+                        return true;
+                    });
+            }
             
         }
-        
+        //public void Login()
+        //{
 
-        private bool CanExecuteLogin(object obj)
-        {
-            bool validData;
-            if (string.IsNullOrWhiteSpace(TextLogin) || TextLogin.Length <= 3 || 
-                TextPassword == null)
-                validData = false;
-            else 
-                validData = true;
-            return validData;
-        }
+        //}
+
+        //public bool canExecuteLogin()
+        //{
+        //    return true;
+        //}
+
+        //private bool CanExecuteLogin(object obj)
+        //{
+        //    bool validData;
+        //    if (string.IsNullOrWhiteSpace(TextLogin) || TextLogin.Length <= 3 || 
+        //        TextPassword == null)
+        //        validData = false;
+        //    else 
+        //        validData = true;
+        //    return validData;
+        //}
 
         //private ICommand _showRegCommand;
         public ICommand ShowRegCommand

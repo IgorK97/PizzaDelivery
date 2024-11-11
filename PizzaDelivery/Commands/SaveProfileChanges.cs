@@ -1,5 +1,4 @@
 ﻿using BLL.Models;
-using Exceptions;
 using PizzaDelivery.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -17,19 +16,19 @@ namespace PizzaDelivery.Commands
         private readonly ProfilePresentationVM _profilepresentationVM;
         public override void Execute(object parameter)
         {
-            try
-            {
-                _user.SaveChanges();
-                //_user.SaveChanges();
-                //_user.MakeLogin(_authorizationVM.TextLogin, _authorizationVM.TextPassword);
-                MessageBox.Show("Изменения сохранены!", "Success", MessageBoxButton.OK,
-                   MessageBoxImage.Information);
-            }
-            catch (IncorrectLoginOrPasswordException)
-            {
-                MessageBox.Show("Ошибка сохранения!", "Error", MessageBoxButton.OK,
-                    MessageBoxImage.Error);
-            }
+            //try
+            //{
+            //    _user.SaveChanges();
+            //    //_user.SaveChanges();
+            //    //_user.MakeLogin(_authorizationVM.TextLogin, _authorizationVM.TextPassword);
+            //    MessageBox.Show("Изменения сохранены!", "Success", MessageBoxButton.OK,
+            //       MessageBoxImage.Information);
+            //}
+            //catch (IncorrectLoginOrPasswordException)
+            //{
+            //    MessageBox.Show("Ошибка сохранения!", "Error", MessageBoxButton.OK,
+            //        MessageBoxImage.Error);
+            //}
         }
 
         public override bool CanExecute(object parameter)
