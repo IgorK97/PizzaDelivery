@@ -12,21 +12,25 @@
         
     <Grid>
         <!--<Grid.Resources>
-            <DataTemplate DataType="{x:Type viewms:AuthorizationVM}">
-                <view:AuthorizationPresentation/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewms:ProfilePresentationVM}">
-                <view:ProfilePresentation/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewms:RegistrationVM}">
-                <view:RegistrationPresentation/>
-            </DataTemplate>
+            
         </Grid.Resources>-->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <view:TopPanelPD Grid.Row="0"/>
+        <Grid Grid.Row="0">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsLoggedIn}" Value="false">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <view:TopPanelPD Grid.Row="0"/>
+        </Grid>
+        
         <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}"/>
 
     </Grid>

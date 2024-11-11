@@ -1,5 +1,6 @@
 ﻿using BLL.Models;
 using PizzaDelivery.Commands;
+using PizzaDelivery.State.Authenticators;
 using PizzaDelivery.State.Navigators;
 using PizzaDelivery.Stores;
 using PizzaDelivery.Util;
@@ -7,6 +8,8 @@ using PizzaDelivery.ViewModels.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Printing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -18,10 +21,26 @@ namespace PizzaDelivery.ViewModels
         //private readonly NavigationStore _navigationStore;
         private readonly INavigator _navigator;
         private readonly IPizzaDeliveryViewModelFactory _viewModelFactory;
-        //public INavigator Navigator { get; set; }
+        private readonly IAuthenticator _authenticator;
 
-        public ICommand UpdateCurrentViewModelCommand { get; }
+        public bool IsLoggedIn => _authenticator.IsLoggedIn;
 
+        private ICommand updateCurrentViewModelCommand;
+        public ICommand UpdateCurrentViewModelCommand
+        {
+            get
+            {
+                return updateCurrentViewModelCommand ??= new Commands.DelegateCommand(obj =>
+                    {
+                        if (obj is State.Navigators.ViewType)
+                        {
+                            State.Navigators.ViewType viewType = (State.Navigators.ViewType)obj;
+                            _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType);
+                            
+                        }
+                });
+            }
+        }
         public ViewModelBase CurrentViewModel
         {
             get
@@ -37,11 +56,14 @@ namespace PizzaDelivery.ViewModels
         //    CurrentViewModel = new ProfilePresentationVM(_user);
         //}
 
-        public MainViewModel(INavigator navigator, IPizzaDeliveryViewModelFactory viewModelFactory)
+        public MainViewModel(INavigator navigator, IPizzaDeliveryViewModelFactory viewModelFactory,
+            IAuthenticator authenticator)
         {
             _navigator = navigator;
             _viewModelFactory = viewModelFactory;
-            UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(navigator, viewModelFactory);
+            _authenticator = authenticator;
+            _authenticator.StateChanged += Authenticator_StateChanged;
+            //UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(navigator, viewModelFactory);
             UpdateCurrentViewModelCommand.Execute(State.Navigators.ViewType.Login);
             _navigator.StateChanged += Navigator_StateChanged;
         }
@@ -49,9 +71,9 @@ namespace PizzaDelivery.ViewModels
         {
             OnPropertyChanged(nameof(CurrentViewModel));
         }
-        //private void OnCurrentViewModelChanged()
-        //{
-        //    OnPropertyChanged(nameof(CurrentViewModel));
-        //}
+        private void Authenticator_StateChanged()
+        {
+            OnPropertyChanged(nameof(IsLoggedIn));
+        }
     }
 }

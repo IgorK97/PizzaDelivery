@@ -21,7 +21,8 @@ namespace PizzaDelivery.Commands
 
         public bool CanExecute(object parameter)
         {
-            return this.CanExecute == null || _canExecute(parameter);
+            return _canExecute != null ? _canExecute(parameter) : true;
+            //return this.CanExecute == null || _canExecute(parameter);
         }
 
         public void Execute(object parameter)

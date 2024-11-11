@@ -16,5 +16,6 @@ namespace PizzaDelivery.State.Authenticators
         RegistrationResult Register(ClientDTO user, string confirmpassword);
         bool Login(string login, string password);
         void Logout();
+        event Action StateChanged;
     }
 }

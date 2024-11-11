@@ -13,6 +13,7 @@
     <None Remove="example.jpg" />
     <None Remove="ImagesForProject\basket.png" />
     <None Remove="ImagesForProject\example.jpg" />
+    <None Remove="ImagesForProject\LoginImage.jpg" />
     <None Remove="ImagesForProject\mainicon.png" />
     <None Remove="ImagesForProject\ordersicon.png" />
     <None Remove="ImagesForProject\pepperoni.png" />
@@ -53,6 +54,7 @@
   <ItemGroup>
     <Resource Include="ImagesForProject\basket.png" />
     <Resource Include="ImagesForProject\example.jpg" />
+    <Resource Include="ImagesForProject\LoginImage.jpg" />
     <Resource Include="ImagesForProject\mainicon.png" />
     <Resource Include="ImagesForProject\ordersicon.png" />
     <Resource Include="ImagesForProject\pepperoni.png" />

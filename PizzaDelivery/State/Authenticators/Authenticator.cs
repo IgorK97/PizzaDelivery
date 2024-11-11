@@ -16,8 +16,18 @@ namespace PizzaDelivery.State.Authenticators
         {
             _authenticationService = authenticationService;
         }
-
-        public UserDTO CurrentUser { get; private set; }
+        private UserDTO _currentUser;
+        public UserDTO CurrentUser { get
+            {
+                return _currentUser;
+            }
+            private set
+            {
+                _currentUser = value;
+                StateChanged?.Invoke();
+            }
+        }
+        public event Action StateChanged;
 
         public bool IsLoggedIn => CurrentUser != null;
 
