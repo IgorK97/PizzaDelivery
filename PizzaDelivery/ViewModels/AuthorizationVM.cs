@@ -11,6 +11,8 @@ using PizzaDelivery.Stores;
 using PizzaDelivery.State.Authenticators;
 using System.Security;
 using System.Net;
+using PizzaDelivery.State.Navigators;
+using PizzaDelivery.ViewModels.Factories;
 
 namespace PizzaDelivery.ViewModels
 {
@@ -18,6 +20,8 @@ namespace PizzaDelivery.ViewModels
     {
         private readonly IAuthenticator _authenticator;
         private string _textLogin;
+        //private readonly INavigator _navigator;
+        //private readonly IPizzaDeliveryViewModelFactory _pizzaDeliveryViewModelFactory;
 
         public string TextLogin
         {
@@ -50,11 +54,13 @@ namespace PizzaDelivery.ViewModels
         public AuthorizationVM(IAuthenticator authenticator)
         {
             _authenticator = authenticator;
+            //_navigator = navigator;
+            //_pizzaDeliveryViewModelFactory = _pizzaDeliveryViewModelFactory;
         }
 
-        private ICommand /*PizzaDelivery.Commands.DelegateCommand*/ loginCommand;
+        private ICommand loginCommand;
        
-        public ICommand /*PizzaDelivery.Commands.DelegateCommand*/ LoginCommand
+        public ICommand LoginCommand
         {
             get
             {
@@ -64,39 +70,34 @@ namespace PizzaDelivery.ViewModels
                         //string str = TextPassword.ToString();
                         bool success = _authenticator.Login(networkCredential.UserName,/* TextPassword.ToString()*/
                             networkCredential.Password);
+                        if (success)
+                        {
+                            State.Navigators.ViewType viewType = State.Navigators.ViewType.Profile;
+                            OnViewModelChangedDelegate(viewType);
+                            //_navigator.CurrentViewModel = _pizzaDeliveryViewModelFactory.CreateViewModel(viewType);
+                        }
                     }, 
                     abj =>
                     {
-                        return true;
+                        return !string.IsNullOrEmpty(TextLogin)&&TextPassword!=null;
                     });
             }
             
         }
-        //public void Login()
-        //{
-
-        //}
-
-        //public bool canExecuteLogin()
-        //{
-        //    return true;
-        //}
-
-        //private bool CanExecuteLogin(object obj)
-        //{
-        //    bool validData;
-        //    if (string.IsNullOrWhiteSpace(TextLogin) || TextLogin.Length <= 3 || 
-        //        TextPassword == null)
-        //        validData = false;
-        //    else 
-        //        validData = true;
-        //    return validData;
-        //}
-
-        //private ICommand _showRegCommand;
-        public ICommand ShowRegCommand
+        private ICommand viewRegisterCommand;
+        public ICommand ViewRegisterCommand
         {
-            get;
+            get
+            {
+                return viewRegisterCommand ??= new Commands.DelegateCommand(obj =>
+                {
+                    
+                        State.Navigators.ViewType viewType = State.Navigators.ViewType.Registration;
+                        //_navigator.CurrentViewModel = _pizzaDeliveryViewModelFactory.CreateViewModel(viewType);
+                        OnViewModelChangedDelegate(viewType);
+                    
+                });
+            }
         }
         
     }

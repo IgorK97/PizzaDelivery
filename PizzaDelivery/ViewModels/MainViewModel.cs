@@ -47,6 +47,7 @@ namespace PizzaDelivery.ViewModels
             {
                 return _navigator.CurrentViewModel;
             }
+            
         } 
 
         //public MainViewModel(AccountModel _user)
@@ -59,6 +60,7 @@ namespace PizzaDelivery.ViewModels
         public MainViewModel(INavigator navigator, IPizzaDeliveryViewModelFactory viewModelFactory,
             IAuthenticator authenticator)
         {
+            ViewModelBase.ViewModelChanged += ViewModel_StateChanged;
             _navigator = navigator;
             _viewModelFactory = viewModelFactory;
             _authenticator = authenticator;
@@ -74,6 +76,12 @@ namespace PizzaDelivery.ViewModels
         private void Authenticator_StateChanged()
         {
             OnPropertyChanged(nameof(IsLoggedIn));
+        }
+
+        public void ViewModel_StateChanged(State.Navigators.ViewType viewType)
+        {
+            
+            _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType);
         }
     }
 }

@@ -8,16 +8,15 @@ using System.ComponentModel;
 namespace PizzaDelivery.Util
 {
     public delegate TViewModel CreateViewModel<TViewModel>() where TViewModel : ViewModelBase;
+    public delegate void ViewModelChangedDelegate(State.Navigators.ViewType viewModelType);
     public abstract class ViewModelBase : ObservableObject
     {
-        //public event PropertyChangedEventHandler PropertyChanged;
+        public static event ViewModelChangedDelegate ViewModelChanged;
 
-      
-
-        //protected virtual void OnPropertyChanged(string propertyName)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
+        public void OnViewModelChangedDelegate(State.Navigators.ViewType viewType)
+        {
+            ViewModelChanged?.Invoke(viewType);
+        }
 
     }
 }

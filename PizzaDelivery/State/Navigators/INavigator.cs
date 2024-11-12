@@ -21,6 +21,5 @@ namespace PizzaDelivery.State.Navigators
     {
         ViewModelBase CurrentViewModel { get; set; }
         event Action StateChanged;
-        //ICommand UpdateCurrentViewModelCommand { get; }
     }
 }

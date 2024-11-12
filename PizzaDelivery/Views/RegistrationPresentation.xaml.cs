@@ -24,5 +24,20 @@ namespace PizzaDelivery.Views
         {
             InitializeComponent();
         }
+        private void PasswordBox_PasswordChanged(object sender, EventArgs e)
+        {
+            if (this.DataContext != null)
+            {
+                ((dynamic)this.DataContext).Password = ((PasswordBox)sender).SecurePassword;
+            }
+        }
+
+        private void RepPasswordBox_PasswordChanged(object sender, EventArgs e)
+        {
+            if (this.DataContext != null)
+            {
+                ((dynamic)this.DataContext).RepPassword = ((PasswordBox)sender).SecurePassword;
+            }
+        }
     }
 }

@@ -28,7 +28,6 @@ namespace PizzaDelivery.State.Navigators
         }
         public event Action StateChanged;
 
-        //public ICommand UpdateCurrentViewModelCommand { get; set; }
 
         //public event PropertyChangedEventHandler? PropertyChanged;
         //protected void OnPropertyChanged(string propertyName)

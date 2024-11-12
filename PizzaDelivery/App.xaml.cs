@@ -100,7 +100,7 @@ namespace PizzaDelivery
             });
             services.AddSingleton<CreateViewModel<RegistrationVM>>(services =>
             {
-                return () => new RegistrationVM();
+                return () => new RegistrationVM(services.GetRequiredService<IAuthenticator>());
             }); 
             services.AddSingleton<CreateViewModel<BasketViewModel>>(services =>
             {

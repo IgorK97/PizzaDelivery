@@ -76,8 +76,8 @@ Padding="20,3"/>
                         <Button Margin="5"
 HorizontalAlignment="Center"
 VerticalAlignment="Center"
-Command="{Binding ShowRegCommand}"
-Content="Зарегистрироваться"
+Command="{Binding ViewRegisterCommand}"
+Content="Нет аккаунта?"
 Padding="20,3"/>
                     </StackPanel>
                 </Grid>

@@ -1,10 +1,15 @@
 ﻿using BLL.Models;
+using DTO;
+using Interfaces.Services.AuthenticationServices;
 using PizzaDelivery.Commands;
+using PizzaDelivery.State.Authenticators;
 using PizzaDelivery.Stores;
 using PizzaDelivery.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -13,7 +18,7 @@ namespace PizzaDelivery.ViewModels
 {
     public class RegistrationVM : ViewModelBase
     {
-        AccountModel User;
+        private readonly IAuthenticator _authenticator;
         private string _firstname;
 
         public string FirstName
@@ -25,7 +30,6 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _firstname = value;
-                User.FirstName = value;
                 OnPropertyChanged(nameof(FirstName));
             }
         }
@@ -39,7 +43,6 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _lastname = value;
-                User.LastName = value;
                 OnPropertyChanged(nameof(LastName));
             }
         }
@@ -53,7 +56,6 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _surname = value;
-                User.Surname = value;
                 OnPropertyChanged(nameof(Surname));
             }
         }
@@ -67,12 +69,11 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _login = value;
-                User.Login = value;
                 OnPropertyChanged(nameof(Login));
             }
         }
-        private string _password;
-        public string Password
+        private SecureString _password;
+        public SecureString Password
         {
             get
             {
@@ -81,7 +82,6 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _password = value;
-                User.Password = value;
                 OnPropertyChanged(nameof(Password));
             }
         }
@@ -95,7 +95,6 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _email = value;
-                User.Email = value;
                 OnPropertyChanged(nameof(Email));
             }
         }
@@ -109,7 +108,6 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _address = value;
-                User.AddressDel = value;
                 OnPropertyChanged(nameof(AddressDel));
             }
         }
@@ -123,12 +121,11 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _phone = value;
-                User.Phone = value;
                 OnPropertyChanged(nameof(Phone));
             }
         }
-        private string? _reppassword;
-        public string? RepPassword
+        private SecureString? _reppassword;
+        public SecureString? RepPassword
         {
             get
             {
@@ -140,23 +137,69 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged(nameof(RepPassword));
             }
         }
+        private ICommand viewLoginCommand;
+        public ICommand ViewLoginCommand
+        {
+            get
+            {
+                return viewLoginCommand ??= new Commands.DelegateCommand(obj =>
+                {
 
-        public ICommand ShowPizzaSelectionCommand
-        {
-            get;
-            
-        }
-        public ICommand ShowEnterViewCommand
-        {
-            get;
-        }
-        public RegistrationVM(/*NavigationStore navigationstore, AccountModel _user*/)
-        {
-            //User = _user;
-            //ShowPizzaSelectionCommand = new AddNewUserAndEnterCommand(navigationstore, this, _user);
+                    State.Navigators.ViewType viewType = State.Navigators.ViewType.Login;
+                //    if(!string.IsNullOrEmpty(Login) &&
+                //Password != null &&
+                //Login.Length <= 3 && !string.IsNullOrEmpty(FirstName) &&
+                //!string.IsNullOrEmpty(LastName) &&
+                //!string.IsNullOrEmpty(Phone))
+                    OnViewModelChangedDelegate(viewType);
 
-            //ShowEnterViewCommand = new AddNewUserAndEnterCommand(navigationstore, this, _user);
-            //ShowRegCommand = new RegistrationCommand(navigationstore, _user);
+                });
+
+            }
+        }
+
+        private ICommand registerCommand;
+        public ICommand RegisterCommand
+        {
+            get
+            {
+                return registerCommand ??= new Commands.DelegateCommand(obj =>
+                {
+                    NetworkCredential networkCredential = new NetworkCredential(Login, Password);
+                    NetworkCredential networkCredentialsecond = new NetworkCredential(Login, RepPassword);
+
+                    ClientDTO testUser = new ClientDTO
+                    {
+                        FirstName = FirstName,
+                        LastName = LastName,
+                        Surname = Surname,
+                        Login = Login,
+                        Password = networkCredential.Password,
+                        Phone = Phone,
+                        Email = Email,
+                        AddressDel = AddressDel
+                    };
+                    RegistrationResult result = _authenticator.Register(testUser,/* TextPassword.ToString()*/
+                        networkCredentialsecond.Password);
+                    if (result==RegistrationResult.Success)
+                    {
+                        State.Navigators.ViewType viewType = State.Navigators.ViewType.Login;
+                        OnViewModelChangedDelegate(viewType);
+                    }
+                },
+                    abj =>
+                    {
+                        return !string.IsNullOrEmpty(Login) &&
+                Password != null &&
+                Login.Length > 3 && !string.IsNullOrEmpty(FirstName)&&
+                !string.IsNullOrEmpty(LastName) &&
+                !string.IsNullOrEmpty(Phone);
+                    });
+            }
+        }
+        public RegistrationVM(IAuthenticator authenticator)
+        {
+            _authenticator = authenticator;
         }
     }
 }
