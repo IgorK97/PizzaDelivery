@@ -7,6 +7,7 @@ using Interfaces.Repository;
 using DomainModel;
 using DTO;
 using DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repository
 {
@@ -21,12 +22,14 @@ namespace DAL.Repository
 
         public List<Pizza> GetList()
         {
-            return db.Pizzas.ToList();
+            return db.Pizzas.Include(p => p.Ingredients).ToList();
         }
 
         public Pizza GetItem(int id)
         {
-            return db.Pizzas.Find(id);
+            return db.Pizzas.Include(o => o.Ingredients)
+                .FirstOrDefault(u => u.Id == id);
+            //return db.Pizzas.Find(id);
         }
 
         public void Create(Pizza pizza)

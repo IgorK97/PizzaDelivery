@@ -55,7 +55,7 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Style>
-            <local:SelectedPizzaView/>
+            <local:SelectedPizzaView DataContext="{Binding AddingPizza}"/>
         </Grid>
         <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                       ScrollViewer.VerticalScrollBarVisibility="Visible"

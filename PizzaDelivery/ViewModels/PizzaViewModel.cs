@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
 namespace PizzaDelivery.ViewModels
@@ -20,12 +21,19 @@ namespace PizzaDelivery.ViewModels
     public class PizzaViewModel : ViewModelBase
     {
         private readonly PizzaDto _dto;
+        public PizzaDto SelectedPizza
+        {
+            get
+            {
+                return _dto;
+            }
+        }
         public string Name => _dto.C_name;
 
         public string Description => _dto.description;
 
         public byte[]? Image => _dto.pizzaimage;
-
+        
         public PizzaViewModel(PizzaDto dto)
         {
             _dto = dto;

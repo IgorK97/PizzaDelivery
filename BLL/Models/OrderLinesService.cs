@@ -135,6 +135,23 @@ namespace BLL.Models
             return blres;
         }
 
+        public List<IngredientDto> GetIngredients()
+        {
+            var res = dbr.Ingredients.GetList().Select(i => new IngredientDto
+            {
+                Id = i.Id,
+                C_name = i.Name,
+                price_per_gram = i.PricePerGram,
+                small = i.Small,
+                medium = i.Medium,
+                big = i.Big,
+                active = i.Active,
+                ingrimage = i.Ingrimage
+            }).ToList();
+            //var blres = new List<IngredientDto>(res);
+            return res;
+        }
+
         public BindingList<IngredientShortDto> GetConcreteIngredients(int ps, int ol_id)
         {
             

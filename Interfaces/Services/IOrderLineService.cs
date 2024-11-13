@@ -32,6 +32,8 @@ namespace Interfaces.Services
         List<DelStatusDto> GetDelStatuses();
 
         BindingList<IngredientShortDto> GetIngredients(int? ps);
+        List<IngredientDto> GetIngredients();
+
 
         BindingList<IngredientShortDto> GetConcreteIngredients(int ps, int ol_id);
 

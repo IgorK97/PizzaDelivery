@@ -8,22 +8,59 @@
              xmlns:viewmodels="clr-namespace:PizzaDelivery.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <DataTemplate x:Key="listIngrTemplate">
+            <Border Width="200" Height="150" Margin="5" BorderThickness="2" CornerRadius="10">
+
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsIngredientSelected}" Value="false">
+                                <Setter Property="Background" Value="White"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsIngredientSelected}" Value="true">
+                                <Setter Property="Background" Value="Orange"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <Border.InputBindings>
+                    <MouseBinding MouseAction="LeftClick"
+                              Command="{Binding Path=DataContext.SelectIngredientCommand,
+                        RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}"
+                              CommandParameter="{Binding SelectedIngredient}"/>
+                </Border.InputBindings>
+                <StackPanel>
+                    <Image Source="{Binding Image, Mode=OneWay}" Width="50" Height="50" Margin="5"/>
+                    <!--<Image Source="/ImagesForProject/pepperoni.png" Width="150" Height="150" Margin="15"/>-->
+                    <TextBlock Text="{Binding Name, Mode=OneWay}" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Cost, Mode=OneWay}" HorizontalAlignment="Center"
+                           FontSize="16"/>
+                </StackPanel>
+
+            </Border>
+        </DataTemplate>
+        <ItemsPanelTemplate x:Key="listIngrPanelTemplate">
+            <WrapPanel/>
+        </ItemsPanelTemplate>
+    </UserControl.Resources>
     <Grid>
         <Grid.Background>
             <SolidColorBrush Color="Black" Opacity="0.5"/>
         </Grid.Background>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid MinWidth="300" MinHeight="350" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0"  Margin="25" Padding="50" 
+            <Border Grid.Column="0"  Margin="25" Padding="30" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"
             BorderThickness="3" CornerRadius="10" 
             BorderBrush="{StaticResource BrushPrimary1}"
-            Background="White"
-                DataContext="{Binding SelectedPizza}">
+            Background="White">
+                <!--DataContext="{Binding AddingPizza}"-->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -36,8 +73,8 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Image Source="{Binding Image}" Grid.Row="0"/>
-                            <Grid Grid.Row="1">
+                            <Image Stretch="UniformToFill" MinWidth="200" MinHeight="200" Source="{Binding Image}" Grid.Row="0"/>
+                            <Grid Margin="5 10" Grid.Row="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
@@ -48,44 +85,47 @@
                                     <RowDefinition/>
 
                                 </Grid.RowDefinitions>
-                                <TextBlock Grid.Column="0" Grid.Row="0"  Margin="5" HorizontalAlignment="Center" 
+                                <TextBlock FontSize="18" Grid.Column="0" Grid.Row="0"  Margin="5 10" HorizontalAlignment="Center" 
                                        VerticalAlignment="Center" Text="Вес"/>
-                                <TextBlock Grid.Column="1" Grid.Row="0"  Margin="5" HorizontalAlignment="Center" 
-           VerticalAlignment="Center" Text="0.00"/>
-                                <TextBlock Grid.Column="0" Grid.Row="1"  Margin="5" HorizontalAlignment="Center" 
+                                <TextBlock FontSize="18" Grid.Column="1" Grid.Row="0"  Margin="5 10" HorizontalAlignment="Center" 
+           VerticalAlignment="Center" Text="{Binding FinalWeight}"/>
+                                <TextBlock FontSize="18" Grid.Column="0" Grid.Row="1"  Margin="5 10" HorizontalAlignment="Center" 
                             VerticalAlignment="Center" Text="Цена"/>
-                                <TextBlock Grid.Column="1" Grid.Row="1"  Margin="5" HorizontalAlignment="Center" 
-VerticalAlignment="Center" Text="0.00"/>
+                                <TextBlock FontSize="18" Grid.Column="1" Grid.Row="1"  Margin="5 10" HorizontalAlignment="Center" 
+VerticalAlignment="Center" Text="{Binding Price}"/>
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Column="1">
+                    <Grid VerticalAlignment="Top" Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="{Binding Name}"/>
-                        <TextBlock Grid.Row="1" Text="{Binding Description}"/>
-                        <Grid Grid.Row="2">
+                        <TextBlock Margin="5 10" HorizontalAlignment="Center" FontSize="30"  Grid.Row="0" Text="{Binding Name}"/>
+                        <TextBlock Margin="5 10" FontSize="16" Grid.Row="1" Text="{Binding Description}"/>
+                        <Grid  Margin="5 10" Grid.Row="2" Background="Red">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <RadioButton Grid.Column="0"
+                            <RadioButton FontSize="18" Grid.Column="0"
+                                         Style="{StaticResource RadBut}"
                                      Command="{Binding UpdatePizzaSizeCommand}"
                                      CommandParameter="{x:Static viewmodels:PizzaSizes.Small}"
                                      Content="Маленькая"/>
-                            <RadioButton Grid.Column="1"
+                            <RadioButton FontSize="18" Grid.Column="1"
+                                         Style="{StaticResource RadBut}"
              Command="{Binding UpdatePizzaSizeCommand}"
              CommandParameter="{x:Static viewmodels:PizzaSizes.Medium}"
              Content="Средняя"/>
-                            <RadioButton Grid.Column="2"
+                            <RadioButton FontSize="18" Grid.Column="2"
+                                         Style="{StaticResource RadBut}"
              Command="{Binding UpdatePizzaSizeCommand}"
              CommandParameter="{x:Static viewmodels:PizzaSizes.Large}"
              Content="Большая"/>
@@ -95,23 +135,33 @@ VerticalAlignment="Center" Text="0.00"/>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="Количество"/>
-                            <xctk:IntegerUpDown Grid.Column="1"/>
+                            <TextBlock Margin="5 10" FontSize="18" Grid.Column="0" Text="Количество"/>
+                            <xctk:IntegerUpDown Margin="10 10 10 10" Grid.Column="1" Width="200"/>
 
                         </Grid>
-                        <TextBlock Grid.Row="4" Text="Добавить по вкусу"/>
-                        <Grid Grid.Row="5">
-                            <ListBox/>
+                        <TextBlock Grid.Row="4" Margin="5 10" FontSize="18" Text="Добавить по вкусу"/>
+                        <Grid MaxWidth="800" Grid.Row="5">
+                            <ListBox Grid.Row="5" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible"
+                     ItemTemplate="{StaticResource listIngrTemplate}"
+                     ItemsPanel="{StaticResource listIngrPanelTemplate}"
+                     ItemsSource="{Binding IngredientCollection}"
+                                     SelectedItem="{Binding SelectedIngredient, Mode=TwoWay}"
+                 >
+                                
+                            </ListBox>
                         </Grid>
-                        <Button Grid.Row="6" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                            Command="{Binding BuyPizzaCommand}" Content="В корзину" Padding="20,3"/>
+                        <Button Grid.Row="6" Margin="5" HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" FontSize="18"
+                            Command="{Binding BuyPizzaCommand}"
+                                 Content="В корзину" Padding="20,3"/>
                     </Grid>
                 </Grid>
 
 
 
             </Border>
-            <Button Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" 
+            <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" 
                      Grid.Column="1" Width="50" Height="50"
                     Command="{Binding ExitCommand}">
                 <Image Source="/ImagesForProject/out.png"/>

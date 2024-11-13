@@ -105,7 +105,7 @@ namespace PizzaDelivery.ViewModels
             }
         }
         private string? _address;
-        public string? Address
+        public string? AddressDel
         {
             get
             {
@@ -114,7 +114,7 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _address = value;
-                OnPropertyChanged(nameof(Address));
+                OnPropertyChanged(nameof(AddressDel));
             }
         }
         private string _phone;
@@ -164,7 +164,7 @@ namespace PizzaDelivery.ViewModels
                         Password = networkCredential.Password,
                         Phone = Phone,
                         Email = Email,
-                        AddressDel = Address
+                        AddressDel = AddressDel
                     };
                     RegistrationResult result = _authenticator.UpdateAccount(testUser, networkCredentialsecond.Password);
                     if (result == RegistrationResult.Success)
@@ -197,7 +197,7 @@ namespace PizzaDelivery.ViewModels
             LastName = userDTO.LastName;
             Surname = userDTO.Surname;
             Login = userDTO.Login;
-            Address = ((ClientDTO)userDTO).AddressDel;
+            AddressDel = ((ClientDTO)userDTO).AddressDel;
             Phone = ((ClientDTO)userDTO).Phone;
             Email = ((ClientDTO)userDTO).Email;
         }

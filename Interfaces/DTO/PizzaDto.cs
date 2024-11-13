@@ -24,6 +24,7 @@ namespace DTO
         public byte[]? pizzaimage { get; set; }
 
         public List<int> listedingredientsIds { get; set; }
+        //public List<IngredientDto> listedingredients { get; set; }
 
         public PizzaDto(Pizza p)
         {
@@ -33,6 +34,7 @@ namespace DTO
             description = p.Description;
             pizzaimage = p.Pizzaimage;
             listedingredientsIds = p.Ingredients.Select(i => i.Id).ToList();
+            //listedingredients = p.Ingredients.ToList();
         }
     }
 }

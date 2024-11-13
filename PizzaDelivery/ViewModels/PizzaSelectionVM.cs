@@ -19,6 +19,21 @@ namespace PizzaDelivery.ViewModels
         private AssortmentModel _assortmentmodel;
         public IEnumerable<PizzaViewModel> PizzaCollection => _pizzacollection;
 
+        private AddingPizzaViewModel addingPizza;
+        public AddingPizzaViewModel AddingPizza
+        {
+            get
+            {
+                return addingPizza;
+            }
+            set
+            {
+                addingPizza = value;
+                OnPropertyChanged(nameof(AddingPizza));
+
+            }
+        }
+
         private PizzaViewModel selectedPizza;
         public PizzaViewModel SelectedPizza
         {
@@ -33,26 +48,27 @@ namespace PizzaDelivery.ViewModels
             }
         }
 
-        private ICommand updatePizzaSizeCommand;
-        public ICommand UpdatePizzaSizeCommand
-        {
-            get
-            {
-                return updatePizzaSizeCommand;
-            }
-        }
+        //private ICommand updatePizzaSizeCommand;
+        //public ICommand UpdatePizzaSizeCommand
+        //{
+        //    get
+        //    {
+        //        return updatePizzaSizeCommand;
+        //    }
+        //}
 
-        private ICommand exitCommand;
-        public ICommand ExitCommand
-        {
-            get
-            {
-                return exitCommand ??= new Commands.DelegateCommand(obj =>
-                {
-                    IsPizzaSelected = false;
-                });
-            }
-        }
+        //private ICommand exitCommand;
+        //public ICommand ExitCommand
+        //{
+        //    get
+        //    {
+        //        return exitCommand ??= new Commands.DelegateCommand(obj =>
+        //        {
+        //            IsPizzaSelected = false;
+        //            //Dispose addingPizza
+        //        });
+        //    }
+        //}
 
         private ICommand selectPizzaCommand;
         public ICommand SelectPizzaCommand
@@ -61,21 +77,14 @@ namespace PizzaDelivery.ViewModels
             {
                 return selectPizzaCommand ??= new Commands.DelegateCommand(obj =>
                 {
-                        IsPizzaSelected = true;
-                   
+                    IsPizzaSelected = true;
+                    AddingPizza = new AddingPizzaViewModel(_assortmentmodel, selectedPizza.SelectedPizza);
+                    //AddingPizza.Load();
                 });
             }
         }
 
-        private ICommand buyPizzaCommand;
-
-        public ICommand BuyPizzaCommand
-        {
-            get
-            {
-                return buyPizzaCommand;
-            }
-        }
+        
         private bool isPizzaSelected;
         public bool IsPizzaSelected
         {
@@ -99,108 +108,6 @@ namespace PizzaDelivery.ViewModels
                 PizzaViewModel pizzaViewModel = new PizzaViewModel(pizza);
                 _pizzacollection.Add(pizzaViewModel);
             }
-
-
-            //_pizzacollection.Add(new PizzaViewModel(new DTO.PizzaDto
-            //{
-            //    active = true,
-            //    C_name = "name",
-            //    description = "description",
-            //    Id = 1
-                
-            //}));
-            //_pizzacollection.Add(new PizzaViewModel(new DTO.PizzaDto
-            //{
-            //    active = true,
-            //    C_name = "name1",
-            //    description = "description",
-            //    Id = 1
-
-            //})); _pizzacollection.Add(new PizzaViewModel(new DTO.PizzaDto
-            //{
-            //    active = true,
-            //    C_name = "name2",
-            //    description = "description",
-            //    Id = 1
-
-            //})); _pizzacollection.Add(new PizzaViewModel(new DTO.PizzaDto
-            //{
-            //    active = true,
-            //    C_name = "name3",
-            //    description = "description",
-            //    Id = 1
-
-            //})); _pizzacollection.Add(new PizzaViewModel(new DTO.PizzaDto
-            //{
-            //    active = true,
-            //    C_name = "name4",
-            //    description = "description",
-            //    Id = 1
-
-            //})); _pizzacollection.Add(new PizzaViewModel(new DTO.PizzaDto
-            //{
-            //    active = true,
-            //    C_name = "name4",
-            //    description = "description",
-            //    Id = 1
-
-            //})); _pizzacollection.Add(new PizzaViewModel(new DTO.PizzaDto
-            //{
-            //    active = true,
-            //    C_name = "name4",
-            //    description = "description",
-            //    Id = 1
-
-            //})); _pizzacollection.Add(new PizzaViewModel(new DTO.PizzaDto
-            //{
-            //    active = true,
-            //    C_name = "name4",
-            //    description = "description",
-            //    Id = 1
-
-            //})); _pizzacollection.Add(new PizzaViewModel(new DTO.PizzaDto
-            //{
-            //    active = true,
-            //    C_name = "name4",
-            //    description = "description",
-            //    Id = 1
-
-            //})); _pizzacollection.Add(new PizzaViewModel(new DTO.PizzaDto
-            //{
-            //    active = true,
-            //    C_name = "name4",
-            //    description = "description",
-            //    Id = 1
-
-            //})); _pizzacollection.Add(new PizzaViewModel(new DTO.PizzaDto
-            //{
-            //    active = true,
-            //    C_name = "name4",
-            //    description = "description",
-            //    Id = 1
-
-            //})); _pizzacollection.Add(new PizzaViewModel(new DTO.PizzaDto
-            //{
-            //    active = true,
-            //    C_name = "name4",
-            //    description = "description",
-            //    Id = 1
-
-            //})); _pizzacollection.Add(new PizzaViewModel(new DTO.PizzaDto
-            //{
-            //    active = true,
-            //    C_name = "name4",
-            //    description = "description",
-            //    Id = 1
-
-            //})); _pizzacollection.Add(new PizzaViewModel(new DTO.PizzaDto
-            //{
-            //    active = true,
-            //    C_name = "name4",
-            //    description = "description",
-            //    Id = 1
-
-            //}));
         }
 
         
