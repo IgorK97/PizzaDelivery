@@ -11,7 +11,7 @@
     
     <UserControl.Resources>
         <DataTemplate x:Key="listIngrTemplate">
-            <Border Width="200" Height="150" Margin="5" BorderThickness="2" CornerRadius="10">
+            <Border Width="200" Height="150" MaxWidth="1000" Margin="5" BorderThickness="2" CornerRadius="10">
 
                 <Border.Style>
                     <Style TargetType="Border">
@@ -28,8 +28,8 @@
                 <Border.InputBindings>
                     <MouseBinding MouseAction="LeftClick"
                               Command="{Binding Path=DataContext.SelectIngredientCommand,
-                        RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}"
-                              CommandParameter="{Binding SelectedIngredient}"/>
+                        RelativeSource={RelativeSource AncestorType = UserControl, Mode = FindAncestor}}"
+                              CommandParameter="{Binding Id}"/>
                 </Border.InputBindings>
                 <StackPanel>
                     <Image Source="{Binding Image, Mode=OneWay}" Width="50" Height="50" Margin="5"/>
@@ -54,7 +54,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0"  Margin="25" Padding="30" 
+            <Border Grid.Column="0"  Margin="15" Padding="10" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"
             BorderThickness="3" CornerRadius="10" 
@@ -96,7 +96,7 @@ VerticalAlignment="Center" Text="{Binding Price}"/>
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid VerticalAlignment="Top" Grid.Column="1">
+                    <Grid MaxHeight="600" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -107,7 +107,12 @@ VerticalAlignment="Center" Text="{Binding Price}"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <TextBlock Margin="5 10" HorizontalAlignment="Center" FontSize="30"  Grid.Row="0" Text="{Binding Name}"/>
-                        <TextBlock Margin="5 10" FontSize="16" Grid.Row="1" Text="{Binding Description}"/>
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Disabled"
+                                      HorizontalScrollBarVisibility="Auto">
+                            <TextBlock 
+                                   TextWrapping="Wrap" MaxWidth="500" Margin="5 10" 
+                                   FontSize="16"  Text="{Binding Description}"/>
+                        </ScrollViewer>
                         <Grid  Margin="5 10" Grid.Row="2" Background="Red">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>

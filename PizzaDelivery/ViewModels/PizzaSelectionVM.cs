@@ -1,5 +1,6 @@
 ﻿using BLL.Models;
 using DTO;
+using Interfaces.Services;
 using PizzaDelivery.Util;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,11 @@ namespace PizzaDelivery.ViewModels
 
             }
         }
+        public void OnExitEvent()
+        {
+            IsPizzaSelected = false;
 
+        }
         private PizzaViewModel selectedPizza;
         public PizzaViewModel SelectedPizza
         {
@@ -48,27 +53,7 @@ namespace PizzaDelivery.ViewModels
             }
         }
 
-        //private ICommand updatePizzaSizeCommand;
-        //public ICommand UpdatePizzaSizeCommand
-        //{
-        //    get
-        //    {
-        //        return updatePizzaSizeCommand;
-        //    }
-        //}
-
-        //private ICommand exitCommand;
-        //public ICommand ExitCommand
-        //{
-        //    get
-        //    {
-        //        return exitCommand ??= new Commands.DelegateCommand(obj =>
-        //        {
-        //            IsPizzaSelected = false;
-        //            //Dispose addingPizza
-        //        });
-        //    }
-        //}
+        
 
         private ICommand selectPizzaCommand;
         public ICommand SelectPizzaCommand
@@ -78,7 +63,8 @@ namespace PizzaDelivery.ViewModels
                 return selectPizzaCommand ??= new Commands.DelegateCommand(obj =>
                 {
                     IsPizzaSelected = true;
-                    AddingPizza = new AddingPizzaViewModel(_assortmentmodel, selectedPizza.SelectedPizza);
+                    OrderLineModel orderLineModel = new OrderLineModel(_priceBook, _ols, new PizzaModel(SelectedPizza.SelectedPizza));
+                    AddingPizza = new AddingPizzaViewModel(_assortmentmodel, orderLineModel);
                     //AddingPizza.Load();
                 });
             }
@@ -98,8 +84,13 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged(nameof(IsPizzaSelected));
             }
         }
-        public PizzaSelectionVM(AssortmentModel assortmentModel)
+        private readonly IPriceBook _priceBook;
+        private readonly IOrderLineService _ols;
+        public PizzaSelectionVM(AssortmentModel assortmentModel, IPriceBook priceBook, IOrderLineService ols)
         {
+            _priceBook = priceBook;
+            _ols = ols;
+            AddingPizzaViewModel.OnExitDelegate += OnExitEvent;
             _assortmentmodel = assortmentModel;
             _pizzacollection= new ObservableCollection<PizzaViewModel>();
             IEnumerable<PizzaDto> loadedPizzas = _assortmentmodel.Pizzas;

@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace PizzaDelivery.ViewModels
 {
     public class IngredientViewModel : ViewModelBase
     {
+        public int Id => _dto.Id;
         private PizzaSizes _size;
         public PizzaSizes PizzaSize
         {
@@ -17,8 +19,10 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _size = value;
+                OnPropertyChanged(nameof(Cost));
             }
         }
+        
         private bool _isIngredientSelected;
         public bool IsIngredientSelected
         {
@@ -37,7 +41,7 @@ namespace PizzaDelivery.ViewModels
             _dto = ingr;
         }
         private readonly IngredientDto _dto;
-        public IngredientDto SelectedIngredient
+        public IngredientDto CurrentIngredient
         {
             get
             {
@@ -46,21 +50,10 @@ namespace PizzaDelivery.ViewModels
         }
         public string Name => _dto.C_name;
 
-        //public string Description => _dto.description;
 
         public byte[]? Image => _dto.ingrimage;
 
-        public string Weight
-        {
-            get
-            {
-                if (_size == PizzaSizes.Small)
-                    return _dto.small.ToString();
-                else if (_size == PizzaSizes.Medium)
-                    return _dto.medium.ToString();
-                else return _dto.big.ToString();
-            }
-        }
+        
         public string Cost
         {
             get

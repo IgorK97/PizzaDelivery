@@ -7,15 +7,20 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace PizzaDelivery.ViewModels
 {
+    public delegate void ExitDelegate();
+
     public class AddingPizzaViewModel : ViewModelBase
     {
+        public static event ExitDelegate OnExitDelegate;
         private readonly AssortmentModel _assortmentModel;
 
-        private OrderLineDto _orderLineDto;
+        private OrderLineModel _orderLineModel;
 
         private IngredientViewModel _selectedIngredient;
         public IngredientViewModel SelectedIngredient
@@ -31,18 +36,18 @@ namespace PizzaDelivery.ViewModels
             }
         }
         
-        private PizzaDto _pizza;
-        public PizzaDto Pizza
-        {
-            get
-            {
-                return _pizza;
-            }
-            set
-            {
-                _pizza = value;
-            }
-        }
+        //private PizzaDto _pizza;
+        //public PizzaDto Pizza
+        //{
+        //    get
+        //    {
+        //        return _orderLineModel.Pizza;
+        //    }
+        //    set
+        //    {
+        //        _pizza = value;
+        //    }
+        //}
 
         private string _price;
         public string Price
@@ -87,7 +92,31 @@ namespace PizzaDelivery.ViewModels
         {
             get
             {
-                return selectIngredientCommand;
+                return selectIngredientCommand ??= new Commands.DelegateCommand(obj =>
+                {
+                    foreach(IngredientViewModel ingr in _ingredientcollection)
+                    {
+                        if ((int)obj == ingr.Id)
+                        {
+                            ingr.IsIngredientSelected = !ingr.IsIngredientSelected;
+                            IngredientModel curIngr = new IngredientModel(ingr.CurrentIngredient);
+
+                            if (ingr.IsIngredientSelected)
+                            {
+                                (decimal price, decimal weight) = _orderLineModel.AddIngredient(curIngr);
+                                Price = price.ToString();
+                                FinalWeight = weight.ToString();
+                            }
+                            else
+                            {
+                                (decimal price, decimal weight) = _orderLineModel.DeleteIngredient(curIngr);
+                                Price = price.ToString();
+                                FinalWeight = weight.ToString();
+                            }
+                        }
+                    }
+                    //((IngredientViewModel)obj).IsIngredientSelected = !((IngredientViewModel)obj).IsIngredientSelected;
+                });
             }
         }
         private ICommand buyPizzaCommand;
@@ -106,13 +135,15 @@ namespace PizzaDelivery.ViewModels
             {
                 return exitCommand ??= new Commands.DelegateCommand(obj =>
                 {
-                    //IsPizzaSelected = false;
-                    //Dispose addingPizza
+                    OnExitDelegate?.Invoke();
                 });
             }
         }
 
-        private ICommand updatePizzaSizeCommand;
+
+
+
+    private ICommand updatePizzaSizeCommand;
         public ICommand UpdatePizzaSizeCommand
         {
             get
@@ -124,6 +155,10 @@ namespace PizzaDelivery.ViewModels
                     {
                         ingr.PizzaSize = PizzaSize;
                     }
+                    decimal price, weight;
+                    (price, weight) = _orderLineModel.ChangeSize((int)PizzaSize);
+                    Price = price.ToString();
+                    FinalWeight = weight.ToString();
                     //OnPropertyChanged(nameof(IngredientCollection));
                 });
             }
@@ -142,14 +177,16 @@ namespace PizzaDelivery.ViewModels
             }
         }
 
-        public string Name => _pizza.C_name;
+        public string Name => _orderLineModel.Pizza.C_name;
 
-        public string Description => _pizza.description;
+        public string Description => _orderLineModel.Pizza.description;
 
-        public byte[]? Image => _pizza.pizzaimage;
-        public AddingPizzaViewModel(AssortmentModel assortmentModel, PizzaDto pizza)
+        public byte[]? Image => _orderLineModel.Pizza.pizzaimage;
+        public AddingPizzaViewModel(AssortmentModel assortmentModel, OrderLineModel orderLineModel)
         {
-            _pizza = pizza;
+            _orderLineModel = orderLineModel;
+            Price = _orderLineModel.Position_price.ToString();
+            FinalWeight = _orderLineModel.Weight.ToString();
             _assortmentModel = assortmentModel;
             _ingredientcollection = null;
             

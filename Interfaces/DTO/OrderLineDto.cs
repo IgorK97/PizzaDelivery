@@ -22,8 +22,8 @@ namespace DTO
         public decimal position_price { get; set; }
         public int pizza_sizesId { get; set; }
         public decimal weight { get; set; }
-
-        public virtual List<int> addedingredientsId { get; set; }
+        public PizzaDto Pizza { get; set; }
+        public List<IngredientDto> addedingredients { get; set; }
         public OrderLineDto(OrderLine ol)
         {
             Id = ol.Id;
@@ -34,7 +34,14 @@ namespace DTO
             quantity = ol.Quantity;
             pizza_sizesId = ol.PizzaSizesId;
             weight = ol.Weight;
-            addedingredientsId = ol.Ingredients.Select(i => i.Id).ToList();
+            Pizza = new PizzaDto(ol.Pizza);
+            addedingredients = new List<IngredientDto>();
+            foreach(Ingredient ingr in ol.Ingredients)
+            {
+                IngredientDto ingrDto = new IngredientDto(ingr);
+                addedingredients.Add(ingrDto);
+            }
+            //addedingredientsId = ol.Ingredients.Select(i => i.Id).ToList();
         }
     }
 }

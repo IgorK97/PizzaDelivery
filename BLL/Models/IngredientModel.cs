@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,5 +23,19 @@ namespace BLL.Models
 
         public bool active { get; set; }
         public byte[]? ingrimage { get; set; }
+
+        public bool IsSelected { get; set; }
+        public IngredientModel(IngredientDto i)
+        {
+            Id = i.Id;
+            C_name = i.C_name;
+            price_per_gram = i.price_per_gram;
+            small = i.small;
+            medium = i.medium;
+            big = i.big;
+            active = i.active;
+            ingrimage = i.ingrimage;
+            IsSelected=i.IsSelected;
+        }
     }
 }

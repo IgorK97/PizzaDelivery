@@ -22,94 +22,7 @@ namespace BLL.Models
             //db = new PizzaDeliveryContext();
         }
 
-        //public bool AddNewClient(UserDTO userDTO)
-        //{
-        //    User _user = new User
-        //    {
-        //        FirstName = userDTO.FirstName,
-        //        LastName = userDTO.LastName,
-        //        Surname = userDTO.Surname,
-        //        Login = userDTO.Login,
-        //        Password = userDTO.Password
-
-        //    };
-        //    dbr.Users.Create(_user);
-        //    //if(userDTO is ClientDTO)
-        //    //{
-        //    bool suc = Save();
-        //    var newu = dbr.Users.GetList().Where(i => i.Login == userDTO.Login).First();
-        //    if (newu!=null) {
-        //        ClientDTO cl = (ClientDTO)userDTO;
-        //        Client _client = new Client
-        //        {
-        //            AddressDel = cl.AddressDel,
-        //            Phone = cl.Phone,
-        //            Email = cl.Email,
-        //            Id = newu.Id
-        //        };
-        //        dbr.Clients.Create(_client);
-        //    }
-        //    return Save();
-        //}
-        //public UserDTO? GetCurrentUser(string login, string password)
-        //{
-        //    var res = dbr.Users.GetList().Where(i => i.Login== login && i.Password== password).FirstOrDefault();
-        //    if (res != null)
-        //    {
-        //        var res_client = dbr.Clients.GetList().Where(i => i.Id==res.Id).FirstOrDefault();
-        //        var res_courier = dbr.Couriers.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
-        //        var res_manager = dbr.Managers.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
-
-        //        if (res_client != null)
-        //        {
-        //            return new ClientDTO
-        //            {
-        //                Id = res_client.Id,
-        //                Email = res_client.Email,
-        //                Phone = res_client.Phone,
-        //                Password = res.Password,
-        //                Login = res.Login,
-        //                FirstName = res.FirstName,
-        //                AddressDel = res_client.AddressDel,
-        //                LastName = res.LastName,
-        //                Surname = res.Surname
-        //            };
-        //        }
-        //        else if (res_courier != null)
-        //        {
-        //            return new CouriersDto
-        //            {
-        //                Id = res_courier.Id,
-        //                Email = res_courier.Email,
-        //                Phone = res_courier.Phone,
-        //                Password = res.Password,
-        //                Login = res.Login,
-        //                FirstName = res.FirstName,
-        //                LastName = res.LastName,
-        //                Surname = res.Surname
-        //            };
-        //        }
-        //        else if (res_manager != null)
-        //        {
-        //            return new ManagerDto
-        //            {
-        //                Id = res_manager.Id,
-        //                Email = res_manager.Email,
-        //                Phone = res_manager.Phone,
-        //                Password = res.Password,
-        //                Login = res.Login,
-        //                FirstName = res.FirstName,
-        //                LastName = res.LastName,
-        //                Surname = res.Surname
-        //            };
-        //        }
-        //        else
-        //            throw new IncorrectLoginOrPasswordException();
-
-        //    }
-        //    else
-        //        throw new IncorrectLoginOrPasswordException();
-        //}
+        
 
         public int GetCurrentOrder(int ClientId)
         {
@@ -188,18 +101,18 @@ namespace BLL.Models
             return false;
         }
 
-        public (decimal price, decimal weight) UpdateOrder(int odId)
-        {
-            decimal price, weight;
-            price = dbr.OrderLines.GetList().Where(ol => ol.OrdersId == odId).Select(i => i.PositionPrice).Sum();
-            weight = dbr.OrderLines.GetList().Where(ol => ol.OrdersId == odId).Select(i => i.Weight).Sum();
-            Order order = dbr.Orders.GetItem(odId);
-            order.Weight = weight;
-            order.FinalPrice = price;
-            if (dbr.Save() > 0)
-                return (price, weight);
-            throw new Exception("Ошибка обновления заказа");
-        }
+        //public (decimal price, decimal weight) UpdateOrder(int odId)
+        //{
+        //    decimal price, weight;
+        //    price = dbr.OrderLines.GetList().Where(ol => ol.OrdersId == odId).Select(i => i.PositionPrice).Sum();
+        //    weight = dbr.OrderLines.GetList().Where(ol => ol.OrdersId == odId).Select(i => i.Weight).Sum();
+        //    Order order = dbr.Orders.GetItem(odId);
+        //    order.Weight = weight;
+        //    order.FinalPrice = price;
+        //    if (dbr.Save() > 0)
+        //        return (price, weight);
+        //    throw new Exception("Ошибка обновления заказа");
+        //}
 
 
         public List<OrderDto> GetAllOrders(int ClientId)
@@ -207,93 +120,80 @@ namespace BLL.Models
             return dbr.Orders.GetList().ToList().Where(i => i.ClientId == ClientId&&i.DelstatusId!=1).Select(i => new OrderDto(i)).OrderByDescending(i => i.ordertime).ToList();
         }
 
-        public List<ManagerDto> GetAllManagers()
-        {
-            
-            //var q = (from u in dbr.Users.GetList().ToList()
-            //         join m in dbr.Managers on u.Id equals m.Id
-            //         select new ManagerDto
-            //         {
-            //             Id = u.Id,
-            //             first_name = u.FirstName,
-            //             last_name = u.LastName,
-            //             surname = u.Surname,
-            //             login = u.Login,
-            //             phone = m.Phone,
-            //             email = m.Email,
-            //             C_password = u.Password
-            //         }).ToList();
-            var q = dbr.Users.GetList().ToList().Join(dbr.Managers.GetList().ToList(), u => u.Id, m => m.Id, (_u, _m)
-                => new ManagerDto
-                {
-                    Id = _u.Id,
-                    FirstName = _u.FirstName,
-                    LastName = _u.LastName,
-                    Surname = _u.Surname,
-                    Login = _u.Login,
-                    Phone = _m.Phone,
-                    Email = _m.Email,
-                    Password = _u.Password
-                }).ToList();
-            return q;
-        }
+        //public List<ManagerDto> GetAllManagers()
+        //{
+           
+        //    var q = dbr.Users.GetList().ToList().Join(dbr.Managers.GetList().ToList(), u => u.Id, m => m.Id, (_u, _m)
+        //        => new ManagerDto
+        //        {
+        //            Id = _u.Id,
+        //            FirstName = _u.FirstName,
+        //            LastName = _u.LastName,
+        //            Surname = _u.Surname,
+        //            Login = _u.Login,
+        //            Phone = _m.Phone,
+        //            Email = _m.Email,
+        //            Password = _u.Password
+        //        }).ToList();
+        //    return q;
+        //}
 
-        public List<CouriersDto> GetAllCouriers()
-        {
-            var q = dbr.Users.GetList().ToList().Join(dbr.Couriers.GetList().ToList(), u => u.Id, c => c.Id, (_u, _c)
-                => new CouriersDto
-                {
-                    Id = _u.Id,
-                    FirstName = _u.FirstName,
-                    LastName = _u.LastName,
-                    Surname = _u.Surname,
-                    Login = _u.Login,
-                    Phone = _c.Phone,
-                    Email = _c.Email,
-                    Password = _u.Password
-                }).ToList();
-            return q;
+        //public List<CouriersDto> GetAllCouriers()
+        //{
+        //    var q = dbr.Users.GetList().ToList().Join(dbr.Couriers.GetList().ToList(), u => u.Id, c => c.Id, (_u, _c)
+        //        => new CouriersDto
+        //        {
+        //            Id = _u.Id,
+        //            FirstName = _u.FirstName,
+        //            LastName = _u.LastName,
+        //            Surname = _u.Surname,
+        //            Login = _u.Login,
+        //            Phone = _c.Phone,
+        //            Email = _c.Email,
+        //            Password = _u.Password
+        //        }).ToList();
+        //    return q;
 
 
-            //return dbr.Couriers.GetList().ToList().Select(i => new CouriersDto(i)).ToList();
-        }
+        //    //return dbr.Couriers.GetList().ToList().Select(i => new CouriersDto(i)).ToList();
+        //}
 
-        public bool UpdateUser(UserDTO _user)
-        {
-            User user = dbr.Users.GetItem(_user.Id);
-            user.FirstName = _user.FirstName;
-            user.LastName = _user.LastName;
-            user.Surname = _user.Surname;
-            user.Login = _user.Login;
-            user.Password = _user.Password;
-            if(_user is ClientDTO)
-            {
-                Client client = dbr.Clients.GetItem(_user.Id);
-                ClientDTO cl = (ClientDTO)_user;
-                client.AddressDel = cl.AddressDel;
-                client.Phone = cl.Phone;
-                client.Email = cl.Email;
-            }
-            else if(_user is CouriersDto)
-            {
-                Courier client = dbr.Couriers.GetItem(_user.Id);
-                CouriersDto cl = (CouriersDto)_user;
-                client.Phone = cl.Phone;
-                client.Email = cl.Email;
-            }
-            else if(_user is ManagerDto)
-            {
-                Manager manager = dbr.Managers.GetItem(_user.Id);
-                ManagerDto cl = (ManagerDto)_user;
-                manager.Phone = cl.Phone;
-                manager.Email = cl.Email;
-            }
-            return Save();
-        }
-        public bool Save()
-        {
-            if (dbr.Save() > 0) return true;
-            return false;
-        }
+        //public bool UpdateUser(UserDTO _user)
+        //{
+        //    User user = dbr.Users.GetItem(_user.Id);
+        //    user.FirstName = _user.FirstName;
+        //    user.LastName = _user.LastName;
+        //    user.Surname = _user.Surname;
+        //    user.Login = _user.Login;
+        //    user.Password = _user.Password;
+        //    if(_user is ClientDTO)
+        //    {
+        //        Client client = dbr.Clients.GetItem(_user.Id);
+        //        ClientDTO cl = (ClientDTO)_user;
+        //        client.AddressDel = cl.AddressDel;
+        //        client.Phone = cl.Phone;
+        //        client.Email = cl.Email;
+        //    }
+        //    else if(_user is CouriersDto)
+        //    {
+        //        Courier client = dbr.Couriers.GetItem(_user.Id);
+        //        CouriersDto cl = (CouriersDto)_user;
+        //        client.Phone = cl.Phone;
+        //        client.Email = cl.Email;
+        //    }
+        //    else if(_user is ManagerDto)
+        //    {
+        //        Manager manager = dbr.Managers.GetItem(_user.Id);
+        //        ManagerDto cl = (ManagerDto)_user;
+        //        manager.Phone = cl.Phone;
+        //        manager.Email = cl.Email;
+        //    }
+        //    return Save();
+        //}
+        //public bool Save()
+        //{
+        //    if (dbr.Save() > 0) return true;
+        //    return false;
+        //}
     }
 }

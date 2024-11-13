@@ -29,7 +29,7 @@ namespace PizzaDelivery
     /// </summary>
     public partial class App : Application
     {
-        private AccountModel _user;
+        //private AccountModel _user;
         private readonly NavigationStore _navigationStore;
 
         public App()
@@ -93,7 +93,7 @@ namespace PizzaDelivery
             services.AddSingleton<IAccountStore, AccountStore>();
 
             services.AddSingleton<IAuthenticator, Authenticator>();
-
+            services.AddSingleton<IPriceBook, PriceBook>();
             services.AddSingleton<IPizzaDeliveryViewModelFactory, PizzaDeliveryViewModelFactory>();
             services.AddSingleton<CreateViewModel<ProfilePresentationVM>>(services =>
             {
@@ -118,7 +118,9 @@ namespace PizzaDelivery
             services.AddSingleton<AssortmentModel>();
             services.AddSingleton<CreateViewModel<PizzaSelectionVM>>(services =>
             {
-                return () => new PizzaSelectionVM(services.GetRequiredService<AssortmentModel>());
+                return () => new PizzaSelectionVM(services.GetRequiredService<AssortmentModel>(),
+                    services.GetRequiredService<IPriceBook>(),
+                    services.GetRequiredService<IOrderLineService>());
             });
             services.AddSingleton<INavigator, Navigator>();
             services.AddSingleton<MainViewModel>();

@@ -44,45 +44,45 @@ namespace BLL.Models
 
         public void CreateOrderLine(OrderLineDto p)
         {
-            List<Ingredient> addedingredients = new List<Ingredient>();
-            foreach(var pId in p.addedingredientsId)
-            {
-                Ingredient ingr = dbr.Ingredients.GetItem(pId);
-                addedingredients.Add(ingr);
-            }
-            dbr.OrderLines.Create(new OrderLine()
-            {
-                PositionPrice = p.position_price,
-                OrdersId = p.ordersId,
-                Custom = p.custom,
-                Weight = p.weight,
-                PizzaId = p.pizzaId,
-                PizzaSizesId = p.pizza_sizesId,
-                Quantity = p.quantity,
-                Ingredients=addedingredients
-            });
-            Save();
+            //List<Ingredient> addedingredients = new List<Ingredient>();
+            //foreach(var pId in p.addedingredientsId)
+            //{
+            //    Ingredient ingr = dbr.Ingredients.GetItem(pId);
+            //    addedingredients.Add(ingr);
+            //}
+            //dbr.OrderLines.Create(new OrderLine()
+            //{
+            //    PositionPrice = p.position_price,
+            //    OrdersId = p.ordersId,
+            //    Custom = p.custom,
+            //    Weight = p.weight,
+            //    PizzaId = p.pizzaId,
+            //    PizzaSizesId = p.pizza_sizesId,
+            //    Quantity = p.quantity,
+            //    Ingredients=addedingredients
+            //});
+            //Save();
             //db.order_lines.Attach(p);
         }
 
         public void UpdateOrderLine(OrderLineDto p)
         {
-            List<Ingredient> addedingredients = new List<Ingredient>();
-            foreach (var pId in p.addedingredientsId)
-            {
-                Ingredient ingr = dbr.Ingredients.GetItem(pId);
-                addedingredients.Add(ingr);
-            }
-            OrderLine ol = dbr.OrderLines.GetItem(p.Id);
-            ol.Weight = p.weight;
-            ol.Custom = p.custom;
-            ol.PizzaId = p.pizzaId;
-            ol.PositionPrice = p.position_price;
-            ol.PizzaSizesId = p.pizza_sizesId;
-            ol.Quantity = p.quantity;
-            ol.OrdersId = p.ordersId;
-            ol.Ingredients = addedingredients;
-            Save();
+            //List<Ingredient> addedingredients = new List<Ingredient>();
+            //foreach (var pId in p.addedingredientsId)
+            //{
+            //    Ingredient ingr = dbr.Ingredients.GetItem(pId);
+            //    addedingredients.Add(ingr);
+            //}
+            //OrderLine ol = dbr.OrderLines.GetItem(p.Id);
+            //ol.Weight = p.weight;
+            //ol.Custom = p.custom;
+            //ol.PizzaId = p.pizzaId;
+            //ol.PositionPrice = p.position_price;
+            //ol.PizzaSizesId = p.pizza_sizesId;
+            //ol.Quantity = p.quantity;
+            //ol.OrdersId = p.ordersId;
+            //ol.Ingredients = addedingredients;
+            //Save();
         }
 
         public void DeleteOrderLine(int id)

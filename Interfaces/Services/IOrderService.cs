@@ -10,11 +10,7 @@ namespace Interfaces.Services
 {
     public interface IOrderService
     {
-        //int GetCurrentOrder(int ClientId);
-
-        //bool AddNewClient(UserDTO userDTO);
-
-        //public UserDTO? GetCurrentUser(string login, string password);
+        
 
         bool MakeOrder(int ClientId);
 
@@ -23,13 +19,13 @@ namespace Interfaces.Services
 
         bool SubmitOrder(int odId, string addressdel);
 
-        (decimal price, decimal weight) UpdateOrder(int odI);
+        //(decimal price, decimal weight) UpdateOrder(int odI);
 
-        bool UpdateUser(UserDTO _user);
+        //bool UpdateUser(UserDTO _user);
         List<OrderDto> GetAllOrders(int ClientId);
 
-        List<ManagerDto> GetAllManagers();
+        //List<ManagerDto> GetAllManagers();
 
-        List<CouriersDto> GetAllCouriers();
+        //List<CouriersDto> GetAllCouriers();
     }
 }

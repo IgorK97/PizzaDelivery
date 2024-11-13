@@ -29,7 +29,7 @@ namespace DTO
         public int delstatusId { get; set; }
         public string? comment { get; set; }
 
-        public List<int> order_linesIds { get; set; }
+        public List<OrderLineDto> order_lines { get; set; }
         public OrderDto(Order o)
         {
             Id = o.Id;
@@ -42,7 +42,13 @@ namespace DTO
             deliverytime = o.Deliverytime;
             delstatusId = o.DelstatusId;
             comment = o.Comment;
-            order_linesIds = o.OrderLines.Select(i => i.Id).ToList();
+            order_lines = new List<OrderLineDto>();
+            foreach(OrderLine ol in o.OrderLines)
+            {
+                OrderLineDto olDto = new OrderLineDto(ol);
+                order_lines.Add(olDto);
+            }
+            //order_linesIds = o.OrderLines.Select(i => i.Id).ToList();
         }
     }
 }

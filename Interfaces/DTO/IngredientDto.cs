@@ -28,6 +28,7 @@ namespace DTO
         public bool active { get; set; }
         public byte[]? ingrimage { get; set; }
 
+        public bool IsSelected { get; set; }
         public IngredientDto(Ingredient i)
         {
             Id = i.Id;
@@ -38,6 +39,7 @@ namespace DTO
             big = i.Big;
             active = i.Active;
             ingrimage = i.Ingrimage;
+            IsSelected = false;
         }
     }
 }
