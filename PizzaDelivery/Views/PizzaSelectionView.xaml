@@ -8,20 +8,21 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <DataTemplate x:Key="listTemplate">
-            <Border Width="180" Height="220" Margin="10" BorderThickness="2" CornerRadius="10">
+            <Border Width="300" Height="300" Margin="10" BorderThickness="2" CornerRadius="10">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="BorderBrush" Value="Red"/>
-                                <Setter Property="Background" Value="LightGray"/>
+                                <Setter Property="Background" Value="LightCoral"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </Border.Style>
                 <StackPanel>
-                    <Image Source="/ImagesForProject/pepperoni.png" Width="150" Height="150" Margin="15"/>
-                    <TextBox Text="{Binding Name, Mode=OneWay}" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                    <Image Source="{Binding Image, Mode=OneWay}" Width="200" Height="200" Margin="15"/>
+                    <!--<Image Source="/ImagesForProject/pepperoni.png" Width="150" Height="150" Margin="15"/>-->
+                    <TextBlock Text="{Binding Name, Mode=OneWay}" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                 </StackPanel>
 
             </Border>
@@ -30,36 +31,7 @@
             <WrapPanel/>
         </ItemsPanelTemplate>
     </UserControl.Resources>
-    <!--<Grid Margin="10">-->
-        <!--<Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-
-            --><!--<RowDefinition Height="*"/>--><!--
-        </Grid.RowDefinitions>
-        <local:TopPanelPD Grid.Row="0"/>-->
-        <!--<TextBox Grid.Row="0" IsReadOnly="True" Text="Пиццерия" FontSize="30" FontWeight="Bold" Foreground="Red" Margin="10"  HorizontalAlignment="Left"/>
-
-        <DockPanel Grid.Row="1" Background="#FFEE3B3B" Height="80" LastChildFill="False">
-            <TextBlock Text="Выберите ингредиент" TextAlignment="Center" Margin ="20" Height="40" Padding="12" Background="Bisque"/>
-            <ComboBox Margin ="20" Width="100" Height="40" Padding="10" Background="Beige">
-                <ComboBoxItem Content="Ингредиент"/>
-            </ComboBox>
-            <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Left">
-                <Image Source="/ImagesForProject/pizzaicon.png"/>
-
-            </Button>
-            <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Right">
-                <Image Source="/ImagesForProject/profile.png"/>
-            </Button>
-            <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Right">
-                <Image Source="/ImagesForProject/ordersicon.png"/>
-            </Button>
-            <Button Width="80" Margin="10" Background="White" DockPanel.Dock="Right">
-                <Image Source="/ImagesForProject/basket.png"/>
-            </Button>
-
-        </DockPanel>-->
+    
 
 
         

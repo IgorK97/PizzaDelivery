@@ -13,6 +13,7 @@ namespace PizzaDelivery.State.Authenticators
         UserDTO CurrentUser { get; }
         bool IsLoggedIn { get; }
 
+        RegistrationResult UpdateAccount(UserDTO user, string confirmstring);
         RegistrationResult Register(ClientDTO user, string confirmpassword);
         bool Login(string login, string password);
         void Logout();

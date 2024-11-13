@@ -2,11 +2,13 @@
 using DTO;
 using Interfaces.Repository;
 using Interfaces.Services;
+using Interfaces.Services.AuthenticationServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BLL.Models.OrderService;
 
 namespace BLL.Services
 {
@@ -19,37 +21,42 @@ namespace BLL.Services
             db = repos;
             //db = new PizzaDeliveryContext();
         }
+
+        
+
+        
         public UserDTO? GetByLogin(string login)
         {
             var res = db.Users.GetList().Where(i => i.Login == login).FirstOrDefault();
             if (res != null)
             {
-                var res_client = db.Clients.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
+                //var res_client = db.Clients.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
 
-                if (res_client != null)
+                if (res.Client != null)
                 {
                     return new ClientDTO
                     {
-                        Id = res_client.Id,
-                        Email = res_client.Email,
-                        Phone = res_client.Phone,
+                        Id = res.Id,
+                        Email = res.Client.Email,
+                        Phone = res.Client.Phone,
                         Password = res.Password,
                         Login = res.Login,
                         FirstName = res.FirstName,
-                        AddressDel = res_client.AddressDel,
+                        AddressDel = res.Client.AddressDel,
                         LastName = res.LastName,
                         Surname = res.Surname
                     };
                 }
-                var res_courier = db.Couriers.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
+                
+                //var res_manager = db.Managers.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
 
-                if (res_courier != null)
+                if (res.Courier != null)
                 {
                     return new CouriersDto
                     {
-                        Id = res_courier.Id,
-                        Email = res_courier.Email,
-                        Phone = res_courier.Phone,
+                        Id = res.Id,
+                        Email = res.Courier.Email,
+                        Phone = res.Courier.Phone,
                         Password = res.Password,
                         Login = res.Login,
                         FirstName = res.FirstName,
@@ -57,15 +64,14 @@ namespace BLL.Services
                         Surname = res.Surname
                     };
                 }
-                var res_manager = db.Managers.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
 
-                if (res_manager != null)
+                if (res.Manager != null)
                 {
                     return new ManagerDto
                     {
-                        Id = res_manager.Id,
-                        Email = res_manager.Email,
-                        Phone = res_manager.Phone,
+                        Id = res.Id,
+                        Email = res.Manager.Email,
+                        Phone = res.Manager.Phone,
                         Password = res.Password,
                         Login = res.Login,
                         FirstName = res.FirstName,
@@ -73,7 +79,6 @@ namespace BLL.Services
                         Surname = res.Surname
                     };
                 }
-
 
             }
             return null;
@@ -138,6 +143,46 @@ namespace BLL.Services
             return null;
         }
 
+        public bool Update(UserDTO userDTO)
+        {
+            
+            User user = db.Users.GetItem(userDTO.Id);
+            if (user != null)
+            {
+
+                user.FirstName = userDTO.FirstName;
+                user.LastName = userDTO.LastName;
+                user.Surname = userDTO.Surname;
+                user.Login = userDTO.Login;
+                user.Password = userDTO.Password;
+
+                if (user.Client != null)
+                {
+                    user.Client.Phone = ((ClientDTO)userDTO).Phone;
+                    user.Client.Email = ((ClientDTO)userDTO).Email;
+                    user.Client.AddressDel = ((ClientDTO)userDTO).AddressDel;
+                    db.Save();
+                    return true;
+                }
+                if (user.Courier != null)
+                {
+                    user.Courier.Phone = ((CouriersDto)userDTO).Phone;
+                    user.Courier.Email = ((CouriersDto)userDTO).Email;
+                    db.Save();
+                    return true;
+                }
+                if (user.Manager != null)
+                {
+                    user.Manager.Phone = ((ManagerDto)userDTO).Phone;
+                    user.Manager.Email = ((ManagerDto)userDTO).Email;
+                    db.Save();
+                    return true;
+                }
+
+            }
+            return false;
+
+        }
         public bool Create(UserDTO userDTO)
         {
             User _user = new User

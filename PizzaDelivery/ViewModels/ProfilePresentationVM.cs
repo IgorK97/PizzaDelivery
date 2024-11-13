@@ -1,21 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Printing;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using BLL.Models;
+using DTO;
+using Interfaces.Services.AuthenticationServices;
 using PizzaDelivery.Commands;
+using PizzaDelivery.State.Accounts;
+using PizzaDelivery.State.Authenticators;
 using PizzaDelivery.Util;
 
 namespace PizzaDelivery.ViewModels
 {
+    //public delegate void PasswordBoxesIsNull(object sender, EventArgs e);
+
     public class ProfilePresentationVM : ViewModelBase
     {
-        AccountModel User;
+        private readonly IAuthenticator _authenticator;
+        //AccountModel User;
         //UserVM UserB;
         private string _firstname;
+        //public static event PasswordBoxesIsNull OnPasswordBoxesIsNull;
 
         public string FirstName
         {
@@ -26,7 +36,6 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _firstname = value;
-                User.FirstName = value;
                 OnPropertyChanged(nameof(FirstName));
             }
         }
@@ -40,7 +49,6 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _lastname = value;
-                User.LastName = value;
                 OnPropertyChanged(nameof(LastName));
             }
         }
@@ -54,7 +62,6 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _surname = value;
-                User.Surname = value;
                 OnPropertyChanged(nameof(Surname));
             }
         }
@@ -68,12 +75,11 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _login = value;
-                User.Login = value;
                 OnPropertyChanged(nameof(Login));
             }
         }
-        private string _password;
-        public string Password
+        private SecureString? _password;
+        public SecureString? Password
         {
             get
             {
@@ -82,7 +88,6 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _password = value;
-                User.Password = value;
                 OnPropertyChanged(nameof(Password));
             }
         }
@@ -96,7 +101,6 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _email = value;
-                User.Email = value;
                 OnPropertyChanged(nameof(Email));
             }
         }
@@ -110,7 +114,6 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _address = value;
-                User.AddressDel= value;
                 OnPropertyChanged(nameof(Address));
             }
         }
@@ -124,12 +127,11 @@ namespace PizzaDelivery.ViewModels
             set
             {
                 _phone = value;
-                User.Phone = value;
                 OnPropertyChanged(nameof(Phone));
             }
         }
-        private string? _reppassword;
-        public string? RepPassword
+        private SecureString? _reppassword;
+        public SecureString? RepPassword
         {
             get
             {
@@ -142,31 +144,62 @@ namespace PizzaDelivery.ViewModels
             }
         }
 
-        private ICommand _saveprofilechangesCommand;
+        private ICommand saveProfileChangesCommand;
 
         public ICommand SaveProfileChangesCommand
         {
             get
             {
-                return _saveprofilechangesCommand;
+                return saveProfileChangesCommand ??= new Commands.DelegateCommand(obj =>
+                {
+                    NetworkCredential networkCredential = new NetworkCredential(Login, Password);
+                    NetworkCredential networkCredentialsecond = new NetworkCredential(Login, RepPassword);
+
+                    ClientDTO testUser = new ClientDTO
+                    {
+                        FirstName = FirstName,
+                        LastName = LastName,
+                        Surname = Surname,
+                        Login = Login,
+                        Password = networkCredential.Password,
+                        Phone = Phone,
+                        Email = Email,
+                        AddressDel = Address
+                    };
+                    RegistrationResult result = _authenticator.UpdateAccount(testUser, networkCredentialsecond.Password);
+                    if (result == RegistrationResult.Success)
+                    {
+                        //_password.Clear();
+                        //_reppassword.Clear();
+                        //OnPasswordBoxesIsNull?.Invoke(this, new EventArgs());
+                        //State.Navigators.ViewType viewType = State.Navigators.ViewType.Login;
+                        //OnViewModelChangedDelegate(viewType);
+                    }
+                },
+                    abj =>
+                    {
+                        return !string.IsNullOrEmpty(Login) &&
+                Password != null && RepPassword!=null &&
+                Login.Length > 3 && !string.IsNullOrEmpty(FirstName) &&
+                !string.IsNullOrEmpty(LastName) &&
+                !string.IsNullOrEmpty(Phone);
+                    });
             }
 
 
         }
 
-        public ProfilePresentationVM(/*AccountModel _user*/)
+        public ProfilePresentationVM(IAuthenticator authenticator)
         {
-            //_saveprofilechangesCommand = new SaveProfileChanges(this, _user);
-            //User = _user;
-            ////UserB = new UserVM();
-            //FirstName = User.FirstName;
-            //LastName = User.LastName;
-            //Surname = User.Surname;
-            //Phone = User.Phone;
-            //Address = User.AddressDel;
-            //Email = User.Email;
-            //Login = User.Login;
-            //Password = User.Password;
+            _authenticator = authenticator;
+            UserDTO userDTO = _authenticator.CurrentUser;
+            FirstName = userDTO.FirstName;
+            LastName = userDTO.LastName;
+            Surname = userDTO.Surname;
+            Login = userDTO.Login;
+            Address = ((ClientDTO)userDTO).AddressDel;
+            Phone = ((ClientDTO)userDTO).Phone;
+            Email = ((ClientDTO)userDTO).Email;
         }
     }
 }

@@ -18,6 +18,8 @@ namespace Interfaces.Services.AuthenticationServices
     public interface IAuthenticationService
     {
         RegistrationResult Register(ClientDTO _user, string confirmPassword);
+        RegistrationResult UpdateAccount(UserDTO _user, string confirmPassword);
+
         UserDTO Login(string login, string password);
     }
 }

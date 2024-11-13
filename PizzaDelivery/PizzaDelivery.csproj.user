@@ -16,9 +16,6 @@
     <Compile Update="Views\OrderHistoryPresentation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\OrderLineWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\OrdersCourierPresentation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -32,6 +29,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\RegistrationPresentation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SelectedPizzaView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\TopPanelPD.xaml.cs">
@@ -51,9 +51,6 @@
     <Page Update="Views\OrderHistoryPresentation.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\OrderLineWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Views\OrdersCourierPresentation.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -67,6 +64,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\RegistrationPresentation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SelectedPizzaView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\TopPanelPD.xaml">

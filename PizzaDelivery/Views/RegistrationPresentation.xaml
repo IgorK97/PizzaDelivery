@@ -11,7 +11,7 @@ FontSize="16"
     <Grid Background="Chocolate">
         <!--d:DataContext="{d:DesignInstance viewmodels:RegistrationVM}"-->
         <StackPanel Background="Bisque" Margin="50,30,50,30">
-            <TextBox Text="Доставка пиццы - Регистрация" Background="Bisque" HorizontalAlignment="Center" VerticalAlignment="Top"
+            <TextBlock Text="Доставка пиццы - Регистрация" Background="Bisque" HorizontalAlignment="Center" VerticalAlignment="Top"
                  FontSize="20" Margin="0,10,0,0"/>
 
             <Grid Grid.Row="2" >

@@ -19,6 +19,8 @@ using Microsoft.AspNet.Identity;
 using Interfaces.Services.AuthenticationServices;
 using PizzaDelivery.State.Navigators;
 using PizzaDelivery.State.Authenticators;
+using PizzaDelivery.State.Accounts;
+using PizzaDelivery.AppCore.Tests.Services.AuthenticationServices;
 
 namespace PizzaDelivery
 {
@@ -84,15 +86,18 @@ namespace PizzaDelivery
         {
             IServiceCollection services = new ServiceCollection();
             services.AddSingleton<IDbRepos, DbReposPgs>();
+            services.AddSingleton<IOrderLineService, OrderLinesService>();
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<IAccountService, AccountService>();
+            services.AddSingleton<IAccountStore, AccountStore>();
+
             services.AddSingleton<IAuthenticator, Authenticator>();
 
             services.AddSingleton<IPizzaDeliveryViewModelFactory, PizzaDeliveryViewModelFactory>();
             services.AddSingleton<CreateViewModel<ProfilePresentationVM>>(services =>
             {
-                return () => new ProfilePresentationVM();
+                return () => new ProfilePresentationVM(services.GetRequiredService<IAuthenticator>());
             });
             services.AddSingleton<CreateViewModel<AuthorizationVM>>(services =>
             {
@@ -109,10 +114,11 @@ namespace PizzaDelivery
             services.AddSingleton<CreateViewModel<OrderHistoryViewModel>>(services =>
             {
                 return () => new OrderHistoryViewModel();
-            }); 
+            });
+            services.AddSingleton<AssortmentModel>();
             services.AddSingleton<CreateViewModel<PizzaSelectionVM>>(services =>
             {
-                return () => new PizzaSelectionVM();
+                return () => new PizzaSelectionVM(services.GetRequiredService<AssortmentModel>());
             });
             services.AddSingleton<INavigator, Navigator>();
             services.AddSingleton<MainViewModel>();

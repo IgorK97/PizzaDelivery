@@ -2,6 +2,7 @@
 using DTO;
 using Interfaces.Repository;
 using Interfaces.Services;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +22,15 @@ namespace DAL.Repository
 
         public List<User> GetList()
         {
-            
-            return db.Users.ToList();
+            return db.Users.Include(u => u.Client).Include(u => u.Courier).Include(u => u.Manager).ToList();
+            //return db.Users.Include(u => u.Client).ToList();
         }
 
         public User GetItem(int id)
         {
-            return db.Users.Find(id);
+            //db.Users.Include(u => u.Client).Find(id);
+            return db.Users.Include(u => u.Client).Include(u => u.Courier).Include(u => u.Manager)
+                .FirstOrDefault(u => u.Id == id);
         }
 
         public void Create(User user)

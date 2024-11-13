@@ -1,4 +1,5 @@
 ﻿using DTO;
+using Interfaces.Services.AuthenticationServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace Interfaces.Services
         UserDTO? GetByLogin(string login);
         UserDTO? GetByPhone(string phone);
 
+
+        bool Update(UserDTO user);
         bool Create(UserDTO _user);
     }
 }

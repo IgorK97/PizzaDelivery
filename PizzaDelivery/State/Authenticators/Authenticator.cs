@@ -1,5 +1,6 @@
 ﻿using DTO;
 using Interfaces.Services.AuthenticationServices;
+using PizzaDelivery.State.Accounts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +12,22 @@ namespace PizzaDelivery.State.Authenticators
     public class Authenticator : IAuthenticator
     {
         private readonly IAuthenticationService _authenticationService;
+        private readonly IAccountStore _accountStore;
 
-        public Authenticator(IAuthenticationService authenticationService)
+        public Authenticator(IAuthenticationService authenticationService, IAccountStore accountStore)
         {
             _authenticationService = authenticationService;
+            _accountStore= accountStore;
         }
-        private UserDTO _currentUser;
+        
         public UserDTO CurrentUser { get
             {
-                return _currentUser;
+                return _accountStore.CurrentAccount;
             }
             private set
             {
-                _currentUser = value;
+                _accountStore.CurrentAccount = value;
+                _accountStore.Id = value.Id;
                 StateChanged?.Invoke();
             }
         }
@@ -53,6 +57,15 @@ namespace PizzaDelivery.State.Authenticators
         public RegistrationResult Register(ClientDTO user, string confirmpassword)
         {
             return _authenticationService.Register(user, confirmpassword);
+        }
+
+        public RegistrationResult UpdateAccount(UserDTO user, string confirmpassword)
+        {
+            _accountStore.CurrentAccount = user;
+            user.Id = _accountStore.Id;
+
+            //user.Password = _passwordHasher.HashPassword(user.Password);
+            return _authenticationService.UpdateAccount(user, confirmpassword);
         }
     }
 }

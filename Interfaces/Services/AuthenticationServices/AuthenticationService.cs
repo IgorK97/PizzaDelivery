@@ -40,6 +40,77 @@ namespace Interfaces.Services.AuthenticationServices
             return storedUser;
         }
 
+        public RegistrationResult UpdateAccount(UserDTO _user, string confirmPassword)
+        {
+            RegistrationResult result = RegistrationResult.Success;
+
+            if (_user.Password != confirmPassword)
+                result = RegistrationResult.PasswordDoNotMatch;
+
+            UserDTO loginAccount = _accountService.GetByLogin(_user.Login);
+
+            if (loginAccount != null && _user.Id!=loginAccount.Id)
+                result = RegistrationResult.UsernameAlreadyExists;
+
+            string phone;
+            if (_user is ClientDTO)
+                phone = ((ClientDTO)_user).Phone;
+            else if (_user is CouriersDto)
+                phone = ((CouriersDto)_user).Phone;
+            else
+                phone = ((ManagerDto)_user).Phone;
+            UserDTO phoneAccount = _accountService.GetByPhone(phone);
+
+            if (phoneAccount != null && _user.Id != phoneAccount.Id)
+                result = RegistrationResult.PhoneAlreadyExists;
+
+            if (result == RegistrationResult.Success)
+            {
+                string password = _passwordHasher.HashPassword(_user.Password);
+                UserDTO newUser;
+                if (_user is ClientDTO)
+                    newUser = new ClientDTO
+                    {
+                        FirstName = _user.FirstName,
+                        LastName = _user.LastName,
+                        Surname = _user.Surname,
+                        Login = _user.Login,
+                        Password = password,
+                        AddressDel = ((ClientDTO)_user).AddressDel,
+                        Phone = ((ClientDTO)_user).Phone,
+                        Email = ((ClientDTO)_user).Email,
+                        Id = _user.Id
+                    };
+                else if (_user is CouriersDto)
+                    newUser = new CouriersDto
+                    {
+                        FirstName = _user.FirstName,
+                        LastName = _user.LastName,
+                        Surname = _user.Surname,
+                        Login = _user.Login,
+                        Password = password,
+                        Phone = ((CouriersDto)_user).Phone,
+                        Email = ((CouriersDto)_user).Email,
+                        Id = _user.Id
+                    };
+                else
+                    newUser = new ManagerDto
+                    {
+                        FirstName = _user.FirstName,
+                        LastName = _user.LastName,
+                        Surname = _user.Surname,
+                        Login = _user.Login,
+                        Password = password,
+                        Phone = ((ManagerDto)_user).Phone,
+                        Email = ((ManagerDto)_user).Email,
+                        Id = _user.Id
+                    };
+                
+                _accountService.Update(newUser);
+            }
+
+            return result;
+        }
         public RegistrationResult Register(ClientDTO _user, string confirmPassword)
         {
             //IPasswordHasher _passwordHasher = new PasswordHasher();
