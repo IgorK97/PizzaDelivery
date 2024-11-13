@@ -27,7 +27,13 @@ namespace PizzaDelivery.ViewModels
                 return buyPizzaCommand;
             }
         }
-
+        public bool IsPizzaSelected
+        {
+            get
+            {
+                return true;
+            }
+        }
         public PizzaSelectionVM(AssortmentModel assortmentModel)
         {
             _assortmentmodel = assortmentModel;

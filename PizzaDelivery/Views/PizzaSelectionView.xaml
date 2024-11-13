@@ -31,20 +31,34 @@
             <WrapPanel/>
         </ItemsPanelTemplate>
     </UserControl.Resources>
-    
 
 
+
+    <Grid x:Name="LayoutRoot">
         
-            <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+        <Grid x:Name="Overlay" Panel.ZIndex="1000">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsPizzaSelected}" Value="false">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsPizzaSelected}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <local:SelectedPizzaView/>
+        </Grid>
+        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                       ScrollViewer.VerticalScrollBarVisibility="Visible"
                      ItemTemplate="{StaticResource listTemplate}"
                      ItemsPanel="{StaticResource listPanelTemplate}"
                      ItemsSource="{Binding PizzaCollection}"
                      >
-                
 
-            </ListBox>
 
-      
-    <!--</Grid>-->
+        </ListBox>
+    </Grid>
 </UserControl>

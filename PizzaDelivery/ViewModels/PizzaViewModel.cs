@@ -11,6 +11,12 @@ using System.Windows.Media.Imaging;
 
 namespace PizzaDelivery.ViewModels
 {
+    public enum PizzaSizes
+    {
+        Small,
+        Medium,
+        Large
+    }
     public class PizzaViewModel : ViewModelBase
     {
         private readonly PizzaDto _dto;
