@@ -78,15 +78,15 @@ VerticalAlignment="Center" Text="0.00"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <RadioButton Grid.Column="0"
-                                     Command="{Binding UpdatePizzaSize}"
+                                     Command="{Binding UpdatePizzaSizeCommand}"
                                      CommandParameter="{x:Static viewmodels:PizzaSizes.Small}"
                                      Content="Маленькая"/>
                             <RadioButton Grid.Column="1"
-             Command="{Binding UpdatePizzaSize}"
+             Command="{Binding UpdatePizzaSizeCommand}"
              CommandParameter="{x:Static viewmodels:PizzaSizes.Medium}"
              Content="Средняя"/>
                             <RadioButton Grid.Column="2"
-             Command="{Binding UpdatePizzaSize}"
+             Command="{Binding UpdatePizzaSizeCommand}"
              CommandParameter="{x:Static viewmodels:PizzaSizes.Large}"
              Content="Большая"/>
                         </Grid>
@@ -111,7 +111,11 @@ VerticalAlignment="Center" Text="0.00"/>
 
 
             </Border>
-            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Content="X" Grid.Column="1" Width="20" Height="20"/>
+            <Button Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                     Grid.Column="1" Width="50" Height="50"
+                    Command="{Binding ExitCommand}">
+                <Image Source="/ImagesForProject/out.png"/>
+            </Button>
         </Grid>
     </Grid>
 </UserControl>

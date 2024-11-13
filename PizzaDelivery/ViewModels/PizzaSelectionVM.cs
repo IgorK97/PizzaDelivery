@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -18,6 +19,54 @@ namespace PizzaDelivery.ViewModels
         private AssortmentModel _assortmentmodel;
         public IEnumerable<PizzaViewModel> PizzaCollection => _pizzacollection;
 
+        private PizzaViewModel selectedPizza;
+        public PizzaViewModel SelectedPizza
+        {
+            get
+            {
+                return selectedPizza;
+            }
+            set
+            {
+                selectedPizza = value;
+                OnPropertyChanged(nameof(SelectedPizza));
+            }
+        }
+
+        private ICommand updatePizzaSizeCommand;
+        public ICommand UpdatePizzaSizeCommand
+        {
+            get
+            {
+                return updatePizzaSizeCommand;
+            }
+        }
+
+        private ICommand exitCommand;
+        public ICommand ExitCommand
+        {
+            get
+            {
+                return exitCommand ??= new Commands.DelegateCommand(obj =>
+                {
+                    IsPizzaSelected = false;
+                });
+            }
+        }
+
+        private ICommand selectPizzaCommand;
+        public ICommand SelectPizzaCommand
+        {
+            get
+            {
+                return selectPizzaCommand ??= new Commands.DelegateCommand(obj =>
+                {
+                        IsPizzaSelected = true;
+                   
+                });
+            }
+        }
+
         private ICommand buyPizzaCommand;
 
         public ICommand BuyPizzaCommand
@@ -27,11 +76,17 @@ namespace PizzaDelivery.ViewModels
                 return buyPizzaCommand;
             }
         }
+        private bool isPizzaSelected;
         public bool IsPizzaSelected
         {
             get
             {
-                return true;
+                return isPizzaSelected;
+            }
+            set
+            {
+                isPizzaSelected = value;
+                OnPropertyChanged(nameof(IsPizzaSelected));
             }
         }
         public PizzaSelectionVM(AssortmentModel assortmentModel)

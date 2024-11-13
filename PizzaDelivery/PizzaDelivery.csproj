@@ -16,6 +16,8 @@
     <None Remove="ImagesForProject\LoginImage.jpg" />
     <None Remove="ImagesForProject\mainicon.png" />
     <None Remove="ImagesForProject\ordersicon.png" />
+    <None Remove="ImagesForProject\out.png" />
+    <None Remove="ImagesForProject\outOld.png" />
     <None Remove="ImagesForProject\pepperoni.png" />
     <None Remove="ImagesForProject\pizzaicon.png" />
     <None Remove="ImagesForProject\profile.jpg" />
@@ -58,6 +60,8 @@
     <Resource Include="ImagesForProject\LoginImage.jpg" />
     <Resource Include="ImagesForProject\mainicon.png" />
     <Resource Include="ImagesForProject\ordersicon.png" />
+    <Resource Include="ImagesForProject\out.png" />
+    <Resource Include="ImagesForProject\outOld.png" />
     <Resource Include="ImagesForProject\pepperoni.png" />
     <Resource Include="ImagesForProject\pizzaicon.png" />
     <Resource Include="ImagesForProject\profile.jpg" />

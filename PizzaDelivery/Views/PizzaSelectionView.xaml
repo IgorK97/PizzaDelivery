@@ -19,6 +19,12 @@
                         </Style.Triggers>
                     </Style>
                 </Border.Style>
+                <Border.InputBindings>
+                    <MouseBinding MouseAction="LeftDoubleClick"
+                                  Command="{Binding Path=DataContext.SelectPizzaCommand,
+                        RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}"
+                                  CommandParameter="{Binding SelectedPizza}"/>
+                </Border.InputBindings>
                 <StackPanel>
                     <Image Source="{Binding Image, Mode=OneWay}" Width="200" Height="200" Margin="15"/>
                     <!--<Image Source="/ImagesForProject/pepperoni.png" Width="150" Height="150" Margin="15"/>-->
@@ -56,6 +62,7 @@
                      ItemTemplate="{StaticResource listTemplate}"
                      ItemsPanel="{StaticResource listPanelTemplate}"
                      ItemsSource="{Binding PizzaCollection}"
+                 SelectedItem="{Binding SelectedPizza, Mode=TwoWay}"
                      >
 
 
