@@ -68,6 +68,8 @@ namespace PizzaDelivery.ViewModels
         {
             _orderLineModel = olm;
             Id = olm.Id;
+            Price = olm.Position_price.ToString();
+            Weight = olm.Weight.ToString();
         }
     }
 }

@@ -9,10 +9,13 @@ using System.Threading.Tasks;
 
 namespace BLL.Models
 {
+    public delegate void OrderIsChanged();
+
     public class OrderModel
     {
         private readonly IPriceBook _priceBook;
         private readonly IOrderService _orderService;
+        public static event OrderIsChanged OnOrderIsChanged;
 
         public int? Id { get; set; }
 
@@ -62,6 +65,7 @@ namespace BLL.Models
         public int LineCount{get;set;}
         public void AddOrderLine(OrderLineModel orderLineModel)
         {
+            //order_lines.Add(orderLineModel);
             List<IngredientDto> listedingr = new List<IngredientDto>();
             foreach(IngredientModel ingrm in orderLineModel.addedingredients)
             {
@@ -88,6 +92,29 @@ namespace BLL.Models
                 }
             };
             _orderService.CreateOrderLine(oldto);
+            
+
+            //List<OrderLineDto> oldtolist = new List<OrderLineDto>();
+            //foreach(OrderLineModel olm in order_lines)
+            //{
+            //    OrderLineDto oldtonew = new OrderLineDto
+            //    {
+            //        Id = olm.Id
+            //    };
+            //    oldtolist.Add(oldtonew);
+            //}
+            //OrderDto odto = new OrderDto
+            //{
+            //    Id=Id,
+            //    ordertime = null,
+            //    address_del = address_del,
+            //    delstatusId = delstatusId,
+            //    final_price = final_price,
+            //    weight = weight,
+            //    order_lines = oldtolist
+            //};
+            //_orderService.UpdateOrder(odto);
+
             OrderDto o = _orderService.GetOrder((int)Id);
 
             Id = o.Id;
@@ -107,6 +134,8 @@ namespace BLL.Models
                 order_lines.Add(olm);
             }
             LineCount = order_lines.Count;
+            CalculateOrderPrice();
+            CalculateOrderWeight();
         }
 
         public void OnOrderLineChanged(int id)
@@ -115,6 +144,7 @@ namespace BLL.Models
             {
                 CalculateOrderPrice();
                 CalculateOrderWeight();
+                OnOrderIsChanged?.Invoke();
             }
         }
 

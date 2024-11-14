@@ -22,7 +22,19 @@ namespace BLL.Models
         public int Id { get; set; }
         public int OrdersId { get; set; }
         public int PizzaId { get; set; }
-        public int Quantity { get; set; }
+        private int _quantity;
+        public int Quantity {
+            get
+            {
+                return _quantity;
+            }
+            set
+            {
+                _quantity = value;
+                CalculateLine();
+                OnOrderLineIsChanged?.Invoke(OrdersId);
+            }
+        }
         public bool Custom { get; set; }
         public decimal Position_price { get; set; }
         public int Pizza_sizesId { get; set; }
@@ -49,7 +61,7 @@ namespace BLL.Models
             Id = oldto.Id;
             OrdersId = oldto.ordersId;
             PizzaId = oldto.pizzaId;
-            Quantity = oldto.quantity;
+            _quantity = oldto.quantity;
             Custom= oldto.custom;
             Position_price = oldto.position_price;
             Weight = oldto.weight;
@@ -67,7 +79,7 @@ namespace BLL.Models
         {
             _priceBook = priceBook;
             Pizza = pizza;
-            Quantity = 1;
+            _quantity = 1;
             PizzaId = pizza.Id;
             Custom = false;
             OrdersId = id;

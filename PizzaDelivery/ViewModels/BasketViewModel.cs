@@ -142,6 +142,12 @@ namespace PizzaDelivery.ViewModels
         private readonly IPriceBook _priceBook;
         private readonly OrderBook _orderBook;
         private readonly OrderModel _basket;
+        public void OnOrderIsChanged()
+        {
+            OnPropertyChanged(nameof(Weight));
+            OnPropertyChanged(nameof(Price));
+
+        }
         public BasketViewModel(AssortmentModel assortmentModel, IAuthenticator authenticator, IPriceBook priceBook, OrderBook orderBook)
         {
             _assortmentModel = assortmentModel;
@@ -155,6 +161,7 @@ namespace PizzaDelivery.ViewModels
             //Price = _basket.final_price.ToString();
             //Weight = _basket.
             Address = ((ClientDTO)user).AddressDel;
+            OrderModel.OnOrderIsChanged += OnOrderIsChanged;
         }
     }
 }
