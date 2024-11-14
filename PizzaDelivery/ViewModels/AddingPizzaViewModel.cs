@@ -21,6 +21,8 @@ namespace PizzaDelivery.ViewModels
         private readonly AssortmentModel _assortmentModel;
 
         private OrderLineModel _orderLineModel;
+        private OrderBook _orderBook;
+        private readonly OrderModel _order;
 
         private IngredientViewModel _selectedIngredient;
         public IngredientViewModel SelectedIngredient
@@ -35,19 +37,19 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged(nameof(SelectedIngredient));
             }
         }
-        
-        //private PizzaDto _pizza;
-        //public PizzaDto Pizza
-        //{
-        //    get
-        //    {
-        //        return _orderLineModel.Pizza;
-        //    }
-        //    set
-        //    {
-        //        _pizza = value;
-        //    }
-        //}
+        private int CountSelections;
+        public bool Custom
+        {
+            get
+            {
+                return _orderLineModel.Custom;
+            }
+            set
+            {
+                _orderLineModel.Custom = value;
+
+            }
+        }
 
         private string _price;
         public string Price
@@ -60,6 +62,27 @@ namespace PizzaDelivery.ViewModels
             {
                 _price = value;
                 OnPropertyChanged(nameof(Price));
+            }
+        }
+
+        private int _count;
+        public int Count
+        {
+            get
+            {
+                return _count;
+            }
+            set
+            {
+                _count = value;
+                _orderLineModel.Quantity = _count;
+                decimal price, weight;
+                (price, weight) = _orderLineModel.CalculateLine();
+                FinalWeight = weight.ToString();
+                Price = price.ToString();
+                OnPropertyChanged(nameof(Count));
+                OnPropertyChanged(nameof(Price));
+                OnPropertyChanged(nameof(FinalWeight));
             }
         }
 
@@ -125,7 +148,11 @@ namespace PizzaDelivery.ViewModels
         {
             get
             {
-                return buyPizzaCommand;
+                return buyPizzaCommand ??= new Commands.DelegateCommand(obj =>
+                {
+                    _order.AddOrderLine(_orderLineModel);
+                    OnExitDelegate?.Invoke();
+                });
             }
         }
         private ICommand exitCommand;
@@ -167,7 +194,8 @@ namespace PizzaDelivery.ViewModels
         public IEnumerable<IngredientViewModel> IngredientCollection {
             get
             {
-                if(_ingredientcollection!=null)
+                //return _ingredientcollection;
+                if(_ingredientcollection != null)
                     return _ingredientcollection;
                 else
                 {
@@ -182,14 +210,19 @@ namespace PizzaDelivery.ViewModels
         public string Description => _orderLineModel.Pizza.description;
 
         public byte[]? Image => _orderLineModel.Pizza.pizzaimage;
-        public AddingPizzaViewModel(AssortmentModel assortmentModel, OrderLineModel orderLineModel)
+        public AddingPizzaViewModel(AssortmentModel assortmentModel, OrderLineModel orderLineModel, OrderBook orderBook)
         {
             _orderLineModel = orderLineModel;
+            CountSelections = _orderLineModel.addedingredients.Count;
+            //Custom = _orderLineModel.Custom;
+            _orderBook = orderBook;
+            _order = _orderBook.GetBasketContent();
             Price = _orderLineModel.Position_price.ToString();
             FinalWeight = _orderLineModel.Weight.ToString();
             _assortmentModel = assortmentModel;
             _ingredientcollection = null;
-            
+            _orderBook = orderBook;
+            Count = 1;
         }
         public void Load()
         {

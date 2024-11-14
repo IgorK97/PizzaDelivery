@@ -18,6 +18,7 @@ namespace PizzaDelivery.ViewModels
 
         private readonly ObservableCollection<PizzaViewModel> _pizzacollection;
         private AssortmentModel _assortmentmodel;
+        private readonly OrderBook _orderBook;
         public IEnumerable<PizzaViewModel> PizzaCollection => _pizzacollection;
 
         private AddingPizzaViewModel addingPizza;
@@ -63,8 +64,8 @@ namespace PizzaDelivery.ViewModels
                 return selectPizzaCommand ??= new Commands.DelegateCommand(obj =>
                 {
                     IsPizzaSelected = true;
-                    OrderLineModel orderLineModel = new OrderLineModel(_priceBook, _ols, new PizzaModel(SelectedPizza.SelectedPizza));
-                    AddingPizza = new AddingPizzaViewModel(_assortmentmodel, orderLineModel);
+                    OrderLineModel orderLineModel = new OrderLineModel(_priceBook, _ols, new PizzaModel(SelectedPizza.SelectedPizza), _orderBook.GetBasketId());
+                    AddingPizza = new AddingPizzaViewModel(_assortmentmodel, orderLineModel, _orderBook);
                     //AddingPizza.Load();
                 });
             }
@@ -86,9 +87,10 @@ namespace PizzaDelivery.ViewModels
         }
         private readonly IPriceBook _priceBook;
         private readonly IOrderLineService _ols;
-        public PizzaSelectionVM(AssortmentModel assortmentModel, IPriceBook priceBook, IOrderLineService ols)
+        public PizzaSelectionVM(AssortmentModel assortmentModel, IPriceBook priceBook, OrderBook orderBook, IOrderLineService ols)
         {
             _priceBook = priceBook;
+            _orderBook = orderBook;
             _ols = ols;
             AddingPizzaViewModel.OnExitDelegate += OnExitEvent;
             _assortmentmodel = assortmentModel;

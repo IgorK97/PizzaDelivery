@@ -10,19 +10,24 @@ namespace Interfaces.Services
 {
     public interface IOrderService
     {
-        
-
+        bool UpdateOrder(OrderDto odto);
+        OrderDto GetOrder(int Id);
         bool MakeOrder(int ClientId);
 
+        int GetCurrentOrder(int ClientId);
+        //bool CancelOrder(int odId);
 
-        bool CancelOrder(int odId);
-
-        bool SubmitOrder(int odId, string addressdel);
+        //bool SubmitOrder(int odId, string addressdel);
 
         //(decimal price, decimal weight) UpdateOrder(int odI);
 
         //bool UpdateUser(UserDTO _user);
         List<OrderDto> GetAllOrders(int ClientId);
+        void CreateOrderLine(OrderLineDto p);
+
+        void UpdateOrderLine(OrderLineDto p);
+
+        void DeleteOrderLine(int id);
 
         //List<ManagerDto> GetAllManagers();
 

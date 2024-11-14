@@ -50,17 +50,7 @@ namespace PizzaDelivery
             //_navigationStore.CurrentViewModel = new AuthorizationVM(/*_navigationStore, _user*/);
             
             IAuthenticationService authentication = serviceProvider.GetRequiredService<IAuthenticationService>();
-            //ClientDTO _user = new ClientDTO
-            //{
-            //    FirstName = "TestUserFirstName",
-            //    LastName = "TestUserLastName",
-            //    Surname = "TestUserSurname",
-            //    Password = "mypassword",
-            //    Login = "TestUserLogin",
-            //    Phone = "90000000",
-            //    Email = "TestEmail@mail.ru",
-            //    AddressDel = "TestUserAddress"
-            //};
+            
             ////authentication.Register(_user, "mypassword");
             //UserDTO user = authentication.Login(_user.Login, "mypassword");
             MainWindow window = serviceProvider.GetRequiredService<MainWindow>();
@@ -87,6 +77,8 @@ namespace PizzaDelivery
             IServiceCollection services = new ServiceCollection();
             services.AddSingleton<IDbRepos, DbReposPgs>();
             services.AddSingleton<IOrderLineService, OrderLinesService>();
+            services.AddSingleton<IOrderService, OrderService>();
+
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<IAccountService, AccountService>();
@@ -95,6 +87,9 @@ namespace PizzaDelivery
             services.AddSingleton<IAuthenticator, Authenticator>();
             services.AddSingleton<IPriceBook, PriceBook>();
             services.AddSingleton<IPizzaDeliveryViewModelFactory, PizzaDeliveryViewModelFactory>();
+            services.AddSingleton<OrderBook>(s =>
+            new OrderBook(s.GetRequiredService<IAuthenticator>(), s.GetRequiredService<IPriceBook>(),
+            s.GetRequiredService<IOrderService>()));
             services.AddSingleton<CreateViewModel<ProfilePresentationVM>>(services =>
             {
                 return () => new ProfilePresentationVM(services.GetRequiredService<IAuthenticator>());
@@ -106,20 +101,24 @@ namespace PizzaDelivery
             services.AddSingleton<CreateViewModel<RegistrationVM>>(services =>
             {
                 return () => new RegistrationVM(services.GetRequiredService<IAuthenticator>());
-            }); 
+            });
+            services.AddSingleton<AssortmentModel>();
+
             services.AddSingleton<CreateViewModel<BasketViewModel>>(services =>
             {
-                return () => new BasketViewModel();
+                return () => new BasketViewModel(services.GetRequiredService<AssortmentModel>(),
+                    services.GetRequiredService<IAuthenticator>(), services.GetRequiredService<IPriceBook>(),
+                    services.GetRequiredService<OrderBook>());
             }); 
             services.AddSingleton<CreateViewModel<OrderHistoryViewModel>>(services =>
             {
                 return () => new OrderHistoryViewModel();
             });
-            services.AddSingleton<AssortmentModel>();
             services.AddSingleton<CreateViewModel<PizzaSelectionVM>>(services =>
             {
                 return () => new PizzaSelectionVM(services.GetRequiredService<AssortmentModel>(),
                     services.GetRequiredService<IPriceBook>(),
+                    services.GetRequiredService<OrderBook>(),
                     services.GetRequiredService<IOrderLineService>());
             });
             services.AddSingleton<INavigator, Navigator>();

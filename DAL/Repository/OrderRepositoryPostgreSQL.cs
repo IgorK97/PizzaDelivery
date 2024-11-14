@@ -20,14 +20,19 @@ namespace DAL.Repository
 
         public List<Order> GetList()
         {
-            return db.Orders.Include(o => o.OrderLines).ToList();
+            return db.Orders.Include(o => o.OrderLines).ThenInclude(ol =>
+            ol.Pizza).ThenInclude(p => p.Ingredients).Include(o => o.OrderLines)
+            .ThenInclude(ol => ol.Ingredients).ToList();
 
             //return db.Orders.ToList();
         }
 
         public Order GetItem(int id)
         {
-            return db.Orders.Include(o => o.OrderLines)
+
+            return db.Orders.Include(o => o.OrderLines).ThenInclude(ol => ol.Pizza)
+                .ThenInclude(p => p.Ingredients).Include(o => o.OrderLines)
+                .ThenInclude(ol => ol.Ingredients)
                 .FirstOrDefault(u => u.Id == id);
             //return db.Orders.Find(id);
         }

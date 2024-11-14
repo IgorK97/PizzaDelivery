@@ -11,6 +11,17 @@ namespace PizzaDelivery.State.Authenticators
 {
     public class Authenticator : IAuthenticator
     {
+        public int Id
+        {
+            get
+            {
+                return CurrentUser.Id;
+            }
+            //set
+            //{
+            //    CurrentUser.Id = value;
+            //}
+        }
         private readonly IAuthenticationService _authenticationService;
         private readonly IAccountStore _accountStore;
 

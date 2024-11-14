@@ -22,6 +22,7 @@ namespace PizzaDelivery.ViewModels
         private readonly INavigator _navigator;
         private readonly IPizzaDeliveryViewModelFactory _viewModelFactory;
         private readonly IAuthenticator _authenticator;
+        private readonly OrderBook _orderBook;
 
         public bool IsLoggedIn => _authenticator.IsLoggedIn;
 
@@ -58,7 +59,7 @@ namespace PizzaDelivery.ViewModels
         //}
 
         public MainViewModel(INavigator navigator, IPizzaDeliveryViewModelFactory viewModelFactory,
-            IAuthenticator authenticator)
+            IAuthenticator authenticator, OrderBook orderBook)
         {
             ViewModelBase.ViewModelChanged += ViewModel_StateChanged;
             _navigator = navigator;
@@ -68,6 +69,7 @@ namespace PizzaDelivery.ViewModels
             //UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(navigator, viewModelFactory);
             UpdateCurrentViewModelCommand.Execute(State.Navigators.ViewType.Login);
             _navigator.StateChanged += Navigator_StateChanged;
+            _orderBook = orderBook;
         }
         private void Navigator_StateChanged()
         {
@@ -76,6 +78,7 @@ namespace PizzaDelivery.ViewModels
         private void Authenticator_StateChanged()
         {
             OnPropertyChanged(nameof(IsLoggedIn));
+            _orderBook.Load();
         }
 
         public void ViewModel_StateChanged(State.Navigators.ViewType viewType)

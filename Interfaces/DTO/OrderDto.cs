@@ -7,8 +7,19 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
+    public enum DeliveryStatus
+    {
+        NotPlaced = 1,
+        Canceled = 2,
+        IsBeingFormed = 3,
+        AtTheCourier = 5,
+        Delivered = 6,
+        NotDelivered = 7,
+        HandedOver = 8
+    };
     public class OrderDto
     {
+        
         public OrderDto()
         {
 

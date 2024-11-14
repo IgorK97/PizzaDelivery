@@ -21,8 +21,35 @@ namespace BLL.Models
             dbr = repos;
             //db = new PizzaDeliveryContext();
         }
+        public bool UpdateOrder(OrderDto odto)
+        {
+            Order order = dbr.Orders.GetItem((int)odto.Id);
+            if (order != null)
+            {
+                order.Ordertime = odto.ordertime;
+                order.AddressDel = odto.address_del;
+                order.DelstatusId = odto.delstatusId;
+                order.FinalPrice = odto.final_price;
+                order.Weight = odto.weight;
+                List<OrderLine> lines = new List<OrderLine>();
+                foreach (var pId in odto.order_lines)
+                {
+                    OrderLine ingr = dbr.OrderLines.GetItem(pId.Id);
+                    lines.Add(ingr);
+                }
+                order.OrderLines = lines;
+                if (dbr.Save() > 0)
+                    return true;
+                return false;
+            }
+            return false;
+        }
 
-        
+        public OrderDto GetOrder(int Id)
+        {
+            return dbr.Orders.GetList().Where(i => i.Id == Id && i.DelstatusId==1).Select(i =>
+            new OrderDto(i)).FirstOrDefault();
+        }
 
         public int GetCurrentOrder(int ClientId)
         {
@@ -47,16 +74,7 @@ namespace BLL.Models
             return oid;
         }
 
-        public enum DeliveryStatus
-        {
-            NotPlaced = 1,
-            Canceled = 2,
-            IsBeingFormed = 3,
-            AtTheCourier = 5,
-            Delivered = 6,
-            NotDelivered = 7,
-            HandedOver = 8
-        };
+        
 
         public bool MakeOrder(int ClientId/*, DeliveryStatus delstatus*/)
         {
@@ -76,30 +94,30 @@ namespace BLL.Models
             return false;
         }
 
-        public bool CancelOrder(int odId)
-        {
-            Order order = dbr.Orders.GetItem(odId);
-            order.DelstatusId = (int)DeliveryStatus.Canceled;
-            if (dbr.Save() > 0)
-                return true;
-            return false;
-        }
+        //public bool CancelOrder(int odId)
+        //{
+        //    Order order = dbr.Orders.GetItem(odId);
+        //    order.DelstatusId = (int)DeliveryStatus.Canceled;
+        //    if (dbr.Save() > 0)
+        //        return true;
+        //    return false;
+        //}
 
-        public bool SubmitOrder(int odId, string addressdel)
-        {
-            Order order = dbr.Orders.GetItem(odId);
-            if (order != null)
-            {
-                if (order.FinalPrice == (decimal)0.00)
-                    return false;
-                order.DelstatusId = (int)DeliveryStatus.IsBeingFormed;
-                order.Ordertime = DateTime.UtcNow;
-                order.AddressDel = addressdel;
-                if (dbr.Save() > 0)
-                    return true;
-            }
-            return false;
-        }
+        //public bool SubmitOrder(int odId, string addressdel)
+        //{
+        //    Order order = dbr.Orders.GetItem(odId);
+        //    if (order != null)
+        //    {
+        //        if (order.FinalPrice == (decimal)0.00)
+        //            return false;
+        //        order.DelstatusId = (int)DeliveryStatus.IsBeingFormed;
+        //        order.Ordertime = DateTime.UtcNow;
+        //        order.AddressDel = addressdel;
+        //        if (dbr.Save() > 0)
+        //            return true;
+        //    }
+        //    return false;
+        //}
 
         //public (decimal price, decimal weight) UpdateOrder(int odId)
         //{
@@ -117,12 +135,73 @@ namespace BLL.Models
 
         public List<OrderDto> GetAllOrders(int ClientId)
         {
-            return dbr.Orders.GetList().ToList().Where(i => i.ClientId == ClientId&&i.DelstatusId!=1).Select(i => new OrderDto(i)).OrderByDescending(i => i.ordertime).ToList();
+            
+            return dbr.Orders.GetList().ToList().Where(i => i.ClientId == ClientId /*&& i.DelstatusId != 1*/)
+                .Select(i => new OrderDto(i)).OrderByDescending(i => i.ordertime).ToList();
+            
+        }
+        public bool Save()
+        {
+            if (dbr.Save() > 0) return true;
+            return false;
+        }
+
+        public void CreateOrderLine(OrderLineDto p)
+        {
+            List<Ingredient> addedingredients = new List<Ingredient>();
+            foreach (var pId in p.addedingredients)
+            {
+                Ingredient ingr = dbr.Ingredients.GetItem(pId.Id);
+                addedingredients.Add(ingr);
+            }
+            dbr.OrderLines.Create(new OrderLine()
+            {
+                PositionPrice = p.position_price,
+                OrdersId = p.ordersId,
+                Custom = p.custom,
+                Weight = p.weight,
+                PizzaId = p.pizzaId,
+                PizzaSizesId = p.pizza_sizesId,
+                Quantity = p.quantity,
+                Ingredients = addedingredients
+            });
+            Save();
+            //dbr.order_lines.Attach(p);
+        }
+
+        public void UpdateOrderLine(OrderLineDto p)
+        {
+            //List<Ingredient> addedingredients = new List<Ingredient>();
+            //foreach (var pId in p.addedingredientsId)
+            //{
+            //    Ingredient ingr = dbr.Ingredients.GetItem(pId);
+            //    addedingredients.Add(ingr);
+            //}
+            //OrderLine ol = dbr.OrderLines.GetItem(p.Id);
+            //ol.Weight = p.weight;
+            //ol.Custom = p.custom;
+            //ol.PizzaId = p.pizzaId;
+            //ol.PositionPrice = p.position_price;
+            //ol.PizzaSizesId = p.pizza_sizesId;
+            //ol.Quantity = p.quantity;
+            //ol.OrdersId = p.ordersId;
+            //ol.Ingredients = addedingredients;
+            //Save();
+        }
+
+        public void DeleteOrderLine(int id)
+        {
+            //OrderLine p = dbr.OrderLines.GetItem(id);
+            //if (p != null)
+            //{
+            dbr.OrderLines.Delete(id);
+            //Save();
+            //}
         }
 
         //public List<ManagerDto> GetAllManagers()
         //{
-           
+
         //    var q = dbr.Users.GetList().ToList().Join(dbr.Managers.GetList().ToList(), u => u.Id, m => m.Id, (_u, _m)
         //        => new ManagerDto
         //        {
@@ -158,38 +237,7 @@ namespace BLL.Models
         //    //return dbr.Couriers.GetList().ToList().Select(i => new CouriersDto(i)).ToList();
         //}
 
-        //public bool UpdateUser(UserDTO _user)
-        //{
-        //    User user = dbr.Users.GetItem(_user.Id);
-        //    user.FirstName = _user.FirstName;
-        //    user.LastName = _user.LastName;
-        //    user.Surname = _user.Surname;
-        //    user.Login = _user.Login;
-        //    user.Password = _user.Password;
-        //    if(_user is ClientDTO)
-        //    {
-        //        Client client = dbr.Clients.GetItem(_user.Id);
-        //        ClientDTO cl = (ClientDTO)_user;
-        //        client.AddressDel = cl.AddressDel;
-        //        client.Phone = cl.Phone;
-        //        client.Email = cl.Email;
-        //    }
-        //    else if(_user is CouriersDto)
-        //    {
-        //        Courier client = dbr.Couriers.GetItem(_user.Id);
-        //        CouriersDto cl = (CouriersDto)_user;
-        //        client.Phone = cl.Phone;
-        //        client.Email = cl.Email;
-        //    }
-        //    else if(_user is ManagerDto)
-        //    {
-        //        Manager manager = dbr.Managers.GetItem(_user.Id);
-        //        ManagerDto cl = (ManagerDto)_user;
-        //        manager.Phone = cl.Phone;
-        //        manager.Email = cl.Email;
-        //    }
-        //    return Save();
-        //}
+        
         //public bool Save()
         //{
         //    if (dbr.Save() > 0) return true;
