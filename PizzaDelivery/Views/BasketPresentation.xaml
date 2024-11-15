@@ -92,7 +92,7 @@
 
             </Grid.RowDefinitions>
             
-            <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            <ListBox HorizontalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   ScrollViewer.VerticalScrollBarVisibility="Visible"
                  ItemTemplate="{StaticResource listlinesTemplate}"
                  ItemsPanel="{StaticResource listlinesPanelTemplate}"

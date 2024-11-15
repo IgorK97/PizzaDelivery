@@ -112,7 +112,7 @@ namespace PizzaDelivery
             }); 
             services.AddSingleton<CreateViewModel<OrderHistoryViewModel>>(services =>
             {
-                return () => new OrderHistoryViewModel();
+                return () => new OrderHistoryViewModel(services.GetRequiredService<OrderBook>());
             });
             services.AddSingleton<CreateViewModel<PizzaSelectionVM>>(services =>
             {

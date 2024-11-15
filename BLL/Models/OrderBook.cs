@@ -15,6 +15,13 @@ namespace BLL.Models
         private readonly IPriceBook _priceBook;
         private readonly IOrderService _orderService;
         private List<OrderModel> _orders;
+        public List<OrderModel> Orders
+        {
+            get
+            {
+                return _orders;
+            }
+        }
         private int BasketId
         {
             get;set;
@@ -32,7 +39,7 @@ namespace BLL.Models
         public void Load()
         {
             BasketId = _orderService.GetCurrentOrder(_authenticator.Id);
-
+            _orders = new List<OrderModel>();
             List<OrderDto> oDto = _orderService.GetAllOrders(_authenticator.Id);
             foreach (OrderDto orderDto in oDto)
             {
@@ -72,9 +79,9 @@ namespace BLL.Models
             om.AddOrderLine(orderLineModel);
         }
 
-        public bool MakeOrder()
-        {
-            return true;
-        }
+        //public List<OrderModel> GetAllOrders()
+        //{
+        //    return _orders;
+        //}
     }
 }
