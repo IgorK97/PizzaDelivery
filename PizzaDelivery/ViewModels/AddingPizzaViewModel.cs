@@ -81,8 +81,8 @@ namespace PizzaDelivery.ViewModels
                 FinalWeight = weight.ToString();
                 Price = price.ToString();
                 OnPropertyChanged(nameof(Count));
-                OnPropertyChanged(nameof(Price));
-                OnPropertyChanged(nameof(FinalWeight));
+                //OnPropertyChanged(nameof(Price));
+                //OnPropertyChanged(nameof(FinalWeight));
             }
         }
 

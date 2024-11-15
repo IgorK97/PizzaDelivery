@@ -102,35 +102,34 @@ namespace BLL.Models
             };
 
             if (orderLineModel.Id == 0)
+            {
                 _orderService.CreateOrderLine(oldto);
+                order_lines.Add(orderLineModel);
 
+            }
             else
             {
                 oldto.Id = orderLineModel.Id;
                 _orderService.UpdateOrderLine(oldto);
+                OrderLineModel linemodel = order_lines.Where(i =>i.Id==orderLineModel.Id).FirstOrDefault();
+                //linemodel.Position_price=orderLineModel.Position_price;
+                //linemodel.Weight = orderLineModel.Weight;
+                //linemodel.Quantity = orderLineModel.Quantity;
+                order_lines.Remove(linemodel);
+                order_lines.Add(orderLineModel);
             }
-
-            //List<OrderLineDto> oldtolist = new List<OrderLineDto>();
-            //foreach(OrderLineModel olm in order_lines)
-            //{
-            //    OrderLineDto oldtonew = new OrderLineDto
-            //    {
-            //        Id = olm.Id
-            //    };
-            //    oldtolist.Add(oldtonew);
-            //}
-            //OrderDto odto = new OrderDto
-            //{
-            //    Id=Id,
-            //    ordertime = null,
-            //    address_del = address_del,
-            //    delstatusId = delstatusId,
-            //    final_price = final_price,
-            //    weight = weight,
-            //    order_lines = oldtolist
-            //};
-            //_orderService.UpdateOrder(odto);
-
+            CalculateOrderPrice();
+            CalculateOrderWeight();
+            OrderDto newodto = new OrderDto
+            {
+                Id=Id,
+                ordertime = null,
+                address_del = address_del,
+                delstatusId = delstatusId,
+                final_price = final_price,
+                weight = weight
+            };
+            _orderService.UpdateOrder(newodto);
             OrderDto o = _orderService.GetOrder((int)Id);
 
             Id = o.Id;
@@ -150,8 +149,7 @@ namespace BLL.Models
                 order_lines.Add(olm);
             }
             LineCount = order_lines.Count;
-            CalculateOrderPrice();
-            CalculateOrderWeight();
+            
         }
 
         public void OnOrderLineChanged(int id)
@@ -180,6 +178,21 @@ namespace BLL.Models
             if (OrderId == Id)
             {
                 _orderService.DeleteOrderLine(OrderLineId);
+
+                OrderLineModel deletingmodel = order_lines.Where(i => i.Id == OrderLineId).FirstOrDefault();
+                order_lines.Remove(deletingmodel);
+                CalculateOrderPrice();
+                CalculateOrderWeight();
+                OrderDto newodto = new OrderDto
+                {
+                    Id = Id,
+                    ordertime = null,
+                    address_del = address_del,
+                    delstatusId = delstatusId,
+                    final_price = final_price,
+                    weight = weight
+                };
+                _orderService.UpdateOrder(newodto);
                 OrderDto o = _orderService.GetOrder((int)Id);
 
                 Id = o.Id;
@@ -199,8 +212,7 @@ namespace BLL.Models
                     order_lines.Add(olm);
                 }
                 LineCount = order_lines.Count;
-                CalculateOrderPrice();
-                CalculateOrderWeight();
+                
             }
             
 

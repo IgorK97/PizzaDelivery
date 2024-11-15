@@ -88,7 +88,8 @@ namespace PizzaDelivery.ViewModels
         public void OnExitEvent()
         {
             IsPizzaSelected = false;
-            _selectedLine.UpdateProperties();
+            if(_selectedLine!=null) //Когда будут диспоуз вьюмодел делать, убрать
+                _selectedLine.UpdateProperties();
             //OnPropertyChanged(nameof(SelectedLine));
             //OnPropertyChanged(nameof(LinesCollection));
             OnPropertyChanged(nameof(Price));
@@ -191,8 +192,8 @@ namespace PizzaDelivery.ViewModels
             OrderLineViewModel.OnOrderLineIsDeleted += OnOrderLineViewModelIsDeleted;
             OrderLineViewModel.OnOrderLineIsUpdated += OnOrderLineViewModelIsUpdated;
             UserDTO user = authenticator.CurrentUser;
-            //Price = _basket.final_price.ToString();
-            //Weight = _basket.
+            Price = _basket.final_price.ToString();
+            Weight = _basket.weight.ToString();
             Address = ((ClientDTO)user).AddressDel;
             OrderModel.OnOrderIsChanged += OnOrderIsChanged;
         }
