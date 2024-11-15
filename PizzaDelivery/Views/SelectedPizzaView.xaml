@@ -121,17 +121,19 @@ VerticalAlignment="Center" Text="{Binding Price}"/>
                             </Grid.ColumnDefinitions>
                             <RadioButton FontSize="18" Grid.Column="0"
                                          Style="{StaticResource RadBut}"
-                                         IsChecked="True"
+                                         IsChecked="{Binding IsSmall, Mode=OneWay}"
                                      Command="{Binding UpdatePizzaSizeCommand}"
                                      CommandParameter="{x:Static viewmodels:PizzaSizes.Small}"
                                      Content="Маленькая"/>
                             <RadioButton FontSize="18" Grid.Column="1"
                                          Style="{StaticResource RadBut}"
+                                         IsChecked="{Binding IsMedium, Mode=OneWay}"
              Command="{Binding UpdatePizzaSizeCommand}"
              CommandParameter="{x:Static viewmodels:PizzaSizes.Medium}"
              Content="Средняя"/>
                             <RadioButton FontSize="18" Grid.Column="2"
                                          Style="{StaticResource RadBut}"
+                                         IsChecked="{Binding IsLarge, Mode=OneWay}"
              Command="{Binding UpdatePizzaSizeCommand}"
              CommandParameter="{x:Static viewmodels:PizzaSizes.Large}"
              Content="Большая"/>

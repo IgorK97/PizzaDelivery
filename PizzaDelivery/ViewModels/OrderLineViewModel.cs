@@ -6,16 +6,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Windows.Input;
 
 namespace PizzaDelivery.ViewModels
 {
     public delegate void OrderLineViewModelIsChanged();
+    public delegate void OrderLineViewModelIsDeleted();
+    public delegate void OrderLineViewModelIsUpdated(OrderLineViewModel olm);
+
+
 
     public class OrderLineViewModel :ViewModelBase
     {
         public static event OrderLineViewModelIsChanged OnOrderLineIsChanged;
+        public static event OrderLineViewModelIsDeleted OnOrderLineIsDeleted;
+        public static event OrderLineViewModelIsUpdated OnOrderLineIsUpdated;
+
+
 
         private readonly OrderLineModel _orderLineModel;
+        public OrderLineModel OrderLineModel
+        {
+            get
+            {
+                return _orderLineModel;
+            }
+        }
         public int Id { get; set; }
         public int Quantity { 
             get 
@@ -34,11 +50,43 @@ namespace PizzaDelivery.ViewModels
                 //OnPropertyChanged(nameof(Weight));
             }
         }
+        private ICommand deleteYourself;
+        public ICommand DeleteYourself
+        {
+            get
+            {
+                return deleteYourself ??= new Commands.DelegateCommand(obj =>
+                {
+                    _orderLineModel.DeleteYourself();
+                    OnOrderLineIsDeleted?.Invoke();
+                });
+            }
+        }
+
+        public void UpdateProperties()
+        {
+            OnPropertyChanged(nameof(Quantity));
+            OnPropertyChanged(nameof(Price));
+            OnPropertyChanged(nameof(Weight));
+        }
+
+        private ICommand updateYourself;
+        public ICommand UpdateYourself
+        {
+            get
+            {
+                return updateYourself ??= new Commands.DelegateCommand(obj =>
+                {
+                    OnOrderLineIsUpdated?.Invoke(this);
+                });
+            }
+        }
+
         private string _price;
         public string Price {
             get
             {
-                return _price;
+                return _orderLineModel.Position_price.ToString();
             }
             set
             {
@@ -52,7 +100,7 @@ namespace PizzaDelivery.ViewModels
         {
             get
             {
-                return _weight;
+                return _orderLineModel.Weight.ToString();
             }
             set
             {
@@ -68,8 +116,8 @@ namespace PizzaDelivery.ViewModels
         {
             _orderLineModel = olm;
             Id = olm.Id;
-            Price = olm.Position_price.ToString();
-            Weight = olm.Weight.ToString();
+            //Price = olm.Position_price.ToString();
+            //Weight = olm.Weight.ToString();
         }
     }
 }

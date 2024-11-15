@@ -55,6 +55,8 @@ namespace BLL.Models
 
         public OrderModel GetBasketContent()
         {
+            //BasketId = _orderService.GetCurrentOrder(_authenticator.Id);
+
             var result = _orders.Where(i => i.Id == BasketId).FirstOrDefault();
             return result;
         }

@@ -110,6 +110,36 @@ namespace PizzaDelivery.ViewModels
             }
         }
 
+        //private bool _isSmall;
+        public bool IsSmall
+        {
+            get
+            {
+                return _orderLineModel.Pizza_sizesId == 1;
+            }
+            //set
+            //{
+            //    _orderLineModel.Pizza_sizesId = 1;
+            //    OnPropertyChanged(nameof(IsSmall));
+            //}
+        }
+
+        public bool IsMedium
+        {
+            get
+            {
+                return _orderLineModel.Pizza_sizesId == 2;
+            }
+        }
+
+        public bool IsLarge
+        {
+            get
+            {
+                return _orderLineModel.Pizza_sizesId == 3;
+            }
+        }
+
         private ICommand selectIngredientCommand;
         public ICommand SelectIngredientCommand
         {
@@ -186,6 +216,9 @@ namespace PizzaDelivery.ViewModels
                     (price, weight) = _orderLineModel.ChangeSize((int)PizzaSize);
                     Price = price.ToString();
                     FinalWeight = weight.ToString();
+                    OnPropertyChanged(nameof(IsSmall));
+                    OnPropertyChanged(nameof(IsMedium));
+                    OnPropertyChanged(nameof(IsLarge));
                     //OnPropertyChanged(nameof(IngredientCollection));
                 });
             }
@@ -222,7 +255,7 @@ namespace PizzaDelivery.ViewModels
             _assortmentModel = assortmentModel;
             _ingredientcollection = null;
             _orderBook = orderBook;
-            Count = 1;
+            Count = _orderLineModel.Quantity;
         }
         public void Load()
         {
@@ -231,6 +264,8 @@ namespace PizzaDelivery.ViewModels
             foreach (IngredientDto ingr in loadedIngredients)
             {
                 IngredientViewModel ingrViewModel = new IngredientViewModel(ingr);
+                if (_orderLineModel.addedingredients.Where(i => i.Id == ingrViewModel.Id).Any())
+                    ingrViewModel.IsIngredientSelected = true;
                 _ingredientcollection.Add(ingrViewModel);
             }
         }

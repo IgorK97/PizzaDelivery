@@ -88,7 +88,11 @@ namespace PizzaDelivery.ViewModels
         public void OnExitEvent()
         {
             IsPizzaSelected = false;
-
+            _selectedLine.UpdateProperties();
+            //OnPropertyChanged(nameof(SelectedLine));
+            //OnPropertyChanged(nameof(LinesCollection));
+            OnPropertyChanged(nameof(Price));
+            OnPropertyChanged(nameof(Weight));
         }
         private string _address;
         public string Address
@@ -134,19 +138,46 @@ namespace PizzaDelivery.ViewModels
         {
             get
             {
-                return submitCommand;
+                return submitCommand ??= new Commands.DelegateCommand(obj =>
+                {
+                    SubmitOrderResult res = _basket.SubmitOrder(_address);
+                    if(res == SubmitOrderResult.Success)
+                    {
+                        _orderBook.Load();
+                        _basket = _orderBook.GetBasketContent();
+                        Load();
+                        OnPropertyChanged(nameof(LinesCollection));
+                        OnPropertyChanged(nameof(Price));
+                        OnPropertyChanged(nameof(Weight));
+                    }
+                    //Загрузить новую корзину в случае успеха и уведомить об этом представление
+                });
             }
         }
         private readonly AssortmentModel _assortmentModel;
         private readonly IAuthenticator _authenticator;
         private readonly IPriceBook _priceBook;
         private readonly OrderBook _orderBook;
-        private readonly OrderModel _basket;
+        private OrderModel _basket;
         public void OnOrderIsChanged()
         {
             OnPropertyChanged(nameof(Weight));
             OnPropertyChanged(nameof(Price));
 
+        }
+        public void OnOrderLineViewModelIsDeleted()
+        {
+            Load();
+            OnPropertyChanged(nameof(LinesCollection));
+            OnPropertyChanged(nameof(Price));
+            OnPropertyChanged(nameof(Weight));
+        }
+
+        public void OnOrderLineViewModelIsUpdated(OrderLineViewModel orderLineViewModel)
+        {
+            IsPizzaSelected = true;
+            AddingPizza = new AddingPizzaViewModel(_assortmentModel, orderLineViewModel.OrderLineModel, _orderBook);
+            SelectedLine = orderLineViewModel;
         }
         public BasketViewModel(AssortmentModel assortmentModel, IAuthenticator authenticator, IPriceBook priceBook, OrderBook orderBook)
         {
@@ -157,6 +188,8 @@ namespace PizzaDelivery.ViewModels
             _basket = _orderBook.GetBasketContent();
             AddingPizzaViewModel.OnExitDelegate += OnExitEvent;
             OrderLineViewModel.OnOrderLineIsChanged += OnOrderLineViewModelIsChanged;
+            OrderLineViewModel.OnOrderLineIsDeleted += OnOrderLineViewModelIsDeleted;
+            OrderLineViewModel.OnOrderLineIsUpdated += OnOrderLineViewModelIsUpdated;
             UserDTO user = authenticator.CurrentUser;
             //Price = _basket.final_price.ToString();
             //Weight = _basket.

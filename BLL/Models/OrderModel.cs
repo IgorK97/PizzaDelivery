@@ -10,6 +10,13 @@ using System.Threading.Tasks;
 namespace BLL.Models
 {
     public delegate void OrderIsChanged();
+    public enum SubmitOrderResult
+    {
+        Success=1,
+        FailedOrderIsEmpty=2,
+        FailedAddressIsEmpty=3,
+        Failed=4
+    }
 
     public class OrderModel
     {
@@ -31,6 +38,7 @@ namespace BLL.Models
         public DateTime? deliverytime { get; set; }
         public int delstatusId { get; set; }
         public string? comment { get; set; }
+
 
 
         public List<OrderLineModel> order_lines { get; set; }
@@ -66,8 +74,9 @@ namespace BLL.Models
         public void AddOrderLine(OrderLineModel orderLineModel)
         {
             //order_lines.Add(orderLineModel);
+
             List<IngredientDto> listedingr = new List<IngredientDto>();
-            foreach(IngredientModel ingrm in orderLineModel.addedingredients)
+            foreach (IngredientModel ingrm in orderLineModel.addedingredients)
             {
                 IngredientDto ingredientDto = new IngredientDto
                 {
@@ -91,8 +100,15 @@ namespace BLL.Models
                     Id = orderLineModel.Pizza.Id
                 }
             };
-            _orderService.CreateOrderLine(oldto);
-            
+
+            if (orderLineModel.Id == 0)
+                _orderService.CreateOrderLine(oldto);
+
+            else
+            {
+                oldto.Id = orderLineModel.Id;
+                _orderService.UpdateOrderLine(oldto);
+            }
 
             //List<OrderLineDto> oldtolist = new List<OrderLineDto>();
             //foreach(OrderLineModel olm in order_lines)
@@ -163,9 +179,55 @@ namespace BLL.Models
         {
             if (OrderId == Id)
             {
+                _orderService.DeleteOrderLine(OrderLineId);
+                OrderDto o = _orderService.GetOrder((int)Id);
 
+                Id = o.Id;
+                clientId = o.clientId;
+                courierId = o.courierId;
+                final_price = o.final_price;
+                address_del = o.address_del;
+                weight = o.weight;
+                ordertime = o.ordertime;
+                deliverytime = o.deliverytime;
+                delstatusId = o.delstatusId;
+                comment = o.comment;
+                order_lines = new List<OrderLineModel>();
+                foreach (OrderLineDto old in o.order_lines)
+                {
+                    OrderLineModel olm = new OrderLineModel(_priceBook, old);
+                    order_lines.Add(olm);
+                }
+                LineCount = order_lines.Count;
+                CalculateOrderPrice();
+                CalculateOrderWeight();
             }
+            
 
+        }
+        public SubmitOrderResult SubmitOrder(string AddressDel)
+        {
+            address_del = AddressDel;
+            if (final_price == (decimal)0.00)
+                return SubmitOrderResult.FailedOrderIsEmpty;
+            if (address_del == null || address_del == "")
+                return SubmitOrderResult.FailedAddressIsEmpty;
+            delstatusId = (int)DeliveryStatus.IsBeingFormed;
+            ordertime = DateTime.UtcNow;
+
+            OrderDto odto = new OrderDto
+            {
+                Id = Id,
+                address_del=address_del,
+                weight = weight,
+                ordertime = ordertime,
+                delstatusId = delstatusId,
+                final_price=final_price
+            };
+            if (_orderService.UpdateOrder(odto))
+                return SubmitOrderResult.Success;
+            else
+                return SubmitOrderResult.Failed;
         }
     }
 }

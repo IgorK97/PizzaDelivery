@@ -19,8 +19,8 @@
             <!--LastChildFill="False">-->
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
+                    <!--<ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>-->
 
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
@@ -30,11 +30,11 @@
                     <ColumnDefinition Width="auto"/>
 
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Выберите ингредиент" TextAlignment="Center" Margin ="20" Height="40" Padding="12" Background="Bisque"/>
+                <!--<TextBlock Grid.Column="0" Text="Выберите ингредиент" TextAlignment="Center" Margin ="20" Height="40" Padding="12" Background="Bisque"/>
                 <ComboBox Grid.Column="1" Margin ="20" Width="100" Height="40" Padding="10" Background="Beige">
                     <ComboBoxItem Content="Ингредиент"/>
-                </ComboBox>
-                <Button Grid.Column="2" Width="80" Margin="10" Background="White" DockPanel.Dock="Left"
+                </ComboBox>-->
+                <Button Grid.Column="0" Width="80" Margin="10" Background="White" DockPanel.Dock="Left"
                     Command="{Binding UpdateCurrentViewModelCommand}"
                         CommandParameter="{x:Static nav:ViewType.Shop}">
                     
@@ -46,19 +46,19 @@
                 <!--CommandParameter="{x:Static nav:ViewType.Profile}"-->
                
                 
-                <Button Grid.Column="5" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
+                <Button Grid.Column="3" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
                     Command="{Binding UpdateCurrentViewModelCommand}"
                         CommandParameter="{x:Static nav:ViewType.Basket}">
                     
                     <Image Source="/ImagesForProject/basket.png"/>
                 </Button>
-                <Button Grid.Column="4" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
+                <Button Grid.Column="2" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
      Command="{Binding UpdateCurrentViewModelCommand}"
          CommandParameter="{x:Static nav:ViewType.OrderHistory}">
 
                     <Image Source="/ImagesForProject/ordersicon.png"/>
                 </Button>
-                <Button Grid.Column="6" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
+                <Button Grid.Column="4" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
 Command="{Binding UpdateCurrentViewModelCommand}"
     CommandParameter="{x:Static nav:ViewType.Profile}">
 

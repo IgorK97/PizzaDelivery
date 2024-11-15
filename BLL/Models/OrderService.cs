@@ -31,13 +31,13 @@ namespace BLL.Models
                 order.DelstatusId = odto.delstatusId;
                 order.FinalPrice = odto.final_price;
                 order.Weight = odto.weight;
-                List<OrderLine> lines = new List<OrderLine>();
-                foreach (var pId in odto.order_lines)
-                {
-                    OrderLine ingr = dbr.OrderLines.GetItem(pId.Id);
-                    lines.Add(ingr);
-                }
-                order.OrderLines = lines;
+                //List<OrderLine> lines = new List<OrderLine>();
+                //foreach (var pId in odto.order_lines)
+                //{
+                //    OrderLine ingr = dbr.OrderLines.GetItem(pId.Id);
+                //    lines.Add(ingr);
+                //}
+                //order.OrderLines = lines;
                 if (dbr.Save() > 0)
                     return true;
                 return false;
@@ -171,77 +171,32 @@ namespace BLL.Models
 
         public void UpdateOrderLine(OrderLineDto p)
         {
-            //List<Ingredient> addedingredients = new List<Ingredient>();
-            //foreach (var pId in p.addedingredientsId)
-            //{
-            //    Ingredient ingr = dbr.Ingredients.GetItem(pId);
-            //    addedingredients.Add(ingr);
-            //}
-            //OrderLine ol = dbr.OrderLines.GetItem(p.Id);
-            //ol.Weight = p.weight;
-            //ol.Custom = p.custom;
-            //ol.PizzaId = p.pizzaId;
-            //ol.PositionPrice = p.position_price;
-            //ol.PizzaSizesId = p.pizza_sizesId;
-            //ol.Quantity = p.quantity;
-            //ol.OrdersId = p.ordersId;
-            //ol.Ingredients = addedingredients;
-            //Save();
+            List<Ingredient> addedingredients = new List<Ingredient>();
+            foreach (var pId in p.addedingredients)
+            {
+                Ingredient ingr = dbr.Ingredients.GetItem(pId.Id);
+                addedingredients.Add(ingr);
+            }
+            OrderLine ol = dbr.OrderLines.GetItem(p.Id);
+            ol.Weight = p.weight;
+            ol.Custom = p.custom;
+            ol.PizzaId = p.pizzaId;
+            ol.PositionPrice = p.position_price;
+            ol.PizzaSizesId = p.pizza_sizesId;
+            ol.Quantity = p.quantity;
+            ol.OrdersId = p.ordersId;
+            ol.Ingredients = addedingredients;
+            Save();
         }
 
         public void DeleteOrderLine(int id)
         {
-            //OrderLine p = dbr.OrderLines.GetItem(id);
-            //if (p != null)
-            //{
+            
             dbr.OrderLines.Delete(id);
             //Save();
-            //}
+          
         }
 
-        //public List<ManagerDto> GetAllManagers()
-        //{
-
-        //    var q = dbr.Users.GetList().ToList().Join(dbr.Managers.GetList().ToList(), u => u.Id, m => m.Id, (_u, _m)
-        //        => new ManagerDto
-        //        {
-        //            Id = _u.Id,
-        //            FirstName = _u.FirstName,
-        //            LastName = _u.LastName,
-        //            Surname = _u.Surname,
-        //            Login = _u.Login,
-        //            Phone = _m.Phone,
-        //            Email = _m.Email,
-        //            Password = _u.Password
-        //        }).ToList();
-        //    return q;
-        //}
-
-        //public List<CouriersDto> GetAllCouriers()
-        //{
-        //    var q = dbr.Users.GetList().ToList().Join(dbr.Couriers.GetList().ToList(), u => u.Id, c => c.Id, (_u, _c)
-        //        => new CouriersDto
-        //        {
-        //            Id = _u.Id,
-        //            FirstName = _u.FirstName,
-        //            LastName = _u.LastName,
-        //            Surname = _u.Surname,
-        //            Login = _u.Login,
-        //            Phone = _c.Phone,
-        //            Email = _c.Email,
-        //            Password = _u.Password
-        //        }).ToList();
-        //    return q;
-
-
-        //    //return dbr.Couriers.GetList().ToList().Select(i => new CouriersDto(i)).ToList();
-        //}
-
-        
-        //public bool Save()
-        //{
-        //    if (dbr.Save() > 0) return true;
-        //    return false;
-        //}
+       
     }
 }

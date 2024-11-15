@@ -77,6 +77,7 @@ namespace BLL.Models
 
         public OrderLineModel(IPriceBook priceBook, IOrderLineService ols, PizzaModel pizza, int id)
         {
+            Id = 0;
             _priceBook = priceBook;
             Pizza = pizza;
             _quantity = 1;
