@@ -1,5 +1,6 @@
 ﻿using DTO;
 using Interfaces.Services.AuthenticationServices;
+using PizzaDelivery.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace PizzaDelivery.State.Authenticators
         int Id { get; }
         UserDTO CurrentUser { get; }
         bool IsLoggedIn { get; }
-
+        IAccountStore Account { get; set; }
         RegistrationResult UpdateAccount(UserDTO user, string confirmstring);
         RegistrationResult Register(ClientDTO user, string confirmpassword);
         bool Login(string login, string password);

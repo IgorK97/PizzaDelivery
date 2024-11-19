@@ -37,6 +37,11 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged(nameof(SelectedOrder));
             }
         }
+        public void OnOrderViewModelIsDeleted()
+        {
+            Load();
+            OnPropertyChanged(nameof(OrderCollection));
+        }
         private SelectedOrderViewModel watchingOrder;
         public SelectedOrderViewModel WatchingOrder
         {
@@ -69,6 +74,8 @@ namespace PizzaDelivery.ViewModels
         {
             _orderBook = orderBook;
             IsOrderSelected = false;
+            OrderViewModel.OnOrderIsDeleted += OnOrderViewModelIsDeleted;
+
         }
         public void Load()
         {

@@ -29,6 +29,9 @@
             <DataTemplate DataType="{x:Type viewms:BasketViewModel}">
                 <view:BasketPresentation/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewms:SelectedOrderViewModel}">
+                <view:SelectedOrderView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

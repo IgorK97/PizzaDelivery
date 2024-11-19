@@ -62,7 +62,7 @@ namespace PizzaDelivery.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/PizzaDelivery;V1.0.0.0;component/views/authorizationpresentation.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PizzaDelivery;component/views/authorizationpresentation.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\AuthorizationPresentation.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

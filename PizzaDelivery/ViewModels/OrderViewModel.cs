@@ -10,8 +10,13 @@ using System.Windows.Input;
 
 namespace PizzaDelivery.ViewModels
 {
+    public delegate void OrderViewModelIsDeleted();
+
     public class OrderViewModel : ViewModelBase
+
     {
+        public static event OrderViewModelIsDeleted OnOrderIsDeleted;
+
         private readonly OrderModel _orderModel;
         public OrderModel OrderModel
         {
@@ -26,7 +31,11 @@ namespace PizzaDelivery.ViewModels
         {
             get
             {
-                return cancelCommand;
+                return cancelCommand ??= new Commands.DelegateCommand(obj =>
+                {
+                    _orderModel.CancelYourself();
+                    OnOrderIsDeleted?.Invoke();
+                });
             }
         }
         private bool _isDelivered;
@@ -40,6 +49,19 @@ namespace PizzaDelivery.ViewModels
             {
                 _isDelivered = value;
                 OnPropertyChanged(nameof(IsDelivered));
+            }
+        }
+        private bool _isCanceled;
+        public bool IsCanceled
+        {
+            get
+            {
+                return _isCanceled;
+            }
+            set
+            {
+                _isCanceled = value;
+                OnPropertyChanged(nameof(IsCanceled));
             }
         }
         private string _deliveryDate;
@@ -146,9 +168,16 @@ namespace PizzaDelivery.ViewModels
             if (om.delstatusId == 6)
             {
                 IsDelivered = true;
+                IsCanceled = false;
             }
             else
+            {
                 IsDelivered = false;
+                if (om.delstatusId == 2 || om.delstatusId == 7)
+                    IsCanceled = false;
+                else
+                    IsCanceled = true;
+            }
         }
     }
 }

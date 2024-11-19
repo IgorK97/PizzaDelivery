@@ -2,6 +2,7 @@
 using DomainModel.Exceptions;
 using DTO;
 using Microsoft.AspNet.Identity;
+using PizzaDelivery.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Interfaces.Services.AuthenticationServices
     {
         private readonly IAccountService _accountService;
         private readonly IPasswordHasher _passwordHasher;
+        public IAccountStore Account {get;set;}
 
         public AuthenticationService(IAccountService accountService, IPasswordHasher passwordHasher)
         {

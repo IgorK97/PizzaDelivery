@@ -12,6 +12,7 @@ namespace Interfaces.Services
     {
         bool UpdateOrder(OrderDto odto);
         OrderDto GetOrder(int Id);
+        OrderDto GetOrder(OrderDto o);
         bool MakeOrder(int ClientId);
 
         int GetCurrentOrder(int ClientId);

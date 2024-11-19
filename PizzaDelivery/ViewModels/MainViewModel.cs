@@ -25,6 +25,9 @@ namespace PizzaDelivery.ViewModels
         private readonly OrderBook _orderBook;
 
         public bool IsLoggedIn => _authenticator.IsLoggedIn;
+        public bool IsClient => _authenticator.Account.IsClient;
+        public bool IsCourier => _authenticator.Account.IsCourier;
+        public bool IsManager => _authenticator.Account.IsManager;
 
         private ICommand updateCurrentViewModelCommand;
         public ICommand UpdateCurrentViewModelCommand
@@ -78,6 +81,10 @@ namespace PizzaDelivery.ViewModels
         private void Authenticator_StateChanged()
         {
             OnPropertyChanged(nameof(IsLoggedIn));
+            OnPropertyChanged(nameof(IsClient));
+            OnPropertyChanged(nameof(IsCourier));
+            OnPropertyChanged(nameof(IsManager));
+
             _orderBook.Load();
         }
 

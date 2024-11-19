@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PizzaDelivery.State.Accounts
+namespace PizzaDelivery.Interfaces.Services
 {
     public interface IAccountStore
     {
@@ -14,5 +14,9 @@ namespace PizzaDelivery.State.Accounts
         UserDTO CurrentAccount { get; set; }
         
         event Action StateChanged;
+
+        bool IsClient { get; }
+        bool IsCourier { get; }
+        bool IsManager { get; }
     }
 }

@@ -2,6 +2,7 @@
 using Interfaces.Services;
 using Interfaces.Services.AuthenticationServices;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using PizzaDelivery.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,24 @@ namespace PizzaDelivery.State.Accounts
         {
             get { return _id; }
             set { _id = value; }
+        }
+        public bool IsClient {
+            get
+            {
+                return _currentAccount is ClientDTO;
+            }
+        }
+        public bool IsCourier {
+            get
+            {
+                return _currentAccount is CouriersDto;
+            }
+        }
+        public bool IsManager {
+            get
+            {
+                return _currentAccount is ManagerDto;
+            }
         }
         private UserDTO _currentAccount;
         public UserDTO CurrentAccount

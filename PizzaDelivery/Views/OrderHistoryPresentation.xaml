@@ -98,10 +98,10 @@
                         <Grid.Style>
                             <Style TargetType="Grid">
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsDelivered}" Value="false">
+                                    <DataTrigger Binding="{Binding IsCanceled}" Value="true">
                                         <Setter Property="Visibility" Value="Visible"/>
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding IsDelivered}" Value="true">
+                                    <DataTrigger Binding="{Binding IsCanceled}" Value="false">
                                         <Setter Property="Visibility" Value="Collapsed"/>
                                     </DataTrigger>
                                 </Style.Triggers>

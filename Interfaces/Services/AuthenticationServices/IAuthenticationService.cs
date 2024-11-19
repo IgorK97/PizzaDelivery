@@ -1,4 +1,5 @@
 ﻿using DTO;
+using PizzaDelivery.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Interfaces.Services.AuthenticationServices
     }
     public interface IAuthenticationService
     {
+        IAccountStore Account { get; set; }
         RegistrationResult Register(ClientDTO _user, string confirmPassword);
         RegistrationResult UpdateAccount(UserDTO _user, string confirmPassword);
 

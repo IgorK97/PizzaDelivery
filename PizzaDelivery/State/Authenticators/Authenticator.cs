@@ -1,5 +1,6 @@
 ﻿using DTO;
 using Interfaces.Services.AuthenticationServices;
+using PizzaDelivery.Interfaces.Services;
 using PizzaDelivery.State.Accounts;
 using System;
 using System.Collections.Generic;
@@ -23,8 +24,18 @@ namespace PizzaDelivery.State.Authenticators
             //}
         }
         private readonly IAuthenticationService _authenticationService;
-        private readonly IAccountStore _accountStore;
-
+        private IAccountStore _accountStore;
+        public IAccountStore Account
+        {
+            get
+            {
+                return _accountStore;
+            }
+            set
+            {
+                _accountStore = value;
+            }
+        }
         public Authenticator(IAuthenticationService authenticationService, IAccountStore accountStore)
         {
             _authenticationService = authenticationService;

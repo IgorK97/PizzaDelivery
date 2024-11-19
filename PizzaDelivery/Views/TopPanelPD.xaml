@@ -37,34 +37,80 @@
                 <Button Grid.Column="0" Width="80" Margin="10" Background="White" DockPanel.Dock="Left"
                     Command="{Binding UpdateCurrentViewModelCommand}"
                         CommandParameter="{x:Static nav:ViewType.Shop}">
-                    
-                    <Image Source="/ImagesForProject/pizzaicon.png"/>
 
+                    <Image Source="/ImagesForProject/pizzaicon.png"/>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsClient}" Value="false">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsClient}" Value="true">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                 </Button>
-                <!--CommandParameter="{x:Static nav:ViewType.Shop}">-->
-                
-                <!--CommandParameter="{x:Static nav:ViewType.Profile}"-->
-               
-                
                 <Button Grid.Column="3" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
                     Command="{Binding UpdateCurrentViewModelCommand}"
                         CommandParameter="{x:Static nav:ViewType.Basket}">
-                    
                     <Image Source="/ImagesForProject/basket.png"/>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsClient}" Value="false">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsClient}" Value="true">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    
                 </Button>
                 <Button Grid.Column="2" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
-     Command="{Binding UpdateCurrentViewModelCommand}"
-         CommandParameter="{x:Static nav:ViewType.OrderHistory}">
-
+     Command="{Binding UpdateCurrentViewModelCommand}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                
+                                <DataTrigger Binding="{Binding IsClient}" Value="true">
+                                    <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.OrderHistory}"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsCourier}" Value="true">
+                                    <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.OrderHistory}"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsManager}" Value="true">
+                                    <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.OrderHistory}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                     <Image Source="/ImagesForProject/ordersicon.png"/>
                 </Button>
                 <Button Grid.Column="4" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
-Command="{Binding UpdateCurrentViewModelCommand}"
-    CommandParameter="{x:Static nav:ViewType.Profile}">
+Command="{Binding UpdateCurrentViewModelCommand}">
 
 
                     <Image Source="/ImagesForProject/profile.png"/>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
 
+                                <DataTrigger Binding="{Binding IsClient}" Value="true">
+                                    <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.Profile}"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsCourier}" Value="true">
+                                    <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.Profile}"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsManager}" Value="true">
+                                    <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.Profile}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                 </Button>
             </Grid>
         </Grid>

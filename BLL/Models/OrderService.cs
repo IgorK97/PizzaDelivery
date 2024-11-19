@@ -31,6 +31,7 @@ namespace BLL.Models
                 order.DelstatusId = odto.delstatusId;
                 order.FinalPrice = odto.final_price;
                 order.Weight = odto.weight;
+                dbr.Orders.Update(order);
                 //List<OrderLine> lines = new List<OrderLine>();
                 //foreach (var pId in odto.order_lines)
                 //{
@@ -38,16 +39,22 @@ namespace BLL.Models
                 //    lines.Add(ingr);
                 //}
                 //order.OrderLines = lines;
-                if (dbr.Save() > 0)
-                    return true;
-                return false;
+                //if (dbr.Save() > 0)
+                //    return true;
+                //return false;
             }
-            return false;
+            return true;
+        }
+
+        public OrderDto GetOrder(OrderDto o)
+        {
+            return dbr.Orders.GetList().Where(i => i.Id == o.Id).Select(i =>
+            new OrderDto(i)).FirstOrDefault();
         }
 
         public OrderDto GetOrder(int Id)
         {
-            return dbr.Orders.GetList().Where(i => i.Id == Id && i.DelstatusId==1).Select(i =>
+            return dbr.Orders.GetList().Where(i => i.Id == Id && i.DelstatusId == 1).Select(i =>
             new OrderDto(i)).FirstOrDefault();
         }
 

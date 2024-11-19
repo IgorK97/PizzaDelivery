@@ -217,6 +217,39 @@ namespace BLL.Models
             
 
         }
+
+        public void CancelYourself()
+        {
+            OrderDto newodto = new OrderDto();
+
+
+            newodto.Id = Id;
+            newodto.address_del = address_del;
+            newodto.delstatusId = (int)DeliveryStatus.Canceled;
+            newodto.final_price = final_price;
+            newodto.weight = weight;
+            
+            _orderService.UpdateOrder(newodto);
+            OrderDto o = _orderService.GetOrder(newodto);
+
+            Id = o.Id;
+            clientId = o.clientId;
+            courierId = o.courierId;
+            final_price = o.final_price;
+            address_del = o.address_del;
+            weight = o.weight;
+            ordertime = o.ordertime;
+            deliverytime = o.deliverytime;
+            delstatusId = o.delstatusId;
+            comment = o.comment;
+            order_lines = new List<OrderLineModel>();
+            foreach (OrderLineDto old in o.order_lines)
+            {
+                OrderLineModel olm = new OrderLineModel(_priceBook, old);
+                order_lines.Add(olm);
+            }
+            LineCount = order_lines.Count;
+        }
         public SubmitOrderResult SubmitOrder(string AddressDel)
         {
             address_del = AddressDel;
