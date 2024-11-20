@@ -22,6 +22,7 @@ namespace BLL.Models
     {
         private readonly IPriceBook _priceBook;
         private readonly IOrderService _orderService;
+        private readonly IOrderManagementService _orderManagementService;
         public static event OrderIsChanged OnOrderIsChanged;
 
         public int? Id { get; set; }
@@ -50,6 +51,30 @@ namespace BLL.Models
         {
             _priceBook = priceBook;
             _orderService = orderService;
+            Id = o.Id;
+            clientId = o.clientId;
+            courierId = o.courierId;
+            final_price = o.final_price;
+            address_del = o.address_del;
+            weight = o.weight;
+            ordertime = o.ordertime;
+            deliverytime = o.deliverytime;
+            delstatusId = o.delstatusId;
+            comment = o.comment;
+            order_lines = new List<OrderLineModel>();
+            foreach (OrderLineDto oldto in o.order_lines)
+            {
+                OrderLineModel olm = new OrderLineModel(_priceBook, oldto);
+                order_lines.Add(olm);
+            }
+            LineCount = order_lines.Count;
+            OrderLineModel.OnOrderLineIsChanged += OnOrderLineChanged;
+            OrderLineModel.OnOrderLineIsDeleted += DeleteOrderLine;
+        }
+        public OrderModel(IPriceBook priceBook, IOrderManagementService orderService, OrderDto o)
+        {
+            _priceBook = priceBook;
+            _orderManagementService = orderService;
             Id = o.Id;
             clientId = o.clientId;
             courierId = o.courierId;

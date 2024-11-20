@@ -30,7 +30,7 @@ namespace DTO
 
         public int clientId { get; set; }
         public int? courierId { get; set; }
-
+        public int? managerId { get; set; }
         public decimal final_price { get; set; }
 
         public string address_del { get; set; }
@@ -47,6 +47,7 @@ namespace DTO
             Id = o.Id;
             clientId = o.ClientId;
             courierId = o.CourierId;
+            managerId = o.ManagersId;
             final_price = o.FinalPrice;
             address_del = o.AddressDel;
             weight = o.Weight;

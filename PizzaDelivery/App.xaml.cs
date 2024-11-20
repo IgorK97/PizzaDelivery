@@ -79,6 +79,7 @@ namespace PizzaDelivery
             services.AddSingleton<IDbRepos, DbReposPgs>();
             services.AddSingleton<IOrderLineService, OrderLinesService>();
             services.AddSingleton<IOrderService, OrderService>();
+            services.AddSingleton<IOrderManagementService, OrderManagementService>();
 
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
@@ -91,6 +92,10 @@ namespace PizzaDelivery
             services.AddSingleton<OrderBook>(s =>
             new OrderBook(s.GetRequiredService<IAuthenticator>(), s.GetRequiredService<IPriceBook>(),
             s.GetRequiredService<IOrderService>()));
+            services.AddSingleton<ManagementModel>(s =>
+            new ManagementModel(s.GetRequiredService<IAuthenticator>(),
+            s.GetRequiredService<IPriceBook>(),
+            s.GetRequiredService<IOrderManagementService>()));
             services.AddSingleton<CreateViewModel<ProfilePresentationVM>>(services =>
             {
                 return () => new ProfilePresentationVM(services.GetRequiredService<IAuthenticator>());
@@ -122,6 +127,12 @@ namespace PizzaDelivery
             services.AddSingleton<CreateViewModel<OrderHistoryViewModel>>(services =>
             {
                 return () => new OrderHistoryViewModel(services.GetRequiredService<OrderBook>());
+            });
+            services.AddSingleton<CreateViewModel<OrdersManagerVM>>(services =>
+            {
+                return () => new OrdersManagerVM(services.GetRequiredService<ManagementModel>(),
+                    services.GetRequiredService<IAuthenticator>(),
+                    services.GetRequiredService<IPriceBook>());
             });
             services.AddSingleton<CreateViewModel<PizzaSelectionVM>>(services =>
             {

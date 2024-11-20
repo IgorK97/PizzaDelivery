@@ -27,16 +27,20 @@ namespace PizzaDelivery.ViewModels
                 return _orderscollection;
             }
         }
+
+        private readonly ManagementModel _managementModel;
         public void Load()
         {
             _orderscollection = new ObservableCollection<OrderViewModel>();
-            //IEnumerable<OrderLineModel> _lines = _basket.GetLines();
+            _managementModel.Load();
 
-            //foreach (OrderLineModel olm in _lines)
-            //{
-            //    OrderLineViewModel olvm = new OrderLineViewModel(olm);
-            //    _orderscollection.Add(olvm);
-            //}
+            IEnumerable<OrderModel> _orders = _managementModel.Orders;
+
+            foreach (OrderModel olm in _orders)
+            {
+                OrderViewModel olvm = new OrderViewModel(olm);
+                _orderscollection.Add(olvm);
+            }
         }
         private OrderViewModel _selectedOrder;
         public OrderViewModel SelectedOrder
@@ -108,19 +112,20 @@ namespace PizzaDelivery.ViewModels
         }
 
         
-        private readonly AssortmentModel _assortmentModel;
+        //private readonly AssortmentModel _assortmentModel;
         private readonly IAuthenticator _authenticator;
         private readonly IPriceBook _priceBook;
-        private readonly OrderBook _orderBook;
-        private OrderModel _basket;
+        //private readonly OrderBook _orderBook;
+        //private OrderModel _basket;
         
-        public OrdersManagerVM(AssortmentModel assortmentModel, IAuthenticator authenticator, IPriceBook priceBook, OrderBook orderBook)
+        public OrdersManagerVM(ManagementModel managementModel, IAuthenticator authenticator, IPriceBook priceBook/*, OrderBook orderBook*/)
         {
-            _assortmentModel = assortmentModel;
+            //_assortmentModel = assortmentModel;
+            _managementModel = managementModel;
             _authenticator = authenticator;
             _priceBook = priceBook;
-            _orderBook = orderBook;
-            _basket = _orderBook.GetBasketContent();
+            //_orderBook = orderBook;
+            //_basket = _orderBook.GetBasketContent();
             //AddingPizzaViewModel.OnExitDelegate += OnExitEvent;
             //OrderLineViewModel.OnOrderLineIsChanged += OnOrderLineViewModelIsChanged;
             //OrderLineViewModel.OnOrderLineIsDeleted += OnOrderLineViewModelIsDeleted;
