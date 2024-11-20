@@ -88,17 +88,20 @@
                          VerticalAlignment="Center" 
                          HorizontalAlignment="Center" 
                           Content="Подробнее"/>
-                    <Button Command="{Binding ChangeStatus}"
+                    <Button
                      Margin="5"  Width="auto" Height="50" Grid.Column="13">
                         <Button.Style>
                             <Style TargetType="Button"  BasedOn="{StaticResource BaseButtonStyle}">
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.IsBeingFormed}">
                                         <Setter Property="Content" Value="Принять заказ"/>
+                                        <Setter Property="Command" Value="{Binding TakeOrder}"/>
                                         <Setter Property="CommandParameter" Value="{x:Static statuses:DeliveryStatus.IsCooking}"/>
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.IsCooking}">
                                         <Setter Property="Content" Value="Передать курьерам"/>
+                                        <Setter Property="Command" Value="{Binding ChangeStatus}"/>
+
                                         <Setter Property="CommandParameter" Value="{x:Static statuses:DeliveryStatus.HandedOver}"/>
 
                                     </DataTrigger>

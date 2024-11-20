@@ -195,7 +195,11 @@ namespace PizzaDelivery.ViewModels
             OnPropertyChanged(nameof(OrdersCollection));
         }
 
-        
+        public void OnOrderViewModelIsTaked(int Id)
+        {
+            _managementModel.TakeOrder(Id);
+            OnOrderViewModelIsChanged();
+        }
         //private readonly AssortmentModel _assortmentModel;
         private readonly IAuthenticator _authenticator;
         private readonly IPriceBook _priceBook;
@@ -220,6 +224,7 @@ namespace PizzaDelivery.ViewModels
             //Weight = _basket.weight.ToString();
             //Address = ((ClientDTO)user).AddressDel;
             OrderViewModel.OnOrderStateIsChanged += OnOrderViewModelIsChanged;
+            OrderViewModel.OnOrderIsTaked += OnOrderViewModelIsTaked;
         }
     }
 }

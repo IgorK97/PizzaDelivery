@@ -30,6 +30,14 @@ namespace BLL.Models
             _orders = new List<OrderModel>();
 
         }
+        public void TakeOrder(int OrderId)
+        {
+            int cid = _authenticator.Account.Id;
+
+            OrderModel om = _orders.Where(o => o.Id == OrderId).FirstOrDefault();
+            om.TakeOrderManager(cid);
+        }
+
 
         public List<OrderModel> GetNecesseryOrderList(DeliveryStatus ds)
         {

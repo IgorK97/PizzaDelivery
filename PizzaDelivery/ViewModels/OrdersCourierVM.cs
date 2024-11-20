@@ -31,13 +31,14 @@ namespace PizzaDelivery.ViewModels
         public void Load()
         {
             _orderscollection = new ObservableCollection<OrderViewModel>();
-            //IEnumerable<OrderLineModel> _lines = _basket.GetLines();
+            _deliverySystemModel.Load();
+            IEnumerable<OrderModel> _orders = _deliverySystemModel.GetNecesseryOrderList(DelStatus);
 
-            //foreach (OrderLineModel olm in _lines)
-            //{
-            //    OrderLineViewModel olvm = new OrderLineViewModel(olm);
-            //    _orderscollection.Add(olvm);
-            //}
+            foreach (OrderModel olm in _orders)
+            {
+                OrderViewModel olvm = new OrderViewModel(olm);
+                _orderscollection.Add(olvm);
+            }
         }
         private OrderViewModel _selectedOrder;
         public OrderViewModel SelectedOrder
@@ -202,18 +203,28 @@ namespace PizzaDelivery.ViewModels
 
 
         //private readonly AssortmentModel _assortmentModel;
-        private readonly ManagementModel _managementModel;
+        private readonly DeliverySystemModel _deliverySystemModel;
         private readonly IAuthenticator _authenticator;
         private readonly IPriceBook _priceBook;
         //private readonly OrderBook _orderBook;
         //private OrderModel _basket;
-
-        public OrdersCourierVM(ManagementModel managementModel, IAuthenticator authenticator, IPriceBook priceBook/*, OrderBook orderBook*/)
+        public void OnOrderViewModelIsChanged()
+        {
+            Load();
+            OnPropertyChanged(nameof(OrdersCollection));
+        }
+        public void OnOrderViewModelIsTaked(int Id)
+        {
+            _deliverySystemModel.TakeOrder(Id);
+            OnOrderViewModelIsChanged();
+        }
+        public OrdersCourierVM(DeliverySystemModel deliverySystemModel, IAuthenticator authenticator, IPriceBook priceBook/*, OrderBook orderBook*/)
         {
             //_assortmentModel = assortmentModel;
-            _managementModel = managementModel;
+            _deliverySystemModel = deliverySystemModel;
             _authenticator = authenticator;
             _priceBook = priceBook;
+            DelStatus = DeliveryStatus.HandedOver;
             //_orderBook = orderBook;
             //_basket = _orderBook.GetBasketContent();
             //AddingPizzaViewModel.OnExitDelegate += OnExitEvent;
@@ -221,6 +232,8 @@ namespace PizzaDelivery.ViewModels
             //OrderLineViewModel.OnOrderLineIsDeleted += OnOrderLineViewModelIsDeleted;
             //OrderLineViewModel.OnOrderLineIsUpdated += OnOrderLineViewModelIsUpdated;
             UserDTO user = authenticator.CurrentUser;
+            OrderViewModel.OnOrderStateIsChanged += OnOrderViewModelIsChanged;
+            OrderViewModel.OnOrderIsTaked += OnOrderViewModelIsTaked;
             //Price = _basket.final_price.ToString();
             //Weight = _basket.weight.ToString();
             //Address = ((ClientDTO)user).AddressDel;

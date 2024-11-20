@@ -7,6 +7,7 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:statuses="clr-namespace:DTO;assembly=Interfaces"
              mc:Ignorable="d" 
+             FontSize="18"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <DataTemplate x:Key="listordersTemplate">
@@ -29,21 +30,25 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="{Binding Id, Mode=OneWay}" VerticalAlignment="Center" 
-                            HorizontalAlignment="Center" FontSize="26"/>
+                    <TextBlock Grid.Column="0" Text="{Binding Number, Mode=OneWay}" VerticalAlignment="Center" 
+                            HorizontalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Text="Время заказа" Margin="10 10" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                            FontSize="26"/>
-                    <TextBlock Grid.Column="2" Text="{Binding OrderTime}" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                            FontSize="26"/>
+                            />
+                    <TextBlock Grid.Column="2" Text="{Binding OrderDate}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                            />
                     <TextBlock Grid.Column="3"  Text="Адрес" Margin="10 10" VerticalAlignment="Center"
-                            HorizontalAlignment="Center" FontSize="26"/>
-                    <TextBlock Grid.Column="4" Text="{Binding Address}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
-                    <TextBlock Grid.Column="5" Text="Время доставки" VerticalAlignment="Center" Margin="10 10 " FontSize="26">
+                            HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="4" Text="{Binding Address}" VerticalAlignment="Center" Margin="10 10 "/>
+                    <TextBlock Grid.Column="5" Text="Время доставки" VerticalAlignment="Center" Margin="10 10 ">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Style.Triggers>
@@ -57,7 +62,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <TextBlock Grid.Column="6" Text="{Binding DeliveryTime}" VerticalAlignment="Center" Margin="10 10 " FontSize="26">
+                    <TextBlock Grid.Column="6" Text="{Binding DeliveryDate}" VerticalAlignment="Center" Margin="10 10 " FontSize="26">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Style.Triggers>
@@ -71,29 +76,32 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <TextBlock Grid.Column="7" Text="Цена" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
-                    <TextBlock Grid.Column="8" Text="{Binding Price}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
-                    <TextBlock Grid.Column="9" Text="Вес" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
-                    <TextBlock Grid.Column="10" Text="{Binding Weight}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
-                    <TextBlock Grid.Column="11" Text="{Binding Status}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
+                    <TextBlock Grid.Column="7" Text="Цена" VerticalAlignment="Center" Margin="10 10 "/>
+                    <TextBlock Grid.Column="8" Text="{Binding Cost}" VerticalAlignment="Center" Margin="10 10 "/>
+                    <TextBlock Grid.Column="9" Text="Вес" VerticalAlignment="Center" Margin="10 10 "/>
+                    <TextBlock Grid.Column="10" Text="{Binding Weight}" VerticalAlignment="Center" Margin="10 10 "/>
+                    <TextBlock Grid.Column="11" Text="{Binding Status}" VerticalAlignment="Center" Margin="10 10 "/>
 
                     <Button Command="{Binding AboutOrder}"
                              Style="{StaticResource BaseButtonStyle}"
                      Width="auto" Height="50" Grid.Column="12"
                          VerticalAlignment="Center" 
                          HorizontalAlignment="Center" 
-                         FontSize="26" Content="Подробнее"/>
-                    <Button Command="{Binding ChangeStatus}"
+                         Content="Подробнее"/>
+                    <Button
                     Margin="5" Width="auto" Height="50" Grid.Column="13">
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.HandedOver}">
                                         <Setter Property="Content" Value="Принять заказ"/>
+                                        <Setter Property="Command" Value="{Binding TakeOrder}"/>
+
                                         <Setter Property="CommandParameter" Value="{x:Static statuses:DeliveryStatus.AtTheCourier}"/>
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.AtTheCourier}">
                                         <Setter Property="Content" Value="Пометить по доставке"/>
+                                        <Setter Property="Command" Value="{Binding ChangeStatus}"/>
                                         <Setter Property="CommandParameter" Value="{x:Static statuses:DeliveryStatus.Delivered}"/>
 
                                     </DataTrigger>
@@ -178,7 +186,7 @@
                 
                 <RadioButton FontSize="18" Grid.Column="0"
                             Style="{StaticResource RadBut}"
-                             IsChecked="{Binding IsHandedOver, Mode=OneWay}"
+                             IsChecked="{Binding HandedOver, Mode=OneWay}"
 Command="{Binding SelectStatus}"
 CommandParameter="{x:Static statuses:DeliveryStatus.HandedOver}"
 Content="Ожидают курьера"/>

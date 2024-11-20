@@ -13,13 +13,14 @@ namespace PizzaDelivery.ViewModels
 {
     public delegate void OrderViewModelIsDeleted();
     public delegate void OrderStateViewModelIsChanged();
+    public delegate void OrderViewModelIsTaked(int id);
 
     public class OrderViewModel : ViewModelBase
 
     {
         public static event OrderViewModelIsDeleted OnOrderIsDeleted;
         public static event OrderStateViewModelIsChanged OnOrderStateIsChanged;
-
+        public static event OrderViewModelIsTaked OnOrderIsTaked;
         private readonly OrderModel _orderModel;
         public OrderModel OrderModel
         {
@@ -50,6 +51,19 @@ namespace PizzaDelivery.ViewModels
                 {
                     _orderModel.ChangeStatus((DeliveryStatus)obj);
                     OnOrderStateIsChanged?.Invoke();
+                });
+            }
+        }
+        private ICommand takeOrder;
+        public ICommand TakeOrder
+        {
+            get
+            {
+                return changeStatus ??= new Commands.DelegateCommand(obj =>
+                {
+                    //_orderModel.ChangeStatus((DeliveryStatus)obj);
+                    //OnOrderStateIsChanged?.Invoke();
+                    OnOrderIsTaked?.Invoke(Id);
                 });
             }
         }
@@ -186,6 +200,7 @@ namespace PizzaDelivery.ViewModels
         public OrderViewModel(OrderModel om)
         {
             _orderModel = om;
+            Id = (int)om.Id;
             Number = om.Id.ToString();
             Address = om.address_del.ToString();
             Weight = om.weight.ToString();
