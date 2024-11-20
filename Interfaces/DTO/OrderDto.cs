@@ -15,7 +15,8 @@ namespace DTO
         AtTheCourier = 5,
         Delivered = 6,
         NotDelivered = 7,
-        HandedOver = 8
+        HandedOver = 8,
+        IsCooking = 9
     };
     public class OrderDto
     {

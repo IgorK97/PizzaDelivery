@@ -137,7 +137,7 @@ namespace PizzaDelivery.ViewModels
                     NetworkCredential networkCredential = new NetworkCredential(Login, Password);
                     NetworkCredential networkCredentialsecond = new NetworkCredential(Login, RepPassword);
 
-                    ClientDTO testUser = new ClientDTO
+                    ManagerDto testUser = new ManagerDto
                     {
                         FirstName = FirstName,
                         LastName = LastName,

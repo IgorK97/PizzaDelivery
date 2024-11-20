@@ -108,7 +108,7 @@ namespace BLL.Services
             var res1 = db.Couriers.GetList().Where(i => i.Phone == phone).FirstOrDefault();
             if (res1 != null)
             {
-                var res_cl = db.Users.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
+                var res_cl = db.Users.GetList().Where(i => i.Id == res1.Id).FirstOrDefault();
 
                 return new CouriersDto
                 {
@@ -126,7 +126,7 @@ namespace BLL.Services
             var res2 = db.Managers.GetList().Where(i => i.Phone == phone).FirstOrDefault();
             if (res2 != null)
             {
-                var res_cl = db.Users.GetList().Where(i => i.Id == res.Id).FirstOrDefault();
+                var res_cl = db.Users.GetList().Where(i => i.Id == res2.Id).FirstOrDefault();
                 return new ManagerDto
                 {
                     Id = res_cl.Id,

@@ -56,16 +56,40 @@ CommandParameter="{x:Static nav:ViewType.Shop}">
                 <Button Grid.Column="3" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
                     Command="{Binding UpdateCurrentViewModelCommand}"
                         CommandParameter="{x:Static nav:ViewType.Basket}">
-                    <Image Source="/ImagesForProject/basket.png"/>
+                    <Image>
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsClient}" Value="true">
+                                        <Setter Property="Source" Value="/ImagesForProject/basket.png"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsManager}" Value="true">
+                                        <Setter Property="Source" Value="/ImagesForProject/report.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
                     <Button.Style>
                         <Style TargetType="Button">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding IsClient}" Value="false">
+                                <DataTrigger Binding="{Binding IsClient}" Value="true">
+                                    <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.Basket}"/>
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsManager}" Value="true">
+                                    <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.ReportsManager}"/>
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsCourier}" Value="true">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                                <!--<DataTrigger Binding="{Binding IsClient}" Value="false">
                                     <Setter Property="Visibility" Value="Collapsed"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding IsClient}" Value="true">
                                     <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
+                                </DataTrigger>-->
                             </Style.Triggers>
                         </Style>
                     </Button.Style>
