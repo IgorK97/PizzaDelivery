@@ -254,3 +254,5 @@ C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\ref\PizzaDelivery.dll
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\Views\ProfilePresentationCourier.g.cs
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\Views\ProfilePresentationCourier.baml
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\Views\CommentView.g.cs
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\Views\CommentView.baml

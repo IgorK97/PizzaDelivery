@@ -143,7 +143,22 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Style>
-            <local:SelectedOrderView DataContext="{Binding SelectedOrder}"/>
+            <local:SelectedOrderView DataContext="{Binding SelectedOrderVM}"/>
+        </Grid>
+        <Grid x:Name="Overlay1" Panel.ZIndex="1000">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsOrderCommented}" Value="false">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsOrderCommented}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <local:CommentView DataContext="{Binding SelectedOrderCommentVM}"/>
         </Grid>
         <Grid>
             <Grid.RowDefinitions>

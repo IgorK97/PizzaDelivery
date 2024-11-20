@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\views\\ordersmanagerpresentation.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\views\\ordersmanagerpresentation.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\viewmodels\\orderscouriervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\viewmodels\\orderscouriervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\viewmodels\\orderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\viewmodels\\orderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\viewmodels\\commentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\viewmodels\\commentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\views\\orderscourierpresentation.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\views\\orderscourierpresentation.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\viewmodels\\ordersmanagervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,39 +39,52 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "OrderViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrderViewModel.cs",
-              "RelativeDocumentMoniker": "PizzaDelivery\\ViewModels\\OrderViewModel.cs",
-              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrderViewModel.cs*",
-              "RelativeToolTip": "PizzaDelivery\\ViewModels\\OrderViewModel.cs*",
-              "ViewState": "AgIAAKMAAAAAAAAAAAAUwLQAAAA9AAAAAAAAAA==",
+              "Title": "CommentViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\CommentViewModel.cs",
+              "RelativeDocumentMoniker": "PizzaDelivery\\ViewModels\\CommentViewModel.cs",
+              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\CommentViewModel.cs*",
+              "RelativeToolTip": "PizzaDelivery\\ViewModels\\CommentViewModel.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T12:20:37.587Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OrdersManagerVM.cs",
-              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrdersManagerVM.cs",
-              "RelativeDocumentMoniker": "PizzaDelivery\\ViewModels\\OrdersManagerVM.cs",
-              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrdersManagerVM.cs*",
-              "RelativeToolTip": "PizzaDelivery\\ViewModels\\OrdersManagerVM.cs*",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAmwI8AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T12:11:48.923Z",
+              "WhenOpened": "2024-11-20T12:36:55.917Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "OrdersManagerPresentation.xaml",
-              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\Views\\OrdersManagerPresentation.xaml",
-              "RelativeDocumentMoniker": "PizzaDelivery\\Views\\OrdersManagerPresentation.xaml",
-              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\Views\\OrdersManagerPresentation.xaml*",
-              "RelativeToolTip": "PizzaDelivery\\Views\\OrdersManagerPresentation.xaml*",
+              "Title": "OrdersCourierVM.cs",
+              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrdersCourierVM.cs",
+              "RelativeDocumentMoniker": "PizzaDelivery\\ViewModels\\OrdersCourierVM.cs",
+              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrdersCourierVM.cs*",
+              "RelativeToolTip": "PizzaDelivery\\ViewModels\\OrdersCourierVM.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T12:34:15.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrdersCourierPresentation.xaml",
+              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\Views\\OrdersCourierPresentation.xaml",
+              "RelativeDocumentMoniker": "PizzaDelivery\\Views\\OrdersCourierPresentation.xaml",
+              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\Views\\OrdersCourierPresentation.xaml*",
+              "RelativeToolTip": "PizzaDelivery\\Views\\OrdersCourierPresentation.xaml*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-20T11:22:38.844Z",
+              "WhenOpened": "2024-11-20T12:31:03.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrdersManagerVM.cs",
+              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrdersManagerVM.cs",
+              "RelativeDocumentMoniker": "PizzaDelivery\\ViewModels\\OrdersManagerVM.cs",
+              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrdersManagerVM.cs*",
+              "RelativeToolTip": "PizzaDelivery\\ViewModels\\OrdersManagerVM.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwCsAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T12:11:48.923Z",
               "EditorCaption": ""
             }
           ]

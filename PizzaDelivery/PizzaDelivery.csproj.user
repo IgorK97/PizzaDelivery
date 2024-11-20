@@ -13,6 +13,9 @@
     <Compile Update="Views\BasketPresentation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\CommentView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\OrderHistoryPresentation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,6 +58,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\BasketPresentation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CommentView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\OrderHistoryPresentation.xaml">

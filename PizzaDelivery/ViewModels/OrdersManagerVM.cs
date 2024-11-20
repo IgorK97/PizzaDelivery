@@ -38,8 +38,8 @@ namespace PizzaDelivery.ViewModels
             //    _orderscollection.Add(olvm);
             //}
         }
-        private OrderLineViewModel _selectedOrder;
-        public OrderLineViewModel SelectedOrder
+        private OrderViewModel _selectedOrder;
+        public OrderViewModel SelectedOrder
         {
             get
             {
@@ -95,45 +95,7 @@ namespace PizzaDelivery.ViewModels
             //OnPropertyChanged(nameof(Price));
             //OnPropertyChanged(nameof(Weight));
         }
-        //private string _address;
-        //public string Address
-        //{
-        //    get
-        //    {
-        //        return _address;
-        //    }
-        //    set
-        //    {
-        //        _address = value;
-        //        OnPropertyChanged(nameof(Address));
-        //    }
-        //}
-        //private string _price;
-        //public string Price
-        //{
-        //    get
-        //    {
-        //        return _basket.final_price.ToString();
-        //    }
-        //    set
-        //    {
-        //        _price = value;
-        //        OnPropertyChanged(nameof(Price));
-        //    }
-        //}
-        //private string _weight;
-        //public string Weight
-        //{
-        //    get
-        //    {
-        //        return _basket.weight.ToString();
-        //    }
-        //    set
-        //    {
-        //        _weight = value;
-        //        OnPropertyChanged(nameof(Weight));
-        //    }
-        //}
+        
 
 
         private ICommand selectStatus;
@@ -145,52 +107,13 @@ namespace PizzaDelivery.ViewModels
             }
         }
 
-        //private ICommand submitCommand;
-        //public ICommand SubmitCommand
-        //{
-        //    get
-        //    {
-        //        return submitCommand ??= new Commands.DelegateCommand(obj =>
-        //        {
-        //            SubmitOrderResult res = _basket.SubmitOrder(_address);
-        //            if (res == SubmitOrderResult.Success)
-        //            {
-        //                _orderBook.Load();
-        //                _basket = _orderBook.GetBasketContent();
-        //                Load();
-        //                OnPropertyChanged(nameof(LinesCollection));
-        //                OnPropertyChanged(nameof(Price));
-        //                OnPropertyChanged(nameof(Weight));
-        //            }
-        //            //Загрузить новую корзину в случае успеха и уведомить об этом представление
-        //        });
-        //    }
-        //}
+        
         private readonly AssortmentModel _assortmentModel;
         private readonly IAuthenticator _authenticator;
         private readonly IPriceBook _priceBook;
         private readonly OrderBook _orderBook;
         private OrderModel _basket;
-        //public void OnOrderIsChanged()
-        //{
-        //    OnPropertyChanged(nameof(Weight));
-        //    OnPropertyChanged(nameof(Price));
-
-        //}
-        //public void OnOrderLineViewModelIsDeleted()
-        //{
-        //    Load();
-        //    OnPropertyChanged(nameof(LinesCollection));
-        //    OnPropertyChanged(nameof(Price));
-        //    OnPropertyChanged(nameof(Weight));
-        //}
-
-        //public void OnOrderLineViewModelIsUpdated(OrderLineViewModel orderLineViewModel)
-        //{
-        //    IsPizzaSelected = true;
-        //    AddingPizza = new AddingPizzaViewModel(_assortmentModel, orderLineViewModel.OrderLineModel, _orderBook);
-        //    SelectedLine = orderLineViewModel;
-        //}
+        
         public OrdersManagerVM(AssortmentModel assortmentModel, IAuthenticator authenticator, IPriceBook priceBook, OrderBook orderBook)
         {
             _assortmentModel = assortmentModel;
