@@ -78,15 +78,15 @@
                     <TextBlock Grid.Column="11" Text="{Binding Status}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
 
                     <Button Command="{Binding AboutOrder}"
-                            
-                     Margin="10 10 10 10" Width="200" Height="100" Grid.Column="12"
+                             Style="{StaticResource BaseButtonStyle}"
+                     Width="auto" Height="50" Grid.Column="12"
                          VerticalAlignment="Center" 
                          HorizontalAlignment="Center" 
                          FontSize="26" Content="Подробнее"/>
                     <Button Command="{Binding ChangeStatus}"
-                     Width="50" Height="50" Grid.Column="13">
+                    Margin="5" Width="auto" Height="50" Grid.Column="13">
                         <Button.Style>
-                            <Style TargetType="Button">
+                            <Style TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.HandedOver}">
                                         <Setter Property="Content" Value="Принять заказ"/>
@@ -178,28 +178,32 @@
                 
                 <RadioButton FontSize="18" Grid.Column="0"
                             Style="{StaticResource RadBut}"
-Command="{Binding UpdatePizzaSizeCommand}"
+                             IsChecked="{Binding IsHandedOver, Mode=OneWay}"
+Command="{Binding SelectStatus}"
 CommandParameter="{x:Static statuses:DeliveryStatus.HandedOver}"
 Content="Ожидают курьера"/>
                 <RadioButton FontSize="18" Grid.Column="1"
                             Style="{StaticResource RadBut}"
-                            IsChecked="True"
+                            IsChecked="{Binding AtTheCourier, Mode=OneWay}"
                         Command="{Binding SelectStatus}"
                         CommandParameter="{x:Static statuses:DeliveryStatus.AtTheCourier}"
                         Content="В доставке"/>
                 <RadioButton FontSize="18" Grid.Column="2"
                             Style="{StaticResource RadBut}"
-Command="{Binding UpdatePizzaSizeCommand}"
+                             IsChecked="{Binding Delivered, Mode=OneWay}"
+Command="{Binding SelectStatus}"
 CommandParameter="{x:Static statuses:DeliveryStatus.Delivered}"
 Content="Доставленные"/>
                 <RadioButton FontSize="18" Grid.Column="3"
                             Style="{StaticResource RadBut}"
-Command="{Binding UpdatePizzaSizeCommand}"
+                             IsChecked="{Binding NotDelivered, Mode=OneWay}"
+Command="{Binding SelectStatus}"
 CommandParameter="{x:Static statuses:DeliveryStatus.NotDelivered}"
 Content="Не доставленные"/>
                 <RadioButton FontSize="18" Grid.Column="4"
                             Style="{StaticResource RadBut}"
-Command="{Binding UpdatePizzaSizeCommand}"
+                             IsChecked="{Binding Canceled, Mode=OneWay}"
+Command="{Binding SelectStatus}"
 CommandParameter="{x:Static statuses:DeliveryStatus.Canceled}"
 Content="Отмененные"/>
             </Grid>

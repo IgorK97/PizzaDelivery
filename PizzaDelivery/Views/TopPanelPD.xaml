@@ -105,7 +105,7 @@ CommandParameter="{x:Static nav:ViewType.Shop}">
                                     <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.OrderHistory}"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding IsCourier}" Value="true">
-                                    <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.OrdersManager}"/>
+                                    <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.OrdersCourier}"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding IsManager}" Value="true">
                                     <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.OrdersManager}"/>

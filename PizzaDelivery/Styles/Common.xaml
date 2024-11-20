@@ -42,7 +42,7 @@
             </EventTrigger>
         </Style.Triggers>
     </Style>
-    <Style TargetType="Button">
+    <Style x:Key="BaseButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="#8E44AD"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Cursor" Value="Hand"/>

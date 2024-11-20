@@ -31,6 +31,10 @@ namespace BLL.Models
 
         }
 
+        public List<OrderModel> GetNecesseryOrderList(DeliveryStatus ds)
+        {
+            return Orders.Where(o => o.delstatusId == (int)ds).ToList();
+        }
         public void Load()
         {
             //BasketId = _orderService.GetCurrentOrder(_authenticator.Id);

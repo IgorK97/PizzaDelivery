@@ -45,6 +45,7 @@
                                HorizontalAlignment="Center" FontSize="26"/>
                     <TextBlock Grid.Column="5" Text="{Binding Weight}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
                     <Button Command="{Binding UpdateYourself}"
+                             Style="{StaticResource BaseButtonStyle}"
                         Margin="10 10 10 10" Width="200" Height="100" Grid.Column="7"
                             VerticalAlignment="Center" 
                             HorizontalAlignment="Center" 
@@ -53,6 +54,7 @@
     Minimum="1" Maximum="10"
     Value="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 10" Width="100"/>
                     <Button Command="{Binding DeleteYourself}"
+                             Style="{StaticResource BaseButtonStyle}"
                         Width="50" Height="50" Grid.Column="9">
                         <Image Source="/ImagesForProject/out.png"/>
                     </Button>
@@ -125,6 +127,7 @@
                     <TextBox Margin="10 10" Width="150" FontSize="20" Text="{Binding Address}" HorizontalAlignment="Right" Grid.Column="1"/>
                 </Grid>
                 <Button Grid.Row="4" Margin="5" HorizontalAlignment="Center" 
+                         Style="{StaticResource BaseButtonStyle}"
         VerticalAlignment="Center" FontSize="26"
     Command="{Binding SubmitCommand}"
          Content="Заказать" Padding="20,3"/>

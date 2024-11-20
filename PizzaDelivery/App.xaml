@@ -35,6 +35,9 @@
             <DataTemplate DataType="{x:Type viewms:OrdersManagerVM}">
                 <view:OrdersManagerPresentation/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewms:OrdersCourierVM}">
+                <view:OrdersCourierPresentation/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewms:BasketViewModel}">
                 <view:BasketPresentation/>
             </DataTemplate>

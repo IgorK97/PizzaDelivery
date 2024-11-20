@@ -27,6 +27,80 @@ namespace PizzaDelivery.ViewModels
                 return _orderscollection;
             }
         }
+        public bool IsBeingFormed
+        {
+            get
+            {
+                return DelStatus == DeliveryStatus.IsBeingFormed;
+            }
+        }
+        public bool IsCooking
+        {
+            get
+            {
+                return DelStatus == DeliveryStatus.IsCooking;
+            }
+        }
+        public bool HandedOver
+        {
+            get
+            {
+                return DelStatus == DeliveryStatus.HandedOver;
+            }
+        }
+        public bool AtTheCourier
+        {
+            get
+            {
+                return DelStatus == DeliveryStatus.AtTheCourier;
+            }
+        }
+        public bool Delivered
+        {
+            get
+            {
+                return DelStatus == DeliveryStatus.Delivered;
+            }
+        }
+        public bool NotDelivered
+        {
+            get
+            {
+                return DelStatus == DeliveryStatus.NotDelivered;
+            }
+        }
+        public bool Canceled
+        {
+            get
+            {
+                return DelStatus == DeliveryStatus.Canceled;
+            }
+        }
+        private DeliveryStatus _delStatus;
+        public DeliveryStatus DelStatus
+        {
+            get
+            {
+                return _delStatus;
+            }
+            set
+            {
+                _delStatus = value;
+                StatusIsChanged();
+            }
+        }
+
+        private void StatusIsChanged()
+        {
+            OnPropertyChanged(nameof(IsCooking));
+            OnPropertyChanged(nameof(IsBeingFormed));
+            OnPropertyChanged(nameof(Delivered));
+            OnPropertyChanged(nameof(NotDelivered));
+            OnPropertyChanged(nameof(Canceled));
+            OnPropertyChanged(nameof(AtTheCourier));
+            OnPropertyChanged(nameof(HandedOver));
+        }
+
 
         private readonly ManagementModel _managementModel;
         public void Load()
@@ -34,7 +108,7 @@ namespace PizzaDelivery.ViewModels
             _orderscollection = new ObservableCollection<OrderViewModel>();
             _managementModel.Load();
 
-            IEnumerable<OrderModel> _orders = _managementModel.Orders;
+            IEnumerable<OrderModel> _orders = _managementModel.GetNecesseryOrderList(DelStatus);
 
             foreach (OrderModel olm in _orders)
             {
@@ -107,8 +181,18 @@ namespace PizzaDelivery.ViewModels
         {
             get
             {
-                return selectStatus;
+                return selectStatus ??= new Commands.DelegateCommand(obj =>
+                {
+                    DelStatus = (DeliveryStatus)obj;
+                    Load();
+                    OnPropertyChanged(nameof(OrdersCollection));
+                });
             }
+        }
+        public void OnOrderViewModelIsChanged()
+        {
+            Load();
+            OnPropertyChanged(nameof(OrdersCollection));
         }
 
         
@@ -124,6 +208,7 @@ namespace PizzaDelivery.ViewModels
             _managementModel = managementModel;
             _authenticator = authenticator;
             _priceBook = priceBook;
+            DelStatus = DeliveryStatus.IsBeingFormed;
             //_orderBook = orderBook;
             //_basket = _orderBook.GetBasketContent();
             //AddingPizzaViewModel.OnExitDelegate += OnExitEvent;
@@ -134,7 +219,7 @@ namespace PizzaDelivery.ViewModels
             //Price = _basket.final_price.ToString();
             //Weight = _basket.weight.ToString();
             //Address = ((ClientDTO)user).AddressDel;
-            //OrderModel.OnOrderIsChanged += OnOrderIsChanged;
+            OrderViewModel.OnOrderStateIsChanged += OnOrderViewModelIsChanged;
         }
     }
 }

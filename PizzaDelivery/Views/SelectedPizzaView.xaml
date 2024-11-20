@@ -163,6 +163,7 @@ VerticalAlignment="Center" Text="{Binding Price}"/>
                         </Grid>
                         <Button Grid.Row="6" Margin="5" HorizontalAlignment="Center" 
                                 VerticalAlignment="Center" FontSize="18"
+                                 Style="{StaticResource BaseButtonStyle}"
                             Command="{Binding BuyPizzaCommand}"
                                  Content="В корзину" Padding="20,3"/>
                     </Grid>
@@ -173,6 +174,7 @@ VerticalAlignment="Center" Text="{Binding Price}"/>
             </Border>
             <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" 
                      Grid.Column="1" Width="50" Height="50"
+                     Style="{StaticResource BaseButtonStyle}"
                     Command="{Binding ExitCommand}">
                 <Image Source="/ImagesForProject/out.png"/>
             </Button>

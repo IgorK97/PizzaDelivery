@@ -134,6 +134,12 @@ namespace PizzaDelivery
                     services.GetRequiredService<IAuthenticator>(),
                     services.GetRequiredService<IPriceBook>());
             });
+            services.AddSingleton<CreateViewModel<OrdersCourierVM>>(services =>
+            {
+                return () => new OrdersCourierVM(services.GetRequiredService<ManagementModel>(),
+                    services.GetRequiredService<IAuthenticator>(),
+                    services.GetRequiredService<IPriceBook>());
+            });
             services.AddSingleton<CreateViewModel<PizzaSelectionVM>>(services =>
             {
                 return () => new PizzaSelectionVM(services.GetRequiredService<AssortmentModel>(),

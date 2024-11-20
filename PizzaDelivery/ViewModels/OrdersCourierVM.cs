@@ -1,4 +1,5 @@
 ﻿using BLL.Models;
+using DomainModel;
 using DTO;
 using Interfaces.Services;
 using PizzaDelivery.State.Authenticators;
@@ -111,31 +112,110 @@ namespace PizzaDelivery.ViewModels
             //OnPropertyChanged(nameof(Weight));
         }
 
+        public bool IsBeingFormed
+        {
+            get
+            {
+                return DelStatus == DeliveryStatus.IsBeingFormed;
+            }
+        }
+        public bool IsCooking
+        {
+            get
+            {
+                return DelStatus == DeliveryStatus.IsCooking;
+            }
+        }
+        public bool HandedOver
+        {
+            get
+            {
+                return DelStatus == DeliveryStatus.HandedOver;
+            }
+        }
+        public bool AtTheCourier
+        {
+            get
+            {
+                return DelStatus == DeliveryStatus.AtTheCourier;
+            }
+        }
+        public bool Delivered
+        {
+            get
+            {
+                return DelStatus == DeliveryStatus.Delivered;
+            }
+        }
+        public bool NotDelivered
+        {
+            get
+            {
+                return DelStatus == DeliveryStatus.NotDelivered;
+            }
+        }
+        public bool Canceled
+        {
+            get
+            {
+                return DelStatus == DeliveryStatus.Canceled;
+            }
+        }
+        private DeliveryStatus _delStatus;
+        public DeliveryStatus DelStatus
+        {
+            get
+            {
+                return _delStatus;
+            }
+            set
+            {
+                _delStatus = value;
+                StatusIsChanged();
+            }
+        }
 
+        private void StatusIsChanged()
+        {
+            OnPropertyChanged(nameof(IsCooking));
+            OnPropertyChanged(nameof(IsBeingFormed));
+            OnPropertyChanged(nameof(Delivered));
+            OnPropertyChanged(nameof(NotDelivered));
+            OnPropertyChanged(nameof(Canceled));
+            OnPropertyChanged(nameof(AtTheCourier));
+            OnPropertyChanged(nameof(HandedOver));
+        }
 
         private ICommand selectStatus;
         public ICommand SelectStatus
         {
             get
             {
-                return selectStatus;
+                return selectStatus ??= new Commands.DelegateCommand(obj =>
+                {
+                    DelStatus = (DeliveryStatus)obj;
+                    Load();
+                    OnPropertyChanged(nameof(OrdersCollection));
+                });
             }
         }
 
 
-        private readonly AssortmentModel _assortmentModel;
+        //private readonly AssortmentModel _assortmentModel;
+        private readonly ManagementModel _managementModel;
         private readonly IAuthenticator _authenticator;
         private readonly IPriceBook _priceBook;
-        private readonly OrderBook _orderBook;
-        private OrderModel _basket;
+        //private readonly OrderBook _orderBook;
+        //private OrderModel _basket;
 
-        public OrdersCourierVM(AssortmentModel assortmentModel, IAuthenticator authenticator, IPriceBook priceBook, OrderBook orderBook)
+        public OrdersCourierVM(ManagementModel managementModel, IAuthenticator authenticator, IPriceBook priceBook/*, OrderBook orderBook*/)
         {
-            _assortmentModel = assortmentModel;
+            //_assortmentModel = assortmentModel;
+            _managementModel = managementModel;
             _authenticator = authenticator;
             _priceBook = priceBook;
-            _orderBook = orderBook;
-            _basket = _orderBook.GetBasketContent();
+            //_orderBook = orderBook;
+            //_basket = _orderBook.GetBasketContent();
             //AddingPizzaViewModel.OnExitDelegate += OnExitEvent;
             //OrderLineViewModel.OnOrderLineIsChanged += OnOrderLineViewModelIsChanged;
             //OrderLineViewModel.OnOrderLineIsDeleted += OnOrderLineViewModelIsDeleted;

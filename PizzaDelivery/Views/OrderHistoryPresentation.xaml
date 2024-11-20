@@ -108,6 +108,7 @@
                             </Style>
                         </Grid.Style>
                         <Button Content="Отменить" Margin="10 10" FontSize="26"
+                                 Style="{StaticResource BaseButtonStyle}"
                                 Command="{Binding CancelCommand}"/>
                     </Grid>
                     

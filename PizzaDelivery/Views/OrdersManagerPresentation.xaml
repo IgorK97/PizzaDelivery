@@ -6,7 +6,7 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:local="clr-namespace:PizzaDelivery.Views"
              xmlns:statuses="clr-namespace:DTO;assembly=Interfaces"
-             
+             FontSize="18"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -30,21 +30,25 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="{Binding Number, Mode=OneWay}" VerticalAlignment="Center" 
-                            HorizontalAlignment="Center" FontSize="26"/>
+                            HorizontalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Text="Время заказа" Margin="10 10" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                            FontSize="26"/>
+                            />
                     <TextBlock Grid.Column="2" Text="{Binding OrderDate}" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                            FontSize="26"/>
+                            />
                     <TextBlock Grid.Column="3"  Text="Адрес" Margin="10 10" VerticalAlignment="Center"
-                            HorizontalAlignment="Center" FontSize="26"/>
-                    <TextBlock Grid.Column="4" Text="{Binding Address}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
-                    <TextBlock Grid.Column="5" Text="Время доставки" VerticalAlignment="Center" Margin="10 10 " FontSize="26">
+                            HorizontalAlignment="Center" />
+                    <TextBlock Grid.Column="4" Text="{Binding Address}" VerticalAlignment="Center" Margin="10 10 " />
+                    <TextBlock Grid.Column="5" Text="Время доставки" VerticalAlignment="Center" Margin="10 10 " >
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Style.Triggers>
@@ -58,7 +62,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <TextBlock Grid.Column="6" Text="{Binding DeliveryDate}" VerticalAlignment="Center" Margin="10 10 " FontSize="26">
+                    <TextBlock Grid.Column="6" Text="{Binding DeliveryDate}" VerticalAlignment="Center" Margin="10 10 ">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Style.Triggers>
@@ -72,22 +76,22 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <TextBlock Grid.Column="7" Text="Цена" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
-                    <TextBlock Grid.Column="8" Text="{Binding Cost}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
-                    <TextBlock Grid.Column="9" Text="Вес" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
-                    <TextBlock Grid.Column="10" Text="{Binding Weight}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
-                    <TextBlock Grid.Column="11" Text="{Binding Status}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
+                    <TextBlock Grid.Column="7" Text="Цена" VerticalAlignment="Center" Margin="10 10 "/>
+                    <TextBlock Grid.Column="8" Text="{Binding Cost}" VerticalAlignment="Center" Margin="10 10 " />
+                    <TextBlock Grid.Column="9" Text="Вес" VerticalAlignment="Center" Margin="10 10 " />
+                    <TextBlock Grid.Column="10" Text="{Binding Weight}" VerticalAlignment="Center" Margin="10 10 " />
+                    <TextBlock Grid.Column="11" Text="{Binding Status}" VerticalAlignment="Center" Margin="10 10 "/>
 
                     <Button Command="{Binding AboutOrder}"
-                            
-                     Margin="10 10 10 10" Width="200" Height="100" Grid.Column="12"
+                            Style="{StaticResource BaseButtonStyle}"
+                     Width="auto" Height="50" Grid.Column="12"
                          VerticalAlignment="Center" 
                          HorizontalAlignment="Center" 
-                         FontSize="26" Content="Подробнее"/>
+                          Content="Подробнее"/>
                     <Button Command="{Binding ChangeStatus}"
-                     Width="50" Height="50" Grid.Column="13">
+                     Margin="5"  Width="auto" Height="50" Grid.Column="13">
                         <Button.Style>
-                            <Style TargetType="Button">
+                            <Style TargetType="Button"  BasedOn="{StaticResource BaseButtonStyle}">
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.IsBeingFormed}">
                                         <Setter Property="Content" Value="Принять заказ"/>
@@ -115,7 +119,7 @@
                                         <Setter Property="CommandParameter" Value="{x:Static statuses:DeliveryStatus.NotDelivered}"/>
 
                                     </DataTrigger>
-                                    
+
                                 </Style.Triggers>
                             </Style>
                         </Button.Style>
@@ -164,39 +168,44 @@
                 </Grid.ColumnDefinitions>
                 <RadioButton FontSize="18" Grid.Column="0"
                             Style="{StaticResource RadBut}"
-                            IsChecked="True"
+                            IsChecked="{Binding IsBeingFormed, Mode=OneWay}"
                         Command="{Binding SelectStatus}"
                         CommandParameter="{x:Static statuses:DeliveryStatus.IsBeingFormed}"
                         Content="Поступившие"/>
                 <RadioButton FontSize="18" Grid.Column="1"
                             Style="{StaticResource RadBut}"
-Command="{Binding UpdatePizzaSizeCommand}"
+                             IsChecked="{Binding IsCooking, Mode=OneWay}"
+Command="{Binding SelectStatus}"
 CommandParameter="{x:Static statuses:DeliveryStatus.IsCooking}"
 Content="Готовятся"/>
                 <RadioButton FontSize="18" Grid.Column="2"
                             Style="{StaticResource RadBut}"
-Command="{Binding UpdatePizzaSizeCommand}"
+                             IsChecked="{Binding HandedOver, Mode=OneWay}"
+Command="{Binding SelectStatus}"
 CommandParameter="{x:Static statuses:DeliveryStatus.HandedOver}"
 Content="Ожидают курьера"/>
                 <RadioButton FontSize="18" Grid.Column="3"
                             Style="{StaticResource RadBut}"
-                            IsChecked="True"
+                             IsChecked="{Binding AtTheCourier, Mode=OneWay}"
                         Command="{Binding SelectStatus}"
                         CommandParameter="{x:Static statuses:DeliveryStatus.AtTheCourier}"
                         Content="В доставке"/>
                 <RadioButton FontSize="18" Grid.Column="4"
                             Style="{StaticResource RadBut}"
-Command="{Binding UpdatePizzaSizeCommand}"
+                             IsChecked="{Binding Delivered, Mode=OneWay}"
+Command="{Binding SelectStatus}"
 CommandParameter="{x:Static statuses:DeliveryStatus.Delivered}"
 Content="Доставленные"/>
                 <RadioButton FontSize="18" Grid.Column="5"
                             Style="{StaticResource RadBut}"
-Command="{Binding UpdatePizzaSizeCommand}"
+                             IsChecked="{Binding NotDelivered, Mode=OneWay}"
+Command="{Binding SelectStatus}"
 CommandParameter="{x:Static statuses:DeliveryStatus.NotDelivered}"
 Content="Не доставленные"/>
                 <RadioButton FontSize="18" Grid.Column="6"
                             Style="{StaticResource RadBut}"
-Command="{Binding UpdatePizzaSizeCommand}"
+                             IsChecked="{Binding Canceled, Mode=OneWay}"
+Command="{Binding SelectStatus}"
 CommandParameter="{x:Static statuses:DeliveryStatus.Canceled}"
 Content="Отмененные"/>
             </Grid>

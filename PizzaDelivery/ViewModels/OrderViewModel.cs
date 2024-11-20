@@ -1,4 +1,5 @@
 ﻿using BLL.Models;
+using DTO;
 using PizzaDelivery.Util;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,13 @@ using System.Windows.Input;
 namespace PizzaDelivery.ViewModels
 {
     public delegate void OrderViewModelIsDeleted();
+    public delegate void OrderStateViewModelIsChanged();
 
     public class OrderViewModel : ViewModelBase
 
     {
         public static event OrderViewModelIsDeleted OnOrderIsDeleted;
+        public static event OrderStateViewModelIsChanged OnOrderStateIsChanged;
 
         private readonly OrderModel _orderModel;
         public OrderModel OrderModel
@@ -35,6 +38,18 @@ namespace PizzaDelivery.ViewModels
                 {
                     _orderModel.CancelYourself();
                     OnOrderIsDeleted?.Invoke();
+                });
+            }
+        }
+        private ICommand changeStatus;
+        public ICommand ChangeStatus
+        {
+            get
+            {
+                return changeStatus ??= new Commands.DelegateCommand(obj =>
+                {
+                    _orderModel.ChangeStatus((DeliveryStatus)obj);
+                    OnOrderStateIsChanged?.Invoke();
                 });
             }
         }

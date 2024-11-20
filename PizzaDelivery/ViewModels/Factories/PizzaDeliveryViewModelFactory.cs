@@ -17,6 +17,7 @@ namespace PizzaDelivery.ViewModels.Factories
         private readonly CreateViewModel<BasketViewModel> _createBasketViewModel;
         private readonly CreateViewModel<OrderHistoryViewModel> _createOrderHistoryViewModel;
         private readonly CreateViewModel<OrdersManagerVM> _createOrdersManagerVM;
+        private readonly CreateViewModel<OrdersCourierVM> _createOrdersCourierVM;
         private readonly CreateViewModel<PizzaSelectionVM> _createShopViewModel;
 
         public PizzaDeliveryViewModelFactory(CreateViewModel<ProfilePresentationVM> createProfileViewModel,
@@ -26,7 +27,8 @@ namespace PizzaDelivery.ViewModels.Factories
             CreateViewModel<RegistrationVM> createRegViewModel, 
             CreateViewModel<BasketViewModel> createBasketViewModel, 
             CreateViewModel<OrderHistoryViewModel> createOrderHistoryViewModel,
-            CreateViewModel<OrdersManagerVM> createOrdersManagerVM,
+            CreateViewModel<OrdersManagerVM> createOrdersManagerVM, 
+            CreateViewModel<OrdersCourierVM> createOrdersCourierVM,
             CreateViewModel<PizzaSelectionVM> createShopViewModel)
         {
             _createProfileViewModel = createProfileViewModel;
@@ -37,6 +39,7 @@ namespace PizzaDelivery.ViewModels.Factories
             _createBasketViewModel = createBasketViewModel;
             _createOrderHistoryViewModel = createOrderHistoryViewModel;
             _createOrdersManagerVM = createOrdersManagerVM;
+            _createOrdersCourierVM = createOrdersCourierVM;
             _createShopViewModel = createShopViewModel;
         }
 
@@ -62,6 +65,8 @@ namespace PizzaDelivery.ViewModels.Factories
                     return _createAuthViewModel();
                 case State.Navigators.ViewType.OrdersManager:
                     return _createOrdersManagerVM();
+                case State.Navigators.ViewType.OrdersCourier:
+                    return _createOrdersCourierVM();
                 default:
                     throw new ArgumentException("The ViewType does not have a ViewModel.", "viewType");
             }

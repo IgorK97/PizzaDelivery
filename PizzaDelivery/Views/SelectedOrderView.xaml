@@ -93,6 +93,7 @@
             </Border>
             <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" 
                      Grid.Column="1" Width="50" Height="50"
+                     Style="{StaticResource BaseButtonStyle}"
                     Command="{Binding ExitCommand}">
                 <Image Source="/ImagesForProject/out.png"/>
             </Button>

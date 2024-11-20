@@ -62,6 +62,7 @@ FontSize="16"
             
             <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="9">
                     <Button
+                         Style="{StaticResource BaseButtonStyle}"
 Margin="5"
 HorizontalAlignment="Center"
 VerticalAlignment="Center"
@@ -69,6 +70,7 @@ Command="{Binding ViewLoginCommand}"
 Content="Уже зарегистрированы?"
 Padding="20,3"/>
                     <Button Margin="5"
+                             Style="{StaticResource BaseButtonStyle}"
 HorizontalAlignment="Center"
 VerticalAlignment="Center"
 Command="{Binding RegisterCommand}"
