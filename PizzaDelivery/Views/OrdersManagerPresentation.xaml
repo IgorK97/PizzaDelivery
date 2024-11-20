@@ -35,11 +35,11 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="{Binding Id, Mode=OneWay}" VerticalAlignment="Center" 
+                    <TextBlock Grid.Column="0" Text="{Binding Number, Mode=OneWay}" VerticalAlignment="Center" 
                             HorizontalAlignment="Center" FontSize="26"/>
                     <TextBlock Grid.Column="1" Text="Время заказа" Margin="10 10" VerticalAlignment="Center" HorizontalAlignment="Center" 
                             FontSize="26"/>
-                    <TextBlock Grid.Column="2" Text="{Binding OrderTime}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    <TextBlock Grid.Column="2" Text="{Binding OrderDate}" VerticalAlignment="Center" HorizontalAlignment="Center" 
                             FontSize="26"/>
                     <TextBlock Grid.Column="3"  Text="Адрес" Margin="10 10" VerticalAlignment="Center"
                             HorizontalAlignment="Center" FontSize="26"/>
@@ -58,7 +58,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <TextBlock Grid.Column="6" Text="{Binding DeliveryTime}" VerticalAlignment="Center" Margin="10 10 " FontSize="26">
+                    <TextBlock Grid.Column="6" Text="{Binding DeliveryDate}" VerticalAlignment="Center" Margin="10 10 " FontSize="26">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Style.Triggers>
@@ -73,7 +73,7 @@
                         </TextBlock.Style>
                     </TextBlock>
                     <TextBlock Grid.Column="7" Text="Цена" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
-                    <TextBlock Grid.Column="8" Text="{Binding Price}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
+                    <TextBlock Grid.Column="8" Text="{Binding Cost}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
                     <TextBlock Grid.Column="9" Text="Вес" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
                     <TextBlock Grid.Column="10" Text="{Binding Weight}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
                     <TextBlock Grid.Column="11" Text="{Binding Status}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
@@ -144,7 +144,7 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Style>
-            <local:SelectedOrderView DataContext="{Binding SelectedOrder}"/>
+            <local:SelectedOrderView DataContext="{Binding SelectedOrderVM}"/>
         </Grid>
         <Grid>
             <Grid.RowDefinitions>

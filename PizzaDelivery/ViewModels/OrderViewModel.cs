@@ -142,6 +142,19 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged(nameof(Address));
             }
         }
+        private DTO.DeliveryStatus _orderStatus;
+        public DTO.DeliveryStatus OrderStatus
+        {
+            get
+            {
+                return _orderStatus;
+            }
+            set
+            {
+                _orderStatus = value;
+                OnPropertyChanged(nameof(OrderStatus));
+            }
+        }
         private string _number;
         public string Number
         {
@@ -165,6 +178,7 @@ namespace PizzaDelivery.ViewModels
             OrderDate = om.ordertime.ToString();
             DeliveryDate = om.deliverytime.ToString();
             Status = ((DTO.DeliveryStatus)om.delstatusId).ToString();
+            OrderStatus = (DTO.DeliveryStatus)om.delstatusId;
             if (om.delstatusId == 6)
             {
                 IsDelivered = true;

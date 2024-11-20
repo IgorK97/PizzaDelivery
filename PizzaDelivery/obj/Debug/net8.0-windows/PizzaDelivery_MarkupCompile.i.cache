@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\App.xaml
 151349357631
 
-53-1514134380
+53348027500
 243-762525434
 MainWindow.xaml;Styles\Common.xaml;Views\AuthorizationPresentation.xaml;Views\BasketPresentation.xaml;Views\OrderHistoryPresentation.xaml;Views\OrdersCourierPresentation.xaml;Views\OrdersManagerPresentation.xaml;Views\PizzaSelectionView.xaml;Views\ProfilePresentation.xaml;Views\ProfilePresentationCourier.xaml;Views\ProfilePresentationManager.xaml;Views\RegistrationPresentation.xaml;Views\SelectedOrderView.xaml;Views\SelectedPizzaView.xaml;Views\TopPanelPD.xaml;
 
-True
+False
 
