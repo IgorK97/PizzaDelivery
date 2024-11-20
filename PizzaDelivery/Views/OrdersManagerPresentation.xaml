@@ -3,10 +3,216 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:local="clr-namespace:PizzaDelivery.Views"
+             xmlns:statuses="clr-namespace:DTO;assembly=Interfaces"
+             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <UserControl.Resources>
+        <DataTemplate x:Key="listordersTemplate">
+            <Border Height="220" Margin="10" BorderThickness="2" CornerRadius="10">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="Red"/>
+                                <Setter Property="Background" Value="LightCoral"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="{Binding Id, Mode=OneWay}" VerticalAlignment="Center" 
+                            HorizontalAlignment="Center" FontSize="26"/>
+                    <TextBlock Grid.Column="1" Text="Время заказа" Margin="10 10" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                            FontSize="26"/>
+                    <TextBlock Grid.Column="2" Text="{Binding OrderTime}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                            FontSize="26"/>
+                    <TextBlock Grid.Column="3"  Text="Адрес" Margin="10 10" VerticalAlignment="Center"
+                            HorizontalAlignment="Center" FontSize="26"/>
+                    <TextBlock Grid.Column="4" Text="{Binding Address}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
+                    <TextBlock Grid.Column="5" Text="Время доставки" VerticalAlignment="Center" Margin="10 10 " FontSize="26">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsDelivered}" Value="true">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsDelivered}" Value="false">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <TextBlock Grid.Column="6" Text="{Binding DeliveryTime}" VerticalAlignment="Center" Margin="10 10 " FontSize="26">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsDelivered}" Value="true">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsDelivered}" Value="false">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <TextBlock Grid.Column="7" Text="Цена" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
+                    <TextBlock Grid.Column="8" Text="{Binding Price}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
+                    <TextBlock Grid.Column="9" Text="Вес" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
+                    <TextBlock Grid.Column="10" Text="{Binding Weight}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
+                    <TextBlock Grid.Column="11" Text="{Binding Status}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
+
+                    <Button Command="{Binding AboutOrder}"
+                            
+                     Margin="10 10 10 10" Width="200" Height="100" Grid.Column="12"
+                         VerticalAlignment="Center" 
+                         HorizontalAlignment="Center" 
+                         FontSize="26" Content="Подробнее"/>
+                    <Button Command="{Binding ChangeStatus}"
+                     Width="50" Height="50" Grid.Column="13">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.IsBeingFormed}">
+                                        <Setter Property="Content" Value="Принять заказ"/>
+                                        <Setter Property="CommandParameter" Value="{x:Static statuses:DeliveryStatus.IsCooking}"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.IsCooking}">
+                                        <Setter Property="Content" Value="Передать курьерам"/>
+                                        <Setter Property="CommandParameter" Value="{x:Static statuses:DeliveryStatus.HandedOver}"/>
+
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.AtTheCourier}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.Canceled}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.Delivered}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.HandedOver}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.NotDelivered}">
+                                        <Setter Property="Content" Value="посмотреть комментарий"/>
+                                        <Setter Property="CommandParameter" Value="{x:Static statuses:DeliveryStatus.NotDelivered}"/>
+
+                                    </DataTrigger>
+                                    
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                </Grid>
+
+            </Border>
+        </DataTemplate>
+        <ItemsPanelTemplate x:Key="listordersPanelTemplate">
+            <WrapPanel Orientation="Vertical"/>
+        </ItemsPanelTemplate>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot">
+
+        <Grid x:Name="Overlay" Panel.ZIndex="1000">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsOrderSelected}" Value="false">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsOrderSelected}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <local:SelectedOrderView DataContext="{Binding SelectedOrder}"/>
+        </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid  Margin="5 10" Grid.Row="0" Background="Red">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <RadioButton FontSize="18" Grid.Column="0"
+                            Style="{StaticResource RadBut}"
+                            IsChecked="True"
+                        Command="{Binding SelectStatus}"
+                        CommandParameter="{x:Static statuses:DeliveryStatus.IsBeingFormed}"
+                        Content="Поступившие"/>
+                <RadioButton FontSize="18" Grid.Column="1"
+                            Style="{StaticResource RadBut}"
+Command="{Binding UpdatePizzaSizeCommand}"
+CommandParameter="{x:Static statuses:DeliveryStatus.IsCooking}"
+Content="Готовятся"/>
+                <RadioButton FontSize="18" Grid.Column="2"
+                            Style="{StaticResource RadBut}"
+Command="{Binding UpdatePizzaSizeCommand}"
+CommandParameter="{x:Static statuses:DeliveryStatus.HandedOver}"
+Content="Ожидают курьера"/>
+                <RadioButton FontSize="18" Grid.Column="3"
+                            Style="{StaticResource RadBut}"
+                            IsChecked="True"
+                        Command="{Binding SelectStatus}"
+                        CommandParameter="{x:Static statuses:DeliveryStatus.AtTheCourier}"
+                        Content="В доставке"/>
+                <RadioButton FontSize="18" Grid.Column="4"
+                            Style="{StaticResource RadBut}"
+Command="{Binding UpdatePizzaSizeCommand}"
+CommandParameter="{x:Static statuses:DeliveryStatus.Delivered}"
+Content="Доставленные"/>
+                <RadioButton FontSize="18" Grid.Column="5"
+                            Style="{StaticResource RadBut}"
+Command="{Binding UpdatePizzaSizeCommand}"
+CommandParameter="{x:Static statuses:DeliveryStatus.NotDelivered}"
+Content="Не доставленные"/>
+                <RadioButton FontSize="18" Grid.Column="6"
+                            Style="{StaticResource RadBut}"
+Command="{Binding UpdatePizzaSizeCommand}"
+CommandParameter="{x:Static statuses:DeliveryStatus.Canceled}"
+Content="Отмененные"/>
+            </Grid>
+            <ListBox 
+                Grid.Row="1"  HorizontalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+               ScrollViewer.VerticalScrollBarVisibility="Visible"
+              ItemTemplate="{StaticResource listordersTemplate}"
+              ItemsPanel="{StaticResource listordersPanelTemplate}"
+              ItemsSource="{Binding OrdersCollection}"
+          SelectedItem="{Binding SelectedOrder, Mode=TwoWay}"
+              >
+            </ListBox>
+           
             
+            
+
+        </Grid>
     </Grid>
 </UserControl>
