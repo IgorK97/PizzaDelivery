@@ -2,7 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:PizzaDelivery"
-             xmlns:view="clr-namespace:PizzaDelivery.Views"
+    xmlns:view="clr-namespace:PizzaDelivery.Views"
              xmlns:viewms="clr-namespace:PizzaDelivery.ViewModels">
     <!--StartupUri="MainWindow.xaml">-->
     <Application.Resources>
@@ -12,12 +12,18 @@
             </ResourceDictionary.MergedDictionaries>
         
         <DataTemplate DataType="{x:Type viewms:AuthorizationVM}">
-            <view:AuthorizationPresentation/>
+                <view:AuthorizationPresentation/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewms:ProfilePresentationVM}">
             <view:ProfilePresentation/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewms:RegistrationVM}">
+            <DataTemplate DataType="{x:Type viewms:ProfilePresentationManagerVM}">
+                <view:ProfilePresentationManager/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewms:ProfilePresentationCourierVM}">
+                <view:ProfilePresentationCourier/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewms:RegistrationVM}">
             <view:RegistrationPresentation/>
         </DataTemplate>
             <DataTemplate DataType="{x:Type viewms:PizzaSelectionVM}">

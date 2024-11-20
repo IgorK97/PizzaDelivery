@@ -15,7 +15,12 @@ namespace PizzaDelivery.State.Navigators
         Shop,
         Registration,
         Login,
-        OrderHistory
+        OrderHistory,
+        ProfileManager,
+        ProfileCourier,
+        OrdersManager,
+        ReportsManager,
+        OrdersCourier
     }
     public interface INavigator
     {

@@ -72,7 +72,13 @@ namespace PizzaDelivery.ViewModels
                             networkCredential.Password);
                         if (success)
                         {
-                            State.Navigators.ViewType viewType = State.Navigators.ViewType.Profile;
+                            State.Navigators.ViewType viewType;
+                            if (_authenticator.Account.IsClient)
+                                viewType = State.Navigators.ViewType.Profile;
+                            else if (_authenticator.Account.IsCourier)
+                                viewType = State.Navigators.ViewType.ProfileCourier;
+                            else
+                                viewType = State.Navigators.ViewType.ProfileManager;
                             OnViewModelChangedDelegate(viewType);
                             //_navigator.CurrentViewModel = _pizzaDeliveryViewModelFactory.CreateViewModel(viewType);
                         }

@@ -1,6 +1,6 @@
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery.Domain.Tests\bin\Debug\net8.0\CoverletSourceRootsMapping_PizzaDelivery.AppCore.Tests
-C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery.Domain.Tests\bin\Debug\net8.0\testhost.exe
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery.Domain.Tests\bin\Debug\net8.0\testhost.dll
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery.Domain.Tests\bin\Debug\net8.0\testhost.exe
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery.Domain.Tests\bin\Debug\net8.0\NUnit3.TestAdapter.dll
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery.Domain.Tests\bin\Debug\net8.0\NUnit3.TestAdapter.pdb
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery.Domain.Tests\bin\Debug\net8.0\nunit.engine.dll

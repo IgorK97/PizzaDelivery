@@ -34,10 +34,11 @@
                 <ComboBox Grid.Column="1" Margin ="20" Width="100" Height="40" Padding="10" Background="Beige">
                     <ComboBoxItem Content="Ингредиент"/>
                 </ComboBox>-->
+                
+
                 <Button Grid.Column="0" Width="80" Margin="10" Background="White" DockPanel.Dock="Left"
                     Command="{Binding UpdateCurrentViewModelCommand}"
-                        CommandParameter="{x:Static nav:ViewType.Shop}">
-
+CommandParameter="{x:Static nav:ViewType.Shop}">
                     <Image Source="/ImagesForProject/pizzaicon.png"/>
                     <Button.Style>
                         <Style TargetType="Button">
@@ -71,7 +72,8 @@
                     
                 </Button>
                 <Button Grid.Column="2" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
-     Command="{Binding UpdateCurrentViewModelCommand}">
+     Command="{Binding UpdateCurrentViewModelCommand}"
+                        CommandParameter="{x:Static nav:ViewType.OrderHistory}">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Style.Triggers>
@@ -103,10 +105,10 @@ Command="{Binding UpdateCurrentViewModelCommand}">
                                     <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.Profile}"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding IsCourier}" Value="true">
-                                    <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.Profile}"/>
+                                    <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.ProfileCourier}"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding IsManager}" Value="true">
-                                    <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.Profile}"/>
+                                    <Setter Property="CommandParameter" Value="{x:Static nav:ViewType.ProfileManager}"/>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>

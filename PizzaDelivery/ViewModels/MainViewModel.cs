@@ -84,7 +84,7 @@ namespace PizzaDelivery.ViewModels
             OnPropertyChanged(nameof(IsClient));
             OnPropertyChanged(nameof(IsCourier));
             OnPropertyChanged(nameof(IsManager));
-
+            if(_authenticator.Account.IsClient)
             _orderBook.Load();
         }
 

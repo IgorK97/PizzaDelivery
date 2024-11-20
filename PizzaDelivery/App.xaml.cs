@@ -95,6 +95,14 @@ namespace PizzaDelivery
             {
                 return () => new ProfilePresentationVM(services.GetRequiredService<IAuthenticator>());
             });
+            services.AddSingleton<CreateViewModel<ProfilePresentationManagerVM>>(services =>
+            {
+                return () => new ProfilePresentationManagerVM(services.GetRequiredService<IAuthenticator>());
+            });
+            services.AddSingleton<CreateViewModel<ProfilePresentationCourierVM>>(services =>
+            {
+                return () => new ProfilePresentationCourierVM(services.GetRequiredService<IAuthenticator>());
+            });
             services.AddSingleton<CreateViewModel<AuthorizationVM>>(services =>
             {
                 return () => new AuthorizationVM(services.GetRequiredService<IAuthenticator>());
