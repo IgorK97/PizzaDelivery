@@ -111,7 +111,7 @@
                                         <Setter Property="Visibility" Value="Collapsed"/>
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.NotDelivered}">
-                                        <Setter Property="Content" Value="посмотреть комментарий"/>
+                                        <Setter Property="Content" Value="Посмотреть комментарий"/>
                                         <Setter Property="CommandParameter" Value="{x:Static statuses:DeliveryStatus.NotDelivered}"/>
 
                                     </DataTrigger>
