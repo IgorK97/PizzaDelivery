@@ -43,7 +43,19 @@ namespace BLL.Models
         public PizzaModel Pizza;
         
         public List<IngredientModel> addedingredients { get; set; }
-
+        public string GetStringIngrs()
+        {
+            string str="";
+            if (addedingredients.Count > 0)
+            {
+                for (int i = 0; i < addedingredients.Count - 1; i++)
+                {
+                    str += addedingredients[i].C_name + ", ";
+                }
+                str += addedingredients[addedingredients.Count - 1].C_name;
+            }
+            return str;
+        }
         public OrderLineModel(IPriceBook pb, int id)
         {
             _priceBook = pb;

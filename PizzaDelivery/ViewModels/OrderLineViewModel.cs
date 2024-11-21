@@ -111,11 +111,24 @@ namespace PizzaDelivery.ViewModels
 
         public string Name => _orderLineModel.Pizza.C_name;
         public byte[]? Image => _orderLineModel.Pizza.pizzaimage;
-
+        private string _ingrList;
+        public string IngrList
+        {
+            get
+            {
+                return _ingrList;
+            }
+            set
+            {
+                _ingrList = value;
+                OnPropertyChanged(nameof(IngrList));
+            }
+        }
         public OrderLineViewModel(OrderLineModel olm)
         {
             _orderLineModel = olm;
             Id = olm.Id;
+            IngrList = _orderLineModel.GetStringIngrs();
             //Price = olm.Position_price.ToString();
             //Weight = olm.Weight.ToString();
         }

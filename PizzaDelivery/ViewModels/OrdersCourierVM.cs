@@ -250,6 +250,28 @@ namespace PizzaDelivery.ViewModels
             //_deliverySystemModel.TakeOrder(Id);
             //OnOrderViewModelIsChanged();
         }
+        public void OnOrderViewModelIsAbout(OrderViewModel _orderViewModel)
+        {
+            //IsOrderSelected = true;
+            //SelectedOrder = _orderViewModel;
+            //bool p;
+            //if (DelStatus == DeliveryStatus.AtTheCourier)
+            //    p = true;
+            //else
+            //    p = false;
+            //SelectedOrderCommentVM = new CommentViewModel(_orderViewModel.OrderModel, p);
+            SelectedOrderVM = new SelectedOrderViewModel(_orderViewModel.OrderModel);
+
+            IsOrderSelected = true;
+
+            //_deliverySystemModel.TakeOrder(Id);
+            //OnOrderViewModelIsChanged();
+        }
+        public void OnExitSelected()
+        {
+            IsOrderSelected = false;
+
+        }
         public OrdersCourierVM(DeliverySystemModel deliverySystemModel, IAuthenticator authenticator, IPriceBook priceBook/*, OrderBook orderBook*/)
         {
             //_assortmentModel = assortmentModel;
@@ -268,7 +290,9 @@ namespace PizzaDelivery.ViewModels
             OrderViewModel.OnOrderStateIsChanged += OnOrderViewModelIsChanged;
             OrderViewModel.OnOrderIsTaked += OnOrderViewModelIsTaked;
             OrderViewModel.OnOrderIsDelivered += OnOrderViewModelIsDelivered;
+            OrderViewModel.OnOrderIsAbout += OnOrderViewModelIsAbout;
             CommentViewModel.OnExitDelegate += OnExitEvent;
+            SelectedOrderViewModel.OnExitCommand += OnExitSelected;
             //Price = _basket.final_price.ToString();
             //Weight = _basket.weight.ToString();
             //Address = ((ClientDTO)user).AddressDel;

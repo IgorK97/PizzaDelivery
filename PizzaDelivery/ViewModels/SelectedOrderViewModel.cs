@@ -1,39 +1,71 @@
-﻿using PizzaDelivery.Util;
+﻿using BLL.Models;
+using PizzaDelivery.Util;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace PizzaDelivery.ViewModels
 {
     public class SelectedOrderViewModel : ViewModelBase
     {
-        private string _cost;
-        public string Cost
+        OrderModel _orderModel;
+        public static event ExitDelegate OnExitCommand;
+        private ICommand exitCommand;
+        public ICommand ExitCommand
         {
             get
             {
-                return _cost;
-            }
-            set
-            {
-                _cost = value;
-                OnPropertyChanged(nameof(Cost));
+                return exitCommand ??= new Commands.DelegateCommand(obj =>
+                {
+                    OnExitCommand?.Invoke();
+                });
             }
         }
-        private string _count;
-        public string Count
+        private ObservableCollection<OrderLineViewModel> _linescollection;
+        public IEnumerable<OrderLineViewModel> LinesCollection
         {
             get
             {
-                return _count;
+                if (_linescollection != null)
+                    return _linescollection;
+                else
+                    Load();
+                return _linescollection;
+            }
+        }
+        public void Load()
+        {
+            _linescollection = new ObservableCollection<OrderLineViewModel>();
+            IEnumerable<OrderLineModel> _lines = _orderModel.GetLines();
+
+            foreach (OrderLineModel olm in _lines)
+            {
+                OrderLineViewModel olvm = new OrderLineViewModel(olm);
+                _linescollection.Add(olvm);
+            }
+        }
+        private OrderLineViewModel _selectedLine;
+        public OrderLineViewModel SelectedLine
+        {
+            get
+            {
+                return _selectedLine;
             }
             set
             {
-                _count = value;
-                OnPropertyChanged(nameof(Count));
+                _selectedLine = value;
+                OnPropertyChanged(nameof(SelectedLine));
             }
+        }
+        
+        public SelectedOrderViewModel(OrderModel om)
+        {
+            _orderModel = om;
+
         }
     }
 }

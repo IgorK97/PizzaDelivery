@@ -56,6 +56,20 @@ namespace PizzaDelivery.ViewModels
 
             }
         }
+        private SelectedOrderViewModel selectedOrderVM;
+        public SelectedOrderViewModel SelectedOrderVM
+        {
+            get
+            {
+                return selectedOrderVM;
+            }
+            set
+            {
+                selectedOrderVM = value;
+                OnPropertyChanged(nameof(SelectedOrderVM));
+
+            }
+        }
         private bool _isOrderSelected;
         public bool IsOrderSelected
         {
@@ -75,6 +89,29 @@ namespace PizzaDelivery.ViewModels
             _orderBook = orderBook;
             IsOrderSelected = false;
             OrderViewModel.OnOrderIsDeleted += OnOrderViewModelIsDeleted;
+            OrderViewModel.OnOrderIsAbout += OnOrderViewModelIsAbout;
+            SelectedOrderViewModel.OnExitCommand += OnExitSelected;
+        }
+        public void OnOrderViewModelIsAbout(OrderViewModel _orderViewModel)
+        {
+            //IsOrderSelected = true;
+            //SelectedOrder = _orderViewModel;
+            //bool p;
+            //if (DelStatus == DeliveryStatus.AtTheCourier)
+            //    p = true;
+            //else
+            //    p = false;
+            //SelectedOrderCommentVM = new CommentViewModel(_orderViewModel.OrderModel, p);
+            WatchingOrder = new SelectedOrderViewModel(_orderViewModel.OrderModel);
+
+            IsOrderSelected = true;
+
+            //_deliverySystemModel.TakeOrder(Id);
+            //OnOrderViewModelIsChanged();
+        }
+        public void OnExitSelected()
+        {
+            IsOrderSelected = false;
 
         }
         public void Load()
@@ -92,13 +129,13 @@ namespace PizzaDelivery.ViewModels
                 }
             }
         }
-        private ICommand selectOrderCommand;
-        public ICommand SelectOrderCommand
-        {
-            get
-            {
-                return selectOrderCommand;
-            }
-        }
+        //private ICommand selectOrderCommand;
+        //public ICommand SelectOrderCommand
+        //{
+        //    get
+        //    {
+        //        return selectOrderCommand;
+        //    }
+        //}
     }
 }

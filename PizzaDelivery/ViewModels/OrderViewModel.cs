@@ -15,6 +15,7 @@ namespace PizzaDelivery.ViewModels
     public delegate void OrderStateViewModelIsChanged();
     public delegate void OrderViewModelIsTaked(int id);
     public delegate void OrderViewModelIsDelivered(OrderViewModel _orderViewModel);
+    public delegate void OrderViewModelIsAbout(OrderViewModel _orderViewModel);
 
     public class OrderViewModel : ViewModelBase
 
@@ -23,6 +24,7 @@ namespace PizzaDelivery.ViewModels
         public static event OrderStateViewModelIsChanged OnOrderStateIsChanged;
         public static event OrderViewModelIsTaked OnOrderIsTaked;
         public static event OrderViewModelIsDelivered OnOrderIsDelivered;
+        public static event OrderViewModelIsAbout OnOrderIsAbout;
         private readonly OrderModel _orderModel;
         public OrderModel OrderModel
         {
@@ -235,6 +237,18 @@ namespace PizzaDelivery.ViewModels
                 else
                     IsCanceled = true;
             }
+        }
+        private ICommand aboutOrder;
+        public ICommand AboutOrder
+        {
+            get
+            {
+                return aboutOrder ??= new Commands.DelegateCommand(obj =>
+                {
+                    OnOrderIsAbout?.Invoke(this);
+                });
+            }
+            
         }
     }
 }

@@ -173,8 +173,29 @@ namespace PizzaDelivery.ViewModels
             //OnPropertyChanged(nameof(Price));
             //OnPropertyChanged(nameof(Weight));
         }
-        
 
+        public void OnOrderViewModelIsAbout(OrderViewModel _orderViewModel)
+        {
+            //IsOrderSelected = true;
+            //SelectedOrder = _orderViewModel;
+            //bool p;
+            //if (DelStatus == DeliveryStatus.AtTheCourier)
+            //    p = true;
+            //else
+            //    p = false;
+            //SelectedOrderCommentVM = new CommentViewModel(_orderViewModel.OrderModel, p);
+            SelectedOrderVM = new SelectedOrderViewModel(_orderViewModel.OrderModel);
+
+            IsOrderSelected = true;
+
+            //_deliverySystemModel.TakeOrder(Id);
+            //OnOrderViewModelIsChanged();
+        }
+        public void OnExitSelected()
+        {
+            IsOrderSelected = false;
+
+        }
 
         private ICommand selectStatus;
         public ICommand SelectStatus
@@ -225,6 +246,8 @@ namespace PizzaDelivery.ViewModels
             //Address = ((ClientDTO)user).AddressDel;
             OrderViewModel.OnOrderStateIsChanged += OnOrderViewModelIsChanged;
             OrderViewModel.OnOrderIsTaked += OnOrderViewModelIsTaked;
+            OrderViewModel.OnOrderIsAbout += OnOrderViewModelIsAbout;
+            SelectedOrderViewModel.OnExitCommand += OnExitSelected;
         }
     }
 }
