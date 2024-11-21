@@ -3,32 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\bll\\models\\ordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|solutionrelative:bll\\models\\ordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\viewmodels\\selectedorderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\viewmodels\\selectedorderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\viewmodels\\orderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\viewmodels\\orderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\views\\selectedorderview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\views\\selectedorderview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\bll\\models\\managementmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|solutionrelative:bll\\models\\managementmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\viewmodels\\ordersmanagervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\viewmodels\\ordersmanagervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\views\\orderscourierpresentation.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\views\\orderscourierpresentation.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\viewmodels\\orderscouriervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\viewmodels\\orderscouriervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\bll\\models\\deliverysystemmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|solutionrelative:bll\\models\\deliverysystemmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igor\\source\\repos\\pizzadelivery\\pizzadelivery\\views\\ordersmanagerpresentation.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\views\\ordersmanagerpresentation.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,92 +38,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "OrderViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrderViewModel.cs",
-              "RelativeDocumentMoniker": "PizzaDelivery\\ViewModels\\OrderViewModel.cs",
-              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrderViewModel.cs",
-              "RelativeToolTip": "PizzaDelivery\\ViewModels\\OrderViewModel.cs",
-              "ViewState": "AgIAAL8AAAAAAAAAAAAqwMoAAAAcAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "SelectedOrderViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\SelectedOrderViewModel.cs",
+              "RelativeDocumentMoniker": "PizzaDelivery\\ViewModels\\SelectedOrderViewModel.cs",
+              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\SelectedOrderViewModel.cs*",
+              "RelativeToolTip": "PizzaDelivery\\ViewModels\\SelectedOrderViewModel.cs*",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAjwCIAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T16:37:28.646Z",
+              "WhenOpened": "2024-11-21T08:15:28.18Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "OrderModel.cs",
-              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\BLL\\Models\\OrderModel.cs",
-              "RelativeDocumentMoniker": "BLL\\Models\\OrderModel.cs",
-              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\BLL\\Models\\OrderModel.cs",
-              "RelativeToolTip": "BLL\\Models\\OrderModel.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAYwFwAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T16:34:23.638Z",
+              "DocumentIndex": 1,
+              "Title": "SelectedOrderView.xaml",
+              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\Views\\SelectedOrderView.xaml",
+              "RelativeDocumentMoniker": "PizzaDelivery\\Views\\SelectedOrderView.xaml",
+              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\Views\\SelectedOrderView.xaml*",
+              "RelativeToolTip": "PizzaDelivery\\Views\\SelectedOrderView.xaml*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-21T08:13:34.674Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ManagementModel.cs",
-              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\BLL\\Models\\ManagementModel.cs",
-              "RelativeDocumentMoniker": "BLL\\Models\\ManagementModel.cs",
-              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\BLL\\Models\\ManagementModel.cs",
-              "RelativeToolTip": "BLL\\Models\\ManagementModel.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAA5wCAAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T16:29:00.236Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DeliverySystemModel.cs",
-              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\BLL\\Models\\DeliverySystemModel.cs",
-              "RelativeDocumentMoniker": "BLL\\Models\\DeliverySystemModel.cs",
-              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\BLL\\Models\\DeliverySystemModel.cs",
-              "RelativeToolTip": "BLL\\Models\\DeliverySystemModel.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAA5wCgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T16:28:56.865Z",
+              "Title": "OrdersCourierPresentation.xaml",
+              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\Views\\OrdersCourierPresentation.xaml",
+              "RelativeDocumentMoniker": "PizzaDelivery\\Views\\OrdersCourierPresentation.xaml",
+              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\Views\\OrdersCourierPresentation.xaml",
+              "RelativeToolTip": "PizzaDelivery\\Views\\OrdersCourierPresentation.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-21T06:18:35.991Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "OrdersManagerVM.cs",
-              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrdersManagerVM.cs",
-              "RelativeDocumentMoniker": "PizzaDelivery\\ViewModels\\OrdersManagerVM.cs",
-              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrdersManagerVM.cs",
-              "RelativeToolTip": "PizzaDelivery\\ViewModels\\OrdersManagerVM.cs",
-              "ViewState": "AgIAANAAAAAAAAAAAAA3wOIAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T16:28:41.306Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "OrdersCourierVM.cs",
               "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrdersCourierVM.cs",
               "RelativeDocumentMoniker": "PizzaDelivery\\ViewModels\\OrdersCourierVM.cs",
               "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrdersCourierVM.cs",
               "RelativeToolTip": "PizzaDelivery\\ViewModels\\OrdersCourierVM.cs",
-              "ViewState": "AgIAAM0AAAAAAAAAAAAQwNcAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAPIAAAAAAAAAAAAYwPYAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T16:21:34.005Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "OrdersManagerPresentation.xaml",
-              "DocumentMoniker": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\Views\\OrdersManagerPresentation.xaml",
-              "RelativeDocumentMoniker": "PizzaDelivery\\Views\\OrdersManagerPresentation.xaml",
-              "ToolTip": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\PizzaDelivery\\Views\\OrdersManagerPresentation.xaml",
-              "RelativeToolTip": "PizzaDelivery\\Views\\OrdersManagerPresentation.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-20T16:16:33.584Z",
+              "WhenOpened": "2024-11-21T07:11:11.787Z",
               "EditorCaption": ""
             }
           ]

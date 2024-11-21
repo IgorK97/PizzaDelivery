@@ -4,9 +4,97 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PizzaDelivery.Views"
+             xmlns:statuses="clr-namespace:DTO;assembly=Interfaces"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid>
-            
+        <Grid.Background>
+            <SolidColorBrush Color="Black" Opacity="0.5"/>
+        </Grid.Background>
+        <Grid MinWidth="300" MinHeight="350" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0"  Margin="15" Padding="10" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center"
+            BorderThickness="3" CornerRadius="10" 
+            BorderBrush="{StaticResource BrushPrimary1}"
+            Background="White">
+                <!--DataContext="{Binding AddingPizza}"-->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid  Margin="5 10" Grid.Row="0" Background="Red">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="102*"/>
+                            <ColumnDefinition Width="43*"/>
+                            <ColumnDefinition Width="145*"/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton FontSize="18" Grid.Column="0"
+                            Style="{StaticResource RadBut}"
+                            IsChecked="{Binding IsSuccess, Mode=OneWay}"
+                        Command="{Binding UpdateSuccess}"
+                        CommandParameter="{x:Static statuses:DeliveryStatus.Delivered}"
+                        Content="Доставлено" Grid.ColumnSpan="2"/>
+                        <RadioButton FontSize="18" Grid.Column="2"
+                            Style="{StaticResource RadBut}"
+                            IsChecked="{Binding IsNotSuccess, Mode=OneWay}"
+Command="{Binding UpdateSuccess}"
+CommandParameter="{x:Static statuses:DeliveryStatus.NotDelivered}"
+Content="Не доставлено"/>
+                    </Grid>
+                    <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MaxWidth="300" Grid.Row="1" Width="300" Height="50" FontSize="18" Text="{Binding Comment}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsNotSuccess}" Value="true">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsNotSuccess}" Value="false">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsChangeable}" Value="true">
+                                        <Setter Property="IsReadOnly" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsChangeable}" Value="false">
+                                        <Setter Property="IsReadOnly" Value="true"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                    <Button 
+                        Grid.Row="2" Content="Применить" Command="{Binding Save}">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsChangeable}" Value="true">
+                                        <Setter Property="Visibility" Value="Visible"/>
+
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsChangeable}" Value="false">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+
+                                    </DataTrigger>
+                                </Style.Triggers>
+                                
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+            </Border>
+            <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                     Grid.Column="1" Width="50" Height="50"
+                     Style="{StaticResource BaseButtonStyle}"
+                    Command="{Binding ExitCommand}">
+                <Image Source="/ImagesForProject/out.png"/>
+            </Button>
+        </Grid>
     </Grid>
 </UserControl>

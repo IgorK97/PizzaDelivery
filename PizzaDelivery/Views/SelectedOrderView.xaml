@@ -8,57 +8,6 @@
              xmlns:viewmodels="clr-namespace:PizzaDelivery.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-        <DataTemplate x:Key="listLinesTemplate">
-            <Border Width="200" Height="150" MaxWidth="1000" Margin="5" BorderThickness="2" CornerRadius="10">
-
-                <Border.Style>
-                    <Style TargetType="Border">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsIngredientSelected}" Value="false">
-                                <Setter Property="Background" Value="White"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding IsIngredientSelected}" Value="true">
-                                <Setter Property="Background" Value="Orange"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <!--<ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>-->
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row ="0" Grid.Column="0" Source="{Binding Image, Mode=OneWay}" Width="50" Height="50" Margin="5"/>
-                    <TextBlock Grid.Row ="0" Grid.Column="1" Text="X" />
-                    <TextBlock Grid.Row ="0" Grid.Column="2" Text="{Binding Count}"/>
-                    <TextBlock Grid.Row ="0" Grid.Column="3" Text="{Binding Cost}"/>
-                    <TextBlock Grid.Row ="0" Grid.Column="4" Text="руб"/>
-                    <TextBlock Grid.Row ="0" Grid.Column="5" Text="{Binding Weight}"/>
-                    <TextBlock Grid.Row="0" Grid.Column="6" Text="г"/>
-                    <TextBlock Grid.Row="1" Grid.ColumnSpan="7" Text="{Binding IngrList}"/>
-                </Grid>
-                
-
-            </Border>
-        </DataTemplate>
-        <ItemsPanelTemplate x:Key="listLinesPanelTemplate">
-            <WrapPanel/>
-        </ItemsPanelTemplate>
-    </UserControl.Resources>
     <Grid>
         <Grid.Background>
             <SolidColorBrush Color="Black" Opacity="0.5"/>
@@ -68,29 +17,53 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0"  Margin="15" Padding="10" 
+            <!--<Border Grid.Column="0"  Margin="15" Padding="10" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"
             BorderThickness="3" CornerRadius="10" 
             BorderBrush="{StaticResource BrushPrimary1}"
-            Background="White">
+            Background="White">-->
                 <!--DataContext="{Binding AddingPizza}"-->
-                
-                        <Grid MaxWidth="800" Grid.Row="5">
-                            <ListBox Grid.Row="5" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                      ScrollViewer.VerticalScrollBarVisibility="Visible"
-                     ItemTemplate="{StaticResource listLinesTemplate}"
-                     ItemsPanel="{StaticResource listLinesPanelTemplate}"
-                     ItemsSource="{Binding LinesCollection}"
-                                     SelectedItem="{Binding SelectedOrder, Mode=TwoWay}">
-
-                            </ListBox>
-                        </Grid>
-                        
+                <Border Width="200" Height="150" MaxWidth="1000" Margin="5" BorderThickness="2" CornerRadius="10">
 
 
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <!--<ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>-->
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row ="0" Grid.Column="0" Source="{Binding Image, Mode=OneWay}" Width="50" Height="50" Margin="5"/>
+                        <TextBlock Grid.Row ="0" Grid.Column="1" Text="X" />
+                        <TextBlock Grid.Row ="0" Grid.Column="2" Text="{Binding Count}"/>
+                        <TextBlock Grid.Row ="0" Grid.Column="3" Text="{Binding Cost}"/>
+                        <TextBlock Grid.Row ="0" Grid.Column="4" Text="руб"/>
+                        <TextBlock Grid.Row ="0" Grid.Column="5" Text="{Binding Weight}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="6" Text="г"/>
+                        <TextBlock Grid.Row="1" Grid.ColumnSpan="7" Text="{Binding IngrList}"/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Адрес"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Address}"/>
+                    </Grid>
 
-            </Border>
+
+                </Border>
+
+
+
+            <!--</Border>-->
             <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" 
                      Grid.Column="1" Width="50" Height="50"
                      Style="{StaticResource BaseButtonStyle}"

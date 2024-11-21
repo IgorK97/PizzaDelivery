@@ -30,6 +30,7 @@ namespace BLL.Models
 
         public int clientId { get; set; }
         public int? courierId { get; set; }
+        public int? managerId { get; set; }
 
         public decimal final_price { get; set; }
 
@@ -59,6 +60,40 @@ namespace BLL.Models
             newodto.courierId = CourierId;
             newodto.final_price = final_price;
             newodto.weight = weight;
+
+            _orderManagementService.UpdateOrder(newodto);
+            OrderDto o = _orderManagementService.GetOrder(newodto);
+
+            Id = o.Id;
+            clientId = o.clientId;
+            courierId = o.courierId;
+            final_price = o.final_price;
+            address_del = o.address_del;
+            weight = o.weight;
+            ordertime = o.ordertime;
+            deliverytime = o.deliverytime;
+            delstatusId = o.delstatusId;
+            comment = o.comment;
+            order_lines = new List<OrderLineModel>();
+            foreach (OrderLineDto old in o.order_lines)
+            {
+                OrderLineModel olm = new OrderLineModel(_priceBook, old);
+                order_lines.Add(olm);
+            }
+            LineCount = order_lines.Count;
+        }
+        public void UpdateOrder()
+        {
+            OrderDto newodto = new OrderDto();
+
+
+            newodto.Id = Id;
+            newodto.address_del = address_del;
+            newodto.delstatusId = delstatusId;
+            newodto.managerId = managerId;
+            newodto.final_price = final_price;
+            newodto.weight = weight;
+            newodto.comment = comment;
 
             _orderManagementService.UpdateOrder(newodto);
             OrderDto o = _orderManagementService.GetOrder(newodto);
@@ -153,6 +188,7 @@ namespace BLL.Models
             Id = o.Id;
             clientId = o.clientId;
             courierId = o.courierId;
+            managerId = o.managerId;
             final_price = o.final_price;
             address_del = o.address_del;
             weight = o.weight;
@@ -177,6 +213,7 @@ namespace BLL.Models
             Id = o.Id;
             clientId = o.clientId;
             courierId = o.courierId;
+            managerId = o.managerId;
             final_price = o.final_price;
             address_del = o.address_del;
             weight = o.weight;

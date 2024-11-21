@@ -2300,12 +2300,6 @@
   },
   "logs": [
     {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Произошла ошибка при получении данных уязвимости пакета: Не удалось загрузить индекс службы для источника https://api.nuget.org/v3/index.json."
-    },
-    {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,

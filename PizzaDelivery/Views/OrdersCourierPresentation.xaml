@@ -62,7 +62,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <TextBlock Grid.Column="6" Text="{Binding DeliveryDate}" VerticalAlignment="Center" Margin="10 10 " FontSize="26">
+                    <TextBlock Grid.Column="6" Text="{Binding DeliveryDate}" VerticalAlignment="Center" Margin="10 10 ">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Style.Triggers>
@@ -101,7 +101,7 @@
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.AtTheCourier}">
                                         <Setter Property="Content" Value="Пометить по доставке"/>
-                                        <Setter Property="Command" Value="{Binding ChangeStatus}"/>
+                                        <Setter Property="Command" Value="{Binding DelOrder}"/>
                                         <Setter Property="CommandParameter" Value="{x:Static statuses:DeliveryStatus.Delivered}"/>
 
                                     </DataTrigger>
@@ -119,6 +119,8 @@
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.NotDelivered}">
                                         <Setter Property="Content" Value="Посмотреть комментарий"/>
+                                        <Setter Property="Command" Value="{Binding DelOrder}"/>
+
                                         <Setter Property="CommandParameter" Value="{x:Static statuses:DeliveryStatus.NotDelivered}"/>
 
                                     </DataTrigger>

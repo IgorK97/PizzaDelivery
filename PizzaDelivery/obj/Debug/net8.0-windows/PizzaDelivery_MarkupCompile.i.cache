@@ -16,5 +16,5 @@ C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\App.xaml
 243-762525434
 MainWindow.xaml;Styles\Common.xaml;Views\AuthorizationPresentation.xaml;Views\BasketPresentation.xaml;Views\CommentView.xaml;Views\OrderHistoryPresentation.xaml;Views\OrdersCourierPresentation.xaml;Views\OrdersManagerPresentation.xaml;Views\PizzaSelectionView.xaml;Views\ProfilePresentation.xaml;Views\ProfilePresentationCourier.xaml;Views\ProfilePresentationManager.xaml;Views\RegistrationPresentation.xaml;Views\SelectedOrderView.xaml;Views\SelectedPizzaView.xaml;Views\TopPanelPD.xaml;
 
-False
+True
 
