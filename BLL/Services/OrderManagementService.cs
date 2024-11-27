@@ -41,6 +41,8 @@ namespace BLL.Services
                 order.CourierId = odto.courierId;
                 order.ManagersId = odto.managerId;
                 order.Comment = odto.comment;
+                if (odto.delstatusId == (int)DeliveryStatus.Delivered)
+                    order.Deliverytime = odto.deliverytime;
                 dbr.Orders.Update(order);
                 //List<OrderLine> lines = new List<OrderLine>();
                 //foreach (var pId in odto.order_lines)

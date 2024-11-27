@@ -58,6 +58,7 @@ namespace BLL.Models
             newodto.address_del = address_del;
             newodto.delstatusId = (int)DeliveryStatus.AtTheCourier;
             newodto.courierId = CourierId;
+            newodto.managerId = managerId;
             newodto.final_price = final_price;
             newodto.weight = weight;
 
@@ -67,6 +68,7 @@ namespace BLL.Models
             Id = o.Id;
             clientId = o.clientId;
             courierId = o.courierId;
+            managerId = o.managerId;
             final_price = o.final_price;
             address_del = o.address_del;
             weight = o.weight;
@@ -91,6 +93,11 @@ namespace BLL.Models
             newodto.address_del = address_del;
             newodto.delstatusId = delstatusId;
             newodto.managerId = managerId;
+            newodto.courierId = courierId;
+            if (delstatusId == (int)DeliveryStatus.Delivered)
+                newodto.deliverytime = DateTime.UtcNow;
+            else
+                newodto.deliverytime = null;
             newodto.final_price = final_price;
             newodto.weight = weight;
             newodto.comment = comment;
@@ -101,6 +108,7 @@ namespace BLL.Models
             Id = o.Id;
             clientId = o.clientId;
             courierId = o.courierId;
+            managerId = o.managerId;
             final_price = o.final_price;
             address_del = o.address_del;
             weight = o.weight;
@@ -134,6 +142,7 @@ namespace BLL.Models
             Id = o.Id;
             clientId = o.clientId;
             courierId = o.courierId;
+            managerId = o.managerId;
             final_price = o.final_price;
             address_del = o.address_del;
             weight = o.weight;
@@ -159,13 +168,15 @@ namespace BLL.Models
             newodto.delstatusId = (int)ds;
             newodto.final_price = final_price;
             newodto.weight = weight;
-
+            newodto.courierId = courierId;
+            newodto.managerId = managerId;
             _orderManagementService.UpdateOrder(newodto);
             OrderDto o = _orderManagementService.GetOrder(newodto);
 
             Id = o.Id;
             clientId = o.clientId;
             courierId = o.courierId;
+            managerId = o.managerId;
             final_price = o.final_price;
             address_del = o.address_del;
             weight = o.weight;
@@ -296,6 +307,7 @@ namespace BLL.Models
             Id = o.Id;
             clientId = o.clientId;
             courierId = o.courierId;
+            managerId = o.managerId;
             final_price = o.final_price;
             address_del = o.address_del;
             weight = o.weight;
@@ -359,6 +371,7 @@ namespace BLL.Models
                 Id = o.Id;
                 clientId = o.clientId;
                 courierId = o.courierId;
+                managerId = o.managerId;
                 final_price = o.final_price;
                 address_del = o.address_del;
                 weight = o.weight;
@@ -396,6 +409,7 @@ namespace BLL.Models
             Id = o.Id;
             clientId = o.clientId;
             courierId = o.courierId;
+            managerId = o.managerId;
             final_price = o.final_price;
             address_del = o.address_del;
             weight = o.weight;
