@@ -5,33 +5,31 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PizzaDelivery.Views" xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              d:DesignHeight="450" d:DesignWidth="800">
+    <!--<Button Grid.Row="0" Width="250" Height="100" Padding="5" 
+        HorizontalAlignment="Center" 
+        Style="{StaticResource BaseButtonStyle}"
+        Command="{Binding ReportCommand}">
+    <TextBox Foreground="Orange" FontSize="20" FontWeight="Bold" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center"> Сгенерировать отчет</TextBox>
+</Button>-->
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Width="250" Height="100" Padding="5" 
-                HorizontalAlignment="Center" 
-                Style="{StaticResource BaseButtonStyle}"
-                Command="{Binding ReportCommand}">
-            <TextBox Foreground="Orange" FontSize="20" FontWeight="Bold" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center"> Сгенерировать отчет</TextBox>
-        </Button>
-        <Wpf:PieChart Grid.Row="1">
-            <Wpf:PieChart.Series>
-                <Wpf:PieSeries Title="1" Values="3" DataLabels="True"
-                               >
-                    
-                </Wpf:PieSeries>
-                <Wpf:PieSeries Title="1" Values="3" DataLabels="True"
-               >
-
-                </Wpf:PieSeries>
-                <Wpf:PieSeries Title="1" Values="3" DataLabels="True"
-               >
-
-                </Wpf:PieSeries>
-            </Wpf:PieChart.Series>
-        </Wpf:PieChart>
+        <Button Grid.Row="0" Click="Button1_Click"/>
+        <!--<lvc:PieChart Grid.Row="1" x:Name="Chart1" Series="{Binding Series}">
+            
+        </lvc:PieChart>-->
+        <Grid Grid.Row="0" Name="Chart1">
+            <Image Source="{Binding Im, Mode=OneWay}"/>
+        </Grid>
     </Grid>
+           
+
+            
+
+    
 </UserControl>

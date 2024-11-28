@@ -1,4 +1,7 @@
-﻿using PizzaDelivery.Util;
+﻿using LiveCharts.Wpf;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using PizzaDelivery.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +21,21 @@ namespace PizzaDelivery.ViewModels
                 return reportCommand;
             }
         }
+        public string Im
+        {
+            get
+            {
+                return "/ImagesForProject/pizzaicon.png";
+            }
+        }
+        public ISeries[] Series { get; set; }
+        = new ISeries[]
+        {
+            new PieSeries<double>{Values = new double[] {2 } },
+            new PieSeries<double>{Values = new double[] {1 } },
+            new PieSeries<double>{Values = new double[] {4 } },
+            new PieSeries<double>{Values = new double[] {5 } }
+        };
         public ReportsManagerVM()
         {
 
