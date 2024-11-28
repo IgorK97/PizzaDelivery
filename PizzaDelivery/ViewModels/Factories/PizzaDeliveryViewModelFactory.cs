@@ -19,7 +19,7 @@ namespace PizzaDelivery.ViewModels.Factories
         private readonly CreateViewModel<OrdersManagerVM> _createOrdersManagerVM;
         private readonly CreateViewModel<OrdersCourierVM> _createOrdersCourierVM;
         private readonly CreateViewModel<PizzaSelectionVM> _createShopViewModel;
-
+        private readonly CreateViewModel<ReportsManagerVM> _createReportsVM;
         public PizzaDeliveryViewModelFactory(CreateViewModel<ProfilePresentationVM> createProfileViewModel,
             CreateViewModel<ProfilePresentationManagerVM> createProfileManagerViewModel,
             CreateViewModel<ProfilePresentationCourierVM> createProfileCourierViewModel,
@@ -29,7 +29,8 @@ namespace PizzaDelivery.ViewModels.Factories
             CreateViewModel<OrderHistoryViewModel> createOrderHistoryViewModel,
             CreateViewModel<OrdersManagerVM> createOrdersManagerVM, 
             CreateViewModel<OrdersCourierVM> createOrdersCourierVM,
-            CreateViewModel<PizzaSelectionVM> createShopViewModel)
+            CreateViewModel<PizzaSelectionVM> createShopViewModel,
+            CreateViewModel<ReportsManagerVM> createReportsVM)
         {
             _createProfileViewModel = createProfileViewModel;
             _createProfileManagerViewModel = createProfileManagerViewModel;
@@ -41,6 +42,7 @@ namespace PizzaDelivery.ViewModels.Factories
             _createOrdersManagerVM = createOrdersManagerVM;
             _createOrdersCourierVM = createOrdersCourierVM;
             _createShopViewModel = createShopViewModel;
+            _createReportsVM = createReportsVM;
         }
 
         public ViewModelBase CreateViewModel(State.Navigators.ViewType viewType)
@@ -67,6 +69,8 @@ namespace PizzaDelivery.ViewModels.Factories
                     return _createOrdersManagerVM();
                 case State.Navigators.ViewType.OrdersCourier:
                     return _createOrdersCourierVM();
+                case State.Navigators.ViewType.ReportsManager:
+                    return _createReportsVM();
                 default:
                     throw new ArgumentException("The ViewType does not have a ViewModel.", "viewType");
             }

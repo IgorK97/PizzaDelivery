@@ -120,6 +120,10 @@ namespace PizzaDelivery
             {
                 return () => new RegistrationVM(services.GetRequiredService<IAuthenticator>());
             });
+            services.AddSingleton<CreateViewModel<ReportsManagerVM>>(services =>
+            {
+                return () => new ReportsManagerVM();
+            });
             services.AddSingleton<AssortmentModel>();
 
             services.AddSingleton<CreateViewModel<BasketViewModel>>(services =>

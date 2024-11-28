@@ -69,7 +69,8 @@ namespace PizzaDelivery.AppCore.Tests.Services.AuthenticationServices
 
             //Act
 
-            InvalidPasswordException exception = Assert.Throws<InvalidPasswordException>(() => _authenticationService.Login(expectedLogin, password));
+            InvalidPasswordException exception = Assert.Throws<InvalidPasswordException>(() 
+                => _authenticationService.Login(expectedLogin, password));
 
             //Assert
             string actualLogin = exception.Login;

@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="PizzaDelivery.Views.ReportsManager"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PizzaDelivery.Views" xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Width="250" Height="100" Padding="5" 
+                HorizontalAlignment="Center" 
+                Style="{StaticResource BaseButtonStyle}"
+                Command="{Binding ReportCommand}">
+            <TextBox Foreground="Orange" FontSize="20" FontWeight="Bold" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center"> Сгенерировать отчет</TextBox>
+        </Button>
+        <Wpf:PieChart Grid.Row="1">
+            <Wpf:PieChart.Series>
+                <Wpf:PieSeries Title="1" Values="3" DataLabels="True"
+                               >
+                    
+                </Wpf:PieSeries>
+                <Wpf:PieSeries Title="1" Values="3" DataLabels="True"
+               >
+
+                </Wpf:PieSeries>
+                <Wpf:PieSeries Title="1" Values="3" DataLabels="True"
+               >
+
+                </Wpf:PieSeries>
+            </Wpf:PieChart.Series>
+        </Wpf:PieChart>
+    </Grid>
+</UserControl>

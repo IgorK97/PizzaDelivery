@@ -256,3 +256,10 @@ C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\PizzaDelivery.pdb
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\PizzaDelivery.genruntimeconfig.cache
 C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\ref\PizzaDelivery.dll
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\Views\ReportsManager.g.cs
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\Views\ReportsManager.baml
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\LiveCharts.dll
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\LiveCharts.Wpf.dll
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\OxyPlot.dll
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\OxyPlot.Wpf.dll
+C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\OxyPlot.Wpf.Shared.dll

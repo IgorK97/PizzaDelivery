@@ -54,8 +54,7 @@ CommandParameter="{x:Static nav:ViewType.Shop}">
                     </Button.Style>
                 </Button>
                 <Button Grid.Column="3" Width="80" Margin="10" Background="White" DockPanel.Dock="Right"
-                    Command="{Binding UpdateCurrentViewModelCommand}"
-                        CommandParameter="{x:Static nav:ViewType.Basket}">
+                    Command="{Binding UpdateCurrentViewModelCommand}">
                     <Image>
                         <Image.Style>
                             <Style TargetType="Image">

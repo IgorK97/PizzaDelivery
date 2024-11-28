@@ -40,6 +40,9 @@
     <Compile Update="Views\RegistrationPresentation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ReportsManager.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\SelectedOrderView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -85,6 +88,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\RegistrationPresentation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ReportsManager.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SelectedOrderView.xaml">

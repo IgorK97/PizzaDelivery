@@ -26,6 +26,9 @@
             <DataTemplate DataType="{x:Type viewms:RegistrationVM}">
             <view:RegistrationPresentation/>
         </DataTemplate>
+            <DataTemplate DataType="{x:Type viewms:ReportsManagerVM}">
+                <view:ReportsManager/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewms:PizzaSelectionVM}">
                 <view:PizzaSelectionView/>
             </DataTemplate>
