@@ -34,11 +34,12 @@
                 <ComboBox Grid.Column="1" Margin ="20" Width="100" Height="40" Padding="10" Background="Beige">
                     <ComboBoxItem Content="Ингредиент"/>
                 </ComboBox>-->
-                
+
 
                 <Button Grid.Column="0" Width="80" Margin="10" Background="White" DockPanel.Dock="Left"
                     Command="{Binding UpdateCurrentViewModelCommand}"
-CommandParameter="{x:Static nav:ViewType.Shop}">
+                CommandParameter="{x:Static nav:ViewType.Shop}">
+
                     <Image Source="/ImagesForProject/pizzaicon.png"/>
                     <Button.Style>
                         <Style TargetType="Button">

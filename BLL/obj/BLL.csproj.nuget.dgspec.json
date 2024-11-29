@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\BLL\\BLL.csproj": {}
+    "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\BLL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\BLL\\BLL.csproj": {
+    "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\BLL\\BLL.csproj",
+        "projectUniqueName": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\BLL\\BLL.csproj",
-        "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\BLL\\obj\\",
+        "projectPath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\BLL.csproj",
+        "packagesPath": "C:\\Users\\IgorA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\IgorA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,18 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DAL\\DAL.csproj": {
-                "projectPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DAL\\DAL.csproj"
-              },
-              "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Exceptions\\Exceptions.csproj": {
-                "projectPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Exceptions\\Exceptions.csproj"
+              "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DAL\\DAL.csproj"
               }
             }
           }
@@ -46,8 +46,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -78,21 +79,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DAL\\DAL.csproj": {
+    "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DAL\\DAL.csproj",
+        "projectUniqueName": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DAL\\DAL.csproj",
-        "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DAL\\obj\\",
+        "projectPath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\IgorA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DAL\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\IgorA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -100,18 +105,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DomainModel\\DomainModel.csproj": {
-                "projectPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DomainModel\\DomainModel.csproj"
+              "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DomainModel\\DomainModel.csproj": {
+                "projectPath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DomainModel\\DomainModel.csproj"
               },
-              "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Interfaces\\Interfaces.csproj": {
-                "projectPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Interfaces\\Interfaces.csproj"
+              "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\Interfaces\\Interfaces.csproj": {
+                "projectPath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\Interfaces\\Interfaces.csproj"
               }
             }
           }
@@ -124,8 +128,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -164,21 +169,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DomainModel\\DomainModel.csproj": {
+    "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DomainModel\\DomainModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DomainModel\\DomainModel.csproj",
+        "projectUniqueName": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DomainModel\\DomainModel.csproj",
         "projectName": "DomainModel",
-        "projectPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DomainModel\\DomainModel.csproj",
-        "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DomainModel\\obj\\",
+        "projectPath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DomainModel\\DomainModel.csproj",
+        "packagesPath": "C:\\Users\\IgorA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DomainModel\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\IgorA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -186,7 +195,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -203,8 +211,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -225,82 +234,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Exceptions\\Exceptions.csproj": {
+    "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\Interfaces\\Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Exceptions\\Exceptions.csproj",
-        "projectName": "Exceptions",
-        "projectPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Exceptions\\Exceptions.csproj",
-        "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Exceptions\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        }
-      },
-      "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Interfaces\\Interfaces.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Interfaces\\Interfaces.csproj",
+        "projectUniqueName": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\Interfaces\\Interfaces.csproj",
         "projectName": "Interfaces",
-        "projectPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Interfaces\\Interfaces.csproj",
-        "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Interfaces\\obj\\",
+        "projectPath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\Interfaces\\Interfaces.csproj",
+        "packagesPath": "C:\\Users\\IgorA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\Interfaces\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\IgorA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -308,15 +260,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DomainModel\\DomainModel.csproj": {
-                "projectPath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\DomainModel\\DomainModel.csproj"
+              "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DomainModel\\DomainModel.csproj": {
+                "projectPath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DomainModel\\DomainModel.csproj"
               }
             }
           }
@@ -329,8 +280,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -357,7 +309,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

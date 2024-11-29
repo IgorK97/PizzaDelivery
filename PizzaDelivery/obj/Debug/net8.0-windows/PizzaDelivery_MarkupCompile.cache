@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\
+C:\Users\IgorA\source\repos\MyProjects\PizzaDelivery\PizzaDelivery\obj\Debug\net8.0-windows\
 PizzaDelivery
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\Igor\source\repos\PizzaDelivery\PizzaDelivery\App.xaml
+C:\Users\IgorA\source\repos\MyProjects\PizzaDelivery\PizzaDelivery\App.xaml
 17-1961745923
 
 54-836127073
-260627819336
+260702674672
 MainWindow.xaml;Styles\Common.xaml;Views\AuthorizationPresentation.xaml;Views\BasketPresentation.xaml;Views\CommentView.xaml;Views\OrderHistoryPresentation.xaml;Views\OrdersCourierPresentation.xaml;Views\OrdersManagerPresentation.xaml;Views\PizzaSelectionView.xaml;Views\ProfilePresentation.xaml;Views\ProfilePresentationCourier.xaml;Views\ProfilePresentationManager.xaml;Views\RegistrationPresentation.xaml;Views\ReportsManager.xaml;Views\SelectedOrderView.xaml;Views\SelectedPizzaView.xaml;Views\TopPanelPD.xaml;
 
 False

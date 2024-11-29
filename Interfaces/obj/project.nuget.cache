@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "lk9bxmoxZMA=",
+  "dgSpecHash": "GzmPnrQdnek=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Igor\\source\\repos\\PizzaDelivery\\Interfaces\\Interfaces.csproj",
+  "projectFilePath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\Interfaces\\Interfaces.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Igor\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.4\\microsoft.aspnet.identity.core.2.2.4.nupkg.sha512"
+    "C:\\Users\\IgorA\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.4\\microsoft.aspnet.identity.core.2.2.4.nupkg.sha512"
   ],
   "logs": [
     {
