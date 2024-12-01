@@ -199,6 +199,11 @@ namespace PizzaDelivery.ViewModels
                         OnPropertyChanged(nameof(Weight));
                         IsMessageActive = true;
                     }
+                    else
+                    {
+                        Message = "Заказ не был оформлен";
+                        IsMessageActive = true;
+                    }
                     Confirmation = false;
 
 
@@ -217,20 +222,21 @@ namespace PizzaDelivery.ViewModels
 
 
                     {
-                        SubmitOrderResult res = _basket.CheckSelf();
-                        if (res == SubmitOrderResult.Success)
+                        bool res = _basket.CheckSelf();
+                        if (res)
                         {
                             Confirmation = true;
                         }
                         else
                         {
                             Message = "Ошибка. Некоторые товары отсутствуют";
+                            IsMessageActive = true;
+
                         }
                         Load();
                         OnPropertyChanged(nameof(LinesCollection));
                         OnPropertyChanged(nameof(Price));
                         OnPropertyChanged(nameof(Weight));
-                        IsMessageActive = true;
                     }
                     else
                     {

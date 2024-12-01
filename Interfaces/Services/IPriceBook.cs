@@ -8,7 +8,10 @@ namespace Interfaces.Services
 {
     public interface IPriceBook
     {
-        decimal GetBasePrice(int id);
-        decimal GetBaseWeight(int id);
+        void KnowPriceAndWeight();
+        //void KnowBaseWeight();
+
+        decimal GetPrice(int size);
+        decimal GetWeight(int size);
     }
 }

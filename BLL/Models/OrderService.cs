@@ -54,8 +54,9 @@ namespace BLL.Models
 
         public OrderDto GetOrder(int Id)
         {
-            return dbr.Orders.GetList().Where(i => i.Id == Id && i.DelstatusId == 1).Select(i =>
-            new OrderDto(i)).FirstOrDefault();
+            //return dbr.Orders.GetList().Where(i => i.Id == Id && i.DelstatusId == 1).Select(i =>
+            //new OrderDto(i)).FirstOrDefault();
+            return new OrderDto(dbr.Orders.GetItem(Id));
         }
 
         public int GetCurrentOrder(int ClientId)

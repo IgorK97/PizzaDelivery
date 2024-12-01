@@ -100,8 +100,10 @@ namespace BLL.Models
             OrdersId = id;
             //decimal price, weight;
             //(price, weight) = ols.GetBasePriceAndWeight(0);
-            Position_price = (priceBook.GetBasePrice(1) + Pizza.CalculatePrice(1))*Quantity;
-            Weight = (priceBook.GetBaseWeight(1) + Pizza.CalculateWeight(1))*Quantity;
+            priceBook.KnowPriceAndWeight();
+            //priceBook.KnowBaseWeight();
+            Position_price = (priceBook.GetPrice(1) + Pizza.CalculatePrice(1))*Quantity;
+            Weight = (priceBook.GetWeight(1) + Pizza.CalculateWeight(1))*Quantity;
             Pizza_sizesId = 1;
             addedingredients = new List<IngredientModel>();
         }
@@ -129,8 +131,10 @@ namespace BLL.Models
         {
             decimal p, w;
             (p, w) = CalculateExtraingredients();
-            Position_price = (_priceBook.GetBasePrice(Pizza_sizesId) + Pizza.CalculatePrice(Pizza_sizesId) + p)*Quantity;
-            Weight = (_priceBook.GetBaseWeight(Pizza_sizesId) + Pizza.CalculateWeight(Pizza_sizesId) + w) * Quantity;
+            _priceBook.KnowPriceAndWeight();
+            //_priceBook.KnowBasePrice();
+            Position_price = (_priceBook.GetPrice(Pizza_sizesId) + Pizza.CalculatePrice(Pizza_sizesId) + p)*Quantity;
+            Weight = (_priceBook.GetWeight(Pizza_sizesId) + Pizza.CalculateWeight(Pizza_sizesId) + w) * Quantity;
             return (Position_price, Weight);
         }
         public (decimal price, decimal weight) ChangeSize(int s)
@@ -138,8 +142,10 @@ namespace BLL.Models
             Pizza_sizesId = s;
             decimal p, w;
             (p, w) = CalculateExtraingredients();
-            Position_price = (_priceBook.GetBasePrice(s) + Pizza.CalculatePrice(s) + p) * Quantity;
-            Weight = (_priceBook.GetBaseWeight(s) + Pizza.CalculateWeight(s) + w) * Quantity;
+            _priceBook.KnowPriceAndWeight();
+            //_priceBook.KnowBasePrice();
+            Position_price = (_priceBook.GetPrice(s) + Pizza.CalculatePrice(s) + p) * Quantity;
+            Weight = (_priceBook.GetWeight(s) + Pizza.CalculateWeight(s) + w) * Quantity;
             OnOrderLineIsChanged?.Invoke(OrdersId);
             return (Position_price, Weight);
         }
@@ -169,8 +175,8 @@ namespace BLL.Models
             Active = true;
             Pizza_sizesId = oldto.pizza_sizesId;
             decimal bprice, bweight;
-            bprice = _priceBook.GetBasePrice(Pizza_sizesId);
-            bweight = _priceBook.GetBaseWeight(Pizza_sizesId);
+            bprice = _priceBook.GetPrice(Pizza_sizesId);
+            bweight = _priceBook.GetWeight(Pizza_sizesId);
             bool flag = Pizza.UpdateSelf(oldto.Pizza);
             bprice += Pizza.CalculatePrice(Pizza_sizesId);
             bweight += Pizza.CalculateWeight(Pizza_sizesId);

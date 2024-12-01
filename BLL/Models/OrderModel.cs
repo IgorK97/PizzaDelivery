@@ -425,15 +425,17 @@ namespace BLL.Models
             LineCount = order_lines.Count;
         }
 
-        public SubmitOrderResult CheckSelf()
+        public bool CheckSelf()
         {
-            if (CheckOrder(_orderService.GetOrder((int)Id)))
-                return SubmitOrderResult.Success;
-            return SubmitOrderResult.FailedOrderComponent;
+            return (CheckOrder(_orderService.GetOrder((int)Id)));
+            //    return SubmitOrderResult.Success;
+            //return SubmitOrderResult.FailedOrderComponent;
         }
 
         public bool CheckOrder(OrderDto orderDto)
         {
+            _priceBook.KnowPriceAndWeight();
+            //_priceBook.KnowBaseWeight();
             decimal price=0, weight=0;
             bool flag = true;
             

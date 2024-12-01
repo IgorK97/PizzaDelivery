@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\pizzadelivery\\views\\basketpresentation.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\views\\basketpresentation.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{14EB4B5F-31B3-4076-81C4-EE89BABDCA21}|DomainModel\\DomainModel.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\domainmodel\\pizzasize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14EB4B5F-31B3-4076-81C4-EE89BABDCA21}|DomainModel\\DomainModel.csproj|solutionrelative:domainmodel\\pizzasize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\pizzadelivery\\viewmodels\\basketviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\viewmodels\\basketviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\bll\\services\\pricebook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|solutionrelative:bll\\services\\pricebook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\bll\\models\\ordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|solutionrelative:bll\\models\\ordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3A5FF25C-509B-4BEB-AB4A-012420F9EE6C}|Interfaces\\Interfaces.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\interfaces\\services\\ipricebook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A5FF25C-509B-4BEB-AB4A-012420F9EE6C}|Interfaces\\Interfaces.csproj|solutionrelative:interfaces\\services\\ipricebook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\bll\\models\\orderlinemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,8 +23,20 @@
       "RelativeMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|solutionrelative:bll\\models\\pizzamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\bll\\models\\ordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|solutionrelative:bll\\models\\ordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\bll\\models\\ingredientmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|solutionrelative:bll\\models\\ingredientmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\bll\\models\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|solutionrelative:bll\\models\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\pizzadelivery\\viewmodels\\basketviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\viewmodels\\basketviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,48 +46,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PizzaSize.cs",
+              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DomainModel\\PizzaSize.cs",
+              "RelativeDocumentMoniker": "DomainModel\\PizzaSize.cs",
+              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DomainModel\\PizzaSize.cs",
+              "RelativeToolTip": "DomainModel\\PizzaSize.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T17:33:17.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IPriceBook.cs",
+              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\Interfaces\\Services\\IPriceBook.cs",
+              "RelativeDocumentMoniker": "Interfaces\\Services\\IPriceBook.cs",
+              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\Interfaces\\Services\\IPriceBook.cs",
+              "RelativeToolTip": "Interfaces\\Services\\IPriceBook.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T16:03:21.829Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "PriceBook.cs",
+              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Services\\PriceBook.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\PriceBook.cs",
+              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Services\\PriceBook.cs",
+              "RelativeToolTip": "BLL\\Services\\PriceBook.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwDgAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T16:02:10.714Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\OrderService.cs",
+              "RelativeDocumentMoniker": "BLL\\Models\\OrderService.cs",
+              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\OrderService.cs",
+              "RelativeToolTip": "BLL\\Models\\OrderService.cs",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAswDsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T15:43:14.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "BasketViewModel.cs",
               "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\PizzaDelivery\\ViewModels\\BasketViewModel.cs",
               "RelativeDocumentMoniker": "PizzaDelivery\\ViewModels\\BasketViewModel.cs",
               "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\PizzaDelivery\\ViewModels\\BasketViewModel.cs",
               "RelativeToolTip": "PizzaDelivery\\ViewModels\\BasketViewModel.cs",
-              "ViewState": "AgIAAAgBAAAAAAAAAADwvxMBAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAnwCIAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T12:23:52.925Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BasketPresentation.xaml",
-              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\PizzaDelivery\\Views\\BasketPresentation.xaml",
-              "RelativeDocumentMoniker": "PizzaDelivery\\Views\\BasketPresentation.xaml",
-              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\PizzaDelivery\\Views\\BasketPresentation.xaml",
-              "RelativeToolTip": "PizzaDelivery\\Views\\BasketPresentation.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-01T12:17:48.884Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IngredientModel.cs",
-              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\IngredientModel.cs",
-              "RelativeDocumentMoniker": "BLL\\Models\\IngredientModel.cs",
-              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\IngredientModel.cs",
-              "RelativeToolTip": "BLL\\Models\\IngredientModel.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAswDoAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T11:12:51.076Z",
               "EditorCaption": ""
             },
             {
@@ -86,7 +121,7 @@
               "RelativeDocumentMoniker": "BLL\\Models\\PizzaModel.cs",
               "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\PizzaModel.cs",
               "RelativeToolTip": "BLL\\Models\\PizzaModel.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAvwDIAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAwwDIAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T11:12:48.939Z",
               "EditorCaption": ""
@@ -99,23 +134,40 @@
               "RelativeDocumentMoniker": "BLL\\Models\\OrderLineModel.cs",
               "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\OrderLineModel.cs",
               "RelativeToolTip": "BLL\\Models\\OrderLineModel.cs",
-              "ViewState": "AgIAAK4AAAAAAAAAAAArwLsAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAJUAAAAAAAAAAAASwI8AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T10:01:39.835Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "OrderModel.cs",
               "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\OrderModel.cs",
               "RelativeDocumentMoniker": "BLL\\Models\\OrderModel.cs",
               "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\OrderModel.cs",
               "RelativeToolTip": "BLL\\Models\\OrderModel.cs",
-              "ViewState": "AgIAAKQBAAAAAAAAAAAYwM8BAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAlwLYBAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T09:26:39.679Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IngredientModel.cs",
+              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\IngredientModel.cs",
+              "RelativeDocumentMoniker": "BLL\\Models\\IngredientModel.cs",
+              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\IngredientModel.cs",
+              "RelativeToolTip": "BLL\\Models\\IngredientModel.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAIwDoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T11:12:51.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }
