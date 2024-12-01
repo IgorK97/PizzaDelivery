@@ -37,5 +37,32 @@ namespace BLL.Models
             ingrimage = i.ingrimage;
             IsSelected=i.IsSelected;
         }
+        public bool UpdateSelf(IngredientDto i)
+        {
+            C_name = i.C_name;
+            price_per_gram = i.price_per_gram;
+            small = i.small;
+            medium = i.medium;
+            big = i.big;
+            active = i.active;
+            ingrimage = i.ingrimage;
+            return active;
+        }
+        public decimal GetPrice(int i)
+        {
+            if (i == 1)
+                return small * price_per_gram;
+            if(i==2)
+                return medium * price_per_gram;
+            return big * price_per_gram;
+        }
+        public decimal GetWeight(int i)
+        {
+            if (i == 1)
+                return small;
+            if (i == 2)
+                return medium;
+            return big;
+        }
     }
 }

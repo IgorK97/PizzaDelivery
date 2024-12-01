@@ -62,12 +62,26 @@ namespace PizzaDelivery.ViewModels
                 });
             }
         }
+        private bool isActive;
+        public bool IsActive
+        {
+            get
+            {
+                return isActive;
+            }
+            set
+            {
+                isActive = value;
+                OnPropertyChanged(nameof(IsActive));
+            }
+        }
 
         public void UpdateProperties()
         {
             OnPropertyChanged(nameof(Quantity));
             OnPropertyChanged(nameof(Price));
             OnPropertyChanged(nameof(Weight));
+            OnPropertyChanged(nameof(isActive));
         }
 
         private ICommand updateYourself;
@@ -128,6 +142,7 @@ namespace PizzaDelivery.ViewModels
         {
             _orderLineModel = olm;
             Id = olm.Id;
+            isActive = olm.Active;
             IngrList = _orderLineModel.GetStringIngrs();
             //Price = olm.Position_price.ToString();
             //Weight = olm.Weight.ToString();

@@ -146,12 +146,27 @@ namespace PizzaDelivery.ViewModels
                     {
                         _orderBook.Load();
                         _basket = _orderBook.GetBasketContent();
-                        Load();
-                        OnPropertyChanged(nameof(LinesCollection));
-                        OnPropertyChanged(nameof(Price));
-                        OnPropertyChanged(nameof(Weight));
+                        //Load();
+                        //OnPropertyChanged(nameof(LinesCollection));
+                        //OnPropertyChanged(nameof(Price));
+                        //OnPropertyChanged(nameof(Weight));
                     }
+                    Load();
+                    OnPropertyChanged(nameof(LinesCollection));
+                    OnPropertyChanged(nameof(Price));
+                    OnPropertyChanged(nameof(Weight));
+                    //else
+                    //{
+                    //    Load();
+                    //    OnPropertyChanged(nameof(LinesCollection));
+                    //    OnPropertyChanged(nameof(Price));
+                    //    OnPropertyChanged(nameof(Weight));
+                    //}
                     //Загрузить новую корзину в случае успеха и уведомить об этом представление
+                },
+                abj =>
+                {
+                    return _address != null && _address != "" && _basket.final_price!=0M;
                 });
             }
         }

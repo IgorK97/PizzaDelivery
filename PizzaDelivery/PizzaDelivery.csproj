@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Reports\**" />
+    <EmbeddedResource Remove="Reports\**" />
+    <None Remove="Reports\**" />
+    <Page Remove="Reports\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="basket.png" />
     <None Remove="example.jpg" />
     <None Remove="ImagesForProject\basket.png" />
@@ -73,10 +80,6 @@
     <Resource Include="ImagesForProject\profile.jpg" />
     <Resource Include="ImagesForProject\profile.png" />
     <Resource Include="ImagesForProject\report.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Reports\" />
   </ItemGroup>
 
 </Project>

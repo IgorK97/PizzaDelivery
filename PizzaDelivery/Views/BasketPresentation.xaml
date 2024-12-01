@@ -15,8 +15,14 @@
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="BorderBrush" Value="Red"/>
-                                <Setter Property="Background" Value="LightCoral"/>
+                                <!--<Setter Property="Background" Value="LightCoral"/>-->
                             </Trigger>
+                            <DataTrigger Binding="{Binding IsActive, Mode=OneWay}" Value="False">
+                                <Setter Property="Background" Value="Gray"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsActive, Mode=OneWay}" Value="True">
+                                <Setter Property="Background" Value="White"/>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </Border.Style>
@@ -124,7 +130,7 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Margin="10 10" FontSize="20" Text="Введите адрес доставки: " Grid.Column="0" HorizontalAlignment="Right"/>
-                    <TextBox Margin="10 10" Width="150" FontSize="20" Text="{Binding Address}" HorizontalAlignment="Right" Grid.Column="1"/>
+                    <TextBox Margin="10 10" Width="150" FontSize="20" Text="{Binding Address,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Grid.Column="1"/>
                 </Grid>
                 <Button Grid.Row="4" Margin="5" HorizontalAlignment="Center" 
                          Style="{StaticResource BaseButtonStyle}"

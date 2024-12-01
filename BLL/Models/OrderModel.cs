@@ -425,6 +425,28 @@ namespace BLL.Models
             }
             LineCount = order_lines.Count;
         }
+
+        private bool CheckOrder(OrderDto orderDto)
+        {
+            decimal price=0, weight=0;
+            bool flag = true;
+            
+            foreach (OrderLineDto _orderLineDto in orderDto.order_lines)
+            {
+                OrderLineModel olm = order_lines.Where(i => i.Id == _orderLineDto.Id).FirstOrDefault();
+                
+                if (!olm.UpdateSelf(_orderLineDto))
+                { 
+                    flag = false;
+                }
+                
+                price += olm.Position_price;
+                weight += olm.Weight;
+            }
+            final_price= price;
+            this.weight = weight;
+            return flag;
+        }
         public SubmitOrderResult SubmitOrder(string AddressDel)
         {
             address_del = AddressDel;
@@ -432,22 +454,24 @@ namespace BLL.Models
                 return SubmitOrderResult.FailedOrderIsEmpty;
             if (address_del == null || address_del == "")
                 return SubmitOrderResult.FailedAddressIsEmpty;
-            delstatusId = (int)DeliveryStatus.IsBeingFormed;
-            ordertime = DateTime.UtcNow;
-
-            OrderDto odto = new OrderDto
+            if (CheckOrder(_orderService.GetOrder((int)Id)))
             {
-                Id = Id,
-                address_del=address_del,
-                weight = weight,
-                ordertime = ordertime,
-                delstatusId = delstatusId,
-                final_price=final_price
-            };
-            if (_orderService.UpdateOrder(odto))
-                return SubmitOrderResult.Success;
-            else
-                return SubmitOrderResult.Failed;
+                delstatusId = (int)DeliveryStatus.IsBeingFormed;
+                ordertime = DateTime.UtcNow;
+
+                OrderDto odto = new OrderDto
+                {
+                    Id = Id,
+                    address_del = address_del,
+                    weight = weight,
+                    ordertime = ordertime,
+                    delstatusId = delstatusId,
+                    final_price = final_price
+                };
+                if (_orderService.UpdateOrder(odto))
+                    return SubmitOrderResult.Success;
+            }
+            return SubmitOrderResult.Failed;
         }
     }
 }

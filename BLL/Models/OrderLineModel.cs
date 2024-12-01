@@ -39,6 +39,7 @@ namespace BLL.Models
         public decimal Position_price { get; set; }
         public int Pizza_sizesId { get; set; }
         public decimal Weight { get; set; }
+        public bool Active { get; set; }
 
         public PizzaModel Pizza;
         
@@ -80,6 +81,7 @@ namespace BLL.Models
             Pizza_sizesId = oldto.pizza_sizesId;
             Pizza = new PizzaModel(oldto.Pizza);
             addedingredients = new List<IngredientModel>();
+            Active = true;
             foreach(IngredientDto ingrdto in oldto.addedingredients)
             {
                 IngredientModel ingredientModel = new IngredientModel(ingrdto);
@@ -160,6 +162,30 @@ namespace BLL.Models
             (decimal price, decimal weight) = CalculateLine();
             OnOrderLineIsChanged?.Invoke(OrdersId);
             return (price, weight);
+        }
+
+        public bool UpdateSelf(OrderLineDto oldto)
+        {
+            Active = true;
+            Pizza_sizesId = oldto.pizza_sizesId;
+            decimal bprice, bweight;
+            bprice = _priceBook.GetBasePrice(Pizza_sizesId);
+            bweight = _priceBook.GetBaseWeight(Pizza_sizesId);
+            bool flag = Pizza.UpdateSelf(oldto.Pizza);
+            bprice += Pizza.CalculatePrice(Pizza_sizesId);
+            bweight += Pizza.CalculateWeight(Pizza_sizesId);
+            foreach (IngredientDto ingrdto in oldto.addedingredients)
+            {
+                IngredientModel ingredientModel = addedingredients.Where(i => i.Id==ingrdto.Id).FirstOrDefault();
+                if (!ingredientModel.UpdateSelf(ingrdto))
+                    flag = false;
+                bprice += ingredientModel.GetPrice(Pizza_sizesId);
+                bweight += ingredientModel.GetWeight(Pizza_sizesId);
+            }
+            Active = flag;
+            Position_price = bprice;
+            Weight = bweight;
+            return flag;
         }
     }
 }
