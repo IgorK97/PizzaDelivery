@@ -174,6 +174,7 @@ namespace BLL.Models
         {
             Active = true;
             Pizza_sizesId = oldto.pizza_sizesId;
+            Quantity = oldto.quantity;
             decimal bprice, bweight;
             bprice = _priceBook.GetPrice(Pizza_sizesId);
             bweight = _priceBook.GetWeight(Pizza_sizesId);
@@ -189,8 +190,8 @@ namespace BLL.Models
                 bweight += ingredientModel.GetWeight(Pizza_sizesId);
             }
             Active = flag;
-            Position_price = bprice;
-            Weight = bweight;
+            Position_price = bprice*Quantity;
+            Weight = bweight*Quantity;
             return flag;
         }
     }
