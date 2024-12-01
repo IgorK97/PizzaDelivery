@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PizzaDelivery.Views"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:s1="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -90,8 +91,75 @@
             </Grid.Style>
             <local:SelectedPizzaView DataContext="{Binding AddingPizza}"/>
         </Grid>
+        <Grid x:Name="Overlay1" Panel.ZIndex="1000">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Confirmation}" Value="false">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Confirmation}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </Grid.Background>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock FontSize="20" Margin="10" Grid.Row="0" Text="Вы согласны оформить заказ"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="20" Grid.Column="0" Margin="10" Text="на сумму"/>
+                    <TextBlock FontSize="20" Grid.Column="1" Margin="10" Text="{Binding Price}"/>
+                    <TextBlock FontSize="20" Grid.Column="2" Margin="10" Text="рублей?"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="20" Margin="10" Grid.Column="0" Text="Адрес доставки:"/>
+                    <TextBlock FontSize="20" Grid.Column="1" Margin="10" Text="{Binding Address}"/>
+                </Grid>
+                <Grid HorizontalAlignment="Center" Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Height="30" Style="{StaticResource BaseButtonStyle}" Grid.Column="0" Content="Да" Command="{Binding ConfirmCommand}">
+                        <Button.CommandParameter>
+                            <s1:Boolean>
+                                True
+                            </s1:Boolean>
+                        </Button.CommandParameter>
+                    </Button>
+                    <Button Style="{StaticResource BaseButtonStyle}" Grid.Column="1" Content="Нет" Margin="10" Command="{Binding ConfirmCommand}">
+                        <Button.CommandParameter>
+                            <s1:Boolean>
+                                False
+                            </s1:Boolean>
+                        </Button.CommandParameter>
+                    </Button>
+                </Grid>
+
+            </Grid>
+        </Grid>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -99,8 +167,21 @@
                 <RowDefinition Height="auto"/>
 
             </Grid.RowDefinitions>
-            
-            <ListBox HorizontalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            <TextBlock Text="{Binding Message}" FontSize="24" FontWeight="Bold" Grid.Row="0">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsMessageActive}" Value="true">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsMessageActive}" Value="false">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <ListBox Grid.Row="1" HorizontalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   ScrollViewer.VerticalScrollBarVisibility="Visible"
                  ItemTemplate="{StaticResource listlinesTemplate}"
                  ItemsPanel="{StaticResource listlinesPanelTemplate}"
@@ -108,7 +189,7 @@
              SelectedItem="{Binding SelectedLine, Mode=TwoWay}"
                  >
             </ListBox>
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
@@ -116,7 +197,7 @@
                     <TextBlock Margin="10 10" FontSize="20" Text="Общий вес заказа: " Grid.Column="0" HorizontalAlignment="Right"/>
                     <TextBlock Margin="10 10" FontSize="20"  Text="{Binding Weight}" HorizontalAlignment="Right" Grid.Column="1"/>
                 </Grid>
-                <Grid Grid.Row="2">
+                <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
@@ -124,7 +205,7 @@
                     <TextBlock Margin="10 10" FontSize="20" Text="Итоговая цена заказа: " Grid.Column="0" HorizontalAlignment="Right"/>
                     <TextBlock Margin="10 10" FontSize="20" Text="{Binding Price}" HorizontalAlignment="Right" Grid.Column="1"/>
                 </Grid>
-                <Grid Grid.Row="3">
+                <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
@@ -132,7 +213,7 @@
                     <TextBlock Margin="10 10" FontSize="20" Text="Введите адрес доставки: " Grid.Column="0" HorizontalAlignment="Right"/>
                     <TextBox Margin="10 10" Width="150" FontSize="20" Text="{Binding Address,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Grid.Column="1"/>
                 </Grid>
-                <Button Grid.Row="4" Margin="5" HorizontalAlignment="Center" 
+                <Button Grid.Row="5" Margin="5" HorizontalAlignment="Center" 
                          Style="{StaticResource BaseButtonStyle}"
         VerticalAlignment="Center" FontSize="26"
     Command="{Binding SubmitCommand}"

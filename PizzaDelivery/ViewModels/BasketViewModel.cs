@@ -38,6 +38,32 @@ namespace PizzaDelivery.ViewModels
                 _linescollection.Add(olvm);
             }
         }
+        private string _message;
+        public string Message
+        {
+            get
+            {
+                return _message;
+            }
+            set
+            {
+                _message = value;
+                OnPropertyChanged(nameof(Message));
+            }
+        }
+        private bool _isMessageActive;
+        public bool IsMessageActive
+        {
+            get
+            {
+                return _isMessageActive;
+            }
+            set
+            {
+                _isMessageActive = value;
+                OnPropertyChanged(nameof(IsMessageActive));
+            }
+        }
         private OrderLineViewModel _selectedLine;
         public OrderLineViewModel SelectedLine
         {
@@ -134,6 +160,52 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged(nameof(Weight));
             }
         }
+        private bool confirmation;
+        public bool Confirmation
+        {
+            get
+            {
+                return confirmation;
+            }
+            set
+            {
+                confirmation = value;
+                OnPropertyChanged(nameof(Confirmation));
+            }
+        }
+        private ICommand confirmCommand;
+        public ICommand ConfirmCommand
+        {
+            get
+            {
+                return confirmCommand ??= new Commands.DelegateCommand(obj =>
+                {
+                    if ((Boolean)obj)
+                    {
+                        SubmitOrderResult res = _basket.SubmitOrder(_address);
+                        if (res == SubmitOrderResult.Success)
+                        {
+                            _orderBook.Load();
+                            _basket = _orderBook.GetBasketContent();
+                            Message = "Заказ успешно оформлен";
+                        }
+                        else
+                        {
+                            Message = "Ошибка. Некоторые товары отсутствуют";
+                        }
+                        Load();
+                        OnPropertyChanged(nameof(LinesCollection));
+                        OnPropertyChanged(nameof(Price));
+                        OnPropertyChanged(nameof(Weight));
+                        IsMessageActive = true;
+                    }
+                    Confirmation = false;
+
+
+
+                });
+            }
+        }
         private ICommand submitCommand;
         public ICommand SubmitCommand
         {
@@ -141,32 +213,30 @@ namespace PizzaDelivery.ViewModels
             {
                 return submitCommand ??= new Commands.DelegateCommand(obj =>
                 {
-                    SubmitOrderResult res = _basket.SubmitOrder(_address);
-                    if(res == SubmitOrderResult.Success)
+                    if (_address != null && _address != "" && _basket.final_price != 0M)
+
+
                     {
-                        _orderBook.Load();
-                        _basket = _orderBook.GetBasketContent();
-                        //Load();
-                        //OnPropertyChanged(nameof(LinesCollection));
-                        //OnPropertyChanged(nameof(Price));
-                        //OnPropertyChanged(nameof(Weight));
+                        SubmitOrderResult res = _basket.CheckSelf();
+                        if (res == SubmitOrderResult.Success)
+                        {
+                            Confirmation = true;
+                        }
+                        else
+                        {
+                            Message = "Ошибка. Некоторые товары отсутствуют";
+                        }
+                        Load();
+                        OnPropertyChanged(nameof(LinesCollection));
+                        OnPropertyChanged(nameof(Price));
+                        OnPropertyChanged(nameof(Weight));
+                        IsMessageActive = true;
                     }
-                    Load();
-                    OnPropertyChanged(nameof(LinesCollection));
-                    OnPropertyChanged(nameof(Price));
-                    OnPropertyChanged(nameof(Weight));
-                    //else
-                    //{
-                    //    Load();
-                    //    OnPropertyChanged(nameof(LinesCollection));
-                    //    OnPropertyChanged(nameof(Price));
-                    //    OnPropertyChanged(nameof(Weight));
-                    //}
-                    //Загрузить новую корзину в случае успеха и уведомить об этом представление
-                },
-                abj =>
-                {
-                    return _address != null && _address != "" && _basket.final_price!=0M;
+                    else
+                    {
+                        Message = "Корзина пуста либо не указан адрес доставки";
+                        IsMessageActive = true;
+                    }
                 });
             }
         }
@@ -202,6 +272,8 @@ namespace PizzaDelivery.ViewModels
             _priceBook = priceBook;
             _orderBook = orderBook;
             _basket = _orderBook.GetBasketContent();
+            IsMessageActive = false;
+            Confirmation = false;
             AddingPizzaViewModel.OnExitDelegate += OnExitEvent;
             OrderLineViewModel.OnOrderLineIsChanged += OnOrderLineViewModelIsChanged;
             OrderLineViewModel.OnOrderLineIsDeleted += OnOrderLineViewModelIsDeleted;

@@ -13,9 +13,8 @@ namespace BLL.Models
     public enum SubmitOrderResult
     {
         Success=1,
-        FailedOrderIsEmpty=2,
-        FailedAddressIsEmpty=3,
-        Failed=4
+        Failed=2,
+        FailedOrderComponent=3
     }
     
    
@@ -426,7 +425,14 @@ namespace BLL.Models
             LineCount = order_lines.Count;
         }
 
-        private bool CheckOrder(OrderDto orderDto)
+        public SubmitOrderResult CheckSelf()
+        {
+            if (CheckOrder(_orderService.GetOrder((int)Id)))
+                return SubmitOrderResult.Success;
+            return SubmitOrderResult.FailedOrderComponent;
+        }
+
+        public bool CheckOrder(OrderDto orderDto)
         {
             decimal price=0, weight=0;
             bool flag = true;
@@ -450,10 +456,10 @@ namespace BLL.Models
         public SubmitOrderResult SubmitOrder(string AddressDel)
         {
             address_del = AddressDel;
-            if (final_price == (decimal)0.00)
-                return SubmitOrderResult.FailedOrderIsEmpty;
-            if (address_del == null || address_del == "")
-                return SubmitOrderResult.FailedAddressIsEmpty;
+            //if (final_price == (decimal)0.00)
+            //    return SubmitOrderResult.FailedOrderIsEmpty;
+            //if (address_del == null || address_del == "")
+            //    return SubmitOrderResult.FailedAddressIsEmpty;
             if (CheckOrder(_orderService.GetOrder((int)Id)))
             {
                 delstatusId = (int)DeliveryStatus.IsBeingFormed;
@@ -470,8 +476,9 @@ namespace BLL.Models
                 };
                 if (_orderService.UpdateOrder(odto))
                     return SubmitOrderResult.Success;
+                return SubmitOrderResult.Failed;
             }
-            return SubmitOrderResult.Failed;
+            return SubmitOrderResult.FailedOrderComponent;
         }
     }
 }

@@ -41,10 +41,10 @@ namespace BLL.Models
             description = pizza.description;
             pizzaimage = pizza.pizzaimage;
             bool flag = active;
-            foreach (IngredientDto i in pizza.listedingredients)
+            foreach (IngredientDto ingr in pizza.listedingredients)
             {
-                IngredientModel im = listedingredients.Where(i => i.Id == i.Id).FirstOrDefault();
-                if (!im.UpdateSelf(i))
+                IngredientModel im = listedingredients.Where(i => i.Id == ingr.Id).FirstOrDefault();
+                if (!im.UpdateSelf(ingr))
                     flag = false;
 
             }

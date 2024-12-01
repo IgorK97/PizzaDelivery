@@ -36,9 +36,24 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged(nameof(IsIngredientSelected));
             }
         }
+        private bool _isActive;
+        public bool IsActive
+        {
+            get
+            {
+                return _isActive;
+            }
+            set
+            {
+                _isActive = value;
+                OnPropertyChanged(nameof(IsActive));
+            }
+        }
         public IngredientViewModel(IngredientDto ingr)
         {
             _dto = ingr;
+            _size = PizzaSizes.Small;
+            _isActive = ingr.active;
         }
         private readonly IngredientDto _dto;
         public IngredientDto CurrentIngredient
@@ -62,7 +77,7 @@ namespace PizzaDelivery.ViewModels
                     return (_dto.small * _dto.price_per_gram).ToString();
                 else if (_size == PizzaSizes.Medium)
                     return (_dto.medium * _dto.price_per_gram).ToString();
-                else return (_dto.big * _dto.price_per_gram).ToString();
+                return (_dto.big * _dto.price_per_gram).ToString();
             }
         }
     }

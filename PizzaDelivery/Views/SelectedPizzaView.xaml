@@ -11,7 +11,7 @@
     
     <UserControl.Resources>
         <DataTemplate x:Key="listIngrTemplate">
-            <Border Width="200" Height="150" MaxWidth="1000" Margin="5" BorderThickness="2" CornerRadius="10">
+            <Border Width="200" Height="150" MaxWidth="1000" Margin="5" CornerRadius="10">
 
                 <Border.Style>
                     <Style TargetType="Border">
@@ -21,6 +21,14 @@
                             </DataTrigger>
                             <DataTrigger Binding="{Binding IsIngredientSelected}" Value="true">
                                 <Setter Property="Background" Value="Orange"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsActive}" Value="false">
+                                <Setter Property="BorderBrush" Value="Gray"/>
+                                <Setter Property="BorderThickness" Value="10"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsActive}" Value="true">
+                                <Setter Property="BorderBrush" Value="White"/>
+                                <Setter Property="BorderThickness" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
