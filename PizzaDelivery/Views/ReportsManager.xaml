@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PizzaDelivery.Views" xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              d:DesignHeight="450" d:DesignWidth="800">
     <!--<Button Grid.Row="0" Width="250" Height="100" Padding="5" 
@@ -16,16 +17,63 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Click="Button1_Click"/>
-        <!--<lvc:PieChart Grid.Row="1" x:Name="Chart1" Series="{Binding Series}">
+        <Grid  Margin="5 10" Grid.Row="0" Background="Red">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <RadioButton HorizontalAlignment="Center" FontSize="18" Grid.Column="0"
+                            Style="{StaticResource RadBut}"
+                            IsChecked="{Binding IsFirstPizzaReport, Mode=OneWay}"
+                        Command="{Binding UpdateReport}"
+                        CommandParameter="first"
+                        Content="Количество пицц"/>
+            <RadioButton HorizontalAlignment="Center" FontSize="18" Grid.Column="1"
+                            Style="{StaticResource RadBut}"
+                            IsChecked="{Binding IsSecondPizzaReport, Mode=OneWay}"
+Command="{Binding UpdateReport}"
+CommandParameter="second"
+Content="Стоимость пицц"/>
             
-        </lvc:PieChart>-->
-        <Grid Grid.Row="0" Name="Chart1">
-            <Image Source="{Binding Im, Mode=OneWay}"/>
         </Grid>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <xctk:IntegerUpDown 
+Minimum="1" Maximum="12"
+Value="{Binding Month, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10" Grid.Column="0" Width="50"/>
+                <xctk:IntegerUpDown 
+Minimum="2000" Maximum="2030"
+Value="{Binding Year, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10" Grid.Column="1" Width="100"/>
+            </Grid>
+            
+            <Button Margin="10" Content="Создать отчет" Style="{StaticResource BaseButtonStyle}"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"
+                    Command="{Binding ReportCommand}"/>
+            <Button Margin="10" Content="Сохранить" Width="auto" Height="auto" 
+                    Style="{StaticResource BaseButtonStyle}" VerticalAlignment="Center" 
+                    HorizontalAlignment="Center" Grid.Column="2" Click="Button1_Click"/>
+
+        </Grid>
+        <lvc:PieChart InitialRotation="-90" Margin="10" Grid.Row="2" x:Name="Chart1" 
+                      LegendPosition="Left" Series="{Binding ReportSeries}"
+                      Title="{Binding Title}">
+            
+        </lvc:PieChart>
+        
     </Grid>
            
 

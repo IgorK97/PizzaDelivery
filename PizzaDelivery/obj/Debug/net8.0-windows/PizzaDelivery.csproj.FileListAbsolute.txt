@@ -788,3 +788,4 @@ C:\Users\IgorA\source\repos\MyProjects\PizzaDelivery\PizzaDelivery\bin\Debug\net
 C:\Users\IgorA\source\repos\MyProjects\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\runtimes\win-x64\native\Pdfium.Native.deployment.json
 C:\Users\IgorA\source\repos\MyProjects\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\runtimes\win-x86\native\IronPdfInterop.dll
 C:\Users\IgorA\source\repos\MyProjects\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\runtimes\win-x86\native\Pdfium.Native.deployment.json
+C:\Users\IgorA\source\repos\MyProjects\PizzaDelivery\PizzaDelivery\bin\Debug\net8.0-windows\CommunityToolkit.Mvvm.dll
