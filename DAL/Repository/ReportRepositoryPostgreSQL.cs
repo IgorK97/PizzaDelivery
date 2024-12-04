@@ -1,4 +1,4 @@
-﻿using DomainModel;
+﻿ using DomainModel;
 using Interfaces.DTO;
 using Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public List<OrdersByMonth> ExecuteSP(int month, int year, int ClientId)
+        public List<OrdersByMonth> ExecuteSP(int month, int year)
         {
             NpgsqlParameter param1 = new NpgsqlParameter("month", NpgsqlTypes.NpgsqlDbType.Integer);
             NpgsqlParameter param2 = new NpgsqlParameter("year", NpgsqlTypes.NpgsqlDbType.Integer);
@@ -29,21 +29,22 @@ namespace DAL.Repository
             //var result = dbContext.Database.SqlQuery<ParResult>("select * from _GetOrdersByMonthYear(@month, @year)", new object[] { param1, param2 }).ToList();
             //var result = dbContext.Database.SqlQuery<int>($"select * from _GetOrdersByMonthYear(@month={param1}, @year={param2})").ToList();
 
-            var result = db.Orders.FromSql($"select * from getordersbymonthandyearnew({param1}, {param2})").ToList();
+            var result = db.Database.SqlQuery<OrdersByMonth>/*Set<OrdersByMonth>().FromSqlRaw*/($"select * from get_pizza_sales_by_month1({param1}, {param2})").ToList();
 
-            var data = result.Where(i => i.ClientId == ClientId && i.CourierId != null).Select(j =>
-            new OrdersByMonth
-            {
-                order_id = j.Id,
-                courier_id = db.Users.Where(c =>
-            c.Id == j.CourierId).Select(c => new
-            {
-                fname = c.FirstName + " " + c.LastName + " " + c.Surname
-            }).FirstOrDefault().fname,
-                Date = j.Ordertime
-            }).OrderByDescending(c => c.Date).ToList();
+            //var data = result./*Where(i => i.ClientId == ClientId && i.CourierId != null).*/Select(j =>
+            //new OrdersByMonth
+            //{
+            //    pizzaId = j.pizza_id,
+            ////    courier_id = db.Users.Where(c =>
+            ////c.Id == j.CourierId).Select(c => new
+            ////{
+            ////    fname = c.FirstName + " " + c.LastName + " " + c.Surname
+            ////}).FirstOrDefault().fname
+            //    //Date = j.Ordertime
+            //    pizzaName = 
+            //}).OrderByDescending(c => c.Date).ToList();
 
-            return data;
+            return result;
         }
         public List<ReportData> PizzaWithIngredients(int? ingredientId)
         {

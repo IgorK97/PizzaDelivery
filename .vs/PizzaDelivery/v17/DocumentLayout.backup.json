@@ -3,20 +3,35 @@
   "WorkspaceRootPath": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\bll\\models\\orderlinemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|solutionrelative:bll\\models\\orderlinemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\bll\\models\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|solutionrelative:bll\\models\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\bll\\models\\ordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|solutionrelative:bll\\models\\ordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{14EB4B5F-31B3-4076-81C4-EE89BABDCA21}|DomainModel\\DomainModel.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\domainmodel\\ordersbymonth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14EB4B5F-31B3-4076-81C4-EE89BABDCA21}|DomainModel\\DomainModel.csproj|solutionrelative:domainmodel\\ordersbymonth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\bll\\models\\pizzamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|solutionrelative:bll\\models\\pizzamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\pizzadelivery\\viewmodels\\reportsmanagervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\viewmodels\\reportsmanagervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\pizzadelivery\\viewmodels\\basketviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\viewmodels\\basketviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\bll\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A41896F4-53E5-4401-AEB6-817E7CB8540D}|BLL\\BLL.csproj|solutionrelative:bll\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC5560AA-F79F-40CF-87DA-DEBDB58123F7}|DAL\\DAL.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\dal\\repository\\reportrepositorypostgresql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC5560AA-F79F-40CF-87DA-DEBDB58123F7}|DAL\\DAL.csproj|solutionrelative:dal\\repository\\reportrepositorypostgresql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\pizzadelivery\\viewmodels\\authorizationvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EFACE9A-5053-47D3-89C7-04DF555753DB}|PizzaDelivery\\PizzaDelivery.csproj|solutionrelative:pizzadelivery\\viewmodels\\authorizationvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC5560AA-F79F-40CF-87DA-DEBDB58123F7}|DAL\\DAL.csproj|c:\\users\\igora\\source\\repos\\myprojects\\pizzadelivery\\dal\\pizzadeliverynewgencontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC5560AA-F79F-40CF-87DA-DEBDB58123F7}|DAL\\DAL.csproj|solutionrelative:dal\\pizzadeliverynewgencontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\IgorA\\.nuget\\packages\\ironpdf\\2024.12.9\\README.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +41,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,54 +49,106 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BasketViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\PizzaDelivery\\ViewModels\\BasketViewModel.cs",
-              "RelativeDocumentMoniker": "PizzaDelivery\\ViewModels\\BasketViewModel.cs",
-              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\PizzaDelivery\\ViewModels\\BasketViewModel.cs",
-              "RelativeToolTip": "PizzaDelivery\\ViewModels\\BasketViewModel.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAnwCIAAAAyAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "ReportService.cs",
+              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\ReportService.cs",
+              "RelativeDocumentMoniker": "BLL\\Models\\ReportService.cs",
+              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\ReportService.cs*",
+              "RelativeToolTip": "BLL\\Models\\ReportService.cs*",
+              "ViewState": "AgIAABMAAAAAAAAAAAAcwCAAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T12:23:52.925Z",
+              "WhenOpened": "2024-12-04T09:51:48.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AccountService.cs",
+              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Services\\AccountService.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\AccountService.cs",
+              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Services\\AccountService.cs",
+              "RelativeToolTip": "BLL\\Services\\AccountService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAArwB4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T09:45:26.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReportRepositoryPostgreSQL.cs",
+              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DAL\\Repository\\ReportRepositoryPostgreSQL.cs",
+              "RelativeDocumentMoniker": "DAL\\Repository\\ReportRepositoryPostgreSQL.cs",
+              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DAL\\Repository\\ReportRepositoryPostgreSQL.cs",
+              "RelativeToolTip": "DAL\\Repository\\ReportRepositoryPostgreSQL.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAIA6wB8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T09:44:50.857Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PizzaModel.cs",
-              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\PizzaModel.cs",
-              "RelativeDocumentMoniker": "BLL\\Models\\PizzaModel.cs",
-              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\PizzaModel.cs",
-              "RelativeToolTip": "BLL\\Models\\PizzaModel.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAwwDIAAAAMAAAAAAAAAA==",
+              "Title": "ReportsManagerVM.cs",
+              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\PizzaDelivery\\ViewModels\\ReportsManagerVM.cs",
+              "RelativeDocumentMoniker": "PizzaDelivery\\ViewModels\\ReportsManagerVM.cs",
+              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\PizzaDelivery\\ViewModels\\ReportsManagerVM.cs",
+              "RelativeToolTip": "PizzaDelivery\\ViewModels\\ReportsManagerVM.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAewC4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T11:12:48.939Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "OrderLineModel.cs",
-              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\OrderLineModel.cs",
-              "RelativeDocumentMoniker": "BLL\\Models\\OrderLineModel.cs",
-              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\OrderLineModel.cs",
-              "RelativeToolTip": "BLL\\Models\\OrderLineModel.cs",
-              "ViewState": "AgIAAKwAAAAAAAAAAAAgwL8AAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T10:01:39.835Z",
+              "WhenOpened": "2024-12-04T09:26:51.413Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "OrderModel.cs",
-              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\OrderModel.cs",
-              "RelativeDocumentMoniker": "BLL\\Models\\OrderModel.cs",
-              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\BLL\\Models\\OrderModel.cs",
-              "RelativeToolTip": "BLL\\Models\\OrderModel.cs",
-              "ViewState": "AgIAALMBAAAAAAAAAAAiwMIBAAArAAAAAAAAAA==",
+              "Title": "OrdersByMonth.cs",
+              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DomainModel\\OrdersByMonth.cs",
+              "RelativeDocumentMoniker": "DomainModel\\OrdersByMonth.cs",
+              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DomainModel\\OrdersByMonth.cs",
+              "RelativeToolTip": "DomainModel\\OrdersByMonth.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T09:26:39.679Z",
+              "WhenOpened": "2024-12-04T09:51:21.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PizzaDeliveryNewGenContext.cs",
+              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DAL\\PizzaDeliveryNewGenContext.cs",
+              "RelativeDocumentMoniker": "DAL\\PizzaDeliveryNewGenContext.cs",
+              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\DAL\\PizzaDeliveryNewGenContext.cs",
+              "RelativeToolTip": "DAL\\PizzaDeliveryNewGenContext.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowCIAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T09:44:29.663Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuthorizationVM.cs",
+              "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\PizzaDelivery\\ViewModels\\AuthorizationVM.cs",
+              "RelativeDocumentMoniker": "PizzaDelivery\\ViewModels\\AuthorizationVM.cs",
+              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\PizzaDelivery\\ViewModels\\AuthorizationVM.cs",
+              "RelativeToolTip": "PizzaDelivery\\ViewModels\\AuthorizationVM.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAgwEQAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T09:35:13.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "README.txt",
+              "DocumentMoniker": "C:\\Users\\IgorA\\.nuget\\packages\\ironpdf\\2024.12.9\\README.txt",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\.nuget\\packages\\ironpdf\\2024.12.9\\README.txt",
+              "ToolTip": "C:\\Users\\IgorA\\.nuget\\packages\\ironpdf\\2024.12.9\\README.txt",
+              "RelativeToolTip": "..\\..\\..\\..\\.nuget\\packages\\ironpdf\\2024.12.9\\README.txt",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-12-04T08:39:04.194Z",
               "EditorCaption": ""
             }
           ]

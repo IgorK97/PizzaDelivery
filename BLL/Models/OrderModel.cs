@@ -448,7 +448,7 @@ namespace BLL.Models
                     flag = false;
                 }
                 
-                price += olm.Position_price;
+                price += olm.Position_price ;
                 weight += olm.Weight;
             }
             final_price= price;

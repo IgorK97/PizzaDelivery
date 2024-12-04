@@ -1,4 +1,5 @@
-﻿using Interfaces.DTO;
+﻿using DomainModel;
+using Interfaces.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Interfaces.Repository
 {
     public interface IReportsRepository
     {
-        List<OrdersByMonth> ExecuteSP(int month, int year, int ClientId);
+        List<OrdersByMonth> ExecuteSP(int month, int year);
         List<ReportData> PizzaWithIngredients(int? ingrId);
     }
 }

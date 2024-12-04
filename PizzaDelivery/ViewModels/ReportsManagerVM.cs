@@ -1,4 +1,8 @@
-﻿using LiveCharts.Wpf;
+﻿using BLL.Models;
+using DAL.Repository;
+using Interfaces.DTO;
+using Interfaces.Services;
+using LiveCharts.Wpf;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using PizzaDelivery.Util;
@@ -13,6 +17,7 @@ namespace PizzaDelivery.ViewModels
 {
     public class ReportsManagerVM : ViewModelBase
     {
+        private IReportService _reportService;
         private ICommand reportCommand;
         public ICommand ReportCommand
         {
@@ -36,9 +41,10 @@ namespace PizzaDelivery.ViewModels
             new PieSeries<double>{Values = new double[] {4 } },
             new PieSeries<double>{Values = new double[] {5 } }
         };
-        public ReportsManagerVM()
+        public ReportsManagerVM(IReportService reportService)
         {
-
+            _reportService= reportService;
+            List<OrdersByMonthDto> report = _reportService.ExecuteSP(11, 2024);
         }
     }
 }

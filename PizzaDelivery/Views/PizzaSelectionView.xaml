@@ -30,7 +30,7 @@
                     <!--<Image Source="/ImagesForProject/pepperoni.png" Width="150" Height="150" Margin="15"/>-->
                     <TextBlock Text="{Binding Name, Mode=OneWay}" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                 </StackPanel>
-
+  
             </Border>
         </DataTemplate>
         <ItemsPanelTemplate x:Key="listPanelTemplate">

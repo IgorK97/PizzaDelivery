@@ -24,14 +24,15 @@ namespace BLL.Models
             db = repos;
         }
 
-        public List<OrdersByMonth> ExecuteSP(int month, int year, int ClientId)
+        public List<OrdersByMonthDto> ExecuteSP(int month, int year)
         {
 
-            return db.Reports.ExecuteSP(month, year, ClientId).Select(i => new OrdersByMonth
+            return db.Reports.ExecuteSP(month, year).Select(i => new OrdersByMonthDto
             {
-                order_id = i.order_id,
-                courier_id = i.courier_id,
-                Date = i.Date
+                pizzaId = i.pizza_id,
+                pizzaName= i.pizza_name,
+                quantity = i.total_quantity,
+                cost = i.total_cost
             }).ToList();
 
 

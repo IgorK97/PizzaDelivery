@@ -80,7 +80,7 @@ namespace PizzaDelivery
             services.AddSingleton<IOrderLineService, OrderLinesService>();
             services.AddSingleton<IOrderService, OrderService>();
             services.AddSingleton<IOrderManagementService, OrderManagementService>();
-
+            services.AddSingleton<IReportService, ReportService>();
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<IAccountService, AccountService>();
@@ -122,7 +122,7 @@ namespace PizzaDelivery
             });
             services.AddSingleton<CreateViewModel<ReportsManagerVM>>(services =>
             {
-                return () => new ReportsManagerVM();
+                return () => new ReportsManagerVM(services.GetRequiredService<IReportService>());
             });
             services.AddSingleton<AssortmentModel>();
 
