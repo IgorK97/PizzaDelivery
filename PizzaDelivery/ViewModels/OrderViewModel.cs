@@ -222,7 +222,31 @@ namespace PizzaDelivery.ViewModels
             Cost = om.final_price.ToString();
             OrderDate = om.ordertime.ToString();
             DeliveryDate = om.deliverytime.ToString();
-            Status = ((DTO.DeliveryStatus)om.delstatusId).ToString();
+            switch ((DeliveryStatus)om.delstatusId)
+            {
+                case DeliveryStatus.IsCooking:
+                    Status = "Готовится";
+                    break;
+                case DeliveryStatus.Canceled:
+                    Status = "Отменен";
+                    break;
+                case DeliveryStatus.IsBeingFormed:
+                    Status = "Обрабатывается";
+                    break;
+                case DeliveryStatus.AtTheCourier:
+                    Status = "В доставке";
+                    break;
+                case DeliveryStatus.Delivered:
+                    Status = "Доставлен";
+                    break;
+                case DeliveryStatus.NotDelivered:
+                    Status = "Не доставлен";
+                    break;
+                case DeliveryStatus.HandedOver:
+                    Status = "Передается в доставку";
+                    break;
+            }
+            //Status = ((DTO.DeliveryStatus)om.delstatusId).ToString();
             OrderStatus = (DTO.DeliveryStatus)om.delstatusId;
             if (om.delstatusId == 6)
             {

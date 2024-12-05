@@ -80,7 +80,7 @@
                     <TextBlock Grid.Column="8" Text="{Binding Cost}" VerticalAlignment="Center" Margin="10 10 " />
                     <TextBlock Grid.Column="9" Text="Вес" VerticalAlignment="Center" Margin="10 10 " />
                     <TextBlock Grid.Column="10" Text="{Binding Weight}" VerticalAlignment="Center" Margin="10 10 " />
-                    <TextBlock Grid.Column="11" Text="{Binding Status}" VerticalAlignment="Center" Margin="10 10 "/>
+                    <!--<TextBlock Grid.Column="11" Text="{Binding Status}" VerticalAlignment="Center" Margin="10 10 "/>-->
 
                     <Button Command="{Binding AboutOrder}"
                             Style="{StaticResource BaseButtonStyle}"
