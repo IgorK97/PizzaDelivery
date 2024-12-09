@@ -57,7 +57,7 @@
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"  Text="Цена" Margin="10 10" FontSize="26"/>
+                        <TextBlock Grid.Column="0"  Text="Цена, руб" Margin="10 10" FontSize="26"/>
 
                         <TextBlock Grid.Column="1" Text="{Binding Cost}" Margin="10 10" FontSize="26"/>
                     </Grid>
@@ -66,7 +66,7 @@
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Вес" Margin="10 10" FontSize="26"/>
+                        <TextBlock Grid.Column="0" Text="Вес, г" Margin="10 10" FontSize="26"/>
 
                         <TextBlock Grid.Column="1" Text="{Binding Weight}" Margin="10 10" FontSize="26"/>
                     </Grid>

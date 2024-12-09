@@ -194,7 +194,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="10 10" FontSize="20" Text="Общий вес заказа: " Grid.Column="0" HorizontalAlignment="Right"/>
+                    <TextBlock Margin="10 10" FontSize="20" Text="Общий вес заказа, г: " Grid.Column="0" HorizontalAlignment="Right"/>
                     <TextBlock Margin="10 10" FontSize="20"  Text="{Binding Weight}" HorizontalAlignment="Right" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Row="3">
@@ -202,7 +202,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="10 10" FontSize="20" Text="Итоговая цена заказа: " Grid.Column="0" HorizontalAlignment="Right"/>
+                    <TextBlock Margin="10 10" FontSize="20" Text="Итоговая цена заказа, руб: " Grid.Column="0" HorizontalAlignment="Right"/>
                     <TextBlock Margin="10 10" FontSize="20" Text="{Binding Price}" HorizontalAlignment="Right" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Row="4">

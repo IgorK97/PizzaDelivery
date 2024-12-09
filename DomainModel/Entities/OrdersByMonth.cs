@@ -11,7 +11,7 @@ namespace DomainModel
         //public int order_id { get; set; }
         //public string? courier_id { get; set; }
         //public DateTime? Date { get; set; }
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public int pizza_id { get; set; }
         public string pizza_name { get; set; }

@@ -74,19 +74,28 @@ namespace PizzaDelivery.ViewModels
                         {
                             State.Navigators.ViewType viewType;
                             if (_authenticator.Account.IsClient)
-                                viewType = State.Navigators.ViewType.Profile;
+                                viewType = State.Navigators.ViewType.Shop;
                             else if (_authenticator.Account.IsCourier)
-                                viewType = State.Navigators.ViewType.ProfileCourier;
+                                viewType = State.Navigators.ViewType.OrdersCourier;
                             else
-                                viewType = State.Navigators.ViewType.ProfileManager;
+                                viewType = State.Navigators.ViewType.OrdersManager;
+                            //if (_authenticator.Account.IsClient)
+                            //    viewType = State.Navigators.ViewType.Profile;
+                            //else if (_authenticator.Account.IsCourier)
+                            //    viewType = State.Navigators.ViewType.ProfileCourier;
+                            //else
+                            //    viewType = State.Navigators.ViewType.ProfileManager;
                             OnViewModelChangedDelegate(viewType);
                             //_navigator.CurrentViewModel = _pizzaDeliveryViewModelFactory.CreateViewModel(viewType);
                         }
-                    }, 
+                    },
                     abj =>
                     {
-                        return !string.IsNullOrEmpty(TextLogin)&&TextPassword!=null;
-                    });
+                        return !string.IsNullOrEmpty(TextLogin) && TextPassword != null;
+                    })
+                {
+
+                };
             }
             
         }

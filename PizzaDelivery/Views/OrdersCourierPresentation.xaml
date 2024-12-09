@@ -38,6 +38,8 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="{Binding Number, Mode=OneWay}" VerticalAlignment="Center" 
                             HorizontalAlignment="Center"/>
@@ -77,19 +79,23 @@
                         </TextBlock.Style>
                     </TextBlock>
                     <TextBlock Grid.Column="7" Text="Цена" VerticalAlignment="Center" Margin="10 10 "/>
+                    <!--<Grid Grid.Column="8">
+                        <Grid
+                    </Grid>-->
                     <TextBlock Grid.Column="8" Text="{Binding Cost}" VerticalAlignment="Center" Margin="10 10 "/>
-                    <TextBlock Grid.Column="9" Text="Вес" VerticalAlignment="Center" Margin="10 10 "/>
-                    <TextBlock Grid.Column="10" Text="{Binding Weight}" VerticalAlignment="Center" Margin="10 10 "/>
-                    <!--<TextBlock Grid.Column="11" Text="{Binding Status}" VerticalAlignment="Center" Margin="10 10 "/>-->
+                    <TextBlock Grid.Column="9" Text="руб" VerticalAlignment="Center" Margin="10 10 "/>
+                    <TextBlock Grid.Column="10" Text="Вес" VerticalAlignment="Center" Margin="10 10 "/>
+                    <TextBlock Grid.Column="11" Text="{Binding Weight}" VerticalAlignment="Center" Margin="10 10 "/>
+                    <TextBlock Grid.Column="12" Text="г" VerticalAlignment="Center" Margin="10 10 "/>
 
                     <Button Command="{Binding AboutOrder}"
                              Style="{StaticResource BaseButtonStyle}"
-                     Width="auto" Height="50" Grid.Column="12"
+                     Width="auto" Height="50" Grid.Column="13"
                          VerticalAlignment="Center" 
                          HorizontalAlignment="Center" 
                          Content="Подробнее"/>
                     <Button
-                    Margin="5" Width="auto" Height="50" Grid.Column="13">
+                    Margin="5" Width="auto" Height="50" Grid.Column="14">
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
                                 <Style.Triggers>

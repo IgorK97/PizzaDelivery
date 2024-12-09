@@ -76,9 +76,9 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <TextBlock Grid.Column="7" Text="Цена" VerticalAlignment="Center" Margin="10 10 "/>
+                    <TextBlock Grid.Column="7" Text="Цена, руб" VerticalAlignment="Center" Margin="10 10 "/>
                     <TextBlock Grid.Column="8" Text="{Binding Cost}" VerticalAlignment="Center" Margin="10 10 " />
-                    <TextBlock Grid.Column="9" Text="Вес" VerticalAlignment="Center" Margin="10 10 " />
+                    <TextBlock Grid.Column="9" Text="Вес, г" VerticalAlignment="Center" Margin="10 10 " />
                     <TextBlock Grid.Column="10" Text="{Binding Weight}" VerticalAlignment="Center" Margin="10 10 " />
                     <!--<TextBlock Grid.Column="11" Text="{Binding Status}" VerticalAlignment="Center" Margin="10 10 "/>-->
 
@@ -119,8 +119,9 @@
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding OrderStatus}" Value="{x:Static statuses:DeliveryStatus.NotDelivered}">
                                         <Setter Property="Content" Value="Посмотреть комментарий"/>
+                                        <Setter Property="Command" Value="{Binding DelOrder}"/>
                                         <Setter Property="CommandParameter" Value="{x:Static statuses:DeliveryStatus.NotDelivered}"/>
-
+                                        <Setter Property="Visibility" Value="Visible"/>
                                     </DataTrigger>
 
                                 </Style.Triggers>
@@ -152,6 +153,21 @@
                 </Style>
             </Grid.Style>
             <local:SelectedOrderView DataContext="{Binding SelectedOrderVM}"/>
+        </Grid>
+        <Grid x:Name="Overlay1" Panel.ZIndex="1000">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsOrderCommented}" Value="false">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsOrderCommented}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <local:CommentView DataContext="{Binding SelectedOrderCommentVM}"/>
         </Grid>
         <Grid>
             <Grid.RowDefinitions>

@@ -166,6 +166,7 @@ namespace PizzaDelivery.ViewModels
         public void OnExitEvent()
         {
             IsOrderSelected = false;
+            IsOrderCommented = false;
             //if (_selectedOrder != null) //Когда будут диспоуз вьюмодел делать, убрать
             //    _selectedOrder.UpdateProperties();
             //OnPropertyChanged(nameof(SelectedLine));
@@ -226,7 +227,49 @@ namespace PizzaDelivery.ViewModels
         private readonly IPriceBook _priceBook;
         //private readonly OrderBook _orderBook;
         //private OrderModel _basket;
-        
+        private CommentViewModel selectedOrderCommentVM;
+        public CommentViewModel SelectedOrderCommentVM
+        {
+            get
+            {
+                return selectedOrderCommentVM;
+            }
+            set
+            {
+                selectedOrderCommentVM = value;
+                OnPropertyChanged(nameof(SelectedOrderCommentVM));
+
+            }
+        }
+        private bool isOrderCommented;
+        public bool IsOrderCommented
+        {
+            get
+            {
+                return isOrderCommented;
+            }
+            set
+            {
+                isOrderCommented = value;
+                OnPropertyChanged(nameof(IsOrderCommented));
+            }
+        }
+        public void OnOrderViewModelIsDelivered(OrderViewModel _orderViewModel)
+        {
+            //IsOrderSelected = true;
+            //SelectedOrder = _orderViewModel;
+            bool p;
+            if (DelStatus == DeliveryStatus.AtTheCourier)
+                p = true;
+            else
+                p = false;
+            SelectedOrderCommentVM = new CommentViewModel(_orderViewModel.OrderModel, p);
+            IsOrderCommented = true;
+
+            //_deliverySystemModel.TakeOrder(Id);
+            //OnOrderViewModelIsChanged();
+        }
+
         public OrdersManagerVM(ManagementModel managementModel, IAuthenticator authenticator, IPriceBook priceBook/*, OrderBook orderBook*/)
         {
             //_assortmentModel = assortmentModel;
@@ -245,9 +288,12 @@ namespace PizzaDelivery.ViewModels
             //Weight = _basket.weight.ToString();
             //Address = ((ClientDTO)user).AddressDel;
             OrderViewModel.OnOrderStateIsChanged += OnOrderViewModelIsChanged;
+            OrderViewModel.OnOrderIsDelivered += OnOrderViewModelIsDelivered;
             OrderViewModel.OnOrderIsTaked += OnOrderViewModelIsTaked;
             OrderViewModel.OnOrderIsAbout += OnOrderViewModelIsAbout;
             SelectedOrderViewModel.OnExitCommand += OnExitSelected;
+            CommentViewModel.OnExitDelegate += OnExitEvent;
+
         }
     }
 }
