@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 namespace DomainModel;
 
-public partial class Client : DomainObject
+public partial class Client
 {
     //public int Id { get; set; }
+    public int Id { get; set; }
 
     public string? AddressDel { get; set; }
 

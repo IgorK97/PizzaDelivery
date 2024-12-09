@@ -8,60 +8,70 @@
 FontSize="16"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Chocolate">
+    <UserControl.Resources>
+        <ImageBrush x:Key="RegImage" ImageSource="../ImagesForProject/RegImage2.jpg"
+                Stretch="UniformToFill"/>
+    </UserControl.Resources>
+    <Grid Background="{StaticResource RegImage}">
         <!--d:DataContext="{d:DesignInstance viewmodels:RegistrationVM}"-->
-        <StackPanel Background="Bisque" Margin="50,30,50,30">
-            <TextBlock Text="Доставка пиццы - Регистрация" Background="Bisque" HorizontalAlignment="Center" VerticalAlignment="Top"
-                 FontSize="20" Margin="0,10,0,0"/>
+        <Border Margin="25" Padding="30" 
+    HorizontalAlignment="Center" 
+    VerticalAlignment="Center"
+    BorderThickness="3" CornerRadius="10" 
+    BorderBrush="{StaticResource BrushPrimary1}"
+    Background="White">
+            <StackPanel>
+                <TextBlock Text="Доставка пиццы - Регистрация" HorizontalAlignment="Center" VerticalAlignment="Top"
+                 FontSize="25"/>
 
-            <Grid Grid.Row="2" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="3*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                <Grid Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
 
 
-                </Grid.RowDefinitions>
-                <TextBlock Text="Имя" Grid.Column="0" Grid.Row="0"/>
-                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="Фамилия" Grid.Column="0" Grid.Row="1"/>
-                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Имя" Margin="5" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox Grid.Column="1" Margin="5" Grid.Row="0" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="Фамилия" Margin="5" Grid.Column="0" Grid.Row="1"/>
+                    <TextBox Grid.Column="1" Margin="5" Grid.Row="1" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <TextBlock Text="Отчество" Grid.Column="0" Grid.Row="2"/>
-                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="Отчество" Margin="5" Grid.Column="0" Grid.Row="2"/>
+                    <TextBox Grid.Column="1" Margin="5" Grid.Row="2" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <TextBlock Text="Адрес" Grid.Column="0" Grid.Row="3"/>
-                <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding AddressDel, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="Адрес" Margin="5" Grid.Column="0" Grid.Row="3"/>
+                    <TextBox Grid.Column="1" Margin="5" Grid.Row="3" Text="{Binding AddressDel, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <TextBlock Text="Логин" Grid.Column="0" Grid.Row="4"/>
-                <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="Логин" Margin="5" Grid.Column="0" Grid.Row="4"/>
+                    <TextBox Grid.Column="1" Margin="5" Grid.Row="4" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <TextBlock Text="Пароль" Grid.Column="0" Grid.Row="5"/>
-                <PasswordBox Grid.Column="1" Grid.Row="5" PasswordChanged="PasswordBox_PasswordChanged"/>
+                    <TextBlock Text="Пароль" Margin="5" Grid.Column="0" Grid.Row="5"/>
+                    <PasswordBox Grid.Column="1" Margin="5" Grid.Row="5" PasswordChanged="PasswordBox_PasswordChanged"/>
 
-                <TextBlock Text=" Подтвердите пароль" Grid.Column="0" Grid.Row="6"/>
-                <PasswordBox Grid.Column="1" Grid.Row="6" PasswordChanged="RepPasswordBox_PasswordChanged"/>
+                    <TextBlock Text="Подтвердите пароль" Margin="5" Grid.Column="0" Grid.Row="6"/>
+                    <PasswordBox Grid.Column="1" Margin="5" Grid.Row="6" PasswordChanged="RepPasswordBox_PasswordChanged"/>
 
-                <TextBlock Text="Телефон" Grid.Column="0" Grid.Row="7"/>
-                <TextBox Grid.Column="1" Grid.Row="7" Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="Телефон" Margin="5" Grid.Column="0" Grid.Row="7"/>
+                    <TextBox Grid.Column="1" Margin="5" Grid.Row="7" Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <TextBlock Text="Почта" Grid.Column="0" Grid.Row="8"/>
-                <TextBox Grid.Column="1" Grid.Row="8" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="Почта" Margin="5" Grid.Column="0" Grid.Row="8"/>
+                    <TextBox Grid.Column="1" Margin="5" Grid.Row="8" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
 
-            
-            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="9">
-                    <Button
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="9">
+                        <Button
                          Style="{StaticResource BaseButtonStyle}"
 Margin="5"
 HorizontalAlignment="Center"
@@ -69,18 +79,19 @@ VerticalAlignment="Center"
 Command="{Binding ViewLoginCommand}"
 Content="Уже зарегистрированы?"
 Padding="20,3"/>
-                    <Button Margin="5"
+                        <Button Margin="5"
                              Style="{StaticResource BaseButtonStyle}"
 HorizontalAlignment="Center"
 VerticalAlignment="Center"
 Command="{Binding RegisterCommand}"
 Content="Зарегистрироваться"
 Padding="20,3"/>
-                </StackPanel>
-            </Grid>
+                    </StackPanel>
+                </Grid>
 
 
 
-        </StackPanel>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

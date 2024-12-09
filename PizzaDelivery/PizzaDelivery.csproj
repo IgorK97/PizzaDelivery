@@ -29,6 +29,9 @@
     <None Remove="ImagesForProject\pizzaicon.png" />
     <None Remove="ImagesForProject\profile.jpg" />
     <None Remove="ImagesForProject\profile.png" />
+    <None Remove="ImagesForProject\RegImage.jpg" />
+    <None Remove="ImagesForProject\RegImage1.jpg" />
+    <None Remove="ImagesForProject\RegImage2.jpg" />
     <None Remove="ImagesForProject\report.png" />
     <None Remove="mainicon.png" />
     <None Remove="ordersicon.png" />
@@ -81,6 +84,9 @@
     <Resource Include="ImagesForProject\pizzaicon.png" />
     <Resource Include="ImagesForProject\profile.jpg" />
     <Resource Include="ImagesForProject\profile.png" />
+    <Resource Include="ImagesForProject\RegImage.jpg" />
+    <Resource Include="ImagesForProject\RegImage1.jpg" />
+    <Resource Include="ImagesForProject\RegImage2.jpg" />
     <Resource Include="ImagesForProject\report.png" />
   </ItemGroup>
 

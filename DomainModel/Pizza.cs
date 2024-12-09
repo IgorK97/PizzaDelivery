@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 namespace DomainModel;
 
-public partial class Pizza : DomainObject
+public partial class Pizza
 {
     //public int Id { get; set; }
+    public int Id { get; set; }
 
     public string Name { get; set; } = null!;
 
