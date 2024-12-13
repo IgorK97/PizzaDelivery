@@ -15,6 +15,35 @@
                     Stretch="UniformToFill"/>
     </UserControl.Resources>
     <Grid Background="{StaticResource LoginImage}">
+        <Grid x:Name="Overlay1" Panel.ZIndex="1000">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Notification}" Value="false">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Notification}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </Grid.Background>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock FontSize="20" Margin="10" Grid.Row="0" Text="Неправильный логин или пароль"/>
+                <Button Style="{StaticResource BaseButtonStyle}" Content="Закрыть" Command="{Binding Close}"
+                        Margin="10" Grid.Row="1" HorizontalAlignment="Center"/>
+                
+
+            </Grid>
+        </Grid>
         <Border Margin="25" Padding="50" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"

@@ -21,7 +21,7 @@ namespace PizzaDelivery.ViewModels
             _orderModel = orderModel;
             Comment = orderModel.comment;
             IsChangeable = p;
-            success = true;
+            success = p;
             OnPropertyChanged(nameof(IsSuccess));
             OnPropertyChanged(nameof(IsNotSuccess));
         }

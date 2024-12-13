@@ -2,7 +2,7 @@
 using DomainModel;
 using DTO;
 using Interfaces.Services;
-using PizzaDelivery.State.Authenticators;
+using Interfaces.Services.Authenticators;
 using PizzaDelivery.Util;
 using System;
 using System.Collections.Generic;

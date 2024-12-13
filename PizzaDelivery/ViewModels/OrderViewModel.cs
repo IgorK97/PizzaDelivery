@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace PizzaDelivery.ViewModels
 {
-    public delegate void OrderViewModelIsDeleted();
+    public delegate void OrderViewModelIsDeleted(OrderViewModel ovm);
     public delegate void OrderStateViewModelIsChanged();
     public delegate void OrderViewModelIsTaked(int id);
     public delegate void OrderViewModelIsDelivered(OrderViewModel _orderViewModel);
@@ -41,8 +41,8 @@ namespace PizzaDelivery.ViewModels
             {
                 return cancelCommand ??= new Commands.DelegateCommand(obj =>
                 {
-                    _orderModel.CancelYourself();
-                    OnOrderIsDeleted?.Invoke();
+                    //_orderModel.CancelYourself();
+                    OnOrderIsDeleted?.Invoke(this);
                 });
             }
         }

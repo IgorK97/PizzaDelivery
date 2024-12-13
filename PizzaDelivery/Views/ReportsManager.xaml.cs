@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using IronPdf;
+using IronPdf.Editing;
 
 namespace PizzaDelivery.Views
 {
@@ -35,20 +36,37 @@ namespace PizzaDelivery.Views
             //    //IDocumentPaginatorSource document = Chart1;
             //    printDialog.PrintVisual(Chart1, "Распечатываем элемент Canvas");
             //}
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.DefaultExt = ".pdf";
-            saveFileDialog.Filter = "PDF | *.pdf";
-            saveFileDialog.AddExtension = true;
-            if (saveFileDialog.ShowDialog() == true)
+            try
             {
-                string imageName = DateTime.Now.ToString("dd_MM_yyyy_HH_mm_ss");
-                string imagePath = "Pie_" + imageName + ".jpeg";
-                var skChart = new SKPieChart(Chart1) { Width = 900, Height = 600 };
-                skChart.SaveImage(imagePath, SkiaSharp.SKEncodedImageFormat.Jpeg);
-                PdfDocument pdf = ImageToPdfConverter.ImageToPdf(imagePath);
-                imagePath = saveFileDialog.FileName;
-                pdf.SaveAs(imagePath);
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.DefaultExt = ".pdf";
+                saveFileDialog.Filter = "PDF | *.pdf";
+                saveFileDialog.AddExtension = true;
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    string imageName = DateTime.Now.ToString("dd_MM_yyyy_HH_mm_ss");
+                    string imagePath = "Pie_" + imageName + ".jpeg";
+                    var skChart = new SKPieChart(Chart1) { Width = 900, Height = 600 };
+                    skChart.SaveImage(imagePath, SkiaSharp.SKEncodedImageFormat.Jpeg);
+                    PdfDocument pdf = ImageToPdfConverter.ImageToPdf(imagePath);
+                    imagePath = saveFileDialog.FileName;
+                    //pdf.SaveAs(imagePath);
+                    //var stamper = new TextHeaderFooter()
+                    //{
+                    //    CenterText = "<h2>" + txtBlock1.Text + "</h2>"
+                    //};
 
+                    //var pdf1 = PdfDocument.FromFile(imagePath);
+
+                    pdf.SaveAs(imagePath);
+                    MessageBox.Show("Файл успешно сохранён!", "Success", MessageBoxButton.OK,
+                   MessageBoxImage.Information);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
     }

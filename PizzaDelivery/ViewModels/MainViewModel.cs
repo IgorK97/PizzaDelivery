@@ -1,6 +1,6 @@
 ﻿using BLL.Models;
 using PizzaDelivery.Commands;
-using PizzaDelivery.State.Authenticators;
+using Interfaces.Services.Authenticators;
 using PizzaDelivery.State.Navigators;
 using PizzaDelivery.Util;
 using PizzaDelivery.ViewModels.Factories;

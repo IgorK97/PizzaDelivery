@@ -125,6 +125,19 @@ namespace PizzaDelivery.ViewModels
 
         public string Name => _orderLineModel.Pizza.C_name;
         public byte[]? Image => _orderLineModel.Pizza.pizzaimage;
+        private string _size;
+        public string Size
+        {
+            get
+            {
+                return _size;
+            }
+            set
+            {
+                _size = value;
+                OnPropertyChanged(nameof(Size));
+            }
+        }
         private string _ingrList;
         public string IngrList
         {
@@ -144,6 +157,12 @@ namespace PizzaDelivery.ViewModels
             Id = olm.Id;
             isActive = olm.Active;
             IngrList = _orderLineModel.GetStringIngrs();
+            if (olm.Pizza_sizesId == 1)
+                Size = "маленькая";
+            else if (olm.Pizza_sizesId == 2)
+                Size = "средняя";
+            else
+                Size = "большая";
             //Price = olm.Position_price.ToString();
             //Weight = olm.Weight.ToString();
         }

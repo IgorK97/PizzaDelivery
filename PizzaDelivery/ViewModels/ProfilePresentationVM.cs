@@ -10,9 +10,8 @@ using System.Windows.Input;
 using BLL.Models;
 using DTO;
 using Interfaces.Services.AuthenticationServices;
+using Interfaces.Services.Authenticators;
 using PizzaDelivery.Commands;
-using PizzaDelivery.State.Accounts;
-using PizzaDelivery.State.Authenticators;
 using PizzaDelivery.Util;
 
 namespace PizzaDelivery.ViewModels

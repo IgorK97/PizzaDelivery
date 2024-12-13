@@ -17,10 +17,11 @@ using Interfaces.Repository;
 using Microsoft.AspNet.Identity;
 using Interfaces.Services.AuthenticationServices;
 using PizzaDelivery.State.Navigators;
-using PizzaDelivery.State.Authenticators;
-using PizzaDelivery.State.Accounts;
 using PizzaDelivery.AppCore.Tests.Services.AuthenticationServices;
 using PizzaDelivery.Interfaces.Services;
+using BLL.Models.Accounts;
+using Interfaces.Services.Authenticators;
+using BLL.Models.Authenticators;
 
 namespace PizzaDelivery
 {

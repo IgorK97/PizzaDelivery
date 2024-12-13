@@ -1,7 +1,7 @@
 ﻿using BLL.Models;
 using DTO;
 using Interfaces.Services;
-using PizzaDelivery.State.Authenticators;
+using Interfaces.Services.Authenticators;
 using PizzaDelivery.Util;
 using System;
 using System.Collections.Generic;
@@ -259,7 +259,7 @@ namespace PizzaDelivery.ViewModels
             //IsOrderSelected = true;
             //SelectedOrder = _orderViewModel;
             bool p;
-            if (DelStatus == DeliveryStatus.AtTheCourier)
+            if (DelStatus == DeliveryStatus.Delivered)
                 p = true;
             else
                 p = false;

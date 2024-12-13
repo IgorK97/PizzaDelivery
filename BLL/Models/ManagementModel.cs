@@ -1,6 +1,6 @@
 ﻿using DTO;
 using Interfaces.Services;
-using PizzaDelivery.State.Authenticators;
+using Interfaces.Services.Authenticators;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,6 @@
 ﻿using BLL.Models;
+using DomainModel;
+using DTO;
 using PizzaDelivery.Util;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,44 @@ namespace PizzaDelivery.ViewModels
 {
     public class OrderHistoryViewModel :ViewModelBase
     {
+        private bool isOrderCommented;
+        public bool IsOrderCommented
+        {
+            get
+            {
+                return isOrderCommented;
+            }
+            set
+            {
+                isOrderCommented = value;
+                OnPropertyChanged(nameof(IsOrderCommented));
+            }
+        }
+        private CommentViewModel selectedOrderCommentVM;
+        public CommentViewModel SelectedOrderCommentVM
+        {
+            get
+            {
+                return selectedOrderCommentVM;
+            }
+            set
+            {
+                selectedOrderCommentVM = value;
+                OnPropertyChanged(nameof(SelectedOrderCommentVM));
+
+            }
+        }
+        public void OnOrderViewModelIsDelivered(OrderViewModel _orderViewModel)
+        {
+            //IsOrderSelected = true;
+            //SelectedOrder = _orderViewModel;
+            bool p = false;
+            SelectedOrderCommentVM = new CommentViewModel(_orderViewModel.OrderModel, p);
+            IsOrderCommented = true;
+
+            //_deliverySystemModel.TakeOrder(Id);
+            //OnOrderViewModelIsChanged();
+        }
         private ObservableCollection<OrderViewModel> _ordercollection;
         public IEnumerable<OrderViewModel> OrderCollection
         {
@@ -37,10 +77,48 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged(nameof(SelectedOrder));
             }
         }
-        public void OnOrderViewModelIsDeleted()
+        private bool _notification;
+        public bool Notification
         {
-            Load();
-            OnPropertyChanged(nameof(OrderCollection));
+            get
+            {
+                return _notification;
+            }
+            set
+            {
+                _notification = value;
+                OnPropertyChanged(nameof(Notification));
+            }
+        }
+        public void OnOrderViewModelIsDeleted(OrderViewModel ovm)
+        {
+            Notification = true;
+            SelectedOrder = ovm;
+            //Load();
+            //OnPropertyChanged(nameof(OrderCollection));
+        }
+        private ICommand close;
+        public ICommand Close
+        {
+            get
+            {
+                return close ??= new Commands.DelegateCommand(obj =>
+                { Notification = false; });
+            }
+        }
+        private ICommand cancel;
+        public ICommand Cancel
+        {
+            get
+            {
+                return cancel??= new Commands.DelegateCommand(obj =>
+                {
+                    SelectedOrder.OrderModel.CancelYourself();
+                    Notification = false;
+                    Load();
+                    OnPropertyChanged(nameof(OrderCollection));
+                });
+            }
         }
         private SelectedOrderViewModel watchingOrder;
         public SelectedOrderViewModel WatchingOrder
@@ -91,6 +169,20 @@ namespace PizzaDelivery.ViewModels
             OrderViewModel.OnOrderIsDeleted += OnOrderViewModelIsDeleted;
             OrderViewModel.OnOrderIsAbout += OnOrderViewModelIsAbout;
             SelectedOrderViewModel.OnExitCommand += OnExitSelected;
+            CommentViewModel.OnExitDelegate += OnExitEvent;
+            OrderViewModel.OnOrderIsDelivered += OnOrderViewModelIsDelivered;
+
+        }
+        public void OnExitEvent()
+        {
+            //IsOrderSelected = false;
+            IsOrderCommented = false;
+            //if (_selectedOrder != null) //Когда будут диспоуз вьюмодел делать, убрать
+            //    _selectedOrder.UpdateProperties();
+            //OnPropertyChanged(nameof(SelectedLine));
+            //OnPropertyChanged(nameof(LinesCollection));
+            //OnPropertyChanged(nameof(Price));
+            //OnPropertyChanged(nameof(Weight));
         }
         public void OnOrderViewModelIsAbout(OrderViewModel _orderViewModel)
         {

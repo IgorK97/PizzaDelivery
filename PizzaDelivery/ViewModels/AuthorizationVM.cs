@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using PizzaDelivery.Commands;
 using BLL.Models;
-using PizzaDelivery.State.Authenticators;
+using Interfaces.Services.Authenticators;
 using System.Security;
 using System.Net;
 using PizzaDelivery.State.Navigators;
@@ -21,7 +21,19 @@ namespace PizzaDelivery.ViewModels
         private string _textLogin;
         //private readonly INavigator _navigator;
         //private readonly IPizzaDeliveryViewModelFactory _pizzaDeliveryViewModelFactory;
-
+        private bool _notification;
+        public bool Notification
+        {
+            get
+            {
+                return _notification;
+            }
+            set
+            {
+                _notification = value;
+                OnPropertyChanged(nameof(Notification));
+            }
+        }
         public string TextLogin
         {
             get
@@ -53,8 +65,20 @@ namespace PizzaDelivery.ViewModels
         public AuthorizationVM(IAuthenticator authenticator)
         {
             _authenticator = authenticator;
+            Notification = false;
             //_navigator = navigator;
             //_pizzaDeliveryViewModelFactory = _pizzaDeliveryViewModelFactory;
+        }
+        private ICommand close;
+        public ICommand Close
+        {
+            get
+            {
+                return close ??= new Commands.DelegateCommand(obj =>
+                {
+                    Notification = false;
+                });
+            }
         }
 
         private ICommand loginCommand;
@@ -86,6 +110,10 @@ namespace PizzaDelivery.ViewModels
                             //    viewType = State.Navigators.ViewType.ProfileManager;
                             OnViewModelChangedDelegate(viewType);
                             //_navigator.CurrentViewModel = _pizzaDeliveryViewModelFactory.CreateViewModel(viewType);
+                        }
+                        else
+                        {
+                            Notification = true;
                         }
                     },
                     abj =>

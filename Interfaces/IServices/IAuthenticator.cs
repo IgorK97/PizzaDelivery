@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PizzaDelivery.State.Authenticators
+namespace Interfaces.Services.Authenticators
 {
     public interface IAuthenticator
     {

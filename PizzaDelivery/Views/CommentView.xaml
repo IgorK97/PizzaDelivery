@@ -37,17 +37,41 @@
                             <ColumnDefinition Width="145*"/>
                         </Grid.ColumnDefinitions>
                         <RadioButton FontSize="18" Grid.Column="0"
-                            Style="{StaticResource RadBut}"
                             IsChecked="{Binding IsSuccess, Mode=OneWay}"
                         Command="{Binding UpdateSuccess}"
                         CommandParameter="{x:Static statuses:DeliveryStatus.Delivered}"
-                        Content="Доставлено" Grid.ColumnSpan="2"/>
+                        Content="Доставлено" Grid.ColumnSpan="2">
+                            <RadioButton.Style>
+                                <Style BasedOn="{StaticResource RadBut}" TargetType="RadioButton">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsChangeable}" Value="true">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsChangeable}" Value="false">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </RadioButton.Style>
+                        </RadioButton>
                         <RadioButton FontSize="18" Grid.Column="2"
-                            Style="{StaticResource RadBut}"
                             IsChecked="{Binding IsNotSuccess, Mode=OneWay}"
 Command="{Binding UpdateSuccess}"
 CommandParameter="{x:Static statuses:DeliveryStatus.NotDelivered}"
-Content="Не доставлено"/>
+Content="Не доставлено">
+                            <RadioButton.Style>
+                                <Style BasedOn="{StaticResource RadBut}" TargetType="RadioButton">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsChangeable}" Value="true">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsChangeable}" Value="false">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </RadioButton.Style>
+                        </RadioButton>
                     </Grid>
                     <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MaxWidth="300" Grid.Row="1" Width="300" Height="50" FontSize="18" Text="{Binding Comment}">
                         <TextBox.Style>

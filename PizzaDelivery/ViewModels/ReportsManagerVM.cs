@@ -81,6 +81,19 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged(nameof(SelectedMonth));
             }
         }
+        private string _result;
+        public string Result
+        {
+            get
+            {
+                return _result;
+            }
+            set
+            {
+                _result = value;
+                OnPropertyChanged(nameof(Result));
+            }
+        }
         public class MyMonth
         {
             public string Name
@@ -166,6 +179,7 @@ namespace PizzaDelivery.ViewModels
                 //Series = series1;
 
                 var vals = new PieSeries<double>[_pizzas.Count];
+                int c = _pizzas.Sum(i => i.quantity);
                 for (int i = 0; i < _pizzas.Count; i++)
                 {
                     vals[i] = new PieSeries<double>
@@ -191,10 +205,14 @@ namespace PizzaDelivery.ViewModels
                     Padding = new LiveChartsCore.Drawing.Padding(15)
                 };
                 Title = lv;
+                Result = "Общее количество: " + c.ToString() + " шт";
+
             }
             else if (IsSecondPizzaReport)
             {
                 _pizzas = _reportService.ExecuteSP(SelectedMonth.Value, Year);
+                decimal r = _pizzas.Sum(i => i.cost);
+
                 //ISeries[] series1 = new ISeries[_pizzas.Count];
                 //for (int i = 0; i < _pizzas.Count; i++)
                 //{
@@ -231,6 +249,7 @@ namespace PizzaDelivery.ViewModels
                     Padding = new LiveChartsCore.Drawing.Padding(15)
                 };
                 Title = lv;
+                Result = "Общая стоимость: " + r.ToString()+" руб";
             }
         });
         private ICommand updateReport;
@@ -333,6 +352,7 @@ namespace PizzaDelivery.ViewModels
             IsFirstPizzaReport= true;
             SelectedMonth = Months[0];
             Year = 2024;
+            Result = "";
             //List<OrdersByMonthDto> report = _reportService.ExecuteSP(11, 2024);
         }
     }

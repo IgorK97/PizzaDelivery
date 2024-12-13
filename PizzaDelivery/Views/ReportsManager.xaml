@@ -19,7 +19,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition />
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid  Margin="5 10" Grid.Row="0" Background="Red">
             <Grid.ColumnDefinitions>
@@ -96,7 +97,7 @@ Value="{Binding Year, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin=
                       Title="{Binding Title}">
             
         </lvc:PieChart>
-        
+        <!--<TextBlock x:Name="txtBlock1" HorizontalAlignment="Center" FontSize="25" Text="{Binding Result}" Grid.Row="3"/>-->
     </Grid>
            
 
