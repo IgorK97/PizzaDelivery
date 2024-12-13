@@ -23,6 +23,78 @@ namespace PizzaDelivery.ViewModels
     {
         private List<OrdersByMonthDto> _pizzas;
         private IReportService _reportService;
+        //public Dictionary<string, int> Months = new Dictionary<string, int>()
+        //{
+        //    {"Январь", 1 },
+        //    {"Февраль", 2 },
+        //    {"Март", 3 },
+        //    {"Апрель", 4 },
+        //    {"Май", 5 },
+        //    {"Июнь", 6 },
+        //    {"Июль", 7 },
+        //    {"Август", 8},
+        //    {"Сентябрь", 9 },
+        //    {"Октябрь", 10 },
+        //    {"Ноябрь", 11 },
+        //    {"Декабрь", 12 }
+
+
+        //};
+        private List<MyMonth> _months = new List<MyMonth>()
+        {
+            new MyMonth("Январь", 1),
+            new MyMonth("Февраль", 2),
+            new MyMonth("Март", 3),
+            new MyMonth("Апрель", 4),
+            new MyMonth("Май", 5),
+            new MyMonth("Июнь", 6),
+            new MyMonth("Июль", 7),
+            new MyMonth("Август", 8),
+            new MyMonth("Сентябрь", 9),
+            new MyMonth("Октябрь", 10),
+            new MyMonth("Ноябрь", 11),
+            new MyMonth("Декабрь", 12),
+
+        };
+        public List<MyMonth> Months
+        {
+            get
+            {
+                return _months;
+            }
+            set
+            {
+                _months = value;
+                OnPropertyChanged(nameof(Months));
+            }
+        }
+        private MyMonth _selectedMonth;
+        public MyMonth SelectedMonth
+        {
+            get
+            {
+                return _selectedMonth;
+            }
+            set
+            {
+                _selectedMonth = value;
+                OnPropertyChanged(nameof(SelectedMonth));
+            }
+        }
+        public class MyMonth
+        {
+            public string Name
+            {
+                get; set;
+            }
+            public int Value;
+            public MyMonth(string name, int value)
+            {
+                Name = name;
+                Value = value;
+            }
+        }
+
         private bool _isFirstPizzaReport;
         public bool IsFirstPizzaReport
         {
@@ -49,19 +121,19 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged(nameof(IsSecondPizzaReport));
             }
         }
-        private int _month;
-        public int Month
-        {
-            get
-            {
-                return _month;
-            }
-            set
-            {
-                _month = value;
-                OnPropertyChanged(nameof(Month));
-            }
-        }
+        //private int _month;
+        //public int Month
+        //{
+        //    get
+        //    {
+        //        return _month;
+        //    }
+        //    set
+        //    {
+        //        _month = value;
+        //        OnPropertyChanged(nameof(Month));
+        //    }
+        //}
         private int _year;
         public int Year
         {
@@ -82,7 +154,7 @@ namespace PizzaDelivery.ViewModels
 
             if (IsFirstPizzaReport)
             {
-                _pizzas = _reportService.ExecuteSP(Month, Year);
+                _pizzas = _reportService.ExecuteSP(SelectedMonth.Value, Year);
                 //ISeries[] series1 = new ISeries[_pizzas.Count];
                 //for (int i = 0; i < _pizzas.Count; i++)
                 //{
@@ -114,7 +186,7 @@ namespace PizzaDelivery.ViewModels
                 ReportSeries = vals;
                 LabelVisual lv = new LabelVisual()
                 {
-                    Text = "Отчет (кол-во доставленных пицц), " + new DateTime(Year, Month, 1).ToString("MMMM yyyy"),
+                    Text = "Отчет (кол-во доставленных пицц, шт), " + new DateTime(Year, SelectedMonth.Value, 1).ToString("MMMM yyyy"),
                     TextSize = 25,
                     Padding = new LiveChartsCore.Drawing.Padding(15)
                 };
@@ -122,7 +194,7 @@ namespace PizzaDelivery.ViewModels
             }
             else if (IsSecondPizzaReport)
             {
-                _pizzas = _reportService.ExecuteSP(Month, Year);
+                _pizzas = _reportService.ExecuteSP(SelectedMonth.Value, Year);
                 //ISeries[] series1 = new ISeries[_pizzas.Count];
                 //for (int i = 0; i < _pizzas.Count; i++)
                 //{
@@ -154,7 +226,7 @@ namespace PizzaDelivery.ViewModels
                 ReportSeries = vals;
                 LabelVisual lv = new LabelVisual()
                 {
-                    Text = "Отчет (стоимость доставленных пицц, руб), " + new DateTime(Year, Month, 1).ToString("MMMM yyyy"),
+                    Text = "Отчет (стоимость доставленных пицц, руб), " + new DateTime(Year, SelectedMonth.Value, 1).ToString("MMMM yyyy"),
                     TextSize = 25,
                     Padding = new LiveChartsCore.Drawing.Padding(15)
                 };
@@ -259,7 +331,7 @@ namespace PizzaDelivery.ViewModels
             _reportService= reportService;
             IsSecondPizzaReport = false;
             IsFirstPizzaReport= true;
-            Month = 1;
+            SelectedMonth = Months[0];
             Year = 2024;
             //List<OrdersByMonthDto> report = _reportService.ExecuteSP(11, 2024);
         }
