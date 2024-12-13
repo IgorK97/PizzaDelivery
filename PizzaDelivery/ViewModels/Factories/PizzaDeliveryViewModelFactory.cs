@@ -72,7 +72,7 @@ namespace PizzaDelivery.ViewModels.Factories
                 case State.Navigators.ViewType.ReportsManager:
                     return _createReportsVM();
                 default:
-                    throw new ArgumentException("The ViewType does not have a ViewModel.", "viewType");
+                    throw new ArgumentException("Такой модели представления нет", nameof(viewType));
             }
         }
     }

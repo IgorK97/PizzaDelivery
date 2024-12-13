@@ -24,9 +24,9 @@ namespace DAL.Repository
         private ReportRepositoryPostgreSQL reportRepository;
         private UserRepositoryPostgreSQL userRepository;
 
-        public DbReposPgs()
+        public DbReposPgs(string connection)
         {
-            db = new PizzaDeliveryNewGenContext();
+            db = new PizzaDeliveryNewGenContext(connection);
         }
 
         public IRepository<Pizza> Pizzas

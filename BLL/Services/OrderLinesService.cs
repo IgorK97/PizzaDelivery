@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Interfaces.Services;
 using Interfaces.Repository;
 
-namespace BLL.Models
+namespace BLL.Services
 {
     public class OrderLinesService : IOrderLineService
     {
@@ -90,8 +90,8 @@ namespace BLL.Models
             //OrderLine p = dbr.OrderLines.GetItem(id);
             //if (p != null)
             //{
-                dbr.OrderLines.Delete(id);
-                Save();
+            dbr.OrderLines.Delete(id);
+            Save();
             //}
         }
 
@@ -154,7 +154,7 @@ namespace BLL.Models
 
         public BindingList<IngredientShortDto> GetConcreteIngredients(int ps, int ol_id)
         {
-            
+
 
             var res = dbr.Ingredients.GetList().Select(i => new IngredientShortDto
             {
@@ -194,7 +194,7 @@ namespace BLL.Models
                 res_price = dbr.Ingredients.GetList().Where(p => p.Pizzas.Any(i => i.Id == p_id))
                 .Select(p => new
                 {
-                    price = p.PricePerGram*p.Small
+                    price = p.PricePerGram * p.Small
 
                 }).Sum(i => i.price);
                 res_weight = dbr.Ingredients.GetList().Where(p => p.Pizzas.Any(i => i.Id == p_id))

@@ -8,7 +8,6 @@ using BLL.Models;
 using Interfaces.Services;
 using Lab4POWinForms.Util;
 using Ninject;
-using PizzaDelivery.Stores;
 using Microsoft.Extensions.DependencyInjection;
 using PizzaDelivery.ViewModels.Factories;
 using BLL.Services;
@@ -31,11 +30,11 @@ namespace PizzaDelivery
     public partial class App : Application
     {
         //private AccountModel _user;
-        private readonly NavigationStore _navigationStore;
+        //private readonly NavigationStore _navigationStore;
 
         public App()
         {
-            _navigationStore = new NavigationStore();
+            //_navigationStore = new NavigationStore();
         }
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -76,7 +75,8 @@ namespace PizzaDelivery
         private IServiceProvider CreateServiceProvider()
         {
             IServiceCollection services = new ServiceCollection();
-            services.AddSingleton<IDbRepos, DbReposPgs>();
+            services.AddSingleton<IDbRepos, DbReposPgs>(s =>
+            new DbReposPgs(ConfigurationManager.ConnectionStrings["dbPizzaDelivery"].ConnectionString));
             services.AddSingleton<IOrderLineService, OrderLinesService>();
             services.AddSingleton<IOrderService, OrderService>();
             services.AddSingleton<IOrderManagementService, OrderManagementService>();

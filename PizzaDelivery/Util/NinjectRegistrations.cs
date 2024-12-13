@@ -1,5 +1,4 @@
-﻿using BLL.Models;
-using Interfaces.Services;
+﻿using Interfaces.Services;
 using Ninject.Modules;
 using PizzaDelivery.Util;
 using PizzaDelivery.State.Navigators;
@@ -11,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Navigation;
+using BLL.Services;
 
 namespace Lab4POWinForms.Util
 {

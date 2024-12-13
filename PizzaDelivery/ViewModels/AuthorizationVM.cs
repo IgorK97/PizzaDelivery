@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using PizzaDelivery.Commands;
 using BLL.Models;
-using PizzaDelivery.Stores;
 using PizzaDelivery.State.Authenticators;
 using System.Security;
 using System.Net;

@@ -2,7 +2,6 @@
 using PizzaDelivery.Commands;
 using PizzaDelivery.State.Authenticators;
 using PizzaDelivery.State.Navigators;
-using PizzaDelivery.Stores;
 using PizzaDelivery.Util;
 using PizzaDelivery.ViewModels.Factories;
 using System;

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static BLL.Models.OrderService;
+using static BLL.Services.OrderService;
 
 namespace BLL.Services
 {

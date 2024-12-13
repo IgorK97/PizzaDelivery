@@ -14,7 +14,7 @@ using System.ComponentModel.DataAnnotations;
 using Interfaces.Repository;
 
 
-namespace BLL.Models
+namespace BLL.Services
 {
     public class ReportService : IReportService
     {
@@ -30,7 +30,7 @@ namespace BLL.Models
             return db.Reports.ExecuteSP(month, year).Select(i => new OrdersByMonthDto
             {
                 pizzaId = i.pizza_id,
-                pizzaName= i.pizza_name,
+                pizzaName = i.pizza_name,
                 quantity = i.total_quantity,
                 cost = i.total_cost
             }).ToList();
@@ -42,12 +42,12 @@ namespace BLL.Models
         public List<ReportData> ReportPizzas(int? ingredientId)
         {
 
-            var request = db.Reports.PizzaWithIngredients(ingredientId).Select(i =>  
+            var request = db.Reports.PizzaWithIngredients(ingredientId).Select(i =>
             new ReportData
             {
-                 Id=i.Id,
-                 Description=i.Description,
-                 Name=i.Name,
+                Id = i.Id,
+                Description = i.Description,
+                Name = i.Name,
             })
             .ToList();
             return request;

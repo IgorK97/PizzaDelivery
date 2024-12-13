@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Interfaces.Repository;
 using Interfaces.Services;
 
-namespace BLL.Models
+namespace BLL.Services
 {
     public class OrderService : IOrderService
     {
@@ -65,13 +65,13 @@ namespace BLL.Models
             //i.clientId == ClientId && i.delstatusId == 2);
             //return oid;
             int oid = 0;
-            oid = dbr.Orders.GetList().Where(i => i.ClientId == ClientId && i.DelstatusId == (int) DeliveryStatus.NotPlaced/*1*/).
+            oid = dbr.Orders.GetList().Where(i => i.ClientId == ClientId && i.DelstatusId == (int)DeliveryStatus.NotPlaced/*1*/).
                 Select(o => o.Id).FirstOrDefault();
             //Если такого нет, то создать такой
             if (oid == 0)
             {
                 bool s = MakeOrder(ClientId/*, DeliveryStatus.NotPlaced*/);
-                oid = dbr.Orders.GetList().Where(i => i.ClientId == ClientId && i.DelstatusId == (int) DeliveryStatus.NotPlaced/* 1*/).
+                oid = dbr.Orders.GetList().Where(i => i.ClientId == ClientId && i.DelstatusId == (int)DeliveryStatus.NotPlaced/* 1*/).
                 Select(o => o.Id).FirstOrDefault();
             }
             //Order res = db.Orders.Find(oid);
@@ -82,7 +82,7 @@ namespace BLL.Models
             return oid;
         }
 
-        
+
 
         public bool MakeOrder(int ClientId/*, DeliveryStatus delstatus*/)
         {
@@ -143,10 +143,10 @@ namespace BLL.Models
 
         public List<OrderDto> GetAllOrders(int ClientId)
         {
-            
+
             return dbr.Orders.GetList().ToList().Where(i => i.ClientId == ClientId /*&& i.DelstatusId != 1*/)
                 .Select(i => new OrderDto(i)).OrderByDescending(i => i.ordertime).ToList();
-            
+
         }
         public bool Save()
         {
@@ -199,12 +199,12 @@ namespace BLL.Models
 
         public void DeleteOrderLine(int id)
         {
-            
+
             dbr.OrderLines.Delete(id);
             //Save();
-          
+
         }
 
-       
+
     }
 }

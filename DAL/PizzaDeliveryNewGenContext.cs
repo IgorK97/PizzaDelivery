@@ -7,8 +7,10 @@ namespace DAL;
 
 public partial class PizzaDeliveryNewGenContext : DbContext
 {
-    public PizzaDeliveryNewGenContext()
+    string dbconnection;
+    public PizzaDeliveryNewGenContext(string dbc)
     {
+        dbconnection = dbc;
     }
 
     public PizzaDeliveryNewGenContext(DbContextOptions<PizzaDeliveryNewGenContext> options)
@@ -39,7 +41,7 @@ public partial class PizzaDeliveryNewGenContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host=localhost;Database=PizzaDeliveryNewGen;Username=postgres;Password=2004Igor");
+        => optionsBuilder.UseNpgsql(dbconnection/*"Host=localhost;Database=PizzaDeliveryNewGen;Username=postgres;Password=2004Igor"*/);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
