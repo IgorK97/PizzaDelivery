@@ -16,10 +16,10 @@ namespace DTO
         public int Id { get; set; }
 
         public string description { get; set; }
-        public DelStatusDto(DelStatus ds)
-        {
-            Id = ds.Id;
-            description = ds.Description;
-        }
+        //public DelStatusDto(DelStatus ds)
+        //{
+        //    Id = ds.Id;
+        //    description = ds.Description;
+        //}
     }
 }

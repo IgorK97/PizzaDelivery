@@ -114,7 +114,10 @@ namespace BLL.Services
 
         public List<DelStatusDto> GetDelStatuses()
         {
-            return dbr.DelStatuses.GetList().Select(i => new DelStatusDto(i)).ToList();
+            return dbr.DelStatuses.GetList().Select(i => new DelStatusDto()
+            { Id=i.Id,
+            description=i.Description,
+            }).ToList();
         }
 
         public BindingList<IngredientShortDto> GetIngredients(int? ps = null)
