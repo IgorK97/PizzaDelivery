@@ -117,7 +117,14 @@ namespace DAL.Repository
 
         public int Save()
         {
-            return db.SaveChanges();
+            //try
+            //{
+                return db.SaveChanges();
+
+            //}
+            //catch(Exception){
+            //    return 0;
+            //}
         }
     }
 }

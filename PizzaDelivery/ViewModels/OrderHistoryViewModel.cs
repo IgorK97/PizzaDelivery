@@ -121,7 +121,7 @@ namespace PizzaDelivery.ViewModels
             }
         }
         private SelectedOrderViewModel watchingOrder;
-        public SelectedOrderViewModel WatchingOrder
+        public SelectedOrderViewModel WatchingOrder 
         {
             get
             {

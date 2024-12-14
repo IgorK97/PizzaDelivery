@@ -142,6 +142,43 @@ namespace PizzaDelivery.ViewModels
                 OnPropertyChanged(nameof(RepPassword));
             }
         }
+        private string _message;
+        public string Message
+        {
+            get
+            {
+                return _message;
+            }
+            set
+            {
+                _message = value;
+                OnPropertyChanged(nameof(Message));
+            }
+        }
+        private bool _notification;
+        public bool Notification
+        {
+            get
+            {
+                return _notification;
+            }
+            set
+            {
+                _notification = value;
+                OnPropertyChanged(nameof(Notification));
+            }
+        }
+        private ICommand close;
+        public ICommand Close
+        {
+            get
+            {
+                return close ??= new Commands.DelegateCommand(obj =>
+                {
+                    Notification = false;
+                });
+            }
+        }
 
         private ICommand saveProfileChangesCommand;
 
@@ -174,6 +211,26 @@ namespace PizzaDelivery.ViewModels
                         //State.Navigators.ViewType viewType = State.Navigators.ViewType.Login;
                         //OnViewModelChangedDelegate(viewType);
                     }
+                    else if (result == RegistrationResult.PasswordDoNotMatch)
+                    {
+                        Message = "Пароли не совпадают";
+                        Notification = true;
+                    }
+                    else if (result == RegistrationResult.UsernameAlreadyExists)
+                    {
+                        Message = "Логин уже используется";
+                        Notification = true;
+                    }
+                    else if (result == RegistrationResult.PhoneAlreadyExists)
+                    {
+                        Message = "Номер телефона уже используется";
+                        Notification = true;
+                    }
+                    else
+                    {
+                        Message = "Адрес эл. почты уже используется";
+                        Notification = true;
+                    }
                 },
                     abj =>
                     {
@@ -199,6 +256,7 @@ namespace PizzaDelivery.ViewModels
             AddressDel = ((ClientDTO)userDTO).AddressDel;
             Phone = ((ClientDTO)userDTO).Phone;
             Email = ((ClientDTO)userDTO).Email;
+            Notification = false;
         }
     }
 }
