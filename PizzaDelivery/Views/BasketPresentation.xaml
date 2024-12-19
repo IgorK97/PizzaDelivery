@@ -44,11 +44,11 @@
                     <!--<Image Source="/ImagesForProject/pepperoni.png" Width="150" Height="150" Margin="15"/>-->
                     <TextBlock Grid.Column="1" Text="{Binding Name, Mode=OneWay}" VerticalAlignment="Center" 
                                HorizontalAlignment="Center" FontSize="26"/>
-                    <TextBlock Grid.Column="2" Text="Цена" Margin="10 10" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    <TextBlock Grid.Column="2" Text="Цена, руб" Margin="10 10" VerticalAlignment="Center" HorizontalAlignment="Center" 
                                FontSize="26"/>
                     <TextBlock Grid.Column="3" Text="{Binding Price}" VerticalAlignment="Center" HorizontalAlignment="Center" 
                                FontSize="26"/>
-                    <TextBlock Grid.Column="4"  Text="Вес" Margin="10 10" VerticalAlignment="Center"
+                    <TextBlock Grid.Column="4"  Text="Вес, г" Margin="10 10" VerticalAlignment="Center"
                                HorizontalAlignment="Center" FontSize="26"/>
                     <TextBlock Grid.Column="5" Text="{Binding Weight}" VerticalAlignment="Center" Margin="10 10 " FontSize="26"/>
                     <Button Command="{Binding UpdateYourself}"

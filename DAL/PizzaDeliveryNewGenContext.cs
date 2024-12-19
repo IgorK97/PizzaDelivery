@@ -112,7 +112,7 @@ public partial class PizzaDeliveryNewGenContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("ingredients_pkey");
 
-            entity.ToTable("ingredients");
+            entity.ToTable("Ingredient");
 
             entity.Property(e => e.Id).UseIdentityAlwaysColumn();
             entity.Property(e => e.Active).HasColumnName("active");
@@ -162,7 +162,7 @@ public partial class PizzaDeliveryNewGenContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("orders_pkey");
 
-            entity.ToTable("orders");
+            entity.ToTable("Order");
 
             entity.Property(e => e.Id).UseIdentityAlwaysColumn();
             entity.Property(e => e.AddressDel)
@@ -207,7 +207,7 @@ public partial class PizzaDeliveryNewGenContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("pizza_orders_pkey");
 
-            entity.ToTable("order_lines");
+            entity.ToTable("Order_line");
 
             entity.Property(e => e.Id).UseIdentityAlwaysColumn();
             entity.Property(e => e.Custom)
@@ -249,7 +249,7 @@ public partial class PizzaDeliveryNewGenContext : DbContext
                     j =>
                     {
                         j.HasKey("OrderLinesId", "IngredientsId").HasName("custom_ingredients_pkey");
-                        j.ToTable("custom_ingredients");
+                        j.ToTable("Custom_ingredients");
                         j.IndexerProperty<int>("OrderLinesId").HasColumnName("order_linesId");
                         j.IndexerProperty<int>("IngredientsId").HasColumnName("ingredientsId");
                     });
@@ -259,7 +259,7 @@ public partial class PizzaDeliveryNewGenContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("pizza_pkey");
 
-            entity.ToTable("pizza");
+            entity.ToTable("Pizza");
 
             entity.Property(e => e.Id).UseIdentityAlwaysColumn();
             entity.Property(e => e.Active).HasColumnName("active");
@@ -283,7 +283,7 @@ public partial class PizzaDeliveryNewGenContext : DbContext
                     j =>
                     {
                         j.HasKey("PizzaId", "IngredientsId").HasName("pizza_composition_pkey");
-                        j.ToTable("pizza_composition");
+                        j.ToTable("Pizza_composition");
                         j.IndexerProperty<int>("PizzaId").HasColumnName("pizzaId");
                         j.IndexerProperty<int>("IngredientsId").HasColumnName("ingredientsId");
                     });
@@ -293,7 +293,7 @@ public partial class PizzaDeliveryNewGenContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("pizza_sizes_pkey");
 
-            entity.ToTable("pizza_sizes");
+            entity.ToTable("Pizza_size");
 
             entity.Property(e => e.Id).UseIdentityAlwaysColumn();
             entity.Property(e => e.Name)
