@@ -218,8 +218,8 @@ namespace PizzaDelivery.ViewModels
             Id = (int)om.Id;
             Number = om.Id.ToString();
             Address = om.address_del.ToString();
-            Weight = om.weight.ToString();
-            Cost = om.final_price.ToString();
+            Weight = om.weight.ToString("F2");
+            Cost = om.final_price.ToString("F2");
             OrderDate = om.ordertime.ToString();
             DeliveryDate = om.deliverytime.ToString();
             switch ((DeliveryStatus)om.delstatusId)

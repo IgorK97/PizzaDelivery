@@ -58,135 +58,138 @@
         <Grid.Background>
             <SolidColorBrush Color="Black" Opacity="0.5"/>
         </Grid.Background>
-        <Grid MinWidth="300" MinHeight="350" HorizontalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Border Grid.Column="0"  Margin="15" Padding="10" 
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Grid MinWidth="300" MinHeight="300" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0"  Margin="10" Padding="10" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"
             BorderThickness="3" CornerRadius="10" 
             BorderBrush="{StaticResource BrushPrimary1}"
             Background="White">
-                <!--DataContext="{Binding AddingPizza}"-->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                    <!--DataContext="{Binding AddingPizza}"-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
 
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Image Stretch="UniformToFill" MinWidth="200" MinHeight="200" Source="{Binding Image}" Grid.Row="0"/>
-                            <Grid Margin="5 10" Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-
-                                </Grid.ColumnDefinitions>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition/>
-
                                 </Grid.RowDefinitions>
-                                <TextBlock FontSize="18" Grid.Column="0" Grid.Row="0"  Margin="5 10" HorizontalAlignment="Center" 
+                                <Image Stretch="UniformToFill" MinWidth="200" MinHeight="200" Source="{Binding Image}" Grid.Row="0"/>
+                                <Grid Margin="5 10" Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+
+                                    </Grid.RowDefinitions>
+                                    <TextBlock FontSize="18" Grid.Column="0" Grid.Row="0"  Margin="5 10" HorizontalAlignment="Center" 
                                        VerticalAlignment="Center" Text="Вес, г"/>
-                                <TextBlock FontSize="18" Grid.Column="1" Grid.Row="0"  Margin="5 10" HorizontalAlignment="Center" 
+                                    <TextBlock FontSize="18" Grid.Column="1" Grid.Row="0"  Margin="5 10" HorizontalAlignment="Center" 
            VerticalAlignment="Center" Text="{Binding FinalWeight}"/>
-                                <TextBlock FontSize="18" Grid.Column="0" Grid.Row="1"  Margin="5 10" HorizontalAlignment="Center" 
+                                    <TextBlock FontSize="18" Grid.Column="0" Grid.Row="1"  Margin="5 10" HorizontalAlignment="Center" 
                             VerticalAlignment="Center" Text="Цена, руб"/>
-                                <TextBlock FontSize="18" Grid.Column="1" Grid.Row="1"  Margin="5 10" HorizontalAlignment="Center" 
+                                    <TextBlock FontSize="18" Grid.Column="1" Grid.Row="1"  Margin="5 10" HorizontalAlignment="Center" 
 VerticalAlignment="Center" Text="{Binding Price}"/>
+                                </Grid>
                             </Grid>
                         </Grid>
-                    </Grid>
-                    <Grid MaxHeight="600" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Margin="5 10" HorizontalAlignment="Center" FontSize="30"  Grid.Row="0" Text="{Binding Name}"/>
-                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Disabled"
+                        <Grid MaxHeight="600" VerticalAlignment="Top" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Margin="5 10" HorizontalAlignment="Center" FontSize="30"  Grid.Row="0" Text="{Binding Name}"/>
+                            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Disabled"
                                       HorizontalScrollBarVisibility="Auto">
-                            <TextBlock 
+                                <TextBlock 
                                    TextWrapping="Wrap" MaxWidth="500" Margin="5 10" 
                                    FontSize="16"  Text="{Binding Description}"/>
-                        </ScrollViewer>
-                        <Grid  Margin="5 10" Grid.Row="2" Background="Red">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <RadioButton FontSize="18" Grid.Column="0"
+                            </ScrollViewer>
+                            <Grid  Margin="5 10" Grid.Row="2" Background="Red">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <RadioButton FontSize="18" Grid.Column="0"
                                          Style="{StaticResource RadBut}"
                                          IsChecked="{Binding IsSmall, Mode=OneWay}"
                                      Command="{Binding UpdatePizzaSizeCommand}"
                                      CommandParameter="{x:Static viewmodels:PizzaSizes.Small}"
                                      Content="Маленькая"/>
-                            <RadioButton FontSize="18" Grid.Column="1"
+                                <RadioButton FontSize="18" Grid.Column="1"
                                          Style="{StaticResource RadBut}"
                                          IsChecked="{Binding IsMedium, Mode=OneWay}"
              Command="{Binding UpdatePizzaSizeCommand}"
              CommandParameter="{x:Static viewmodels:PizzaSizes.Medium}"
              Content="Средняя"/>
-                            <RadioButton FontSize="18" Grid.Column="2"
+                                <RadioButton FontSize="18" Grid.Column="2"
                                          Style="{StaticResource RadBut}"
                                          IsChecked="{Binding IsLarge, Mode=OneWay}"
              Command="{Binding UpdatePizzaSizeCommand}"
              CommandParameter="{x:Static viewmodels:PizzaSizes.Large}"
              Content="Большая"/>
-                        </Grid>
-                        <Grid Grid.Row="3">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Margin="5 10" FontSize="18" Grid.Column="0" Text="Количество"/>
-                            <xctk:IntegerUpDown
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Margin="5 10" FontSize="18" Grid.Column="0" Text="Количество"/>
+                                <xctk:IntegerUpDown
                                 Minimum="1" Maximum="10"
                                 Value="{Binding Count, Mode=TwoWay}" Margin="10 10 10 10" Grid.Column="1" Width="200"/>
 
-                        </Grid>
-                        <TextBlock Grid.Row="4" Margin="5 10" FontSize="18" Text="Добавить по вкусу"/>
-                        <Grid MaxWidth="800" Grid.Row="5">
-                            <ListBox Grid.Row="5" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            </Grid>
+                            <TextBlock Grid.Row="4" Margin="5 10" FontSize="18" Text="Добавить по вкусу"/>
+                            <Grid MaxWidth="800" Grid.Row="5">
+                                <ListBox Grid.Row="5" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                       ScrollViewer.VerticalScrollBarVisibility="Visible"
                      ItemTemplate="{StaticResource listIngrTemplate}"
                      ItemsPanel="{StaticResource listIngrPanelTemplate}"
                      ItemsSource="{Binding IngredientCollection}"
                                      SelectedItem="{Binding SelectedIngredient, Mode=TwoWay}"
                  >
-                                
-                            </ListBox>
-                        </Grid>
-                        <Button Grid.Row="6" Margin="5" HorizontalAlignment="Center" 
+
+                                </ListBox>
+                            </Grid>
+                            <Button Grid.Row="6" Margin="5" HorizontalAlignment="Center" 
                                 VerticalAlignment="Center" FontSize="18"
                                  Style="{StaticResource BaseButtonStyle}"
                             Command="{Binding BuyPizzaCommand}"
                                  Content="В корзину" Padding="20,3"/>
+                        </Grid>
+
                     </Grid>
-                </Grid>
 
 
 
-            </Border>
-            <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                </Border>
+                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" 
                      Grid.Column="1" Width="50" Height="50"
                      Style="{StaticResource BaseButtonStyle}"
                     Command="{Binding ExitCommand}">
-                <Image Source="/ImagesForProject/out.png"/>
-            </Button>
-        </Grid>
+                    <Image Source="/ImagesForProject/out.png"/>
+                </Button>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </UserControl>

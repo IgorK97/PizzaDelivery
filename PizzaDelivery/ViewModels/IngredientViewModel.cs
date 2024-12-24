@@ -74,10 +74,10 @@ namespace PizzaDelivery.ViewModels
             get
             {
                 if (_size == PizzaSizes.Small)
-                    return (_dto.small * _dto.price_per_gram).ToString();
+                    return (_dto.small * _dto.price_per_gram).ToString("F2");
                 else if (_size == PizzaSizes.Medium)
-                    return (_dto.medium * _dto.price_per_gram).ToString();
-                return (_dto.big * _dto.price_per_gram).ToString();
+                    return (_dto.medium * _dto.price_per_gram).ToString("F2");
+                return (_dto.big * _dto.price_per_gram).ToString("F2");
             }
         }
     }

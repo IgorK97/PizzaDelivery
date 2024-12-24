@@ -224,7 +224,7 @@ CommandParameter="{x:Static statuses:DeliveryStatus.Canceled}"
 Content="Отмененные"/>
             </Grid>
             <ListBox 
-                Grid.Row="1"  HorizontalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                Grid.Row="1"  HorizontalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto"
                ScrollViewer.VerticalScrollBarVisibility="Visible"
               ItemTemplate="{StaticResource listordersTemplate}"
               ItemsPanel="{StaticResource listordersPanelTemplate}"

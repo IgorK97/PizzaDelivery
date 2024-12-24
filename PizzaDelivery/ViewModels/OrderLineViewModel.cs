@@ -43,8 +43,8 @@ namespace PizzaDelivery.ViewModels
                 _orderLineModel.Quantity = value;
                 decimal price, weight;
                 (price, weight) = _orderLineModel.CalculateLine();
-                Weight = weight.ToString();
-                Price = price.ToString();
+                Weight = weight.ToString("F2");
+                Price = price.ToString("F2");
                 OnPropertyChanged(nameof(Quantity));
                 //OnPropertyChanged(nameof(Price));
                 //OnPropertyChanged(nameof(Weight));
@@ -100,7 +100,7 @@ namespace PizzaDelivery.ViewModels
         public string Price {
             get
             {
-                return _orderLineModel.Position_price.ToString();
+                return _orderLineModel.Position_price.ToString("F2");
             }
             set
             {
@@ -114,7 +114,7 @@ namespace PizzaDelivery.ViewModels
         {
             get
             {
-                return _orderLineModel.Weight.ToString();
+                return _orderLineModel.Weight.ToString("F2");
             }
             set
             {

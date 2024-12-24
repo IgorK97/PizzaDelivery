@@ -139,7 +139,7 @@ namespace PizzaDelivery.ViewModels
         {
             get
             {
-                return _basket.final_price.ToString();
+                return _basket.final_price.ToString("F2");
             }
             set
             {
@@ -152,7 +152,7 @@ namespace PizzaDelivery.ViewModels
         {
             get
             {
-                return _basket.weight.ToString();
+                return _basket.weight.ToString("F2");
             }
             set
             {
@@ -285,8 +285,8 @@ namespace PizzaDelivery.ViewModels
             OrderLineViewModel.OnOrderLineIsDeleted += OnOrderLineViewModelIsDeleted;
             OrderLineViewModel.OnOrderLineIsUpdated += OnOrderLineViewModelIsUpdated;
             UserDTO user = authenticator.CurrentUser;
-            Price = _basket.final_price.ToString();
-            Weight = _basket.weight.ToString();
+            Price = _basket.final_price.ToString("F2");
+            Weight = _basket.weight.ToString("F2");
             Address = ((ClientDTO)user).AddressDel;
             OrderModel.OnOrderIsChanged += OnOrderIsChanged;
         }

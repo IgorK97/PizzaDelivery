@@ -78,8 +78,8 @@ namespace PizzaDelivery.ViewModels
                 _orderLineModel.Quantity = _count;
                 decimal price, weight;
                 (price, weight) = _orderLineModel.CalculateLine();
-                FinalWeight = weight.ToString();
-                Price = price.ToString();
+                FinalWeight = weight.ToString("F2");
+                Price = price.ToString("F2");
                 OnPropertyChanged(nameof(Count));
                 //OnPropertyChanged(nameof(Price));
                 //OnPropertyChanged(nameof(FinalWeight));
@@ -157,14 +157,14 @@ namespace PizzaDelivery.ViewModels
                             if (ingr.IsIngredientSelected)
                             {
                                 (decimal price, decimal weight) = _orderLineModel.AddIngredient(curIngr);
-                                Price = price.ToString();
-                                FinalWeight = weight.ToString();
+                                Price = price.ToString("F2");
+                                FinalWeight = weight.ToString("F2");
                             }
                             else
                             {
                                 (decimal price, decimal weight) = _orderLineModel.DeleteIngredient(curIngr);
-                                Price = price.ToString();
-                                FinalWeight = weight.ToString();
+                                Price = price.ToString("F2");
+                                FinalWeight = weight.ToString("F2");
                             }
                         }
                     }
@@ -214,8 +214,8 @@ namespace PizzaDelivery.ViewModels
                     }
                     decimal price, weight;
                     (price, weight) = _orderLineModel.ChangeSize((int)PizzaSize);
-                    Price = price.ToString();
-                    FinalWeight = weight.ToString();
+                    Price = price.ToString("F2");
+                    FinalWeight = weight.ToString("F2");
                     OnPropertyChanged(nameof(IsSmall));
                     OnPropertyChanged(nameof(IsMedium));
                     OnPropertyChanged(nameof(IsLarge));
@@ -250,8 +250,8 @@ namespace PizzaDelivery.ViewModels
             //Custom = _orderLineModel.Custom;
             _orderBook = orderBook;
             _order = _orderBook.GetBasketContent();
-            Price = _orderLineModel.Position_price.ToString();
-            FinalWeight = _orderLineModel.Weight.ToString();
+            Price = _orderLineModel.Position_price.ToString("F2");
+            FinalWeight = _orderLineModel.Weight.ToString("F2");
             _assortmentModel = assortmentModel;
             _ingredientcollection = null;
             _orderBook = orderBook;

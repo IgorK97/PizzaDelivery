@@ -181,7 +181,7 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <ListBox Grid.Row="1" HorizontalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            <ListBox Grid.Row="1" HorizontalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   ScrollViewer.VerticalScrollBarVisibility="Visible"
                  ItemTemplate="{StaticResource listlinesTemplate}"
                  ItemsPanel="{StaticResource listlinesPanelTemplate}"
