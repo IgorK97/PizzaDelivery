@@ -176,7 +176,14 @@ namespace BLL.Services
             Save();
             //dbr.order_lines.Attach(p);
         }
-
+        public void UpdateCount(OrderLineDto p)
+        {
+            OrderLine ol = dbr.OrderLines.GetItem(p.Id);
+            ol.Quantity = p.quantity;
+            ol.Weight = p.weight;
+            ol.PositionPrice = p.position_price;
+            Save();
+        }
         public void UpdateOrderLine(OrderLineDto p)
         {
             List<Ingredient> addedingredients = new List<Ingredient>();

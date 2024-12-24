@@ -45,6 +45,10 @@ namespace PizzaDelivery.ViewModels
                 (price, weight) = _orderLineModel.CalculateLine();
                 Weight = weight.ToString("F2");
                 Price = price.ToString("F2");
+
+                //OnOrderLineIsUpdated?.Invoke(this);
+                OnOrderLineIsChanged?.Invoke();
+
                 OnPropertyChanged(nameof(Quantity));
                 //OnPropertyChanged(nameof(Price));
                 //OnPropertyChanged(nameof(Weight));

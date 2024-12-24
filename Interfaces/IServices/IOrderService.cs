@@ -27,7 +27,7 @@ namespace Interfaces.Services
         void CreateOrderLine(OrderLineDto p);
 
         void UpdateOrderLine(OrderLineDto p);
-
+        void UpdateCount(OrderLineDto p);
         void DeleteOrderLine(int id);
 
         //List<ManagerDto> GetAllManagers();

@@ -94,6 +94,11 @@ namespace PizzaDelivery.ViewModels
 
         public void OnOrderLineViewModelIsChanged()
         {
+            //_basket.UpdateOrder();
+            //_basket = _orderBook.GetBasketContent();
+
+            //Load();
+            //OnPropertyChanged(nameof(LinesCollection));
             OnPropertyChanged(nameof(Price));
             OnPropertyChanged(nameof(Weight));
         }
@@ -114,8 +119,11 @@ namespace PizzaDelivery.ViewModels
         public void OnExitEvent()
         {
             IsPizzaSelected = false;
-            if(_selectedLine!=null) //Когда будут диспоуз вьюмодел делать, убрать
+            if(_selectedLine!=null) //Когда буду диспоуз вьюмодел делать, убрать
                 _selectedLine.UpdateProperties();
+            Load();
+            OnPropertyChanged(nameof(LinesCollection));
+
             //OnPropertyChanged(nameof(SelectedLine));
             //OnPropertyChanged(nameof(LinesCollection));
             OnPropertyChanged(nameof(Price));

@@ -36,8 +36,12 @@ namespace PizzaDelivery.ViewModels
 
             foreach (OrderModel olm in _orders)
             {
-                OrderViewModel olvm = new OrderViewModel(olm);
-                _orderscollection.Add(olvm);
+                if (olm.courierId == _authenticator.Account.Id)
+                {
+                    OrderViewModel olvm = new OrderViewModel(olm);
+                    _orderscollection.Add(olvm);
+                }
+                
             }
         }
         private OrderViewModel _selectedOrder;

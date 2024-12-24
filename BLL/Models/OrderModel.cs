@@ -83,6 +83,67 @@ namespace BLL.Models
             }
             LineCount = order_lines.Count;
         }
+
+        public void UpdateCountLines()
+        {
+            foreach (OrderLineModel olm in order_lines)
+            {
+                if (olm.Id != 0)
+                {
+                    OrderLineDto p = new OrderLineDto();
+                    p.Id = olm.Id;
+                    p.weight = olm.Weight;
+                    p.quantity = olm.Quantity;
+                    p.position_price = olm.Position_price;
+                    _orderService.UpdateCount(p);
+                }
+            }
+
+
+            //OrderDto newodto = new OrderDto();
+
+
+            //newodto.Id = Id;
+            //newodto.address_del = address_del;
+            //newodto.delstatusId = delstatusId;
+            //newodto.managerId = managerId;
+            //newodto.courierId = courierId;
+            //if (delstatusId == (int)DeliveryStatus.Delivered)
+            //    newodto.deliverytime = DateTime.UtcNow;
+            //else
+            //    newodto.deliverytime = null;
+            //newodto.final_price = final_price;
+            //newodto.weight = weight;
+            //newodto.comment = comment;
+
+            //_orderService.UpdateOrder(newodto);
+            //OrderDto o = _orderService.GetOrder(newodto);
+
+            //Id = o.Id;
+            //clientId = o.clientId;
+            //courierId = o.courierId;
+            //managerId = o.managerId;
+            //final_price = o.final_price;
+            //address_del = o.address_del;
+            //weight = o.weight;
+            //ordertime = o.ordertime;
+            //deliverytime = o.deliverytime;
+            //delstatusId = o.delstatusId;
+            //comment = o.comment;
+            //order_lines = new List<OrderLineModel>();
+            //foreach (OrderLineDto old in o.order_lines)
+            //{
+            //    OrderLineModel olm = order_lines.ToList().Where(ol => ol.Id== old.Id).FirstOrDefault();
+            //    olm.UpdateSelf(old);
+            //    //OrderLineModel olm = new OrderLineModel(_priceBook, old);
+            //    //order_lines.Add(olm);
+            //}
+            //foreach(OrderLineModel olm in order_lines)
+            //{
+            //    olm.UpdateSelf(o.order_lines.Where(o => o.Id == olm.Id).FirstOrDefault());
+            //}
+            //LineCount = order_lines.Count;
+        }
         public void UpdateOrder()
         {
             OrderDto newodto = new OrderDto();
@@ -282,10 +343,12 @@ namespace BLL.Models
             {
                 oldto.Id = orderLineModel.Id;
                 _orderService.UpdateOrderLine(oldto);
-                OrderLineModel linemodel = order_lines.Where(i =>i.Id==orderLineModel.Id).FirstOrDefault();
+                OrderLineModel linemodel = order_lines.Where(i => i.Id == orderLineModel.Id).FirstOrDefault();
+
                 //linemodel.Position_price=orderLineModel.Position_price;
                 //linemodel.Weight = orderLineModel.Weight;
                 //linemodel.Quantity = orderLineModel.Quantity;
+
                 order_lines.Remove(linemodel);
                 order_lines.Add(orderLineModel);
             }
@@ -301,6 +364,7 @@ namespace BLL.Models
                 weight = weight
             };
             _orderService.UpdateOrder(newodto);
+
             OrderDto o = _orderService.GetOrder((int)Id);
 
             Id = o.Id;
@@ -330,6 +394,7 @@ namespace BLL.Models
             {
                 CalculateOrderPrice();
                 CalculateOrderWeight();
+                UpdateCountLines();
                 OnOrderIsChanged?.Invoke();
             }
         }
