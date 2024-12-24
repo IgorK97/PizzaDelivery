@@ -36,7 +36,7 @@ namespace PizzaDelivery.ViewModels
 
             foreach (OrderModel olm in _orders)
             {
-                if (olm.courierId == _authenticator.Account.Id)
+                if (olm.courierId == _authenticator.Account.Id||DelStatus==DeliveryStatus.IsBeingFormed)
                 {
                     OrderViewModel olvm = new OrderViewModel(olm);
                     _orderscollection.Add(olvm);

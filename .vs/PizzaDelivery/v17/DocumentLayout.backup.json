@@ -53,9 +53,9 @@
               "Title": "OrdersCourierVM.cs",
               "DocumentMoniker": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrdersCourierVM.cs",
               "RelativeDocumentMoniker": "PizzaDelivery\\ViewModels\\OrdersCourierVM.cs",
-              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrdersCourierVM.cs*",
-              "RelativeToolTip": "PizzaDelivery\\ViewModels\\OrdersCourierVM.cs*",
-              "ViewState": "AgIAABYAAAAAAAAAAAAQwCkAAAAwAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\IgorA\\source\\repos\\MyProjects\\PizzaDelivery\\PizzaDelivery\\ViewModels\\OrdersCourierVM.cs",
+              "RelativeToolTip": "PizzaDelivery\\ViewModels\\OrdersCourierVM.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAmwCoAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-24T18:58:20.71Z",
               "EditorCaption": ""
@@ -130,8 +130,7 @@
               "RelativeToolTip": "PizzaDelivery\\ViewModels\\BasketViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAH0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T17:40:20.58Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-24T17:40:20.58Z"
             },
             {
               "$type": "Document",
