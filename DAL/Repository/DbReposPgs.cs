@@ -1,5 +1,6 @@
 ﻿using DomainModel;
 using Interfaces.Repository;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace DAL.Repository
 {
     public class DbReposPgs : IDbRepos
     {
+        string connection;
         private PizzaDeliveryNewGenContext db;
         private PizzaRepositoryPostgreSQL pizzaRepository;
         private OrderRepositoryPostgreSQL orderRepository;
@@ -27,6 +29,24 @@ namespace DAL.Repository
         public DbReposPgs(string connection)
         {
             db = new PizzaDeliveryNewGenContext(connection);
+            this.connection = connection;
+        }
+        public void ResetContext()
+        {
+            db.Dispose(); 
+            db = new PizzaDeliveryNewGenContext(connection); 
+            pizzaRepository = new PizzaRepositoryPostgreSQL(db);
+            ingredientRepository = new IngredientRepositoryPostgreSQL(db);
+            orderLineRepository = new OrderLineRepositoryPostgreSQL(db);
+            orderRepository = new OrderRepositoryPostgreSQL(db);
+            clientRepository = new ClientRepositoryPostgreSQL(db);
+            delstatusRepository = new DelStatusRepositoryPostgreSQL(db);
+            courierRepository = new CourierRepositoryPostgreSQL(db);
+            managerRepository = new ManagerRepositoryPostgreSQL(db);
+            pizzaSizeRepository = new PizzaSizeRepositoryPostgreSQL(db);
+            reportRepository=new ReportRepositoryPostgreSQL(db);
+            userRepository=new UserRepositoryPostgreSQL(db);
+
         }
 
         public IRepository<Pizza> Pizzas

@@ -20,6 +20,7 @@ namespace Interfaces.Repository
         IRepository<OrderLine> OrderLines { get; }
         IRepository<PizzaSize> PizzaSizes { get; }
         IReportsRepository Reports { get; }
+        void ResetContext();
         int Save();
     }
 }

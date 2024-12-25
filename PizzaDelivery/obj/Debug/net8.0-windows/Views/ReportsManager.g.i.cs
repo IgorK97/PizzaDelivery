@@ -80,7 +80,7 @@ namespace PizzaDelivery.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/PizzaDelivery;component/views/reportsmanager.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PizzaDelivery;V1.0.0.0;component/views/reportsmanager.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\ReportsManager.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
