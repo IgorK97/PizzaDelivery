@@ -210,6 +210,8 @@ namespace PizzaDelivery.ViewModels
                         //OnPasswordBoxesIsNull?.Invoke(this, new EventArgs());
                         //State.Navigators.ViewType viewType = State.Navigators.ViewType.Login;
                         //OnViewModelChangedDelegate(viewType);
+                        Message = "Обновление прошло успешно!";
+                        Notification = true;
                     }
                     else if (result == RegistrationResult.PasswordDoNotMatch)
                     {
