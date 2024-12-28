@@ -56,6 +56,7 @@ namespace BLL.Services
         {
             //return dbr.Orders.GetList().Where(i => i.Id == Id && i.DelstatusId == 1).Select(i =>
             //new OrderDto(i)).FirstOrDefault();
+            dbr.ResetContext();
             return new OrderDto(dbr.Orders.GetItem(Id));
         }
 
